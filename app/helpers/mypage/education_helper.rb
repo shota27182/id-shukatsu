@@ -1,0 +1,2 @@
+module Mypage::EducationHelper
+end

@@ -1,0 +1,245 @@
+<div class="profile-container profile-top">
+    <a href="/mypage" class="profile-mypage-link"><マイページに戻る</a>
+    <h2>プロフィール</h2>
+    <p>ID就活では入力した志望情報を元におすすめの企業、イベント情報をお伝えいたします。</p>
+    <p>※企業が個人の志望情報を特定することはありません。(詳しくは<a href="#">こちら</a>)</p>
+    
+    <div class="profile-form">
+        <div class="profile-title">
+           <div class="profile-title-left">基本情報</div>
+           <div　class="profile-title-right">
+               <a href="/mypage/general" class="btn signup">編集する</a>
+           </div>
+        </div>
+        <div class="profile-contexts">
+            <div class="profile-context">
+                <div class="profile-context-left">
+                    <p>名前：</p>
+                </div>
+                <div class="profile-context-right">
+                    <p><%= @user.name %></p>
+                </div>
+            </div>
+            <div class="profile-context">
+                <div class="profile-context-left">
+                    <p>フリガナ：</p>
+                </div>
+                <div class="profile-context-right">
+                    <p>サコタリョウヘイ</p>
+                </div>
+            </div>
+            <div class="profile-context">
+                <div class="profile-context-left">
+                    <p>性別：</p>
+                </div>
+                <div class="profile-context-right">
+                    <p>男</p>
+                </div>
+            </div>
+            <div class="profile-context">
+                <div class="profile-context-left">
+                    <p>生年月日：</p>
+                </div>
+                <div class="profile-context-right">
+                    <p>1998年 8月 27日</p>
+                </div>
+            </div>
+            <div class="profile-context">
+                <div class="profile-context-left">
+                    <p>住所：</p>
+                </div>
+                <div class="profile-context-right">
+                    <p><%= @user.general.address1 +  @user.general.address2 +  @user.general.building_name %></p>
+                </div>
+            </div>
+            <div class="profile-context">
+                <div class="profile-context-left">
+                    <p>電話番号：</p>
+                </div>
+                <div class="profile-context-right">
+                    <p><%= @user.general.tel %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="profile-container">  
+    <div class="profile-form">
+        <div class="profile-title">
+           <div class="profile-title-left">所属情報</div>
+           <div　class="profile-title-right">
+               <a href="/mypage/education" class="btn signup">編集する</a>
+           </div>
+        </div>
+        <div class="profile-contexts">
+            <div class="profile-context">
+                <div class="profile-context-left">
+                    <p>大学名：</p>
+                </div>
+                <div class="profile-context-right">
+                    <p>慶應義塾大学</p>
+                </div>
+            </div>
+            <div class="profile-context">
+                <div class="profile-context-left">
+                    <p>学部(研究科)：</p>
+                </div>
+                <div class="profile-context-right">
+                    <p>理工学部</p>
+                </div>
+            </div>
+            <div class="profile-context">
+                <div class="profile-context-left">
+                    <p>学科(専攻)：</p>
+                </div>
+                <div class="profile-context-right">
+                    <p>電子工学科</p>
+                </div>
+            </div>
+            <div class="profile-context">
+                <div class="profile-context-left">
+                    <p>学年：</p>
+                </div>
+                <div class="profile-context-right">
+                    <p>大学3年生</p>
+                </div>
+            </div>
+            <div class="profile-context">
+                <div class="profile-context-left">
+                    <p>卒業年度：</p>
+                </div>
+                <div class="profile-context-right">
+                    <p>2021年卒</p>
+                </div>
+            </div>
+            <div class="profile-context">
+                <div class="profile-context-left">
+                    <p>文理：</p>
+                </div>
+                <div class="profile-context-right">
+                    <p>理系</p>
+                </div>
+            </div>
+            <div class="profile-context">
+                <div class="profile-context-left">
+                    <p>ゼミ・研究室：</p>
+                </div>
+                <div class="profile-context-right">
+                    <p><%= @user.education.seminar %></p>
+                </div>
+            </div>
+            <div class="profile-context">
+                <div class="profile-context-left">
+                    <p>出身高校：</p>
+                </div>
+                <div class="profile-context-right">
+                    <p><%= @user.education.highschool %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="profile-container">  
+    <div class="profile-form">
+        <div class="profile-title">
+           <div class="profile-title-left">志望</div>
+           <div　class="profile-title-right">
+               <a href="/mypage/wish" class="btn signup">編集する</a>
+           </div>
+        </div>
+        <div class="profile-contexts">
+            <div class="profile-context">
+                <div class="profile-context-left">
+                    <p>志望企業規模：</p>
+                </div>
+                <div class="profile-context-right">
+                    <% @user.company_scales.each do |a| %>
+                       <span class="profile-letters"><%=a.name %></span>
+                    <% end %>
+                </div>
+            </div>
+            <div class="profile-context">
+                <div class="profile-context-left">
+                    <p>志望業界：</p>
+                </div>
+                <div class="profile-context-right">
+                    <% @user.industries.each do |a| %>
+                       <span class="profile-letters"><%=a.name %></span>
+                    <% end %>
+                </div>
+            </div>
+            <div class="profile-context">
+                <div class="profile-context-left">
+                    <p>志望職種：</p>
+                </div>
+                <div class="profile-context-right">
+                    <% @user.occupations.each do |a| %>
+                       <span class="profile-letters"><%=a.name %></span>
+                    <% end %>
+                </div>
+            </div>
+            <div class="profile-context">
+                <div class="profile-context-left">
+                    <p>志望勤務エリア：</p>
+                </div>
+                <div class="profile-context-right">
+                    <% @user.work_areas.each do |a| %>
+                       <span class="profile-letters"><%=a.name %></span>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="profile-container">  
+    <div class="profile-form">
+        <div class="profile-title">
+           <div class="profile-title-left">重視する項目</div>
+           <div　class="profile-title-right">
+               <a href="/mypage/mentarity" class="btn signup">編集する</a>
+           </div>
+        </div>
+        <div class="profile-contexts">
+            <div class="profile-context">
+                <div class="profile-context-left">
+                    <p>働き方：</p>
+                </div>
+                <div class="profile-context-right">
+                    <% @user.work_styles.each do |a| %>
+                       <span class="profile-letters"><%=a.name %></span>
+                    <% end %>
+                </div>
+            </div>
+            <div class="profile-context">
+                <div class="profile-context-left">
+                    <p>福利厚生：</p>
+                </div>
+                <div class="profile-context-right">
+                    <% @user.welfares.each do |a| %>
+                       <span class="profile-letters"><%=a.name %></span>
+                    <% end %>
+                </div>
+            </div>
+            <div class="profile-context">
+                <div class="profile-context-left">
+                    <p>企業の特徴：</p>
+                </div>
+                <div class="profile-context-right">
+                    <% @user.company_features.each do |a| %>
+                       <span class="profile-letters"><%=a.name %></span>
+                    <% end %>
+                </div>
+            </div>
+            <div class="profile-context">
+                <div class="profile-context-left">
+                    <p>ポイント：</p>
+                </div>
+                <div class="profile-context-right">
+                    <% @user.company_points.each do |a| %>
+                       <span class="profile-letters"><%=a.name %></span>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

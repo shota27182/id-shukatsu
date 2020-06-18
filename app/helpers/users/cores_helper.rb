@@ -1,0 +1,2 @@
+module Users::CoresHelper
+end

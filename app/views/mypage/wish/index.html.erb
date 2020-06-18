@@ -1,0 +1,45 @@
+<div class="sign-up">
+    <div class="form-heading">プロフィール登録</div>
+    <div class="form-explaration">
+        <p>ID就活ではご登録情報を元に最適な就活サービスを提供いたします。<br>プロフィール情報は必ずご入力いただきますようお願いいたします。</p>
+        <p class="profile-promise">※学生にとって不利益になる情報を企業にリークしたり、公開することは一切ありません。詳しくはプライバシーポリシーをご覧ください。</p>
+    </div>
+    <div class="general-profile">
+        <div class="general-title">就活の軸</div>
+    　　　<%= form_with model: @mypage_wish_form, method: :post, url: mypage_wish_path, local: true do |f| %>
+             <div class="form-detail form-top">
+                 <p>志望企業規模</p>
+                 <div class="profile-core-form">
+                    <%= f.collection_check_boxes(:company_scale_ids,CompanyScale.all, :id, :name) do |af| %>
+                       <%= af.label(class: "profile-check"){ af.check_box + af.text } %>
+                    <% end %>
+                 </div>
+             </div>
+             <div class="form-detail">
+                 <p>志望業界</p>
+                 <div class="profile-core-form ">
+                     <%= f.collection_check_boxes(:industry_ids,Industry.all, :id, :name) do |bf| %>
+                        <%= bf.label{ bf.check_box + bf.text } %>
+                     <% end %>
+                 </div>
+             </div>
+             <div class="form-detail">
+                 <p>志望職種</p>
+                 <div class="profile-core-form">
+                     <%= f.collection_check_boxes(:occupation_ids,Occupation.all, :id, :name) do |cf| %>
+                         <%= cf.label{ cf.check_box + cf.text } %>
+                     <% end %>
+                 </div>
+             </div>
+             <div class="form-detail">
+                 <p>志望勤務エリア</p>
+                 <div class="profile-core-form">
+                     <%= f.collection_check_boxes(:work_area_ids,WorkArea.all, :id, :name) do |df| %>
+                     <%= df.label{ df.check_box + df.text } %>
+                     <% end %>
+                 </div>
+             </div>
+　　　　　　<%= f.submit  "プロフィールの登録を完了する", class: "form-submit" %>
+　　　　　<% end %>
+　　</div>
+</div>

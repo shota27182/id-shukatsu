@@ -1,0 +1,621 @@
+<div class="container">
+    <div class="mypage-title">企業情報</div>
+    <p>掲載されている企業情報をまとめています！<br>登録情報に基づいたおすすめ企業情報については<a href="#">こちら</a>。</p>
+    <div class="content-companies-index">
+        <div class="search-box">
+            <div class="search-title">
+                <p>絞り込み条件</p>
+            </div>
+            <div class="search-category">
+                <div class="search-category-title">
+                    <p>業界</p>
+                </div>
+                <div class="search-category-item">
+                    <% if params[:industry] %>
+                        <% @industries.each do |i| %>
+                            <%= check_box_tag :industry, i.id , @IndustriesSearch.include?(i.id), class:"category"%>
+                            <%= label_tag i.name %><br>
+                        <% end %>
+                    <% else %>
+                        <% @industries.each do |i| %>
+                            <%= check_box_tag :industry, i.id ,checked = false, class:"category"%>
+                            <%= label_tag i.name %><br>
+                        <% end %>
+                    <% end %>
+                </div>
+                <div class="search-category-title">
+                    <p>地域</p>
+                </div>
+                <div class="search-category-item">
+                    <% if params[:area] %>
+                        <% @WorkAreas.each do |i| %>
+                            <%= check_box_tag :work_area, i.id , @AreasSearch.include?(i.id),class:"category"%>
+                            <%= label_tag i.name %><br>
+                        <% end %>
+                    <% else %>
+                        <% @WorkAreas.each do |i| %>
+                            <%= check_box_tag :work_area, i.id ,checked = false,class:"category"%>
+                            <%= label_tag i.name %><br>
+                        <% end %>
+                    <% end %>
+                </div>
+                <div class="search-category-title">
+                    <p>募集職種</p>
+                </div>
+                <div class="search-category-item">
+                    <% if params[:occupation] %>
+                        <% @occupations.each do |i| %>
+                            <%= check_box_tag :occupation, i.id,@OccupationsSearch.include?(i.id) , class:"category"%>
+                            <%= label_tag i.name %><br>
+                        <% end %>
+                    <% else %>
+                        <% @occupations.each do |i| %>
+                            <%= check_box_tag :occupation, i.id,checked = false , class:"category"%>
+                            <%= label_tag i.name %><br>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        <div class="company-contents">
+            <% if params[:industry] %>
+                <div class="company-contents-wrapper">
+                    <div class="company-box">
+                        <div class="company-box-head-image">
+                            <img src="/assets/company-top.svg">
+                        </div>
+                        <div class="company-box-head">
+                            <p>メーカー</p>
+                            <div class="company-box-title">
+                                <img src="/assets/sapporo_beer2.svg">
+                                <h2>サッポロビール株式会社</h2>
+                            </div>
+                        </div>
+                        <div class="company-box-foot">
+                            <div class="company-box-features">
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="company-box">
+                        <div class="company-box-head-image">
+                            <img src="/assets/company-top.svg">
+                        </div>
+                        <div class="company-box-head">
+                            <p>メーカー</p>
+                            <div class="company-box-title">
+                                <img src="/assets/sapporo_beer2.svg">
+                                <h2>サッポロビール株式会社</h2>
+                            </div>
+                        </div>
+                        <div class="company-box-foot">
+                            <div class="company-box-features">
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="company-box">
+                        <div class="company-box-head-image">
+                            <img src="/assets/company-top.svg">
+                        </div>
+                        <div class="company-box-head">
+                            <p>メーカー</p>
+                            <div class="company-box-title">
+                                <img src="/assets/sapporo_beer2.svg">
+                                <h2>サッポロビール株式会社</h2>
+                            </div>
+                        </div>
+                        <div class="company-box-foot">
+                            <div class="company-box-features">
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="company-box">
+                        <div class="company-box-head-image">
+                            <img src="/assets/company-top.svg">
+                        </div>
+                        <div class="company-box-head">
+                            <p>メーカー</p>
+                            <div class="company-box-title">
+                                <img src="/assets/sapporo_beer2.svg">
+                                <h2>サッポロビール株式会社</h2>
+                            </div>
+                        </div>
+                        <div class="company-box-foot">
+                            <div class="company-box-features">
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="company-box">
+                        <div class="company-box-head-image">
+                            <img src="/assets/company-top.svg">
+                        </div>
+                        <div class="company-box-head">
+                            <p>メーカー</p>
+                            <div class="company-box-title">
+                                <img src="/assets/sapporo_beer2.svg">
+                                <h2>サッポロビール株式会社</h2>
+                            </div>
+                        </div>
+                        <div class="company-box-foot">
+                            <div class="company-box-features">
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="company-box">
+                        <div class="company-box-head-image">
+                            <img src="/assets/company-top.svg">
+                        </div>
+                        <div class="company-box-head">
+                            <p>メーカー</p>
+                            <div class="company-box-title">
+                                <img src="/assets/sapporo_beer2.svg">
+                                <h2>サッポロビール株式会社</h2>
+                            </div>
+                        </div>
+                        <div class="company-box-foot">
+                            <div class="company-box-features">
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                                <div class="company-box-feature">
+                                    <img src="/assets/telework.svg">
+                                    <p>テレワーク制度有</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% else %>
+                <div class="recomended-search">
+                    <p>あなたにオススメな検索</p>
+                    <div class="recomended-search-contents">
+                        <div class="recomended-before">
+                            <img src="/assets/progress_bar.svg">
+                        </div>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p>慶應義塾大学</p>
+                        </div>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p>慶應義塾大学</p>
+                        </div>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p>慶應義塾大学</p>
+                        </div>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p>慶應義塾大学</p>
+                        </div>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p>慶應義塾大学</p>
+                        </div>
+                        <div class="recomended-after">
+                            <img src="/assets/progress_bar2.svg">
+                        </div>
+                    </div>
+                </div>
+                <div class="companies-wrapper">
+                    <p>テレワーク実施企業</p>
+                    <div class="companies-search">
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="companies-wrapper">
+                    <p>フレックスタイム制実施の企業</p>
+                    <div class="companies-search">
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="companies-wrapper">
+                    <p>家賃補助実施の企業</p>
+                    <div class="companies-search">
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+    <div class="recomended-companies">
+        
+    </div>
+</div>

@@ -1,0 +1,2 @@
+module Mypage::WishHelper
+end

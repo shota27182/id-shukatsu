@@ -1,0 +1,59 @@
+<div class="sign-up">
+    <div class="form-heading">プロフィール登録(ステップ1/2)</div>
+    <div class="form-explaration">
+        <p>ID就活ではご登録情報を元に最適な就活サービスを提供いたします。<br>プロフィール情報は必ずご入力いただきますようお願いいたします。</p>
+        <p class="profile-promise">※学生にとって不利益になる情報を企業にリークしたり、公開することは一切ありません。詳しくはプライバシーポリシーをご覧ください。</p>
+    </div>
+    <%= form_with model: @users_basics_form, method: :post, url: users_basics_path, local: true do |f| %>
+      <div class="general-profile">
+        <div class="general-title">基本情報</div>
+          <div class="form-detail form-top">
+              <p>名前</p>
+              <div class="form-field">
+                <p><%= @user.name %></p>
+              </div>
+          </div>
+          <div class="form-detail">
+              <p>フリガナ</p>
+              <%=f.text_field :kana ,class:"form-field"%>
+          </div>
+          <div class="form-detail">
+              <p>性別</p>
+              <div class="profile-radio">
+                 <%= f.radio_button :sex, :male, class:"profile-radio-button" %>
+            　    <%= f.label "男性", class:"profile-radio-label gender-left" %>
+            　    <%=f.radio_button :sex, :female, class:"profile-radio-button" %>
+            　    <%=f.label "女性", class:"profile-radio-label gender-right"%>
+            　</div>
+          </div>
+          <div class="form-detail profile-birthday">
+              <p>生年月日</p>
+              <%= f.date_select :birthday, start_year: 1990, end_year: 2005, use_month_numbers: true %>
+          </div>
+          <div class="form-detail">
+              <p>住所１</p>
+              <%=f.text_field :address1, class:"form-field" %>
+          </div>
+          <div class="form-detail">
+              <p>住所２</p>
+              <%=f.text_field :address2, class:"form-field" %>
+          </div>
+          <div class="form-detail">
+              <p>建物名・部屋番号</p>
+              <%=f.text_field :building_name, class:"form-field" %>
+          </div>
+          <div class="form-detail">
+             <p>電話番号</p>
+             <%= f.text_field :tel,placeholder: '08012341234', required: true ,class:"form-field"%>
+          </div>
+      </div>
+      <div class="general-profile">
+        <div class="general-title">所属情報</div>
+        　<div class="form-detail profile-birthday">
+              <p>出身高校</p>
+              <%=f.text_field :highschool, class:"form-field" %>
+          </div>
+      </div>
+        <%= f.submit "次のステップへ進む", class: "form-submit" %>
+    <% end %>
+</div>

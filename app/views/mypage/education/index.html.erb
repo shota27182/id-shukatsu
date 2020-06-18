@@ -1,0 +1,21 @@
+<div class="sign-up">
+    <div class="form-heading">プロフィール登録</div>
+    <div class="form-explaration">
+        <p>ID就活ではご登録情報を元に最適な就活サービスを提供いたします。<br>プロフィール情報は必ずご入力いただきますようお願いいたします。</p>
+        <p class="profile-promise">※学生にとって不利益になる情報を企業にリークしたり、公開することは一切ありません。詳しくはプライバシーポリシーをご覧ください。</p>
+    </div>
+    <%= form_with model: @mypage_educations_form, method: :post, url: mypage_education_path, local: true do |f| %>
+      <div class="general-profile">
+        <div class="general-title">所属情報</div>
+          <div class="form-detail profile-birthday">
+              <p>ゼミ・研究室</p>
+              <%=f.text_field :seminar, class:"form-field" %>
+          </div>
+        　<div class="form-detail profile-birthday">
+              <p>出身高校</p>
+              <%=f.text_field :highschool, class:"form-field" %>
+          </div>
+      </div>
+      <%= f.submit "次のステップへ進む", class: "form-submit" %>
+    <% end %>
+</div>

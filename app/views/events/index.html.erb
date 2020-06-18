@@ -1,0 +1,208 @@
+<div class="container">
+    <div class="mypage-title">イベント情報</div>
+    <p>掲載されているイベント情報をまとめています！<br>登録情報に基づいたおすすめイベント情報については<a href="#">こちら</a>。</p>
+    <div class="content-companies-index">
+        <div class="search-box">
+            <div class="search-title">
+                <p>絞り込み条件</p>
+            </div>
+            <div class="search-category">
+                <div class="search-category-title">
+                    <p>業界</p>
+                </div>
+                <div class="search-category-item">
+                    <% if params[:industry] %>
+                        <% @industries.each do |i| %>
+                            <%= check_box_tag :industry, i.id , @IndustriesSearch.include?(i.id), class:"category"%>
+                            <%= label_tag i.name %><br>
+                        <% end %>
+                    <% else %>
+                        <% @industries.each do |i| %>
+                            <%= check_box_tag :industry, i.id ,checked = false, class:"category"%>
+                            <%= label_tag i.name %><br>
+                        <% end %>
+                    <% end %>
+                </div>
+                <div class="search-category-title">
+                    <p>地域</p>
+                </div>
+                <div class="search-category-item">
+                    <% if params[:area] %>
+                        <% @WorkAreas.each do |i| %>
+                            <%= check_box_tag :work_area, i.id , @AreasSearch.include?(i.id),class:"category"%>
+                            <%= label_tag i.name %><br>
+                        <% end %>
+                    <% else %>
+                        <% @WorkAreas.each do |i| %>
+                            <%= check_box_tag :work_area, i.id ,checked = false,class:"category"%>
+                            <%= label_tag i.name %><br>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        <div class="company-contents">
+            <% if params[:industry] %>
+                <div class="events-searches">
+                    <div class="events-search">
+                        <div class="events-search-head">
+                            <img src="/assets/event_top.svg">
+                        </div>
+                        <div class="events-search-title">
+                            <img src="/assets/event_schedule_top.svg">
+                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団/株式会社エイレックス</p>
+                        </div>
+                        <div class="events-search-schedules">
+                            <div class="events-search-schedule">
+                                <div class="entry-area"><!--
+                                     --><div class="event-title">
+                    　　                      <h2>【AREX夏季インターンシップ】経営コンサルティングコース　第１クール</h2><!--
+                    　　                   --><img src="/assets/clock.svg"><!--
+                       　　                --><p class="entry-date">4/14(月)</p><!--
+                                         --><p class="entry-time">16:00 - 18:00</p><!--
+                                         --><img src="/assets/location.svg"><!--
+                                         --><p class="entry-location">東京都渋谷区千駄ヶ谷４丁目１９ー１</p>
+                    　　                 </div>
+                    　　                 <div class="event-entry"><!--
+                    　　                  --><p>締切 6月9日（火）</p><!--
+                    　　              --></div>
+                    　　          </div>
+                            </div>
+                            <div class="events-search-schedule">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="events-search">
+                        
+                    </div>
+                    <div class="events-search">
+                        
+                    </div>
+                    <div class="events-search">
+                        
+                    </div>
+                </div>
+            <% else %>
+                <div class="recomended-search">
+                    <p>あなたにオススメな検索</p>
+                    <div class="recomended-search-contents">
+                        <div class="recomended-before">
+                            <img src="/assets/progress_bar.svg">
+                        </div>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p>慶應義塾大学</p>
+                        </div>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p>慶應義塾大学</p>
+                        </div>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p>慶應義塾大学</p>
+                        </div>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p>慶應義塾大学</p>
+                        </div>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p>慶應義塾大学</p>
+                        </div>
+                        <div class="recomended-after">
+                            <img src="/assets/progress_bar2.svg">
+                        </div>
+                    </div>
+                </div>
+                <div class="companies-wrapper">
+                    <p>注目の新着のイベント</p>
+                    <div class="companies-search">
+                        <div class="event-search">
+                            <img src="/images/event_top.svg">
+                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                        </div>
+                        <div class="event-search">
+                            <img src="/images/event_top.svg">
+                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                        </div>
+                        <div class="event-search">
+                            <img src="/images/event_top.svg">
+                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                        </div>
+                        <div class="event-search">
+                            <img src="/images/event_top.svg">
+                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                        </div>
+                        <div class="event-search">
+                            <img src="/images/event_top.svg">
+                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                        </div>
+                        <div class="event-search">
+                            <img src="/images/event_top.svg">
+                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="companies-wrapper">
+                    <p>金融会社のイベント</p>
+                    <div class="companies-search">
+                        <div class="event-search">
+                            <img src="/images/event_top.svg">
+                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                        </div>
+                        <div class="event-search">
+                            <img src="/images/event_top.svg">
+                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                        </div>
+                        <div class="event-search">
+                            <img src="/images/event_top.svg">
+                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                        </div>
+                        <div class="event-search">
+                            <img src="/images/event_top.svg">
+                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                        </div>
+                        <div class="event-search">
+                            <img src="/images/event_top.svg">
+                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                        </div>
+                        <div class="event-search">
+                            <img src="/images/event_top.svg">
+                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="companies-wrapper">
+                    <p>テレワーク実施企業のイベント</p>
+                    <div class="companies-search">
+                        <div class="event-search">
+                            <img src="/images/event_top.svg">
+                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                        </div>
+                        <div class="event-search">
+                            <img src="/images/event_top.svg">
+                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                        </div>
+                        <div class="event-search">
+                            <img src="/images/event_top.svg">
+                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                        </div>
+                        <div class="event-search">
+                            <img src="/images/event_top.svg">
+                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                        </div>
+                        <div class="event-search">
+                            <img src="/images/event_top.svg">
+                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                        </div>
+                        <div class="event-search">
+                            <img src="/images/event_top.svg">
+                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

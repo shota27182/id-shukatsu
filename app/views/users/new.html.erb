@@ -1,0 +1,30 @@
+<% provide(:title, '新規登録') %>
+<div class="sign-up">
+    <div class="form-heading">新規会員登録</div>
+    <div class="form-explaration">
+        <p>ID就活に会員登録すると、全ての選考対策コンテンツが無料で見放題！</p>
+        <p>会員限定の特別イベントや選考のご招待をお届けします</p>
+    </div>
+  <%= form_with model: @user, method: :post, url: signup_path, local: true do |f| %>
+          <div class="form-detail"> 
+            <p>名前</p>
+            <%=f.text_field :name, class: "form-field"  %>
+          </div>
+          <div class="form-detail">
+            <p>メールアドレス</p>
+            <%=f.email_field :email, class: "form-field" %>
+          </div>
+          <div class="form-detail">
+            <p>パスワード</p>
+            <%=f.password_field :password, class: "form-field"  %>
+          </div>
+          <div class="form-detail">
+            <p>もう一度パスワードを入力してください</p>
+            <%= f.password_field :password_confirmation, class: "form-field" %>
+          </div>
+          <%=f.submit "確認メールを送信する", class: "form-submit" %>
+  <% end %>
+  <div class="form-confirmation">ログインすることにより、当社の<a href="#" class="">利用規約</a>および<a href="#" class="">ライバシーポリシー規約</a>に同意したとみなされます。</div>
+  <div class="mail-guide"><a href="#">>確認メールが届いていない方はこちら</a></div>
+  <div class="login-guide"><a href="#" >>ログインはこちら</a></div>
+</div>
