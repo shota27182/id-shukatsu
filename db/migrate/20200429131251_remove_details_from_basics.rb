@@ -9,6 +9,5 @@ class RemoveDetailsFromBasics < ActiveRecord::Migration[5.1]
     remove_column :basics, :address2
     remove_column :basics, :phone_number
     remove_column :basics, :building_name
-    remove_column :basics, :user_profile
   end
 end
