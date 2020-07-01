@@ -1,0 +1,8 @@
+<%  if @user_toefl.nil? %>
+  <%= link_to "追加する",new_user_toefl_path, remote: true %>
+  <div id="toefl-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+<% else  %>
+  <%= current_user.user_eiken.eiken %>
+  <td><%= link_to 'Edit', edit_user_toefl_path(@user_toefl), remote: true %></td>
+  <div id="toefl-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+<% end  %>

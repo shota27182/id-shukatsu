@@ -1,0 +1,36 @@
+<div class="partner-sign-up">
+    <div class="form-heading">会社情報</div>
+    <%= form_with model: @company, method: :post, url: partner_page_edit_requirements_path, local: true do |f| %>
+      <div class="general-profile">
+        <div class="general-title">募集要項</div>
+        <div class="form-detail form-top">
+            <p>募集職種</p>
+            <%=f.text_field :occupation, class:"form-field" %>
+         </div>
+         <div class="form-detail">
+            <p>業務内容</p>
+            <%=f.text_field :work, class:"form-field" %>
+         </div>
+         <div class="form-detail">
+            <p>応募資格</p>
+            <%=f.text_field :qualification, class:"form-field" %>
+         </div>
+         <div class="form-detail">
+            <p>休日・休暇</p>
+            <%=f.text_field :holiday, class:"form-field" %>
+         </div>
+         <div class="form-detail">
+            <p>待遇・福利厚生</p>
+            <%=f.text_field :welfare, class:"form-field" %>
+         </div>
+         <%=f.hidden_field :category, :value => 1 %>
+         <div id="profiles-association-insertion-point" >
+             <%= f.fields_for :company_profiles do |builder| %>
+                 <%= render 'company_profile_fields', f: builder %>
+             <% end %>
+         </div>
+         <%= link_to_add_association '＋  募集要項を追加する', f, :company_profiles,class: 'mypage-programming-post',data: {association_insertion_node: '#profiles-association-insertion-point',association_insertion_method: 'append'} %>
+      </div>
+      <%= f.submit "次のステップへ進む", class: "form-submit" %>
+    <% end %>
+</div>

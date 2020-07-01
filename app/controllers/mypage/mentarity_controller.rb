@@ -1,4 +1,5 @@
 class Mypage::MentarityController < ApplicationController
+    before_action :logged_in_user
     
     def index
         @mypage_mentarity_form = MypageMentarityForm.new(company_feature_ids: current_user.company_features.pluck(:id),company_point_ids: current_user.company_points.pluck(:id),welfare_ids: current_user.welfares.pluck(:id),work_style_ids: current_user.work_styles.pluck(:id))

@@ -23,6 +23,9 @@ class MypageGeneralsForm
       raise ActiveRecord::RecordInvalid if invalid?
       ActiveRecord::Base.transaction do
         user = User.find(user_id)
+        if !user.general.present?
+          user.build_general
+        end
         user.update(name: name)
         user.general.update(address1: address1, address2: address2, building_name: building_name, tel: tel,birthday: birthday)
       end

@@ -1,0 +1,64 @@
+<div class="profile-container profile-top">
+    <a href="/mypage" class="profile-mypage-link"><マイページに戻る</a>
+    <h2>エントリー履歴</h2>
+    
+    <div class="profile-form">
+        <div class="event-big-categories">
+            <% if params[:category] == 'job' %>
+                <div class="event-big-category">
+                    <%=link_to '就活イベント', mypage_entry_path %>
+                </div>
+                <div class="event-big-category event-big-click">
+                    <%=link_to '本選考', mypage_entry_path(category:'job') %>
+                </div>
+            <% else %>
+                <div class="event-big-category event-big-click">
+                    <%=link_to '就活イベント', mypage_entry_path %>
+                </div>
+                <div class="event-big-category">
+                    <%=link_to '本選考', mypage_entry_path(category:'job') %>
+                </div>
+            <% end %>
+        </div>
+        <% if params[:category] != 'job' %>
+            <div class="event-small-categories">
+                <% if params[:category] %>
+                    <div class="event-small-category">
+                        <%=link_to 'インターン・ジョブ', mypage_entry_path %>
+                    </div>
+                <% else %>
+                    <div class="event-small-category event-small-click">
+                        <%=link_to 'インターン・ジョブ', mypage_entry_path %>
+                    </div>
+                <% end %>
+                <% if params[:category] == 'seminar' %>
+                    <div class="event-small-category event-small-click">
+                        <%=link_to '説明会・企業セミナー', mypage_entry_path(category:'seminar') %>
+                    </div>
+                <% else %>
+                    <div class="event-small-category">
+                        <%=link_to '説明会・企業セミナー', mypage_entry_path(category:'seminar') %>
+                    </div>
+                <% end %>
+                <% if params[:category] == 'group-seminar' %>
+                    <div class="event-small-category event-small-click">
+                        <%=link_to '合同説明会・交流会', mypage_entry_path(category:'group-seminar') %>
+                    </div>
+                <% else %>
+                    <div class="event-small-category">
+                        <%=link_to '合同説明会・交流会', mypage_entry_path(category:'group-seminar') %>
+                    </div>
+                <% end %>
+                <% if params[:category] == 'job-prepare' %>
+                    <div class="event-small-category event-small-click">
+                        <%=link_to '就活対策', mypage_entry_path(category:'job-prepare') %>
+                    </div>
+                <% else %>
+                    <div class="event-small-category">
+                        <%=link_to '就活対策', mypage_entry_path(category:'job-prepare') %>
+                    </div>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+</div>

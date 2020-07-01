@@ -16,30 +16,8 @@
 //= require_tree .
 /*global $*/
 /*global location*/
-$(function(){
-    $('.mypage-item').click(function(){
-        location.href=$(this).find('a').attr('href');
-    });
-    
-    $('.header-menu').click(function(){
-        location.href=$(this).find('a').attr('href');
-    });
-    
-    $('.category').on('change', function(){
-    /// チェックされたvalue値を配列として取得
-    var industry_vals = $('input[name=industry]:checked').map(function(){
-      return $(this).val();
-    }).get();
-    var area_vals = $('input[name=work_area]:checked').map(function(){
-        return $(this).val();
-    }).get();
-    var occupation_vals = $('input[name=occupation]:checked').map(function(){
-        return  $(this).val();
-    }).get();
-    window.location.href = '/companies?industry=' + industry_vals + '&area=' + area_vals + '&occupation=' + occupation_vals;
-    
-  });
-   
-});
+//= require bootstrap-sprockets
+//= require cocoon
+
 
 

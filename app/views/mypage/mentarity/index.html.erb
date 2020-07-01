@@ -11,7 +11,8 @@
                  <p>重視する働き方</p>
                  <div class="profile-core-form">
                      <%= f.collection_check_boxes(:work_style_ids,WorkStyle.all, :id, :name) do |ef| %>
-                         <%= ef.label{ ef.check_box + ef.text } %>
+                         <%= ef.check_box(class: "checkbox")  %>
+                         <%= ef.label(class: "profile-check"){ ef.text } %>
                      <% end %>
                  </div>
              </div>
@@ -19,7 +20,8 @@
                  <p>重視する福利厚生</p>
                  <div class="profile-core-form core-welfare">
                      <%= f.collection_check_boxes(:welfare_ids,Welfare.all, :id, :name) do |ff| %>
-                        <%= ff.label{ ff.check_box + ff.text } %>
+                        <%= ff.check_box(class: "checkbox")  %>
+                        <%= ff.label(class: "profile-check"){ ff.text } %>
                      <% end %>
                  </div>
              </div>
@@ -27,7 +29,8 @@
                  <p>重視する企業の特徴</p>
                  <div class="profile-core-form">
                      <%= f.collection_check_boxes(:company_feature_ids,CompanyFeature.all, :id, :name) do |gf| %>
-                     <%= gf.label{ gf.check_box + gf.text } %>
+                    <%= gf.check_box(class: "checkbox")  %>
+                    <%= gf.label(class: "profile-check"){ gf.text } %>
                      <% end %>
                  </div>
              </div>
@@ -35,7 +38,8 @@
                  <p>重視するポイント</p>
                  <div class="profile-core-form">
                      <%= f.collection_check_boxes(:company_point_ids,CompanyPoint.all, :id, :name) do |hf| %>
-                        <%= hf.label{ hf.check_box + hf.text } %>
+                        <%= hf.check_box(class: "checkbox")  %>
+                        <%= hf.label(class: "profile-check"){ hf.text } %>
                      <% end %>
                  </div>
              </div>

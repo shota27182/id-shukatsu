@@ -1,0 +1,106 @@
+<div class="partner-menus">
+    <div class="partner-menu">
+        <a href="/partner_page/dashboard">ダッシュボード</a>
+    </div>
+    <div class="partner-menu">
+        <div class="partner-menu-item secList" id="fuu">
+            <p>応募者管理</p>
+            <img src="/assets/partner_bar.svg">
+        </div>
+        <ul class="partner-menu-lists section fuu">
+            <li class="partner-menu-list">
+                <a href="#">> 応募者一覧</a>
+            </li>
+            <li class="partner-menu-list">
+                <a href="#">> 本選考</a>
+            </li>
+            <li class="partner-menu-list">
+                <a>> ジョブ・インターン</a>
+            </li>
+            <li class="partner-menu-list">
+                <a>> 説明会・企業セミナー</a>
+            </li>
+        </ul>
+    </div>
+    <div class="partner-menu">
+        <div class="partner-menu-item secList" id="guu">
+            <p>求人管理</p>
+            <img src="/assets/partner_bar.svg">
+        </div>
+        <ul class="partner-menu-lists section guu">
+            <li class="partner-menu-list">
+                <a href="#">> 本選考</a>
+            </li>
+            <li class="partner-menu-list">
+                <a>> ジョブ・インターン</a>
+            </li>
+            <li class="partner-menu-list">
+                <a>> 説明会・企業セミナー</a>
+            </li>
+        </ul>
+    </div>
+    <div class="partner-menu">
+        <div class="partner-menu-item secList" id="nuu">
+            <p>募集要項</p>
+            <img src="/assets/partner_bar.svg">
+        </div>
+        <ul class="partner-menu-lists section nuu">
+            <li class="partner-menu-list">
+                <a href="#">> 本選考</a>
+            </li>
+            <li class="partner-menu-list">
+                <a>> ジョブ・インターン</a>
+            </li>
+            <li class="partner-menu-list">
+                <a>> 説明会・企業セミナー</a>
+            </li>
+        </ul>
+    </div>
+    <div class="partner-menu">
+        <div class="partner-menu-item secList" id="muu">
+            <p>広告設定</p>
+            <img src="/assets/partner_bar.svg">
+        </div>
+        <ul class="partner-menu-lists section muu">
+            <li class="partner-menu-list">
+                <a href="#">> 本選考</a>
+            </li>
+            <li class="partner-menu-list">
+                <a>> ジョブ・インターン</a>
+            </li>
+            <li class="partner-menu-list">
+                <a>> 説明会・企業セミナー</a>
+            </li>
+        </ul>
+    </div>
+    <div class="partner-menu">
+        <div class="partner-menu-item secList ruu">
+            <p>アカウント管理</p>
+            <img src="/assets/partner_bar.svg">
+        </div>
+        <ul class="partner-menu-lists section ruu">
+            <li class="partner-menu-list">
+                <a href="#">> 本選考</a>
+            </li>
+            <li class="partner-menu-list">
+                <a>> ジョブ・インターン</a>
+            </li>
+            <li class="partner-menu-list">
+                <a>> 説明会・企業セミナー</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+  $(function(){
+  $('.section').hide();
+  
+  $('.secList').on('click',function(){
+        // クリックした要素の ID と違うクラス名のセクションを非表示
+    $('.section').not($('.'+$(this).attr('id'))).hide();
+    // クリックした要素の ID と同じクラスのセクションを表示
+    $('.'+$(this).attr('id')).toggle();
+  });
+});
+</script>

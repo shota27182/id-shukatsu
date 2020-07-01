@@ -1,0 +1,34 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <%= form_for(@user_programming, remote: true) do |f| %>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">プログラミングスキル</h4>
+      </div>
+      <div class="modal-body">
+        <div class="programming-title">
+            <div class="programming-form">
+                <div class="form-detail form-top">
+                    <p>言語の種類</p>
+                    <%= f.collection_select(:programming_id, Programming.all, :id, :name,{prompt: ""}, {class: "form-field"}) %>
+                 </div>
+                 <div class="form-detail">
+                     <p>経験年数</p>
+                     <%=f.text_field :use_time, class: "form-field"  %>
+                 </div>
+                 <div class="form-detail">
+                     <p>具体的な開発内容(任意)</p>
+                     <%=f.text_field :description, class: "form-field"  %>
+                 </div>
+            </div>
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= f.submit "Save", :class => "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

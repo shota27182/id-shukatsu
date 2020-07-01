@@ -1,0 +1,6 @@
+<% @user_programmings.each do |user_programming| %>
+  <tr>
+    <td><%= Programming.find_by(id: user_programming.programming_id).name %></td>
+    <td><%= link_to 'Edit', edit_user_programming_path(user_programming), remote: true %></td>
+  </tr>
+<% end %>

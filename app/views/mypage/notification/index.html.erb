@@ -1,0 +1,36 @@
+<div class="profile-container profile-top">
+    <a href="/mypage" class="profile-mypage-link"><マイページに戻る</a>
+    <h2>お知らせ</h2>
+    
+    <div class="profile-form">
+        <div class="profile-title">
+           <div class="profile-title-left">登録済み</div>
+           <div　class="profile-title-right">
+               <a href="#" class="btn signup">編集する</a>
+           </div>
+        </div>
+        <div class="profile-companies">
+            <% @notifications.each do |i| %>
+            <div class="profile-notification-index">
+                <% if i.action =="entry_first" %>
+                    <% Event.joins(:event_schedules).where(event_schedules:{id:[i.id]}).each do |a|%>
+                    <p><%= a.name %></p>
+                    <% end %>
+                <% end %>
+                <% if i.action =="entry_second" %>
+                    <% Event.joins(:event_schedules).where(event_schedules:{id:[i.id]}).each do |a|%>
+                    <p><%= a.name %></p>
+                    <% end %>
+                <% end %>
+                <% if i.action =="entry_third" %>
+                    <% Event.joins(:event_schedules).where(event_schedules:{id:[i.id]}).each do |a|%>
+                    <p><%= a.name %></p>
+                    <% end %>
+                <% end %>
+                <%= time_ago_in_words(i.start_on) %>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+

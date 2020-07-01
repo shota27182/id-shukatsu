@@ -14,14 +14,14 @@ class Users::BasicsController < ApplicationController
         if @users_basics_form.save
             redirect_to '/users/cores'
         else
-            render action: :index
+            render action: "index"
         end
     end
     
     private
       
       def users_basics_form_params
-            params.require(:users_basics_form).permit(:kana,:address1,:address2,:building_name,:tel,:highschool,:birthday).merge(user_id: current_user.id)
+            params.require(:users_basics_form).permit(:kana,:address1,:address2,:building_name,:tel,:birthday, :sex, :university ,:department ,:faculty ,:highschool, :seminar, :classification, :grade_id).merge(user_id: current_user.id)
       end
       
       def birthday_join

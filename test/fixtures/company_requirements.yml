@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company: one
+  occupation: MyText
+  work: MyText
+  qualification: MyText
+  holiday: MyText
+  welfare: MyText
+
+two:
+  company: two
+  occupation: MyText
+  work: MyText
+  qualification: MyText
+  holiday: MyText
+  welfare: MyText

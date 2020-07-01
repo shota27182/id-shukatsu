@@ -14,10 +14,10 @@
           <div class="form-detail">
               <p>性別</p>
               <div class="profile-radio">
-                 <%= f.radio_button :sex, :male, class:"profile-radio-button" %>
-            　    <%=f.label "男性", class:"profile-radio-label gender-left" %>
-            　    <%= f.radio_button :sex, :female, class:"profile-radio-button" %>
-            　    <%= f.label "女性", class:"profile-radio-label gender-right"%>
+                 <%= f.radio_button :classification, :文系, class:"profile-radio-button" %>
+                 <%=f.label "文系", class:"profile-radio-label gender-left" %>
+                 <%= f.radio_button :classification, :理系, class:"profile-radio-button" %>
+                 <%= f.label "理系", class:"profile-radio-label gender-right"%>
             　</div>
           </div>
           <div class="form-detail profile-birthday">

@@ -1,8 +1,13 @@
 class Mypage::GeneralController < ApplicationController
+    before_action :logged_in_user
     def index
         user = User.find(current_user.id)
         general = user.general
-        @mypage_generals_form = MypageGeneralsForm.new(name: user.name, address1: general.address1, address2: general.address2, building_name: general.building_name,tel: general.tel,birthday: general.birthday)
+        if general.present?
+            @mypage_generals_form = MypageGeneralsForm.new(name: user.name, address1: general.address1, address2: general.address2, building_name: general.building_name,tel: general.tel,birthday: general.birthday)
+        else
+            @mypage_generals_form = MypageGeneralsForm.new(name: user.name)
+        end
     end
     
     def create

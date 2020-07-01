@@ -1,7 +1,9 @@
 class Mypage::WishController < ApplicationController
+    before_action :logged_in_user
+    
     
     def index
-        @mypage_wish_form = MypageWishForm.new(company_scale_ids: current_user.company_scales.pluck(:id),industry_ids: current_user.industries.pluck(:id),occupation_ids: current_user.occupations.pluck(:id),work_area_ids: current_user.work_areas.pluck(:id))
+        @mypage_wish_form = MypageWishForm.new
     end
     
     def create

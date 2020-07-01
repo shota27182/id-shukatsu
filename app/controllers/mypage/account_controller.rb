@@ -1,4 +1,5 @@
 class Mypage::AccountController < ApplicationController
+  before_action :logged_in_user
   def index
     user = User.find(current_user.id)
     @mypage_account_form = MypageAccountForm.new(email: user.email)

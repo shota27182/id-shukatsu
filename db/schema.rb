@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200530093641) do
+ActiveRecord::Schema.define(version: 2020_06_30_101050) do
 
   create_table "basics", force: :cascade do |t|
     t.integer "user_id"
@@ -29,6 +29,11 @@ ActiveRecord::Schema.define(version: 20200530093641) do
     t.date "establishment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
+    t.string "password_digest"
+    t.string "remember_digest"
+    t.string "icon"
+    t.string "address"
   end
 
   create_table "company_company_features", force: :cascade do |t|
@@ -50,12 +55,21 @@ ActiveRecord::Schema.define(version: 20200530093641) do
   end
 
   create_table "company_company_scales", force: :cascade do |t|
-    t.integer "user_id"
     t.integer "company_scale_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "company_id"
+    t.index ["company_id"], name: "index_company_company_scales_on_company_id"
     t.index ["company_scale_id"], name: "index_company_company_scales_on_company_scale_id"
-    t.index ["user_id"], name: "index_company_company_scales_on_user_id"
+  end
+
+  create_table "company_events", force: :cascade do |t|
+    t.integer "company_id"
+    t.integer "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_company_events_on_company_id"
+    t.index ["event_id"], name: "index_company_events_on_event_id"
   end
 
   create_table "company_features", force: :cascade do |t|
@@ -95,6 +109,18 @@ ActiveRecord::Schema.define(version: 20200530093641) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_company_profiles_on_company_id"
+  end
+
+  create_table "company_requirements", force: :cascade do |t|
+    t.integer "company_id"
+    t.text "occupation"
+    t.text "work"
+    t.text "qualification"
+    t.text "holiday"
+    t.text "welfare"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_company_requirements_on_company_id"
   end
 
   create_table "company_scales", force: :cascade do |t|
@@ -146,23 +172,28 @@ ActiveRecord::Schema.define(version: 20200530093641) do
   end
 
   create_table "educations", force: :cascade do |t|
-    t.string "grade"
     t.date "graduation"
     t.string "classification"
     t.text "seminar"
     t.string "highschool"
-    t.integer "university_id"
-    t.integer "faculty_id"
-    t.integer "department_id"
-    t.integer "basic_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.index ["basic_id"], name: "index_educations_on_basic_id"
-    t.index ["department_id"], name: "index_educations_on_department_id"
-    t.index ["faculty_id"], name: "index_educations_on_faculty_id"
-    t.index ["university_id"], name: "index_educations_on_university_id"
+    t.string "university"
+    t.string "faculty"
+    t.string "department"
+    t.integer "grade_id"
+    t.index ["grade_id"], name: "index_educations_on_grade_id"
     t.index ["user_id"], name: "index_educations_on_user_id"
+  end
+
+  create_table "event_profiles", force: :cascade do |t|
+    t.integer "event_id"
+    t.string "title"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_profiles_on_event_id"
   end
 
   create_table "event_schedules", force: :cascade do |t|
@@ -176,6 +207,7 @@ ActiveRecord::Schema.define(version: 20200530093641) do
     t.integer "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "holding_day"
     t.index ["event_id"], name: "index_event_schedules_on_event_id"
   end
 
@@ -184,6 +216,10 @@ ActiveRecord::Schema.define(version: 20200530093641) do
     t.string "img"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "introduction"
+    t.text "point"
+    t.text "flow"
+    t.integer "category"
   end
 
   create_table "faculties", force: :cascade do |t|
@@ -209,6 +245,12 @@ ActiveRecord::Schema.define(version: 20200530093641) do
     t.integer "user_id"
     t.index ["basic_id"], name: "index_generals_on_basic_id"
     t.index ["user_id"], name: "index_generals_on_user_id"
+  end
+
+  create_table "grades", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "industries", force: :cascade do |t|
@@ -260,7 +302,27 @@ ActiveRecord::Schema.define(version: 20200530093641) do
     t.index ["work_style_id"], name: "index_mentarity_work_styles_on_work_style_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer "event_schedule_id"
+    t.integer "user_id"
+    t.string "title"
+    t.text "content"
+    t.boolean "checked", default: false, null: false
+    t.datetime "start_on"
+    t.string "action"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_schedule_id"], name: "index_notifications_on_event_schedule_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "occupations", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "programmings", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -270,6 +332,95 @@ ActiveRecord::Schema.define(version: 20200530093641) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_companies", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_user_companies_on_company_id"
+    t.index ["user_id"], name: "index_user_companies_on_user_id"
+  end
+
+  create_table "user_eikens", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "eiken"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_eikens_on_user_id"
+  end
+
+  create_table "user_events", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "event_id"
+    t.integer "event_schedule_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_user_events_on_event_id"
+    t.index ["event_schedule_id"], name: "index_user_events_on_event_schedule_id"
+    t.index ["user_id"], name: "index_user_events_on_user_id"
+  end
+
+  create_table "user_experiences", force: :cascade do |t|
+    t.integer "user_id"
+    t.text "experience"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_experiences_on_user_id"
+  end
+
+  create_table "user_expreriences", force: :cascade do |t|
+    t.integer "user_id"
+    t.text "experience"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_expreriences_on_user_id"
+  end
+
+  create_table "user_internships", force: :cascade do |t|
+    t.integer "user_id"
+    t.text "internship"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_internships_on_user_id"
+  end
+
+  create_table "user_languages", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "language"
+    t.integer "level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_languages_on_user_id"
+  end
+
+  create_table "user_programmings", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "programming_id"
+    t.string "use_time"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["programming_id"], name: "index_user_programmings_on_programming_id"
+    t.index ["user_id"], name: "index_user_programmings_on_user_id"
+  end
+
+  create_table "user_toefls", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "toefl"
+    t.integer "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_toefls_on_user_id"
+  end
+
+  create_table "user_toeics", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "toeic"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_toeics_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -285,6 +436,7 @@ ActiveRecord::Schema.define(version: 20200530093641) do
     t.string "reset_digest"
     t.datetime "reset_sent_at"
     t.integer "status", default: 0
+    t.string "kana"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

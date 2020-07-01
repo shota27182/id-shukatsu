@@ -56,433 +56,232 @@
                     <% end %>
                 </div>
             </div>
+            <div class="identity-search">
+                <p>こだわり条件</p>
+                <% if @WorkStylesSearch.blank? && @WelfaresSearch.blank? && @FeaturesSearch.blank? && @PointsSearch.blank? %>
+                <span id="identity-condition-click">+</span>
+                <% else %>
+                <span id="identity-condition-click">-</span>
+                <% end %>
+            </div>
+            <% if @WorkStylesSearch.blank? && @WelfaresSearch.blank? && @FeaturesSearch.blank? && @PointsSearch.blank? %>
+            <div class="search-category identity-condition-click section">
+            <% else %>
+            <div class="search-category identity-condition-click">
+            <% end %>
+                <div class="search-category-title">
+                    <p>働き方</p>
+                </div>
+                <div class="search-category-item">
+                    <% if params[:work_style] %>
+                        <% @WorkStyles.each do |i| %>
+                            <%= check_box_tag :work_style, i.id , @WorkStylesSearch.include?(i.id), class:"category"%>
+                            <%= label_tag i.name %><br>
+                        <% end %>
+                    <% else %>
+                        <% @WorkStyles.each do |i| %>
+                            <%= check_box_tag :work_style, i.id ,checked = false, class:"category"%>
+                            <%= label_tag i.name %><br>
+                        <% end %>
+                    <% end %>
+                </div>
+                <div class="search-category-title">
+                    <p>福利厚生</p>
+                </div>
+                <div class="search-category-item">
+                    <% if params[:welfare] %>
+                        <% @welfares.each do |i| %>
+                            <%= check_box_tag :welfare, i.id , @WelfaresSearch.include?(i.id),class:"category"%>
+                            <%= label_tag i.name %><br>
+                        <% end %>
+                    <% else %>
+                        <% @welfares.each do |i| %>
+                            <%= check_box_tag :welfare, i.id ,checked = false,class:"category"%>
+                            <%= label_tag i.name %><br>
+                        <% end %>
+                    <% end %>
+                </div>
+                <div class="search-category-title">
+                    <p>企業の特徴</p>
+                </div>
+                <div class="search-category-item">
+                    <% if params[:feature] %>
+                        <% @features.each do |i| %>
+                            <%= check_box_tag :company_feature, i.id,@FeaturesSearch.include?(i.id) , class:"category"%>
+                            <%= label_tag i.name %><br>
+                        <% end %>
+                    <% else %>
+                        <% @features.each do |i| %>
+                            <%= check_box_tag :company_feature, i.id,checked = false , class:"category"%>
+                            <%= label_tag i.name %><br>
+                        <% end %>
+                    <% end %>
+                </div>
+                <div class="search-category-title">
+                    <p>採用の特徴</p>
+                </div>
+                <div class="search-category-item">
+                    <% if params[:point] %>
+                        <% @points.each do |i| %>
+                            <%= check_box_tag :company_point, i.id,@PointsSearch.include?(i.id) , class:"category"%>
+                            <%= label_tag i.name %><br>
+                        <% end %>
+                    <% else %>
+                        <% @points.each do |i| %>
+                            <%= check_box_tag :company_point, i.id,checked = false , class:"category"%>
+                            <%= label_tag i.name %><br>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
         </div>
         <div class="company-contents">
             <% if params[:industry] %>
                 <div class="company-contents-wrapper">
+                    <% @get_companies.each do |get_company| %>
                     <div class="company-box">
                         <div class="company-box-head-image">
-                            <img src="/assets/company-top.svg">
+                            <%= image_tag get_company.img.to_s %>
                         </div>
                         <div class="company-box-head">
-                            <p>メーカー</p>
+                            <p><% get_company.industries.limit(2).each do |h| %><span><%= h.name %> </span><% end %></p>
                             <div class="company-box-title">
-                                <img src="/assets/sapporo_beer2.svg">
-                                <h2>サッポロビール株式会社</h2>
+                                <%= image_tag get_company.icon.to_s %>
+                                <h2><a href="/companies/<%= get_company.id %>"></a><%= get_company.name %></h2>
                             </div>
                         </div>
                         <div class="company-box-foot">
                             <div class="company-box-features">
+                                <% get_company.work_styles.limit(4).each do |a| %>
                                 <div class="company-box-feature">
                                     <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
+                                    <p><%= a.name %></p>
                                 </div>
+                                <% end %>
+                                <% get_company.welfares.limit(4).each do |b| %>
                                 <div class="company-box-feature">
                                     <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
+                                    <p><%= b.name %></p>
                                 </div>
+                                <% end %>
+                                <% get_company.company_features.limit(4).each do |c| %>
                                 <div class="company-box-feature">
                                     <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
+                                    <p><%= c.name %></p>
                                 </div>
+                                <% end %>
+                                <% get_company.company_points.limit(3).each do |d| %>
                                 <div class="company-box-feature">
                                     <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
+                                    <p><%= d.name %></p>
                                 </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
+                                <% end %>
                             </div>
                         </div>
                     </div>
-                    <div class="company-box">
-                        <div class="company-box-head-image">
-                            <img src="/assets/company-top.svg">
+                    <% end %>
+                </div>
+            <% else %>
+                <% if logged_in %>
+                <div class="recomended-search" id="recomended-first">
+                    <p>あなたにオススメな検索</p>
+                    <div class="recomended-search-contents">
+                        <div class="recomended-before second">
+                            <img src="/assets/progress_bar.svg">
                         </div>
-                        <div class="company-box-head">
-                            <p>メーカー</p>
-                            <div class="company-box-title">
-                                <img src="/assets/sapporo_beer2.svg">
-                                <h2>サッポロビール株式会社</h2>
-                            </div>
+                        <% @user.work_styles.order("RANDOM()").limit(1).each do |i| %>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p><a href="/companies?industry=&area=&occupation=&work_style=<%= i.id %>&welfare=&feature=&point="></a><%= i.name %></p>
                         </div>
-                        <div class="company-box-foot">
-                            <div class="company-box-features">
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                            </div>
+                        <% end %>
+                        <% @user.welfares.order("RANDOM()").limit(1).each do |i| %>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p><a href="/companies?industry=&area=&occupation=&work_style=&welfare=<%= i.id %>&feature=&point="></a><%= i.name %></p>
                         </div>
-                    </div>
-                    <div class="company-box">
-                        <div class="company-box-head-image">
-                            <img src="/assets/company-top.svg">
+                        <% end %>
+                        <% @user.company_features.order("RANDOM()").limit(1).each do |i| %>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p><a href="/companies?industry=&area=&occupation=&work_style=&welfare=&feature=<%= i.id %>&point="></a><%= i.name %></p>
                         </div>
-                        <div class="company-box-head">
-                            <p>メーカー</p>
-                            <div class="company-box-title">
-                                <img src="/assets/sapporo_beer2.svg">
-                                <h2>サッポロビール株式会社</h2>
-                            </div>
+                        <% end %>
+                        <% @user.company_points.order("RANDOM()").limit(1).each do |i| %>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p><a href="/companies?industry=&area=&occupation=&work_style=&welfare=&feature=&point=<%= i.id %>"></a><%= i.name %></p>
                         </div>
-                        <div class="company-box-foot">
-                            <div class="company-box-features">
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                            </div>
+                        <% end %>
+                        <% @user.industries.order("RANDOM()").limit(1).each do |i| %>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p><a href="/companies?industry=<%= i.id %>&area=&occupation=&work_style=&welfare=&feature=&point="></a><%= i.name %></p>
                         </div>
-                    </div>
-                    <div class="company-box">
-                        <div class="company-box-head-image">
-                            <img src="/assets/company-top.svg">
-                        </div>
-                        <div class="company-box-head">
-                            <p>メーカー</p>
-                            <div class="company-box-title">
-                                <img src="/assets/sapporo_beer2.svg">
-                                <h2>サッポロビール株式会社</h2>
-                            </div>
-                        </div>
-                        <div class="company-box-foot">
-                            <div class="company-box-features">
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="company-box">
-                        <div class="company-box-head-image">
-                            <img src="/assets/company-top.svg">
-                        </div>
-                        <div class="company-box-head">
-                            <p>メーカー</p>
-                            <div class="company-box-title">
-                                <img src="/assets/sapporo_beer2.svg">
-                                <h2>サッポロビール株式会社</h2>
-                            </div>
-                        </div>
-                        <div class="company-box-foot">
-                            <div class="company-box-features">
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="company-box">
-                        <div class="company-box-head-image">
-                            <img src="/assets/company-top.svg">
-                        </div>
-                        <div class="company-box-head">
-                            <p>メーカー</p>
-                            <div class="company-box-title">
-                                <img src="/assets/sapporo_beer2.svg">
-                                <h2>サッポロビール株式会社</h2>
-                            </div>
-                        </div>
-                        <div class="company-box-foot">
-                            <div class="company-box-features">
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p>テレワーク制度有</p>
-                                </div>
-                            </div>
+                        <% end %>
+                        <div class="recomended-after second">
+                            <img src="/assets/progress_bar2.svg">
                         </div>
                     </div>
                 </div>
-            <% else %>
+                <div class="recomended-search" id="recomended-second">
+                    <p>あなたにオススメな検索</p>
+                    <div class="recomended-search-contents">
+                        <div class="recomended-before first">
+                            <img src="/assets/progress_bar.svg">
+                        </div>
+                        <% @user.work_areas.order("RANDOM()").limit(1).each do |i| %>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p><a href="/companies?industry=&area=<%= i.id %>&occupation=&work_style=&welfare=&feature=&point="></a><%= i.name %></p>
+                        </div>
+                        <% end %>
+                        <% @user.company_points.order("RANDOM()").limit(1).each do |i| %>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p><a href="/companies?industry=&area=&occupation=&work_style=&welfare=&feature=&point=<%= i.id %>"></a><%= i.name %></p>
+                        </div>
+                        <% end %>
+                        <% @user.occupations.order("RANDOM()").limit(1).each do |i| %>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p><a href="/companies?industry=&area=&occupation=<%= i.id %>&work_style=&welfare=&feature=&point="></a><%= i.name %></p>
+                        </div>
+                        <% end %>
+                        <% @user.welfares.order("RANDOM()").limit(1).each do |i| %>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p><a href="/companies?industry=&area=&occupation=&work_style=&welfare=<%= i.id %>&feature=&point="></a><%= i.name %></p>
+                        </div>
+                        <% end %>
+                        <% @user.company_features.order("RANDOM()").limit(1).each do |i| %>
+                        <div class="recomended-search-content first">
+                            <img src="/assets/school.svg">
+                            <p><a href="/companies?industry=&area=&occupation=&work_style=&welfare=&feature=<%= i.id %>&point="></a><%= i.name %></p>
+                        </div>
+                        <% end %>
+                        <div class="recomended-after first">
+                            <img src="/assets/progress_bar2.svg">
+                        </div>
+                    </div>
+                </div>
+                <% else %>
                 <div class="recomended-search">
                     <p>あなたにオススメな検索</p>
                     <div class="recomended-search-contents">
                         <div class="recomended-before">
                             <img src="/assets/progress_bar.svg">
                         </div>
-                        <div class="recomended-search-content">
-                            <img src="/assets/school.svg">
-                            <p>慶應義塾大学</p>
+                        <div class="recomended-search-contents">
+                            
                         </div>
                         <div class="recomended-search-content">
                             <img src="/assets/school.svg">
-                            <p>慶應義塾大学</p>
+                            <p>理系</p>
+                        </div>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p>理系</p>
                         </div>
                         <div class="recomended-search-content">
                             <img src="/assets/school.svg">
@@ -501,78 +300,27 @@
                         </div>
                     </div>
                 </div>
+                <% end %>
                 <div class="companies-wrapper">
                     <p>テレワーク実施企業</p>
                     <div class="companies-search">
+                        <% Company.joins(:work_styles).where(work_styles: {id: [2]}).limit(8).each do |a| %>
                         <div class="company-search">
-                            <img src="/assets/sapporo_beer2.svg">
-                            <p>サッポロビール株式会社</p>
+                            <%= image_tag a.icon.to_s %>
+                            <p><a href="/companies/<%= a.id %>"><%= a.name %></a></p>
                         </div>
-                        <div class="company-search">
-                            <img src="/assets/sapporo_beer2.svg">
-                            <p>サッポロビール株式会社</p>
-                        </div>
-                        <div class="company-search">
-                            <img src="/assets/sapporo_beer2.svg">
-                            <p>サッポロビール株式会社</p>
-                        </div>
-                        <div class="company-search">
-                            <img src="/assets/sapporo_beer2.svg">
-                            <p>サッポロビール株式会社</p>
-                        </div>
-                        <div class="company-search">
-                            <img src="/assets/sapporo_beer2.svg">
-                            <p>サッポロビール株式会社</p>
-                        </div>
-                        <div class="company-search">
-                            <img src="/assets/sapporo_beer2.svg">
-                            <p>サッポロビール株式会社</p>
-                        </div>
-                        <div class="company-search">
-                            <img src="/assets/sapporo_beer2.svg">
-                            <p>サッポロビール株式会社</p>
-                        </div>
-                        <div class="company-search">
-                            <img src="/assets/sapporo_beer2.svg">
-                            <p>サッポロビール株式会社</p>
-                        </div>
+                        <% end %>
                     </div>
                 </div>
                 <div class="companies-wrapper">
                     <p>フレックスタイム制実施の企業</p>
                     <div class="companies-search">
+                        <% Company.joins(:work_styles).where(work_styles: {id: [1]}).limit(8).each do |a| %>
                         <div class="company-search">
-                            <img src="/assets/sapporo_beer2.svg">
-                            <p>サッポロビール株式会社</p>
+                            <%= image_tag a.icon.to_s %>
+                            <p><a href="/companies/<%= a.id %>"><%= a.name %></a></p>
                         </div>
-                        <div class="company-search">
-                            <img src="/assets/sapporo_beer2.svg">
-                            <p>サッポロビール株式会社</p>
-                        </div>
-                        <div class="company-search">
-                            <img src="/assets/sapporo_beer2.svg">
-                            <p>サッポロビール株式会社</p>
-                        </div>
-                        <div class="company-search">
-                            <img src="/assets/sapporo_beer2.svg">
-                            <p>サッポロビール株式会社</p>
-                        </div>
-                        <div class="company-search">
-                            <img src="/assets/sapporo_beer2.svg">
-                            <p>サッポロビール株式会社</p>
-                        </div>
-                        <div class="company-search">
-                            <img src="/assets/sapporo_beer2.svg">
-                            <p>サッポロビール株式会社</p>
-                        </div>
-                        <div class="company-search">
-                            <img src="/assets/sapporo_beer2.svg">
-                            <p>サッポロビール株式会社</p>
-                        </div>
-                        <div class="company-search">
-                            <img src="/assets/sapporo_beer2.svg">
-                            <p>サッポロビール株式会社</p>
-                        </div>
+                        <% end %>
                     </div>
                 </div>
                 <div class="companies-wrapper">
@@ -619,3 +367,67 @@
         
     </div>
 </div>
+
+<script>
+    $(function(){
+    $('.category').on('change', function(){
+    /// チェックされたvalue値を配列として取得
+    var industry_vals = $('input[name=industry]:checked').map(function(){
+      return $(this).val();
+    }).get();
+    var area_vals = $('input[name=work_area]:checked').map(function(){
+        return $(this).val();
+    }).get();
+    var occupation_vals = $('input[name=occupation]:checked').map(function(){
+        return  $(this).val();
+    }).get();
+    var work_style_vals = $('input[name=work_style]:checked').map(function(){
+        return  $(this).val();
+    }).get();
+    var welfare_vals = $('input[name=welfare]:checked').map(function(){
+        return  $(this).val();
+    }).get();
+    var feature_vals = $('input[name=company_feature]:checked').map(function(){
+        return  $(this).val();
+    }).get();
+    var point_vals = $('input[name=company_point]:checked').map(function(){
+        return  $(this).val();
+    }).get();
+    window.location.href = '/companies?industry=' + industry_vals + '&area=' + area_vals + '&occupation=' + occupation_vals + '&work_style=' + work_style_vals + '&welfare=' + welfare_vals + '&feature=' + feature_vals + '&point=' + point_vals;
+    
+  });
+  
+  $('.company-box').click(function(){
+        location.href=$(this).find('a').attr('href');
+    });
+    
+    $('.company-search').click(function(){
+        location.href=$(this).find('a').attr('href');
+    });
+    
+    $("#identity-condition-click").click(function () {
+        if ($(this).text() === "+") {
+            $(this).text("-");
+        } else {
+            $(this).text("+");
+        }
+        $('.'+$(this).attr('id')).toggle();
+    });
+    $('.section').hide();
+    $('#recomended-second').hide();
+    $('.second').click(function(){
+        $('#recomended-second').show();
+        $('#recomended-first').hide();
+    });
+    $('.first').click(function(){
+        $('#recomended-first').show();
+        $('#recomended-second').hide();
+    });
+    
+    $('.recomended-search-content').click(function(){
+        location.href=$(this).find('a').attr('href');
+    });
+    
+});
+</script>
+

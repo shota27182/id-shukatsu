@@ -1,0 +1,2 @@
+module PartnerPage::EntryHelper
+end

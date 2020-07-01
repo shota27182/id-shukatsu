@@ -1,0 +1,2 @@
+module PartnerPage::InternshipHelper
+end

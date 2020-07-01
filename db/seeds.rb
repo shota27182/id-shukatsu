@@ -244,6 +244,7 @@ Company.create!(
   [
     {
       name:'サッポロビール株式会社',
+      password:'111111',
       introduction:'ラックス、ダヴ、リプトンなど、400を超えるブランドから多彩な製品を世界各国に届けている世界最大級の消
 費財メーカー“ユニリーバ”。 世界190ヵ国に展開し、毎日25億人のユーザーがユニリーバの製品を購入してい
 る。子どもたちを病気から守る手頃な価格の石鹸、贅沢な香りや泡立ちのシャンプー、毎日のお洗濯やお掃除に
@@ -302,4 +303,123 @@ EventSchedule.create!(
     }
     ]
   )
+Grade.create!(
+  [
+    {
+      name:'学部1年生'
+    },
+    {
+      name:'学部2年生'
+    },
+    {
+      name:'学部3年生'
+    },
+    {
+      name:'学部4年生'
+    },
+    {
+      name:'修士1年生'
+    },
+    {
+      name:'修士2年生'
+    },
+    {
+      name:'博士1年生'
+    },
+    {
+      name:'博士2年生'
+    },
+    {
+      name:'博士3年生'
+    }
+  ]
+)
 
+Programming.create!(
+  [
+    {
+      name:'Java'
+    },
+    {
+      name:'PHP'
+    },
+    {
+      name:'Ruby'
+    },
+    {
+      name:'Python'
+    },
+    {
+      name:'Perl'
+    },
+    {
+      name:'C'
+    },
+    {
+      name:'C++'
+    },
+    {
+      name:'C#'
+    },
+    {
+      name:'JavaScript'
+    },
+    {
+      name:'Scala'
+    },
+    {
+      name:'Go'
+    },
+    {
+      name:'Swift/Objective-C'
+    },
+    {
+      name:'Haskell'
+    },
+    {
+      name:'TypeScript'
+    },
+    {
+      name:'Bash'
+    },
+    {
+      name:'Erlang'
+    },
+    {
+      name:'R'
+    },
+    {
+      name:'COBOL'
+    },
+    {
+      name:'NET系'
+    },
+    {
+      name:'Kotlin'
+    },
+    {
+      name:'Elixir'
+    },
+    {
+      name:'Rust'
+    },
+    {
+      name:'Fortran'
+    },
+    {
+      name:'Java VM'
+    },
+    {
+      name:'HTML/CSS'
+    },
+    {
+      name:'Lisp系'
+    },
+    {
+      name:'3D(unity)'
+    },
+    {
+      name:'その他'
+    }
+  ]
+)

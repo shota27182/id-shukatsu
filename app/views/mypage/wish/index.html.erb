@@ -11,7 +11,8 @@
                  <p>志望企業規模</p>
                  <div class="profile-core-form">
                     <%= f.collection_check_boxes(:company_scale_ids,CompanyScale.all, :id, :name) do |af| %>
-                       <%= af.label(class: "profile-check"){ af.check_box + af.text } %>
+                       <%= af.check_box(class: "checkbox")  %>
+                       <%= af.label(class: "profile-check"){ af.text } %>
                     <% end %>
                  </div>
              </div>
@@ -19,7 +20,8 @@
                  <p>志望業界</p>
                  <div class="profile-core-form ">
                      <%= f.collection_check_boxes(:industry_ids,Industry.all, :id, :name) do |bf| %>
-                        <%= bf.label{ bf.check_box + bf.text } %>
+                        <%= bf.check_box(class: "checkbox")  %>
+                        <%= bf.label(class: "profile-check"){ bf.text } %>
                      <% end %>
                  </div>
              </div>
@@ -27,7 +29,8 @@
                  <p>志望職種</p>
                  <div class="profile-core-form">
                      <%= f.collection_check_boxes(:occupation_ids,Occupation.all, :id, :name) do |cf| %>
-                         <%= cf.label{ cf.check_box + cf.text } %>
+                         <%= cf.check_box(class: "checkbox")  %>
+                         <%= cf.label(class: "profile-check"){ cf.text } %>
                      <% end %>
                  </div>
              </div>
@@ -35,7 +38,8 @@
                  <p>志望勤務エリア</p>
                  <div class="profile-core-form">
                      <%= f.collection_check_boxes(:work_area_ids,WorkArea.all, :id, :name) do |df| %>
-                     <%= df.label{ df.check_box + df.text } %>
+                     <%= df.check_box(class: "checkbox")  %>
+                     <%= df.label(class: "profile-check"){ df.text } %>
                      <% end %>
                  </div>
              </div>
@@ -43,3 +47,4 @@
 　　　　　<% end %>
 　　</div>
 </div>
+

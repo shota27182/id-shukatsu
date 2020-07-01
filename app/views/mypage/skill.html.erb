@@ -8,7 +8,6 @@
         <div class="profile-title">
            <div class="profile-title-left">言語スキル</div>
            <div　class="profile-title-right">
-               <a href="#" class="btn signup">編集する</a>
            </div>
         </div>
         <div class="profile-contexts">
@@ -17,7 +16,7 @@
                     <p>英検：</p>
                 </div>
                 <div class="profile-context-right">
-                    <p></p>
+                    <%= render '/user_eikens/index'  %>
                 </div>
             </div>
             <div class="profile-context">
@@ -25,7 +24,7 @@
                     <p>TOEIC：</p>
                 </div>
                 <div class="profile-context-right">
-                    <p>サコタリョウヘイ</p>
+                    <%= render '/user_toeics/index' %>
                 </div>
             </div>
             <div class="profile-context">
@@ -33,15 +32,7 @@
                     <p>TOEFL：</p>
                 </div>
                 <div class="profile-context-right">
-                    <p>男</p>
-                </div>
-            </div>
-            <div class="profile-context">
-                <div class="profile-context-left">
-                    <p>TOEFL：</p>
-                </div>
-                <div class="profile-context-right">
-                    <p>1998年 8月 27日</p>
+                    <%= render '/user_toefls/index' %>
                 </div>
             </div>
             <div class="profile-context">
@@ -49,9 +40,11 @@
                     <p>その他の言語：</p>
                 </div>
                 <div class="profile-context-right">
-                    <p>東京都渋谷区恵比寿1-24-15シエルブルー恵比寿EAST6階</p>
+                    <%= render '/user_languages/index' %>
                 </div>
             </div>
+            <%= link_to "+ 言語を追加する",new_user_language_path, class: 'mypage-programming-post', remote: true %>
+             <div id="language-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
         </div>
     </div>
 </div>
@@ -60,7 +53,6 @@
         <div class="profile-title">
            <div class="profile-title-left">プログラミングスキル</div>
            <div　class="profile-title-right">
-               <a href="#" class="btn signup">編集する</a>
            </div>
         </div>
         <div class="profile-contexts">
@@ -69,9 +61,11 @@
                     <p>言語：</p>
                 </div>
                 <div class="profile-context-right">
-                    <p>慶應義塾大学</p>
+                    <%= render '/user_programmings/index'  %>
                 </div>
             </div>
+            <%= link_to "+ プログラミングスキルを追加する",new_user_programming_path, class: 'mypage-programming-post', remote: true %>
+             <div id="programming-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
         </div>
     </div>
 </div>
@@ -80,7 +74,6 @@
         <div class="profile-title">
            <div class="profile-title-left">経歴</div>
            <div　class="profile-title-right">
-               <a href="#" class="btn signup">編集する</a>
            </div>
         </div>
         <div class="profile-contexts">
@@ -89,7 +82,7 @@
                     <p>学生時代の経歴：</p>
                 </div>
                 <div class="profile-context-right">
-                    <p>慶應義塾大学</p>
+                    <%= render '/user_experiences/index' %>
                 </div>
             </div>
             <div class="profile-context">
@@ -97,7 +90,7 @@
                     <p>インターン経歴：</p>
                 </div>
                 <div class="profile-context-right">
-                    <p>慶應義塾大学</p>
+                    <%= render '/user_internships/index' %>
                 </div>
             </div>
         </div>

@@ -2,18 +2,20 @@
     <a href="/events" class="profile-mypage-link"><イベント結果に戻る</a>
     <div class="company-middle">
     　　<div class="company-middle-left">
-        　　<div class="event-top-wrapper">
-        　　      <div class="event-img">
-        　　              <img src="/images/event_top.svg" class="event-top-img">
-        　　      </div>
-            　　<div class="event-head">
-            　　    <div class="event-head-right">
-            　　        <img src="/images/event-logo.svg">
-            　　    </div>
-            　　    <div class="event-head-title">
-            　　        <p><%=@event.name%></p>
-            　　    </div>
-            　　</div>
+    　　    <div class="event-top-wrapper">
+        　　  <div class="event-img">
+        　　      <%= image_tag @event.img.to_s, class:"event-top-img" %>
+        　　  </div>
+            　<div class="event-head">
+            　    <div class="event-head-right">
+            　   <% Company.joins(:events).where(events:{id:[@event.id]}).each do |i| %>
+            　   <%=image_tag i.icon.to_s %>
+            　   <% end %>
+            　   </div>
+            　   <div class="event-head-title">
+            　       <p><%=@event.name%></p>
+            　   </div>
+            　</div>
         　　</div>
         　　<div class="company-introduction">
             　　<div class="company-introduction-title">イベント詳細</div>
@@ -22,7 +24,7 @@
                     　　<p>概要</p>
                 　　</div>
                 　　<div class="recruit-form-right">
-                    　　<p>各大学主催の就活対策ガイダンスや、自社開催イベントでも例年好評な本企画、Youtubeでの生配信が決定しました。<br>すでに22年卒向けのインターンシップに対しても、多くの学生が動き始めています。一方で、選考対策にもキャリア選択にも出てくるのが自己分析に関する悩みです。</p>
+                    　　<%= simple_format(@event.introduction) %>
                 　　</div>
             　　</div>
             　　<div class="recruit-form">
@@ -30,7 +32,7 @@
                     　　<p>本ガイダンスのポイント</p>
                 　　</div>
                 　　<div class="recruit-form-right">
-                    　　<p>・ほとんどの学生が見落としがちな「自己分析の最重要項目」を明確に理解できる<br>・ほとんどの学生が見落としがちな「自己分析の最重要項目」を明確に理解できる<br>・ほとんどの学生が見落としがちな「自己分析の最重要項目」を明確に理解できる</p>
+                    　　<%= simple_format(@event.point) %>
                 　　</div>
             　　</div>
             　　<div class="recruit-form">
@@ -38,31 +40,41 @@
                     　　<p>当日のプログラム</p>
                 　　</div>
                 　　<div class="recruit-form-right">
-                    　　<p>大学・大学院卒業見込みの方</p>
+                    　　<%= simple_format(@event.flow) %>
                 　　</div>
             　　</div>
+            　　<% @event.event_profiles.each do |a| %>
+            　　<div class="recruit-form">
+                　　<div class="recruit-form-left">
+                    　　<p><%= a.title %></p>
+                　　</div>
+                　　<div class="recruit-form-right">
+                    　　<%= simple_format(a.content) %>
+                　　</div>
+            　　</div>
+            　　<% end %>
             　　<div class="recruit-form">
                 　　<div class="recruit-form-left">
                     　　<p>エントリー</p>
                 　　</div>
                 　　<div class="recruit-form-right">
                 　　  <% @event_schedule.each do |event_schedule|%>
-                       <div class="entry-area"><!--
-                       --><div class="event-title">
-                    　　        <h2><%=event_schedule.title %></h2><!--
-                    　　     --><img src="/assets/clock.svg"><!--
-                       　　 --><p class="entry-date">4/14(月)</p><!--
-                           --><p class="entry-time">16:00 - 18:00</p><!--
-                           --><img src="/assets/location.svg"><!--
-                           --><p class="entry-location">東京都渋谷区千駄ヶ谷４丁目１９ー１</p>
-                    　　    </div>
-                    　　    <div class="event-entry"><!--
-                    　　     --><p>締切 6月9日（火）</p><!--
-                    　　     --><div class="entry-button"><!--
-                    　　           --><%= link_to 'エントリーする',new_event_entry_path(@event,event_schedule:event_schedule.id)%>
-                    　　        </div>
-                    　　    </div>
-                    　　</div>
+                       <div class="entry-area">
+                           <div class="event-title">
+                               <h2><%=event_schedule.title %></h2>
+                               <img src="/assets/clock.svg">
+                               <p class="entry-date"><%= event_schedule.holding_day.strftime("%m/%d") %><%= %w((日) (月) (火) (水) (木) (金) (土))[event_schedule.holding_day.wday] %></p>
+                               <p class="entry-time"><%= event_schedule.start_time.strftime('%H:%M') %> - <%= event_schedule.end_time.strftime('%H:%M') %></p>
+                               <img src="/assets/location.svg">
+                               <p class="entry-location"><%= event_schedule.address + event_schedule.place%></p>
+                            </div>
+                            <div class="event-entry">
+                                <p>締切 <%= event_schedule.deadline.strftime("%m月%d日") %><%= %w((日) (月) (火) (水) (木) (金) (土))[event_schedule.deadline.wday] %></p>
+                                <div class="entry-button">
+                                    <%= link_to 'エントリーする',new_event_entry_path(@event,event_schedule:event_schedule.id)%>
+                                </div>
+                            </div>
+                        </div>
                     　<% end %>
                 　　</div>
             　　</div>

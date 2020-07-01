@@ -3,80 +3,56 @@
     <div class="profile-form company-head-form">
         <div class="company-head">
             <div class="company-head-left">
-                <img src="/images/sapporo_beer.svg" class="company-logo">
+                <%= image_tag @company.icon.to_s ,class: 'company-logo'%>
             </div>
             <div class="company-head-title">
-                <p>メーカー</p>
+                <p><% @company.industries.each do |a| %><span><%=a.name %> </span><% end %></p>
                 <h2><%= @company.name %></h2>
             </div>
             <div class="company-head-right">
-                <a href="#">お気に入りに登録する</a>
+                <% if logged_in %>
+                    <% if UserCompany.where(user_id: current_user.id,company_id: params[:id]).present? %>
+                    <a href="#">お気に入り登録済み</a>
+                    <% else %>
+                    <%= link_to 'お気に入りに登録する',{controller: "companies", action: "like", id: @company.id }, method: :post %>
+                    <% end %>
+                <% else %>
+                <a href="/login">お気に入りに登録する</a>
+                <% end %>
             </div>
         </div>
         <div class="company-feature">
+            <% @company.work_styles.each do|c| %>
             <div class="company-feature-logo">
                 <img src="/assets/core_logo.svg">
-                <span>テレワーク可</span>
+                <span><%= c.name %></span>
             </div>
+            <% end %>
+            <% @company.welfares.each do|d| %>
             <div class="company-feature-logo">
                 <img src="/assets/core_logo.svg">
-                <span>テレワーク可</span>
+                <span><%= d.name %></span>
             </div>
+            <% end %>
+            <% @company.company_features.each do|e| %>
             <div class="company-feature-logo">
                 <img src="/assets/core_logo.svg">
-                <span>テレワーク可</span>
+                <span><%= e.name %></span>
             </div>
+            <% end %>
+            <% @company.company_points.each do|f| %>
             <div class="company-feature-logo">
                 <img src="/assets/core_logo.svg">
-                <span>テレワーク可</span>
+                <span><%= f.name %></span>
             </div>
-            <div class="company-feature-logo">
-                <img src="/assets/core_logo.svg">
-                <span>テレワーク可</span>
-            </div>
-            <div class="company-feature-logo">
-                <img src="/assets/core_logo.svg">
-                <span>テレワーク可</span>
-            </div>
-            <div class="company-feature-logo">
-                <img src="/assets/core_logo.svg">
-                <span>テレワーク可</span>
-            </div>
-            <div class="company-feature-logo">
-                <img src="/assets/core_logo.svg">
-                <span>テレワーク可</span>
-            </div>
-            <div class="company-feature-logo">
-                <img src="/assets/core_logo.svg">
-                <span>テレワーク可</span>
-            </div>
-            <div class="company-feature-logo">
-                <img src="/assets/core_logo.svg">
-                <span>テレワーク可</span>
-            </div>
-            <div class="company-feature-logo">
-                <img src="/assets/core_logo.svg">
-                <span>テレワーク可</span>
-            </div>
-            <div class="company-feature-logo">
-                <img src="/assets/core_logo.svg">
-                <span>テレワーク可</span>
-            </div>
-            <div class="company-feature-logo">
-                <img src="/assets/core_logo.svg">
-                <span>テレワーク可</span>
-            </div>
-            <div class="company-feature-logo">
-                <img src="/assets/core_logo.svg">
-                <span>テレワーク可</span>
-            </div>
+            <% end %>
         </div>
     </div>
     <div class="company-middle">
     　　<div class="company-middle-left">
         　　<div class="company-introduction">
             　　<div class="company-introduction-title">会社紹介</div>
-            　　<p><%= simple_format(@company.introduction) %></p>
+            　　<%= simple_format(@company.introduction) %>
         　　</div>
         　　<div class="company-introduction">
             　　<div class="company-introduction-title">募集要項</div>
@@ -85,7 +61,7 @@
                     　　<p>募集職種</p>
                 　　</div>
                 　　<div class="recruit-form-right">
-                    　　<p>■セールス職<br>■ソリューションエンジニア職<br>■テクニカルサポートエンジニア職<br>■コンサルタント職<br>■ビジネスオペレーションアナリスト職<br>※障害者手帳をお持ちの方…職種は応相談</p>
+                    　　<%= simple_format(@company.company_requirement.occupation) %>
                 　　</div>
             　　</div>
             　　<div class="recruit-form">
@@ -93,7 +69,7 @@
                     　　<p>業務内容</p>
                 　　</div>
                 　　<div class="recruit-form-right">
-                    　　<p>データサイエンス力、データエンジニアリング力をベースに、データから価値を創出<br>し、ビジネス課題に答えを出すプロフェッショナルです。<br>・統計学/機械学習の活用による分析やアルゴリズム開発を通じ、クライアントのビジ<br>ネス課題を解決します<br>・多様な業界におけるマーケティング/物流/交通/製造工程/人流の最適化など、広範な<br>領域における課題解決の機会が拡がっています</p>
+                    　　<%= simple_format(@company.company_requirement.work) %>
                 　　</div>
             　　</div>
             　　<div class="recruit-form">
@@ -101,17 +77,35 @@
                     　　<p>応募資格</p>
                 　　</div>
                 　　<div class="recruit-form-right">
-                    　　<p>大学・大学院卒業見込みの方</p>
+                    　　<%= simple_format(@company.company_requirement.qualification) %>
                 　　</div>
             　　</div>
             　　<div class="recruit-form">
                 　　<div class="recruit-form-left">
-                    　　<p>給与</p>
+                    　　<p>休日・休暇</p>
                 　　</div>
                 　　<div class="recruit-form-right">
-                    　　<p>月給 31.6667万円　〜　35.5万円</p>
+                    　　<%= simple_format(@company.company_requirement.holiday) %>
                 　　</div>
             　　</div>
+            　　<div class="recruit-form">
+                　　<div class="recruit-form-left">
+                    　　<p>待遇・福利厚生</p>
+                　　</div>
+                　　<div class="recruit-form-right">
+                    　　<%= simple_format(@company.company_requirement.welfare) %>
+                　　</div>
+            　　</div>
+            　　<% @company.company_profiles.each do |b| %>
+            　　<div class="recruit-form">
+                　　<div class="recruit-form-left">
+                    　　<p><%= b.title %></p>
+                　　</div>
+                　　<div class="recruit-form-right">
+                    　　<%= simple_format(b.content) %>
+                　　</div>
+            　　</div>
+            　　<% end %>
         　　</div>
     　　</div>
     　　<div class="company-middle-right">

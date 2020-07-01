@@ -14,7 +14,7 @@ class Users::CoresController < ApplicationController
     redirect_to '/users/complete'
   rescue
     @user = User.find(current_user.id)
-    render action:index
+    render action:"index"
   end
   
   private

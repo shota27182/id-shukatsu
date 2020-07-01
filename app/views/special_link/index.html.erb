@@ -1,0 +1,156 @@
+<div class="container">
+    <div class="mypage-title">企業情報</div>
+    <p>掲載されている企業情報をまとめています！<br>登録情報に基づいたおすすめ企業情報については<a href="#">こちら</a>。</p>
+    <div class="content-companies-index">
+        <div class="search-box">
+            <div class="search-title">
+                <p>絞り込み条件</p>
+            </div>
+            <div class="search-category">
+                <div class="search-category-title">
+                    <p>業界</p>
+                </div>
+                <div class="search-category-item">
+                    <% if params[:industry] %>
+                        <% @industries.each do |i| %>
+                            <%= check_box_tag :industry, i.id , @IndustriesSearch.include?(i.id), class:"category"%>
+                            <%= label_tag i.name %><br>
+                        <% end %>
+                    <% else %>
+                        <% @industries.each do |i| %>
+                            <%= check_box_tag :industry, i.id ,checked = false, class:"category"%>
+                            <%= label_tag i.name %><br>
+                        <% end %>
+                    <% end %>
+                </div>
+                <div class="search-category-title">
+                    <p>地域</p>
+                </div>
+                <div class="search-category-item">
+                    <% if params[:area] %>
+                        <% @WorkAreas.each do |i| %>
+                            <%= check_box_tag :work_area, i.id , @AreasSearch.include?(i.id),class:"category"%>
+                            <%= label_tag i.name %><br>
+                        <% end %>
+                    <% else %>
+                        <% @WorkAreas.each do |i| %>
+                            <%= check_box_tag :work_area, i.id ,checked = false,class:"category"%>
+                            <%= label_tag i.name %><br>
+                        <% end %>
+                    <% end %>
+                </div>
+                <div class="search-category-title">
+                    <p>募集職種</p>
+                </div>
+                <div class="search-category-item">
+                    <% if params[:occupation] %>
+                        <% @occupations.each do |i| %>
+                            <%= check_box_tag :occupation, i.id,@OccupationsSearch.include?(i.id) , class:"category"%>
+                            <%= label_tag i.name %><br>
+                        <% end %>
+                    <% else %>
+                        <% @occupations.each do |i| %>
+                            <%= check_box_tag :occupation, i.id,checked = false , class:"category"%>
+                            <%= label_tag i.name %><br>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+            <div class="identity-search">
+                <p>こだわり条件</p>
+                <span>+</span>
+            </div>
+        </div>
+        <div class="company-contents">
+            <div class="companies-wrapper">
+                    <p>金融会社のイベント</p>
+                    <div class="companies-search">
+                        <div class="event-search">
+                            <img src="/images/event_top.svg">
+                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                        </div>
+                        <div class="event-search">
+                            <img src="/images/event_top.svg">
+                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                        </div>
+                        <div class="event-search">
+                            <img src="/images/event_top.svg">
+                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                        </div>
+                        <div class="event-search">
+                            <img src="/images/event_top.svg">
+                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                        </div>
+                        <div class="event-search">
+                            <img src="/images/event_top.svg">
+                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                        </div>
+                        <div class="event-search">
+                            <img src="/images/event_top.svg">
+                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                        </div>
+                    </div>
+            </div>
+            <div class="companies-wrapper">
+                    <p>テレワーク実施企業</p>
+                    <div class="companies-search">
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                        <div class="company-search">
+                            <img src="/assets/sapporo_beer2.svg">
+                            <p>サッポロビール株式会社</p>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="recomended-companies">
+        
+    </div>
+</div>
+
+<script>
+    $(function(){
+    $('.category').on('change', function(){
+    /// チェックされたvalue値を配列として取得
+    var industry_vals = $('input[name=industry]:checked').map(function(){
+      return $(this).val();
+    }).get();
+    var area_vals = $('input[name=work_area]:checked').map(function(){
+        return $(this).val();
+    }).get();
+    var occupation_vals = $('input[name=occupation]:checked').map(function(){
+        return  $(this).val();
+    }).get();
+    window.location.href = '/special_link?industry=' + industry_vals + '&area=' + area_vals + '&occupation=' + occupation_vals;
+    
+  });
+   
+});
+</script>

@@ -2,26 +2,37 @@ class User < ApplicationRecord
     attr_accessor :remember_token, :activation_token, :reset_token
     has_secure_password
     
-    has_many :mentarity_company_features
+    has_many :mentarity_company_features, dependent: :destroy
     has_many :company_features, through: :mentarity_company_features
-    has_many :mentarity_company_points
+    has_many :mentarity_company_points, dependent: :destroy
     has_many :company_points, through: :mentarity_company_points
-    has_many :mentarity_welfares
+    has_many :mentarity_welfares, dependent: :destroy
     has_many :welfares, through: :mentarity_welfares
-    has_many :mentarity_work_styles
+    has_many :mentarity_work_styles, dependent: :destroy
     has_many :work_styles, through: :mentarity_work_styles
-    has_many :wish_company_scales
+    has_many :wish_company_scales, dependent: :destroy
     has_many :company_scales, through: :wish_company_scales
-    has_many :wish_industries
+    has_many :wish_industries, dependent: :destroy
     has_many :industries, through: :wish_industries
-    has_many :wish_occupations
+    has_many :wish_occupations, dependent: :destroy
     has_many :occupations, through: :wish_occupations
-    has_many :wish_work_areas
+    has_many :wish_work_areas, dependent: :destroy
     has_many :work_areas, through: :wish_work_areas
-    has_one :general
-    has_one :education
-    has_one :basic
-    accepts_nested_attributes_for :basic
+    has_one :general, dependent: :destroy
+    has_one :education, dependent: :destroy
+    has_many :events, through: :user_events
+    has_many :user_events, dependent: :destroy
+    has_many :user_programmings, dependent: :destroy
+    has_many :programmings, through: :user_programmings
+    has_one :user_eiken, dependent: :destroy
+    has_one :user_toeic, dependent: :destroy
+    has_one :user_toefl, dependent: :destroy
+    has_many :user_languages, dependent: :destroy
+    has_one :user_experience, dependent: :destroy
+    has_one :user_internship, dependent: :destroy
+    has_many :user_companies, dependent: :destroy
+    has_many :companies, through: :user_companies
+    has_many :notifications, dependent: :destroy
     
     enum status:{
         no_registered: 0,

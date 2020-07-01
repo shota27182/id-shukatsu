@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   private
      
     def signup_params
-      params.require(:signup).permit(:name, :email, :password, :password_confirmation)
+      params.require(:signup).permit(:kana, :name, :email, :password, :password_confirmation)
     end
     
 end

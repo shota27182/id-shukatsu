@@ -7,6 +7,31 @@
     <%= form_with model: @mypage_educations_form, method: :post, url: mypage_education_path, local: true do |f| %>
       <div class="general-profile">
         <div class="general-title">所属情報</div>
+          <div class="form-detail">
+              <p>大学名</p>
+              <%=f.text_field :university, class:"form-field" %>
+          </div>
+          <div class="form-detail">
+              <p>学部(研究科)</p>
+              <%=f.text_field :faculty, class:"form-field" %>
+          </div>
+          <div class="form-detail">
+              <p>学科(専攻)</p>
+              <%=f.text_field :department, class:"form-field" %>
+          </div>
+          <div class="form-detail">
+              <p>学年</p>
+              <%= f.collection_select(:grade_id, Grade.all, :id, :name,{prompt: ""}, {class: "form-field"}) %>
+          </div>
+          <div class="form-detail">
+              <p>文理</p>
+              <div class="profile-radio">
+                <%= f.radio_button :classification, :humanities, id:"classification_humanities", class:"profile-radio-button" %>
+                <%= f.label :classification_humanities, "文系",for:"classification_humanities", class:"profile-radio-label" %>
+                <%= f.radio_button :classification, :science, id:"classification_science", class:"profile-radio-button" %>
+                <%= f.label :classification_science, "理系",for:"classification_science", class:"profile-radio-label"%>
+            　</div>
+          </div>
           <div class="form-detail profile-birthday">
               <p>ゼミ・研究室</p>
               <%=f.text_field :seminar, class:"form-field" %>

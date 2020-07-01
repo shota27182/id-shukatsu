@@ -4,7 +4,7 @@
         <%=link_to "#" do %>
         <div class="mypage-item">
             <div class="mypage-text">
-                <a href="#">お知らせ</a>
+                <a href="/mypage/notification">お知らせ</a>
                 <p>ID就活からのお知らせ</p>
             </div>
             <div class="mypage-logo">
@@ -65,61 +65,86 @@
     </div>
     <div class="mypage-links">
         <p><%= @user.name %>さんのための就活リンク</p>
-        <div class="mypage-link">
-            <img src="/assets/school.svg">
-            <p>慶應義塾大学</p>
-        </div>
-        <div class="mypage-link">
-            <img src="/assets/school.svg">
-            <p>理工学部</p>
-        </div>
-        <div class="mypage-link">
-            <img src="/assets/school.svg">
-            <p>大企業</p>
-        </div>
-        <div class="mypage-link">
-            <img src="/assets/school.svg">
-            <p>IT企業</p>
-        </div>
-        <div class="mypage-link">
-            <img src="/assets/school.svg">
-            <p>慶應義塾大学</p>
-        </div>
-        <div class="mypage-link">
-            <img src="/assets/school.svg">
-            <p>慶應義塾大学</p>
-        </div>
-        <div class="mypage-link">
-            <img src="/assets/school.svg">
-            <p>慶應義塾大学</p>
-        </div>
-        <div class="mypage-link">
-            <img src="/assets/school.svg">
-            <p>慶應義塾大学</p>
-        </div>
-        <div class="mypage-link">
-            <img src="/assets/school.svg">
-            <p>慶應義塾大学</p>
-        </div>
-        <div class="mypage-link">
-            <img src="/assets/school.svg">
-            <p>慶應義塾大学</p>
-        </div>
-        <div class="mypage-link">
-            <img src="/assets/school.svg">
-            <p>慶應義塾大学</p>
-        </div>
-        <div class="mypage-link">
-            <img src="/assets/school.svg">
-            <p>慶應義塾大学</p>
-        </div>
-        <div class="mypage-link">
-            <img src="/assets/school.svg">
-            <p>慶應義塾大学</p>
-        </div>
-        <div class="mypage-link">
-            <img src="/assets/school.svg">
-            <p>慶應義塾大学</p>
+        <div class="mypage-shukatsu-links">
+            <div class="mypage-link">
+                <img src="/assets/school.svg">
+                <p>理工学部</p>
+            </div>
+            <% if @user.company_scales.present? or @user.industries.present? or @user.occupations.present? or @user.work_areas.present? %>
+                <% @user.company_scales.each do |a| %>
+                    <div class="mypage-link">
+                        <%=link_to (image_tag "school.svg"), special_link_path(company_scale: a.id)  %>
+                        <p><%=a.name  %></p>
+                    </div>
+                <% end %>
+                <% @user.industries.each do |a| %>
+                    <div class="mypage-link">
+                        <%=link_to (image_tag "school.svg"), special_link_path(industry: a.id)  %>
+                        <p><%=a.name  %></p>
+                    </div>
+                <% end %>
+                <% @user.occupations.each do |a| %>
+                    <div class="mypage-link">
+                        <%=link_to (image_tag "school.svg"), special_link_path(occupation: a.id)  %>
+                        <p><%=a.name  %></p>
+                    </div>
+                <% end %>
+                <% @user.work_areas.each do |a| %>
+                    <div class="mypage-link">
+                        <%=link_to (image_tag "school.svg"), special_link_path(area: a.id)  %>
+                        <p><%=a.name  %></p>
+                    </div>
+                <% end %>
+            <% else %>
+                <div class="mypage-link">
+                
+                </div>
+            <% end %>
+            <% if @user.work_styles.present? %>
+                <% @user.work_styles.each do |a| %>
+                    <div class="mypage-link">
+                        <%=link_to (image_tag "school.svg"), special_link_path(work_style: a.id)  %>
+                        <p><%=a.name  %></p>
+                    </div>
+                <% end %>
+            <% else %>
+                <div class="mypage-link">
+                
+                </div>
+            <% end %>
+            <% if @user.welfares.present? %>
+                <% @user.welfares.each do |a| %>
+                    <div class="mypage-link">
+                        <%=link_to (image_tag "school.svg"), special_link_path(welfare: a.id)  %>
+                        <p><%=a.name  %></p>
+                    </div>
+                <% end %>
+                <% @user.company_features.each do |a| %>
+                    <div class="mypage-link">
+                        <%=link_to (image_tag "school.svg"), special_link_path(company_feature: a.id)  %>
+                        <p><%=a.name  %></p>
+                    </div>
+                <% end %>
+                <% @user.company_points.each do |a| %>
+                    <div class="mypage-link">
+                        <%=link_to (image_tag "school.svg"), special_link_path(company_point: a.id)  %>
+                        <p><%=a.name  %></p>
+                    </div>
+                <% end %>
+            <% else %>
+                <div class="mypage-link">
+                
+                </div>
+            <% end %>
         </div>
     </div>
 </div>
+
+<script>
+    $(function(){
+    $('.mypage-item').click(function(){
+        location.href=$(this).find('a').attr('href');
+    });
+   
+});
+</script>

@@ -1,0 +1,2 @@
+module PartnerPage::SeminarHelper
+end

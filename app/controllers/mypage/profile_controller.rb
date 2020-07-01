@@ -1,5 +1,5 @@
 class Mypage::ProfileController < ApplicationController
-    
+    before_action :logged_in_user
     def index
     　　@user=current_user
     　　@general=current_user.general

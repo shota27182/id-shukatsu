@@ -1,0 +1,2 @@
+module PartnerPage::EditUniqueHelper
+end

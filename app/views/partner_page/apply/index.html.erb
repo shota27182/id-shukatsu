@@ -1,0 +1,159 @@
+<div class="partner-contents">
+    <div class="partner-menus">
+        <div class="partner-menu">
+            <a href="/partner_page/dashboard">ダッシュボード</a>
+        </div>
+        <div class="partner-menu partner">
+            <div class="partner-menu-item secList partner-change" id="fuu">
+                <p>応募者管理</p>
+            </div>
+            <ul class="partner-menu-lists fuu">
+                <li class="partner-menu-list">
+                    <a href="/partner_page/apply">> 応募者一覧</a>
+                </li>
+                <li class="partner-menu-list">
+                    <a href="/partner_page/apply">> <span>本選考</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>ジョブ・インターン</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>説明会・企業セミナー</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="partner-menu">
+            <div class="partner-menu-item secList" id="guu">
+                <p>求人管理</p>
+                <img src="/assets/partner_bar.svg">
+            </div>
+            <ul class="partner-menu-lists section guu">
+                <li class="partner-menu-list">
+                    <a href="/partner_page/event">> <span>本選考</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>ジョブ・インターン</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>説明会・企業セミナー</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="partner-menu">
+            <div class="partner-menu-item secList" id="nuu">
+                <p>募集要項</p>
+                <img src="/assets/partner_bar.svg">
+            </div>
+            <ul class="partner-menu-lists section nuu">
+                <li class="partner-menu-list">
+                    <a href="/partner_page/profile">> <span>本選考</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>ジョブ・インターン</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>説明会・企業セミナー</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="partner-menu">
+            <div class="partner-menu-item secList" id="muu">
+                <p>広告設定</p>
+                <img src="/assets/partner_bar.svg">
+            </div>
+            <ul class="partner-menu-lists section muu">
+                <li class="partner-menu-list">
+                    <a href="#">> <span>本選考</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>ジョブ・インターン</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>説明会・企業セミナー</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="partner-menu">
+            <div class="partner-menu-item secList ruu">
+                <p>アカウント管理</p>
+                <img src="/assets/partner_bar.svg">
+            </div>
+            <ul class="partner-menu-lists section ruu">
+                <li class="partner-menu-list">
+                    <a href="#">> <span>本選考</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>ジョブ・インターン</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>説明会・企業セミナー</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>    
+    <div class="partner-dashboard">
+        <h2>応募者管理</h2>
+        <div class="dashboard-situation">
+            <h3>応募者一覧</h3>
+            <div>
+                <p>検索結果 3869件中 1-20件</p>
+                <a>>  CSV出力する</a>
+            </div>
+            <table>
+                <tr class="partner-apply-title">
+                    <th class="partner-date-title">応募日</th>
+                    <th class="partner-event-title">応募イベント</th>
+                    <th class="partner-graduation-title">卒業年度</th>
+                    <th class="partner-university-title">大学名</th>
+                    <th class="partner-gender-title">性別</th>
+                    <th class="partner-name-title">氏名</th>
+                </tr>
+                <tr>
+                    <td class="partner-date-body">2019/08/02</td>
+                    <td class="partner-event-body"></td>
+                    <td class="partner-graduation-body">21年度卒</td>
+                    <td class="partner-university-body">慶應義塾大学</td>
+                    <td class="partner-sex-body">男</td>
+                    <td class="partner-name-body">長宗我部 小太郎</td>
+                </tr>
+                <tr>
+                    <td>2019/08/02</td>
+                    <td></td>
+                    <td>21年度卒</td>
+                    <td>慶應義塾大学</td>
+                    <td>男</td>
+                    <td>長宗我部 小太郎</td>
+                </tr>
+                <tr>
+                    <td>2019/08/02</td>
+                    <td></td>
+                    <td>21年度卒</td>
+                    <td>慶應義塾大学</td>
+                    <td>男</td>
+                    <td>長宗我部 小太郎</td>
+                </tr>
+                <tr>
+                    <td>2019/08/02</td>
+                    <td></td>
+                    <td>21年度卒</td>
+                    <td>慶應義塾大学</td>
+                    <td>男</td>
+                    <td>長宗我部 小太郎</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+  $(function(){
+  $('.section').hide();
+  
+  $('.secList').on('click',function(){
+        // クリックした要素の ID と違うクラス名のセクションを非表示
+    $('.section').not($('.'+$(this).attr('id'))).hide();
+    // クリックした要素の ID と同じクラスのセクションを表示
+    $('.'+$(this).attr('id')).toggle();
+  });
+});
+</script>

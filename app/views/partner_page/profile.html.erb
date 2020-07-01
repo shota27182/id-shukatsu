@@ -1,0 +1,326 @@
+<div class="partner-contents">
+    <div class="partner-menus">
+        <div class="partner-menu partner-change">
+            <a href="/partner_page/dashboard">ダッシュボード</a>
+        </div>
+        <div class="partner-menu">
+            <div class="partner-menu-item secList" id="fuu">
+                <p>応募者管理</p>
+                <img src="/assets/partner_bar.svg">
+            </div>
+            <ul class="partner-menu-lists section fuu">
+                <li class="partner-menu-list">
+                    <a href="/partner_page/apply">> <span>応募者一覧</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a href="/partner_page/apply">> <span>本選考</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>ジョブ・インターン</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>説明会・企業セミナー</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="partner-menu">
+            <div class="partner-menu-item secList" id="guu">
+                <p>求人管理</p>
+                <img src="/assets/partner_bar.svg">
+            </div>
+            <ul class="partner-menu-lists section guu">
+                <li class="partner-menu-list">
+                    <a href="/partner_page/event">> <span>本選考</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>ジョブ・インターン</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>説明会・企業セミナー</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="partner-menu">
+            <div class="partner-menu-item secList" id="nuu">
+                <p>募集要項</p>
+                <img src="/assets/partner_bar.svg">
+            </div>
+            <ul class="partner-menu-lists section nuu">
+                <li class="partner-menu-list">
+                    <a href="/partner_page/profile">> <span>本選考</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>ジョブ・インターン</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>説明会・企業セミナー</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="partner-menu">
+            <div class="partner-menu-item secList" id="muu">
+                <p>広告設定</p>
+                <img src="/assets/partner_bar.svg">
+            </div>
+            <ul class="partner-menu-lists section muu">
+                <li class="partner-menu-list">
+                    <a href="#">> <span>本選考</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>ジョブ・インターン</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>説明会・企業セミナー</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="partner-menu">
+            <div class="partner-menu-item secList ruu">
+                <p>アカウント管理</p>
+                <img src="/assets/partner_bar.svg">
+            </div>
+            <ul class="partner-menu-lists section ruu">
+                <li class="partner-menu-list">
+                    <a href="#">> <span>本選考</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>ジョブ・インターン</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>説明会・企業セミナー</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="partner-dashboard">
+        <h2>会社情報</h2>
+        <div class="dashboard-situation">
+            <div class="company-introduction">
+                <div class="partner-profile-title">
+                    <p>基本情報</p>
+                    <a href="/partner_page/edit_general">編集する　　></a>
+                </div>
+                <div class="recruit-form">
+                    <div class="partner-profile-left">
+                        <p>会社ロゴ：</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <div class="partner-profile-icons">
+                            <div class="partner-profile-icon">
+                                <%= image_tag @company.icon.to_s ,class: 'partner-icon-left'%>
+                                <p>四角い表示Ver</p>
+                            </div>
+                            <div class="partner-profile-icon">
+                                <%= image_tag @company.icon.to_s ,class: 'partner-icon-right' %>
+                                <p>丸い表示Ver</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="recruit-form">
+                    <div class="partner-profile-left">
+                        <p>会社イメージ画像：</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <%= image_tag @company.img.to_s, class: 'partner-profile-image' %>
+                    </div>
+                </div>
+                <div class="recruit-form">
+                    <div class="partner-profile-left">
+                        <p>会社名：</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <p><%= @company.name %></p>
+                    </div>
+                </div>
+                <div class="recruit-form">
+                    <div class="partner-profile-left">
+                        <p>所在地：</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <p><%= @company.address %></p>
+                    </div>
+                </div>
+                <div class="recruit-form">
+                    <div class="partner-profile-left">
+                        <p>事業内容：</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <p><%= @company.category %></p>
+                    </div>
+                </div>
+                <div class="recruit-form">
+                    <div class="partner-profile-left">
+                        <p>従業員数：</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <p><%= @company.people %>人</p>
+                    </div>
+                </div>
+                <div class="recruit-form">
+                    <div class="partner-profile-left">
+                        <p>設立年月日：</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <% if @company.establishment.present? %>
+                        <p><%= @company.establishment.strftime("%Y年 %m月 %d日")  %></p>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="recruit-form">
+                    <div class="partner-profile-left">
+                        <p>採用ページリンク：</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <p><%= @company.url %></p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="dashboard-situation">
+            <div class="company-introduction">
+                <div class="partner-profile-title">
+                    <p>オリジナル情報</p>
+                    <a href="/partner_page/edit_unique">編集する　　></a>
+                </div>
+                <div class="recruit-form">
+                    <div class="partner-profile-left">
+                        <p>企業規模</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <% @company.company_scales.each do |a| %>
+                           <span class="profile-letters"><%=a.name %></span>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="recruit-form">
+                    <div class="partner-profile-left">
+                        <p>業界</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <% @company.industries.each do |a| %>
+                           <span class="profile-letters"><%=a.name %></span>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="recruit-form">
+                    <div class="partner-profile-left">
+                        <p>職種</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <% @company.occupations.each do |a| %>
+                           <span class="profile-letters"><%=a.name %></span>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="recruit-form">
+                    <div class="partner-profile-left">
+                        <p>勤務エリア</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <% @company.work_areas.each do |a| %>
+                           <span class="profile-letters"><%=a.name %></span>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="recruit-form">
+                    <div class="partner-profile-left">
+                        <p>働き方</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <% @company.work_styles.each do |a| %>
+                           <span class="profile-letters"><%=a.name %></span>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="recruit-form">
+                    <div class="partner-profile-left">
+                        <p>福利厚生</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <% @company.welfares.each do |a| %>
+                           <span class="profile-letters"><%=a.name %></span>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="recruit-form">
+                    <div class="partner-profile-left">
+                        <p>企業の特徴</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <% @company.company_features.each do |a| %>
+                           <span class="profile-letters"><%=a.name %></span>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="recruit-form">
+                    <div class="partner-profile-left">
+                        <p>選考の特徴</p>
+                    </div>
+                    <div class="recruit-form-right">
+                         <% @company.company_points.each do |a| %>
+                           <span class="profile-letters"><%=a.name %></span>
+                         <% end %>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="dashboard-situation">
+            <div class="company-introduction">
+                <div class="partner-profile-title">
+                    <p>募集要項</p>
+                    <a href="/partner_page/edit_requirements">編集する　　></a>
+                </div>
+                <div class="recruit-form">
+                    <div class="partner-profile-left">
+                        <p>募集職種</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <p>■セールス職<br>■ソリューションエンジニア職<br>■テクニカルサポートエンジニア職<br>■コンサルタント職<br>■ビジネスオペレーションアナリスト職<br>※障害者手帳をお持ちの方…職種は応相談</p>
+                    </div>
+                </div>
+                <div class="recruit-form">
+                    <div class="partner-profile-left">
+                        <p>業務内容</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <p>データサイエンス力、データエンジニアリング力をベースに、データから価値を創出<br>し、ビジネス課題に答えを出すプロフェッショナルです。<br>・統計学/機械学習の活用による分析やアルゴリズム開発を通じ、クライアントのビジ<br>ネス課題を解決します<br>・多様な業界におけるマーケティング/物流/交通/製造工程/人流の最適化など、広範な<br>領域における課題解決の機会が拡がっています</p>
+                    </div>
+                </div>
+                <div class="recruit-form">
+                    <div class="partner-profile-left">
+                        <p>応募資格</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <p>大学・大学院卒業見込みの方</p>
+                    </div>
+                </div>
+                <div class="recruit-form">
+                    <div class="partner-profile-left">
+                        <p>給与</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <p>月給 31.6667万円　〜　35.5万円</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+<script>
+  $(function(){
+  $('.section').hide();
+  
+  $('.secList').on('click',function(){
+        // クリックした要素の ID と違うクラス名のセクションを非表示
+    $('.section').not($('.'+$(this).attr('id'))).hide();
+    // クリックした要素の ID と同じクラスのセクションを表示
+    $('.'+$(this).attr('id')).toggle();
+  });
+});
+</script>

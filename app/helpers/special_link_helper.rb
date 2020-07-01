@@ -1,0 +1,2 @@
+module SpecialLinkHelper
+end

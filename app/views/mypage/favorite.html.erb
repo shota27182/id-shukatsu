@@ -11,55 +11,18 @@
                <a href="#" class="btn signup">編集する</a>
            </div>
         </div>
-        <div class="profile-contexts">
-            <div class="profile-context">
-                <div class="profile-context-left">
-                    <p>名前：</p>
+        <div class="profile-companies">
+            <% current_user.companies.each do |i| %>
+            <div class="profile-company">
+                <div class="profile-company-left">
+                    <%= image_tag i.icon.to_s %>
                 </div>
-                <div class="profile-context-right">
-                    <p>迫田良平</p>
-                </div>
-            </div>
-            <div class="profile-context">
-                <div class="profile-context-left">
-                    <p>フリガナ：</p>
-                </div>
-                <div class="profile-context-right">
-                    <p>サコタリョウヘイ</p>
+                <div class="profile-company-right">
+                    <p><% i.industries.limit(2).each do |b|%><span><%= b.name %> </span><% end %></p>
+                    <%= link_to i.name,"/companies/#{i.id}" %>
                 </div>
             </div>
-            <div class="profile-context">
-                <div class="profile-context-left">
-                    <p>性別：</p>
-                </div>
-                <div class="profile-context-right">
-                    <p>男</p>
-                </div>
-            </div>
-            <div class="profile-context">
-                <div class="profile-context-left">
-                    <p>生年月日：</p>
-                </div>
-                <div class="profile-context-right">
-                    <p>1998年 8月 27日</p>
-                </div>
-            </div>
-            <div class="profile-context">
-                <div class="profile-context-left">
-                    <p>住所：</p>
-                </div>
-                <div class="profile-context-right">
-                    <p>東京都渋谷区恵比寿1-24-15シエルブルー恵比寿EAST6階</p>
-                </div>
-            </div>
-            <div class="profile-context">
-                <div class="profile-context-left">
-                    <p>電話番号：</p>
-                </div>
-                <div class="profile-context-right">
-                    <p>090-7253-6258</p>
-                </div>
-            </div>
+            <% end %>
         </div>
     </div>
 </div>
