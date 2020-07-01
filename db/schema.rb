@@ -231,11 +231,11 @@ ActiveRecord::Schema.define(version: 2020_07_01_014506) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "basic_id"
+    t.integer "user_id"
     t.string "address1"
     t.string "address2"
     t.string "tel"
     t.string "building_name"
-    t.integer "user_id"
     t.index ["basic_id"], name: "index_generals_on_basic_id"
     t.index ["user_id"], name: "index_generals_on_user_id"
   end
