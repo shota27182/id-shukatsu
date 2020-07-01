@@ -10,14 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_30_101050) do
-
-  create_table "basics", force: :cascade do |t|
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_basics_on_user_id"
-  end
+ActiveRecord::Schema.define(version: 2020_07_01_014506) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
@@ -156,13 +149,6 @@ ActiveRecord::Schema.define(version: 2020_06_30_101050) do
     t.index ["work_style_id"], name: "index_company_work_styles_on_work_style_id"
   end
 
-  create_table "cores", force: :cascade do |t|
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_cores_on_user_id"
-  end
-
   create_table "departments", force: :cascade do |t|
     t.integer "faculty_id"
     t.string "name"
@@ -257,13 +243,6 @@ ActiveRecord::Schema.define(version: 2020_06_30_101050) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "mentarities", force: :cascade do |t|
-    t.integer "core_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["core_id"], name: "index_mentarities_on_core_id"
   end
 
   create_table "mentarity_company_features", force: :cascade do |t|
@@ -370,14 +349,6 @@ ActiveRecord::Schema.define(version: 2020_06_30_101050) do
     t.index ["user_id"], name: "index_user_experiences_on_user_id"
   end
 
-  create_table "user_expreriences", force: :cascade do |t|
-    t.integer "user_id"
-    t.text "experience"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_user_expreriences_on_user_id"
-  end
-
   create_table "user_internships", force: :cascade do |t|
     t.integer "user_id"
     t.text "internship"
@@ -480,13 +451,6 @@ ActiveRecord::Schema.define(version: 2020_06_30_101050) do
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_wish_work_areas_on_user_id"
     t.index ["work_area_id"], name: "index_wish_work_areas_on_work_area_id"
-  end
-
-  create_table "wishes", force: :cascade do |t|
-    t.integer "core_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["core_id"], name: "index_wishes_on_core_id"
   end
 
   create_table "work_areas", force: :cascade do |t|
