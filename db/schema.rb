@@ -169,9 +169,9 @@ ActiveRecord::Schema.define(version: 2020_07_01_014506) do
     t.string "classification"
     t.text "seminar"
     t.string "highschool"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
     t.string "university"
     t.string "faculty"
     t.string "department"
