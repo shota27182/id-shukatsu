@@ -12,6 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2020_07_01_014506) do
 
+  create_table "basics", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_basics_on_user_id"
+  end
+
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.text "introduction"
