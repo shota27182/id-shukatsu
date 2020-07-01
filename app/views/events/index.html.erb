@@ -91,21 +91,14 @@
                         <div class="recomended-before">
                             <img src="/assets/progress_bar.svg">
                         </div>
-                        <div class="recomended-search-contents">
-                            
-                        </div>
                         <div class="recomended-search-content">
                             <img src="/assets/school.svg">
                             <p>理系</p>
                         </div>
-                        <% if @user.company_scales.present? or @user.industries.present? or @user.occupations.present? or @user.work_areas.present? %>
-                            <% @user.company_scales.each do |a| %>
-                                <div class="recomended-search-content">
-                                    <%=link_to (image_tag "school.svg"), special_link_path(company_scale: a.id)  %>
-                                    <p><%= a.name %></p>
-                                </div>
-                            <% end %>
-                        <% end %>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p>慶應義塾大学</p>
+                        </div>
                         <div class="recomended-search-content">
                             <img src="/assets/school.svg">
                             <p>慶應義塾大学</p>
