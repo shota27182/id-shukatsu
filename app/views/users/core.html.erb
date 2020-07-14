@@ -13,6 +13,9 @@
                     <%= f.collection_check_boxes(:company_scale_ids,CompanyScale.all, :id, :name) do |af| %>
                        <%= af.label{ af.check_box + af.text } %>
                     <% end %>
+                    <% if @users_basics_form.errors.include?(:company_scale_ids) %>
+                        <p style="color: red;"><%= @users_basics_form.errors.full_messages_for(:company_scale_ids).first %>
+                    <% end %
                  </div>
              </div>
              <div class="form-detail">

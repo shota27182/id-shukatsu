@@ -8,10 +8,10 @@
         <p>エントリーした会社をお気に入り登録しよう</p>
         <div class="entry-complete-company">
             <div class="entry-complete-company-left">
-                <img src="/images/sapporo_beer.svg">
+                <%= image_tag @company.icon.to_s %>
             </div>
             <div class="entry-complete-company-middle">
-                <p>サッポロビール株式会社</p>
+                <p><%= @company.name %></p>
             </div>
             <div class="entry-complete-company-right">
                 <a>お気に入り登録</a>

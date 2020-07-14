@@ -1,0 +1,148 @@
+<div class="partner-contents">
+    <div class="partner-menus">
+        <div class="partner-menu">
+            <a href="/partner_page/dashboard">ダッシュボード</a>
+        </div>
+        <div class="partner-menu partner">
+            <div class="partner-menu-item secList partner-change" id="fuu">
+                <p>応募者管理</p>
+            </div>
+            <ul class="partner-menu-lists fuu">
+                <li class="partner-menu-list">
+                    <a href="/partner_page/apply">> 応募者一覧</a>
+                </li>
+                <li class="partner-menu-list">
+                    <a href="/partner_page/apply">> <span>本選考</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>ジョブ・インターン</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>説明会・企業セミナー</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="partner-menu">
+            <div class="partner-menu-item secList" id="guu">
+                <p>求人管理</p>
+                <img src="/assets/partner_bar.svg">
+            </div>
+            <ul class="partner-menu-lists section guu">
+                <li class="partner-menu-list">
+                    <a href="/partner_page/event">> <span>本選考</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>ジョブ・インターン</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>説明会・企業セミナー</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="partner-menu">
+            <div class="partner-menu-item secList" id="nuu">
+                <p>募集要項</p>
+                <img src="/assets/partner_bar.svg">
+            </div>
+            <ul class="partner-menu-lists section nuu">
+                <li class="partner-menu-list">
+                    <a href="/partner_page/profile">> <span>本選考</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>ジョブ・インターン</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>説明会・企業セミナー</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="partner-menu">
+            <div class="partner-menu-item secList" id="muu">
+                <p>広告設定</p>
+                <img src="/assets/partner_bar.svg">
+            </div>
+            <ul class="partner-menu-lists section muu">
+                <li class="partner-menu-list">
+                    <a href="#">> <span>本選考</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>ジョブ・インターン</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>説明会・企業セミナー</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="partner-menu">
+            <div class="partner-menu-item secList ruu">
+                <p>アカウント管理</p>
+                <img src="/assets/partner_bar.svg">
+            </div>
+            <ul class="partner-menu-lists section ruu">
+                <li class="partner-menu-list">
+                    <a href="#">> <span>本選考</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>ジョブ・インターン</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>説明会・企業セミナー</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>    
+    <div class="partner-sign-up">
+        <div class="form-heading">会社情報</div>
+        <%= form_with model: @event, method: :put, url: partner_page_update_event_path, local: true do |f| %>
+          <div class="general-profile">
+            <div class="general-title">基本情報</div>
+              <div>
+                <p>本選考イメージ画像：</p>
+                <%= f.file_field :img %>
+              </div>
+              <div class="form-detail form-top">
+                  <p>本選考タイトル</p>
+                  <%=f.text_field :name, class: "form-field"  %>
+              </div>
+              <div class="form-detail">
+                  <p>概要</p>
+                  <%=f.text_field :introduction, class:"form-field" %>
+              </div>
+              <div class="form-detail">
+                  <p>本ガイダンスのポイント</p>
+                  <%=f.text_field :point, class:"form-field" %>
+              </div>
+              <div class="form-detail">
+                  <p>当日の流れ</p>
+                  <%=f.text_field :flow, class:"form-field" %>
+              </div>
+              <div id="event-profiles-association-insertion-point" >
+                 <%= f.fields_for :event_profiles do |builder| %>
+                     <%= render 'event_profile_fields', f: builder %>
+                 <% end %>
+             </div>
+             <%= link_to_add_association '＋  募集要項を追加する', f, :event_profiles,class: 'mypage-programming-post',data: {association_insertion_node: '#event-profiles-association-insertion-point',association_insertion_method: 'append'} %>
+             <div id="event-schedules-association-insertion-point" >
+                 <%= f.fields_for :event_schedules do |builder| %>
+                     <%= render 'event_schedule_fields', f: builder %>
+                 <% end %>
+             </div>
+             <%= link_to_add_association '＋  募集要項を追加する', f, :event_schedules,class: 'mypage-programming-post',data: {association_insertion_node: '#event-schedules-association-insertion-point',association_insertion_method: 'append'} %>
+          </div>
+          <%= f.submit "次のステップへ進む", class: "form-submit" %>
+        <% end %>
+    </div>
+</div>
+
+<script>
+  $(function(){
+  $('.section').hide();
+  
+  $('.secList').on('click',function(){
+        // クリックした要素の ID と違うクラス名のセクションを非表示
+    $('.section').not($('.'+$(this).attr('id'))).hide();
+    // クリックした要素の ID と同じクラスのセクションを表示
+    $('.'+$(this).attr('id')).toggle();
+  });
+});
+</script>

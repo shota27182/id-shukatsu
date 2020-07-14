@@ -1,6 +1,6 @@
 <div class="partner-contents">
     <div class="partner-menus">
-        <div class="partner-menu partner-change">
+        <div class="partner-menu">
             <a href="/partner_page/dashboard">ダッシュボード</a>
         </div>
         <div class="partner-menu">
@@ -41,19 +41,19 @@
             </ul>
         </div>
         <div class="partner-menu">
-            <div class="partner-menu-item secList" id="nuu">
+            <div class="partner-menu-item secList partner-change" id="nuu">
                 <p>募集要項</p>
                 <img src="/assets/partner_bar.svg">
             </div>
-            <ul class="partner-menu-lists section nuu">
+            <ul class="partner-menu-lists nuu">
                 <li class="partner-menu-list">
-                    <a href="/partner_page/profile">> <span>本選考</span></a>
+                    <a href="/partner_page/profile">> 本選考</a>
                 </li>
                 <li class="partner-menu-list">
-                    <a>> <span>ジョブ・インターン</span></a>
+                    <a href="#original-infomation">> <span>ジョブ・インターン</span></a>
                 </li>
                 <li class="partner-menu-list">
-                    <a>> <span>説明会・企業セミナー</span></a>
+                    <a href="#request-infomation">> <span>説明会・企業セミナー</span></a>
                 </li>
             </ul>
         </div>
@@ -178,7 +178,7 @@
             </div>
             
         </div>
-        <div class="dashboard-situation">
+        <div class="dashboard-situation" id="original-infomation">
             <div class="company-introduction">
                 <div class="partner-profile-title">
                     <p>オリジナル情報</p>
@@ -267,7 +267,7 @@
             </div>
             
         </div>
-        <div class="dashboard-situation">
+        <div class="dashboard-situation" id="request-infomation">
             <div class="company-introduction">
                 <div class="partner-profile-title">
                     <p>募集要項</p>
@@ -321,6 +321,17 @@
     $('.section').not($('.'+$(this).attr('id'))).hide();
     // クリックした要素の ID と同じクラスのセクションを表示
     $('.'+$(this).attr('id')).toggle();
-  });
+      // スクロールの速度
+      var speed = 400; // ミリ秒
+      // アンカーの値取得
+      var href= $(this).attr("href");
+      // 移動先を取得
+      var target = $(href == "#" || href == "" ? 'html' : href);
+      // 移動先を数値で取得
+      var position = target.offset().top;
+      // スムーススクロール
+      $('body,html').animate({scrollTop:position}, speed, 'swing');
+      return false;
+   });
 });
 </script>

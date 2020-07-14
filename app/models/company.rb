@@ -22,14 +22,13 @@ class Company < ApplicationRecord
     has_many :company_points, through: :company_company_points
     has_many :company_company_scales, dependent: :destroy
     has_many :company_scales, through: :company_company_scales
-    has_many :company_events
-    has_many :events, through: :company_events
+    has_many :events, dependent: :destroy
     has_many :user_companies, dependent: :destroy
     has_many :users, through: :user_companies 
     
     accepts_nested_attributes_for :company_requirement
-    accepts_nested_attributes_for :company_profiles, allow_destroy: true
-    accepts_nested_attributes_for :company_events
+    accepts_nested_attributes_for :company_profiles
+    accepts_nested_attributes_for :events
     
     def Company.digest(string)
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -59,6 +58,13 @@ class Company < ApplicationRecord
     def password_reset_expired?
         reset_sent_at < 2.hours.ago
     end
+    
+        scope :search, -> (search_params) do
+        return if search_params.blank?
+    
+        name_like(search_params[:name])
+      end
+      scope :name_like, -> (name) { where('name LIKE ?', "%#{name}%") if name.present? }
     
     private
        

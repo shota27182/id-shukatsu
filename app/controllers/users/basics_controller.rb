@@ -21,15 +21,10 @@ class Users::BasicsController < ApplicationController
     private
       
       def users_basics_form_params
-            params.require(:users_basics_form).permit(:kana,:address1,:address2,:building_name,:tel,:birthday, :sex, :university ,:department ,:faculty ,:highschool, :seminar, :classification, :grade_id).merge(user_id: current_user.id)
+            params.require(:users_basics_form).permit(:kana,:address1,:address2,:building_name,:tel,:birthday, :sex, :university ,:department ,:faculty ,:highschool, :seminar, :classification, :grade_id, :magazine, :scout).merge(user_id: current_user.id)
       end
       
-      def birthday_join
-          # ブランク時のエラー回避のため、ブランクだったら何もしない
-          if params[:users_basics_form]["birthday(1i)"].empty? && params[:users_basics_form]["birthday(2i)"].empty? && params[:users_basics_form]["birthday(3i)"].empty?
-              return
-          end
-          # 年月日別々できたものを結合して新しいDate型変数を作って返す
-          Date.new params[:users_basics_form]["birthday(1i)"].to_i,params[:users_basics_form]["birthday(2i)"].to_i,params[:users_basics_form]["birthday(3i)"].to_i
+      def activated_user
+         
       end
 end

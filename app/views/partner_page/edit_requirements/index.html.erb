@@ -3,27 +3,29 @@
     <%= form_with model: @company, method: :post, url: partner_page_edit_requirements_path, local: true do |f| %>
       <div class="general-profile">
         <div class="general-title">募集要項</div>
+        <%= f.fields_for :company_requirement do |af| %>
         <div class="form-detail form-top">
             <p>募集職種</p>
-            <%=f.text_field :occupation, class:"form-field" %>
+            <%=af.text_field :occupation, class:"form-field" %>
          </div>
          <div class="form-detail">
             <p>業務内容</p>
-            <%=f.text_field :work, class:"form-field" %>
+            <%=af.text_field :work, class:"form-field" %>
          </div>
          <div class="form-detail">
             <p>応募資格</p>
-            <%=f.text_field :qualification, class:"form-field" %>
+            <%=af.text_field :qualification, class:"form-field" %>
          </div>
          <div class="form-detail">
             <p>休日・休暇</p>
-            <%=f.text_field :holiday, class:"form-field" %>
+            <%=af.text_field :holiday, class:"form-field" %>
          </div>
          <div class="form-detail">
             <p>待遇・福利厚生</p>
-            <%=f.text_field :welfare, class:"form-field" %>
+            <%=af.text_field :welfare, class:"form-field" %>
          </div>
          <%=f.hidden_field :category, :value => 1 %>
+         <% end %>
          <div id="profiles-association-insertion-point" >
              <%= f.fields_for :company_profiles do |builder| %>
                  <%= render 'company_profile_fields', f: builder %>

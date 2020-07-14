@@ -1,64 +1,82 @@
 <div class="container">
-    <a href="/events" class="profile-mypage-link"><イベント結果に戻る</a>
+    <a href="javascript:history.back()" class="profile-mypage-link"><イベント結果に戻る</a>
     <div class="company-middle">
-    　　<div class="company-middle-left">
-    　　    <div class="event-top-wrapper">
-        　　  <div class="event-img">
-        　　      <%= image_tag @event.img.to_s, class:"event-top-img" %>
-        　　  </div>
-            　<div class="event-head">
-            　    <div class="event-head-right">
-            　   <% Company.joins(:events).where(events:{id:[@event.id]}).each do |i| %>
-            　   <%=image_tag i.icon.to_s %>
-            　   <% end %>
-            　   </div>
-            　   <div class="event-head-title">
-            　       <p><%=@event.name%></p>
-            　   </div>
-            　</div>
-        　　</div>
-        　　<div class="company-introduction">
-            　　<div class="company-introduction-title">イベント詳細</div>
-            　　<div class="recruit-form">
-                　　<div class="recruit-form-left">
-                    　　<p>概要</p>
-                　　</div>
-                　　<div class="recruit-form-right">
-                    　　<%= simple_format(@event.introduction) %>
-                　　</div>
-            　　</div>
-            　　<div class="recruit-form">
-                　　<div class="recruit-form-left">
-                    　　<p>本ガイダンスのポイント</p>
-                　　</div>
-                　　<div class="recruit-form-right">
-                    　　<%= simple_format(@event.point) %>
-                　　</div>
-            　　</div>
-            　　<div class="recruit-form">
-                　　<div class="recruit-form-left">
-                    　　<p>当日のプログラム</p>
-                　　</div>
-                　　<div class="recruit-form-right">
-                    　　<%= simple_format(@event.flow) %>
-                　　</div>
-            　　</div>
-            　　<% @event.event_profiles.each do |a| %>
-            　　<div class="recruit-form">
-                　　<div class="recruit-form-left">
-                    　　<p><%= a.title %></p>
-                　　</div>
-                　　<div class="recruit-form-right">
-                    　　<%= simple_format(a.content) %>
-                　　</div>
-            　　</div>
-            　　<% end %>
-            　　<div class="recruit-form">
-                　　<div class="recruit-form-left">
-                    　　<p>エントリー</p>
-                　　</div>
-                　　<div class="recruit-form-right">
-                　　  <% @event_schedule.each do |event_schedule|%>
+        <div class="company-middle-left">
+            <div class="event-top-wrapper">
+              <div class="event-img">
+                  <%= image_tag @event.img.to_s, class:"event-top-img" %>
+              </div>
+              <div class="event-head">
+                  <div class="event-head-right">
+                 <% Company.joins(:events).where(events:{id:[@event.id]}).each do |i| %>
+                 <%=image_tag i.icon.to_s %>
+                 <% end %>
+                 </div>
+                 <div class="event-head-title">
+                     <p><%=@event.name%></p>
+                 </div>
+              </div>
+            </div>
+            <div class="company-event-information quick-entry sm-version">
+                <div class="company-event-head">簡単エントリー</div>
+                <%= form_with url: new_event_entry_path(@event), method: :get, local: true do |f|%>
+                <%= f.collection_radio_buttons(:event_schedule , @event_schedule, :id, :id ) do |b| %>
+                <div class="company-event-quick">
+                    <div class="company-event-quick-left">
+                        <%= b.radio_button %>
+                        <%= EventSchedule.find(b.text).holding_day.strftime("%m/%d") %>
+                    </div>
+                    <div class="company-event-quick-right">
+                        <p><%= EventSchedule.find(b.text).start_time.strftime('%H:%M') %>~<%= EventSchedule.find(b.text).start_time.strftime('%H:%M') %></p>
+                        <p><%= EventSchedule.find(b.text).address %></p>
+                    </div>
+                </div>
+                <% end %>
+                <%= f.submit 'エントリーする',class: "form-submit", id: "button1" %>
+                <% end %>
+            </div>
+            <div class="company-introduction">
+                <div class="company-introduction-title">イベント詳細</div>
+                <div class="recruit-form">
+                    <div class="recruit-form-left">
+                        <p>概要</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <%= simple_format(@event.introduction) %>
+                    </div>
+                </div>
+                <div class="recruit-form">
+                    <div class="recruit-form-left">
+                        <p>本ガイダンスのポイント</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <%= simple_format(@event.point) %>
+                    </div>
+                </div>
+                <div class="recruit-form">
+                    <div class="recruit-form-left">
+                        <p>当日のプログラム</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <%= simple_format(@event.flow) %>
+                    </div>
+                </div>
+                <% @event.event_profiles.each do |a| %>
+                <div class="recruit-form">
+                    <div class="recruit-form-left">
+                        <p><%= a.title %></p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <%= simple_format(a.content) %>
+                    </div>
+                </div>
+                <% end %>
+                <div class="recruit-form">
+                    <div class="recruit-form-left">
+                        <p>エントリー</p>
+                    </div>
+                    <div class="recruit-form-right">
+                      <% @event_schedule.each do |event_schedule|%>
                        <div class="entry-area">
                            <div class="event-title">
                                <h2><%=event_schedule.title %></h2>
@@ -75,21 +93,51 @@
                                 </div>
                             </div>
                         </div>
-                    　<% end %>
-                　　</div>
-            　　</div>
-        　　</div>
-    　　</div>
-    　　<div class="company-middle-right">
-        　　<div class="company-information">
-            　　<div class="company-introduction-title">会社情報</div>
-        　　</div>
-        　　<div class="company-event-information">
-        　　    <div class="company-event-head">簡単エントリー</div>
-        　　    <div>
-        　　        
-        　　    </div>
-        　　</div>
-    　　</div>
+                      <% end %>
+                    </div>
+                </div>
+            </div>
+            <div class="company-introduction">
+                <div class="company-introduction-title"><%= @company.name %>の他の募集情報</div>
+                <% @company.events.each do |i| %>
+                <% unless i == @event %>
+                <%=i.name %>
+                <% end %>
+                <% end %>
+            </div>
+        </div>
+        <div class="company-middle-right">
+            <div class="company-information">
+                <div class="company-introduction-title">会社情報</div>
+            </div>
+            <div class="company-event-information quick-entry pc-version">
+                <div class="company-event-head">簡単エントリー</div>
+                <%= form_with url: new_event_entry_path(@event), method: :get, local: true do |f|%>
+                <%= f.collection_radio_buttons(:event_schedule , @event_schedule, :id, :id ) do |b| %>
+                <div class="company-event-quick">
+                    <div class="company-event-quick-left">
+                        <%= b.radio_button %>
+                        <%= EventSchedule.find(b.text).holding_day.strftime("%m/%d") %>
+                    </div>
+                    <div class="company-event-quick-right">
+                        <p><%= EventSchedule.find(b.text).start_time.strftime('%H:%M') %>~<%= EventSchedule.find(b.text).start_time.strftime('%H:%M') %></p>
+                        <p><%= EventSchedule.find(b.text).address %></p>
+                    </div>
+                </div>
+                <% end %>
+                <%= f.submit 'エントリーする',class: "form-submit", id: "button1" %>
+                <% end %>
+            </div>
+        </div>
     </div>
 </div>
+
+<script>
+$(function() {
+	$("#button1").click(function() {
+
+		const str1 = $('input:radio[name="event_schedule"]:checked').val();
+		window.location.href = $(location).attr('href') + '/entry/new?event_schedule=' + str1
+	});
+});
+</script>

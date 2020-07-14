@@ -1,0 +1,58 @@
+<div class="event-entry-title">
+    <h2>イベント日程変更ページ</h2>
+</div>
+<div class="event-schedule-title">
+    <div class="event-schedule-image">
+        <%= image_tag @event.img.to_s %>
+    </div>
+    <div class="event-schedule-head">
+        <div class="event-schedule-head-left">
+            <% Company.joins(:events).where(events:{id:[@event.id]}).each do |i| %>
+            <%=image_tag i.icon.to_s %>
+            <% end %>
+        </div>
+        <div class="event-schedule-head-right">
+            <p><%= @event.name %></p>
+        </div>
+    </div>
+</div>
+<% EventSchedule.includes(:user_events).where(user_events: {user_id: current_user.id,event_id: @event.id }).each do |event_schedule| %>
+<div class="event-schedule-title schedule-top">
+    <h2>現在選択している日程</h2>
+    <div class="event-schedule-middle">
+        <h2><%=event_schedule.title %></h2>
+        <div class="event-schedule">
+            <img src="/assets/clock.svg">
+            <p class="entry-date"><%= event_schedule.holding_day.strftime("%m/%d") %><%= %w((日) (月) (火) (水) (木) (金) (土))[event_schedule.holding_day.wday] %></p>
+            <p class="entry-time"><%= event_schedule.start_time.strftime('%H:%M') %> - <%= event_schedule.end_time.strftime('%H:%M') %></p>
+            <img src="/assets/location.svg">
+            <p class="entry-location"><%= event_schedule.address + event_schedule.place%></p>
+        </div>
+    </div>
+    <h2>変更する日程</h2>
+    <div class="event-schedule-middle">
+        <% @event.event_schedules.all.each do |event_schedule| %>
+        <div class="entry-area">
+            <div class="event-title">
+                <h2><%=event_schedule.title %></h2>
+                <img src="/assets/clock.svg">
+                <p class="entry-date"><%= event_schedule.holding_day.strftime("%m/%d") %><%= %w((日) (月) (火) (水) (木) (金) (土))[event_schedule.holding_day.wday] %></p>
+                <p class="entry-time"><%= event_schedule.start_time.strftime('%H:%M') %> - <%= event_schedule.end_time.strftime('%H:%M') %></p>
+                <img src="/assets/location.svg">
+                <p class="entry-location"><%= event_schedule.address + event_schedule.place%></p>
+            </div>
+            <div class="event-entry">
+                <p>締切 <%= event_schedule.deadline.strftime("%m月%d日") %><%= %w((日) (月) (火) (水) (木) (金) (土))[event_schedule.deadline.wday] %></p>
+                <div class="entry-button">
+                    <%= link_to 'エントリーする'%>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>
+<% end %>
+<div class="event-schedule-bottom">
+    <%=link_to '戻る', '/mypage/entry' ,class:'event-schedule-bottom-left'%>
+    <%= link_to '日程を変更する',event_entry_index_path(event_schedule: params[:event_schedule]),method: :post,class:'event-schedule-bottom-right' %>
+</div>

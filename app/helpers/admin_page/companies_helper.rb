@@ -1,0 +1,2 @@
+module AdminPage::CompaniesHelper
+end

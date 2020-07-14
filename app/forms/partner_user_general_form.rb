@@ -17,6 +17,7 @@ class PartnerUserGeneralForm
     attribute :icon, :string
     attribute :url, :string
     attribute :address, :string
+    attribute :kana, :string
     attribute :establishment, :date
     attribute 'establishment(1i)'
     attribute 'establishment(2i)'
@@ -31,12 +32,13 @@ class PartnerUserGeneralForm
     validates :url, presence: true
     validates :address, presence: true
     validates :establishment, presence: true
+    validates :kana, presence: true
 
   def save
-      raise ActiveRecord::RecordInvalid if invalid?
+      return false if invalid?
       ActiveRecord::Base.transaction do
         company = Company.find(company_id)
-        company.update!(introduction: introduction,name: name, category: category, people: people, img: img, icon: icon, url: url, address: address, establishment: establishment)
+        company.update!(kana: kana, introduction: introduction,name: name, category: category, people: people, img: img, icon: icon, url: url, address: address, establishment: establishment)
       end
   end
   

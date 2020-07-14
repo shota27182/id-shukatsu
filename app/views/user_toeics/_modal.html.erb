@@ -5,20 +5,20 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title">プログラミングスキル</h4>
+        <h4 class="modal-title">TOEIC</h4>
       </div>
       <div class="modal-body">
         <div class="programming-title">
             <div class="programming-form">
                 <div class="form-detail form-top">
-                    <p>言語の種類</p>
+                    <p>点数</p>
                     <%= f.number_field :toeic %>
                 </div>
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <%= f.submit "Save", :class => "btn btn-primary" %>
+          <button type="button" class="btn btn-default" data-dismiss="modal">戻る</button>
+          <%= f.submit "保存する", :class => "btn btn-primary" %>
         </div>
       </div>
     <% end %>

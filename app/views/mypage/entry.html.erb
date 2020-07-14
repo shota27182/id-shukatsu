@@ -60,5 +60,42 @@
                 <% end %>
             </div>
         <% end %>
+        <% @events.each do |i| %>
+        <div class="mypage-entry">
+            <div class="mypage-entry-main-img">
+                <%=image_tag i.img.to_s  %>
+            </div>
+            <div class="mypage-entry-middle">
+                <div class="mypage-entry-middle-left">
+                    <% Company.joins(:events).where(events:{id:[i.id]}).each do |a| %>
+                    <%=image_tag a.icon.to_s %>
+                    <% end %>
+                </div>
+                <div class="mypage-entry-right">
+                    <%= i.name %>
+                </div>
+            </div>
+            <% EventSchedule.includes(:user_events).where(user_events: {user_id: current_user.id,event_id: i.id }).each do |event_schedule| %>
+            <div class="event-title">
+                <h2><%=event_schedule.title %></h2>
+                <img src="/assets/clock.svg">
+                <p class="entry-date"><%= event_schedule.holding_day.strftime("%m/%d") %><%= %w((日) (月) (火) (水) (木) (金) (土))[event_schedule.holding_day.wday] %></p>
+                <p class="entry-time"><%= event_schedule.start_time.strftime('%H:%M') %> - <%= event_schedule.end_time.strftime('%H:%M') %></p>
+                <img src="/assets/location.svg" class="mypage-entry-img">
+                <p class="entry-location"><%= event_schedule.address + event_schedule.place%></p>
+            </div>
+            <% end %>
+            <div class="entry-change">
+                <%= link_to "日程変更", event_entry_edit_schedule_path(i) ,class: "entry-change-first" %>
+                <%= link_to "キャンセルする", event_entry_cancel_path(i) , class: "entry-change-second" %>
+            </div>
+        </div>
+        <% end %>
+        <div class="">
+            
+        </div>
     </div>
+</div>
+<div class="profile-container">
+    <a href="/mypage" class="green-button"><  マイページに戻る</a>
 </div>

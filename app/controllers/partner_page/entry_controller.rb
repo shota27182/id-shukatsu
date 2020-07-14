@@ -1,4 +1,5 @@
 class PartnerPage::EntryController < ApplicationController
+  before_action :logged_in_company
   layout 'application4.html.erb'
   def new
     @event = current_company.events.build
@@ -9,7 +10,6 @@ class PartnerPage::EntryController < ApplicationController
   def create
     @event = current_company.events.build(event_params)
     if @event.save
-      CompanyEvent.create(company_id: current_company.id,event_id: @event.id)
       @event.update(category: 1)
       redirect_to "/partner_page/event"
     else

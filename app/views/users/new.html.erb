@@ -5,26 +5,42 @@
         <p>ID就活に会員登録すると、全ての選考対策コンテンツが無料で見放題！</p>
         <p>会員限定の特別イベントや選考のご招待をお届けします</p>
     </div>
+    
   <%= form_with model: @user, method: :post, url: signup_path, local: true do |f| %>
           <div class="form-detail"> 
             <p>名前</p>
             <%=f.text_field :name, class: "form-field"  %>
+            <% if @user.errors.include?(:name) %>
+            <p style="color: red;"><%= @user.errors.full_messages_for(:name).first %>
+            <% end %>
           </div>
           <div class="form-detail"> 
             <p>フリガナ</p>
             <%=f.text_field :kana, class: "form-field"  %>
+            <% if @user.errors.include?(:name) %>
+            <p style="color: red;"><%= @user.errors.full_messages_for(:kana).first %>
+            <% end %>
           </div>
           <div class="form-detail">
             <p>メールアドレス</p>
             <%=f.email_field :email, class: "form-field" %>
+            <% if @user.errors.include?(:email) %>
+            <p style="color: red;"><%= @user.errors.full_messages_for(:email).first %>
+            <% end %>
           </div>
           <div class="form-detail">
             <p>パスワード</p>
             <%=f.password_field :password, class: "form-field"  %>
+            <% if @user.errors.include?(:password) %>
+            <p style="color: red;"><%= @user.errors.full_messages_for(:password).first %>
+            <% end %>
           </div>
           <div class="form-detail">
             <p>もう一度パスワードを入力してください</p>
             <%= f.password_field :password_confirmation, class: "form-field" %>
+            <% if @user.errors.include?(:password_confirmation) %>
+            <p style="color: red;"><%= @user.errors.full_messages_for(:password_confirmation).first %>
+            <% end %>
           </div>
           <%=f.submit "確認メールを送信する", class: "form-submit" %>
   <% end %>

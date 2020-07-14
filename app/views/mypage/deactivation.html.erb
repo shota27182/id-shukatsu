@@ -1,0 +1,32 @@
+<div class="sign-up">
+    <div class="form-heading">退会手続き</div>
+    <div class="form-explaration">
+        <p>お客様が登録したアカウント情報やお気に入りした企業の情報、エントリー情報は削除されます。アカウントは数分以内に削除され利用できなくなりますが、メールの配信解除には数日かかる場合があります。</p>
+        <p class="profile-promise">※学生にとって不利益になる情報を企業にリークしたり、公開することは一切ありません。詳しくはプライバシーポリシーをご覧ください。</p>
+    </div>
+    <%= form_with model: @user_deactivation, method: :post, url: mypage_general_path, local: true do |f| %>
+      <div class="general-profile">
+        <div class="general-title">退会理由について</div>
+        <%= f.collection_radio_buttons :leave_reason, UserDeactivation.leave_reasons, :first, :first do |b| %>
+        <%= b.radio_button %>
+        <%= b.text %><br>
+        <% end %>
+          <div class="form-detail">
+             <%= f.text_field :other_reason,placeholder: '「その他」を選んだ方は入力してください。', required: true ,class:"form-field"%>
+          </div>
+      </div>
+</div>
+<div class="sign-up">
+      <div class="general-profile">
+        <div class="general-title">改善点について</div>
+        <%= f.collection_radio_buttons :improve_point, UserDeactivation.improve_points, :first, :first do |b| %>
+        <%= b.radio_button %>
+        <%= b.text %><br>
+        <% end %>
+          <div class="form-detail">
+             <%= f.text_field :other_point,placeholder: '「その他」を選んだ方は入力してください。', required: true ,class:"form-field"%>
+          </div>
+      </div>
+      <%= f.submit "次のステップへ進む", class: "form-submit" %>
+    <% end %>
+</div>

@@ -10,13 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_01_014506) do
+ActiveRecord::Schema.define(version: 2020_07_13_125302) do
 
   create_table "basics", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_basics_on_user_id"
+  end
+
+  create_table "cancel_users", force: :cascade do |t|
+    t.integer "user"
+    t.integer "event"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "companies", force: :cascade do |t|
@@ -34,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_014506) do
     t.string "remember_digest"
     t.string "icon"
     t.string "address"
+    t.string "kana"
   end
 
   create_table "company_company_features", force: :cascade do |t|
@@ -61,15 +69,6 @@ ActiveRecord::Schema.define(version: 2020_07_01_014506) do
     t.integer "company_id"
     t.index ["company_id"], name: "index_company_company_scales_on_company_id"
     t.index ["company_scale_id"], name: "index_company_company_scales_on_company_scale_id"
-  end
-
-  create_table "company_events", force: :cascade do |t|
-    t.integer "company_id"
-    t.integer "event_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["company_id"], name: "index_company_events_on_company_id"
-    t.index ["event_id"], name: "index_company_events_on_event_id"
   end
 
   create_table "company_features", force: :cascade do |t|
@@ -180,6 +179,15 @@ ActiveRecord::Schema.define(version: 2020_07_01_014506) do
     t.index ["user_id"], name: "index_educations_on_user_id"
   end
 
+  create_table "event_histories", force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_histories_on_event_id"
+    t.index ["user_id"], name: "index_event_histories_on_user_id"
+  end
+
   create_table "event_profiles", force: :cascade do |t|
     t.integer "event_id"
     t.string "title"
@@ -213,6 +221,8 @@ ActiveRecord::Schema.define(version: 2020_07_01_014506) do
     t.text "point"
     t.text "flow"
     t.integer "category"
+    t.integer "company_id"
+    t.index ["company_id"], name: "index_events_on_company_id"
   end
 
   create_table "faculties", force: :cascade do |t|
@@ -289,7 +299,6 @@ ActiveRecord::Schema.define(version: 2020_07_01_014506) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.integer "event_schedule_id"
     t.integer "user_id"
     t.string "title"
     t.text "content"
@@ -298,7 +307,6 @@ ActiveRecord::Schema.define(version: 2020_07_01_014506) do
     t.string "action"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["event_schedule_id"], name: "index_notifications_on_event_schedule_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
@@ -327,6 +335,16 @@ ActiveRecord::Schema.define(version: 2020_07_01_014506) do
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_user_companies_on_company_id"
     t.index ["user_id"], name: "index_user_companies_on_user_id"
+  end
+
+  create_table "user_deactivations", force: :cascade do |t|
+    t.integer "user"
+    t.integer "leave_reason"
+    t.text "other_reason"
+    t.integer "improve_point"
+    t.text "other_point"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_eikens", force: :cascade do |t|
@@ -382,6 +400,15 @@ ActiveRecord::Schema.define(version: 2020_07_01_014506) do
     t.datetime "updated_at", null: false
     t.index ["programming_id"], name: "index_user_programmings_on_programming_id"
     t.index ["user_id"], name: "index_user_programmings_on_user_id"
+  end
+
+  create_table "user_receives", force: :cascade do |t|
+    t.integer "magazine"
+    t.integer "scout"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_user_receives_on_user_id"
   end
 
   create_table "user_toefls", force: :cascade do |t|

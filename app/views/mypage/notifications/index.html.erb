@@ -1,0 +1,18 @@
+<div class="profile-container profile-top">
+    <a href="/mypage" class="profile-mypage-link"><マイページに戻る</a>
+    <h2>お知らせ</h2>
+    
+    <div class="profile-form">
+        <div class="profile-companies">
+            <% @notifications.each do |i| %>
+            <div class="profile-notification-index">
+                <p><%= i.start_on.strftime("%Y/%m/%d") %></p>
+                <a><%= i.title %></a>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+<div class="profile-container">
+    <a href="/mypage" class="green-button"><  マイページに戻る</a>
+</div>

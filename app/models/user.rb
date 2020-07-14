@@ -20,8 +20,8 @@ class User < ApplicationRecord
     has_many :work_areas, through: :wish_work_areas
     has_one :general, dependent: :destroy
     has_one :education, dependent: :destroy
-    has_many :events, through: :user_events
     has_many :user_events, dependent: :destroy
+    has_many :events, through: :user_events
     has_many :user_programmings, dependent: :destroy
     has_many :programmings, through: :user_programmings
     has_one :user_eiken, dependent: :destroy
@@ -33,6 +33,8 @@ class User < ApplicationRecord
     has_many :user_companies, dependent: :destroy
     has_many :companies, through: :user_companies
     has_many :notifications, dependent: :destroy
+    has_many :event_histories, dependent: :destroy
+    has_one :user_receive, dependent: :destroy
     
     enum status:{
         no_registered: 0,
@@ -55,7 +57,7 @@ class User < ApplicationRecord
         update_attribute(:remember_digest, User.digest(remember_token))
     end
     
-    def authenticated(attribute,token)
+    def authenticated?(attribute,token)
         digest = send("#{attribute}_digest")
         return false if digest.nil?
         BCrypt::Password.new(digest). is_password?(token)
@@ -86,6 +88,31 @@ class User < ApplicationRecord
     
     def password_reset_expired?
         reset_sent_at < 2.hours.ago
+    end
+    
+    def create_notification_event_schedule!(current_user, event_schedule)
+        entry_notification = current_user.notifications.build(
+            action: 'entry_first',
+            start_on: DateTime.current,
+            title: '「' + Event.find_by(id: event_schedule.event_id).name + '」' + 'の申し込みが完了いたしました',
+            content:  'この度は' + '「' + Event.find_by(id: event_schedule.event_id).name + '」' + 'にお申込みいただきありがとうございます。'
+            )
+        entry_second_notification = current_user.notifications.build(
+            action: 'entry_second',
+            start_on: event_schedule.holding_day.to_time.to_datetime - 3,
+            title: '「' + Event.find_by(id: event_schedule.event_id).name + '」' + '3日前前です',
+            content: '「' + Event.find_by(id: event_schedule.event_id).name + '」' + 'まで3日前となりました。今一度場所や持ち物のご確認をお願いいたします。' 
+            )
+        entry_third_notification = current_user.notifications.build(
+            action: 'entry_third',
+            start_on: event_schedule.holding_day.to_time.to_datetime - 1,
+            title: '「' + Event.find_by(id: event_schedule.event_id).name + '」'  + '1日前です',
+            content: '「' + Event.find_by(id: event_schedule.event_id).name + 'まで1日前となりました。今一度場所や持ち物のご確認をお願いいたします。'
+            )
+        entry_notification.save!
+        entry_second_notification.save!
+        entry_third_notification.save!
+        
     end
     
     private

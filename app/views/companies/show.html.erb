@@ -1,5 +1,5 @@
 <div class="container">
-    <a href="/mypage" class="profile-mypage-link"><検索結果に戻る</a>
+    <a href="javascript:history.back()" class="profile-mypage-link"><検索結果に戻る</a>
     <div class="profile-form company-head-form">
         <div class="company-head">
             <div class="company-head-left">
@@ -10,9 +10,9 @@
                 <h2><%= @company.name %></h2>
             </div>
             <div class="company-head-right">
-                <% if logged_in %>
+                <% if logged_in? %>
                     <% if UserCompany.where(user_id: current_user.id,company_id: params[:id]).present? %>
-                    <a href="#">お気に入り登録済み</a>
+                    <%= link_to 'お気に入り登録済み', {controller: "companies", action: "dislike", id: @company.id } ,method: :delete %>
                     <% else %>
                     <%= link_to 'お気に入りに登録する',{controller: "companies", action: "like", id: @company.id }, method: :post %>
                     <% end %>
@@ -49,72 +49,156 @@
         </div>
     </div>
     <div class="company-middle">
-    　　<div class="company-middle-left">
-        　　<div class="company-introduction">
-            　　<div class="company-introduction-title">会社紹介</div>
-            　　<%= simple_format(@company.introduction) %>
-        　　</div>
-        　　<div class="company-introduction">
-            　　<div class="company-introduction-title">募集要項</div>
-            　　<div class="recruit-form">
-                　　<div class="recruit-form-left">
-                    　　<p>募集職種</p>
-                　　</div>
-                　　<div class="recruit-form-right">
-                    　　<%= simple_format(@company.company_requirement.occupation) %>
-                　　</div>
-            　　</div>
-            　　<div class="recruit-form">
-                　　<div class="recruit-form-left">
-                    　　<p>業務内容</p>
-                　　</div>
-                　　<div class="recruit-form-right">
-                    　　<%= simple_format(@company.company_requirement.work) %>
-                　　</div>
-            　　</div>
-            　　<div class="recruit-form">
-                　　<div class="recruit-form-left">
-                    　　<p>応募資格</p>
-                　　</div>
-                　　<div class="recruit-form-right">
-                    　　<%= simple_format(@company.company_requirement.qualification) %>
-                　　</div>
-            　　</div>
-            　　<div class="recruit-form">
-                　　<div class="recruit-form-left">
-                    　　<p>休日・休暇</p>
-                　　</div>
-                　　<div class="recruit-form-right">
-                    　　<%= simple_format(@company.company_requirement.holiday) %>
-                　　</div>
-            　　</div>
-            　　<div class="recruit-form">
-                　　<div class="recruit-form-left">
-                    　　<p>待遇・福利厚生</p>
-                　　</div>
-                　　<div class="recruit-form-right">
-                    　　<%= simple_format(@company.company_requirement.welfare) %>
-                　　</div>
-            　　</div>
-            　　<% @company.company_profiles.each do |b| %>
-            　　<div class="recruit-form">
-                　　<div class="recruit-form-left">
-                    　　<p><%= b.title %></p>
-                　　</div>
-                　　<div class="recruit-form-right">
-                    　　<%= simple_format(b.content) %>
-                　　</div>
-            　　</div>
-            　　<% end %>
-        　　</div>
-    　　</div>
-    　　<div class="company-middle-right">
-        　　<div class="company-information">
-            　　<div class="company-introduction-title">会社情報</div>
-        　　</div>
-        　　<div class="company-event-information">
-        　　    <div class="company-event-head">この企業のイベント情報</div>
-        　　</div>
-    　　</div>
+        <div class="company-middle-left">
+            <div class="company-introduction">
+                <div class="company-introduction-title">会社紹介</div>
+                <%= simple_format(@company.introduction) %>
+            </div>
+            <div class="company-introduction">
+                <div class="company-introduction-title">募集要項</div>
+                <div class="recruit-form">
+                    <div class="recruit-form-left">
+                        <p>募集職種</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <%= simple_format(@company.company_requirement.occupation) %>
+                    </div>
+                </div>
+                <div class="recruit-form">
+                    <div class="recruit-form-left">
+                        <p>業務内容</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <%= simple_format(@company.company_requirement.work) %>
+                    </div>
+                </div>
+                <div class="recruit-form">
+                    <div class="recruit-form-left">
+                        <p>応募資格</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <%= simple_format(@company.company_requirement.qualification) %>
+                    </div>
+                </div>
+                <div class="recruit-form">
+                    <div class="recruit-form-left">
+                        <p>休日・休暇</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <%= simple_format(@company.company_requirement.holiday) %>
+                    </div>
+                </div>
+                <div class="recruit-form">
+                    <div class="recruit-form-left">
+                        <p>待遇・福利厚生</p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <%= simple_format(@company.company_requirement.welfare) %>
+                    </div>
+                </div>
+                <% @company.company_profiles.each do |b| %>
+                <div class="recruit-form">
+                    <div class="recruit-form-left">
+                        <p><%= b.title %></p>
+                    </div>
+                    <div class="recruit-form-right">
+                        <%= simple_format(b.content) %>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+        <div class="company-middle-right">
+            <div class="company-information">
+                <div class="company-introduction-title">会社情報</div>
+                <div class="company-introduction-middle">
+                    <div class="company-introduction-left">
+                        <%= image_tag @company.icon.to_s ,class: 'company-logo'%>
+                    </div>
+                    <div class="company-introduction-right">
+                        <%= @company.name %>
+                    </div>
+                    <div class="company-introduction-left-second">
+                        <img src="/assets/location2.svg">
+                    </div>
+                    <div class="company-middle-right-second">
+                        <%= @company.address %>
+                    </div>
+                    <div class="company-middle-left-second">
+                        <img src="/assets/category.svg">
+                    </div>
+                    <div class="company-middle-right-second">
+                        <%= @company.category %>
+                    </div>
+                    <div class="company-middle-left-second">
+                        <img src="/assets/company-member.svg">
+                    </div>
+                    <div class="company-middle-right-second">
+                        <%= @company.category %>
+                    </div>
+                    <div class="company-middle-left-second">
+                        <img src="/assets/establishment.svg">
+                    </div>
+                    <div class="company-middle-right-second">
+                        <%= @company.category %>
+                    </div>
+                    <div class="company-middle-left-second">
+                        <img src="/assets/company-link.svg"></div>
+                    <div class="company-middle-right-second">
+                        <%= @company.category %>
+                    </div>
+                </div>
+            </div>
+            <div class="company-event-information">
+               <div class="company-event-head">この企業のイベント情報</div>
+               <div class="company-event-middle">
+                   <div class="company-event-title">本選考</div>
+                   <ul class="company-event-links">
+                       <% @company.events.where(category: 1).each do  |i|%>
+                       <li class="company-event-link"><a href="/events/<%= i.id %>"></a>
+                       <div class="company-event-link-left"><%=i.name  %></div>
+                       <div class="company-event-link-right">></div>
+                       </li>
+                       <% end %>
+                    </ul>
+                    <div class="company-event-title">インターン・ジョブ</div>
+                    <ul class="company-event-links">
+                        <% @company.events.where(category: 2).each do  |i| %>
+                        <li class="company-event-link"><a href="/events/<%= i.id %>"></a>
+                        <div class="company-event-link-left"><%=i.name  %></div>
+                        <div class="company-event-link-right">></div>
+                        </li>
+                        <% end %>
+                    </ul>
+                    <div class="company-event-title">説明会・企業���ミナー</div>
+                    <ul class="company-event-links">
+                        <% @company.events.where(category: 3).each do  |i| %>
+                        <li class="company-event-link"><a href="/events/<%= i.id %>"></a>
+                        <div class="company-event-link-left"><%=i.name  %></div>
+                        <div class="company-event-link-right">></div>
+                        </li>
+                        <% end %>
+                    </ul>
+                    <div class="company-event-title">合同説明会・交流会</div>
+                    <ul class="company-event-links">
+                        <% @company.events.where(category: 4).each do  |i| %>
+                        <li class="company-event-link"><a href="/events/<%= i.id %>"></a>
+                        <div class="company-event-link-left"><%=i.name  %></div>
+                        <div class="company-event-link-right">></div>
+                        </li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<script>
+    $(function(){
+    $('.company-event-link').click(function(){
+        location.href=$(this).find('a').attr('href');
+    });
+    
+});
+</script>

@@ -5,7 +5,7 @@ class PartnerUser::SessionsController < ApplicationController
   
   def create
     company = Company.find_by(email: params[:session][:email].downcase)
-    log_in company
+    company_log_in company
     params[:session][:remember_me] == '1' ? remember(company) : forget(company)
     redirect_to '/partner_page/dashboard'
   end

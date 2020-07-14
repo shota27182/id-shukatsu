@@ -4,41 +4,40 @@
             <p>新着企業</p>
         </div>
         <div class="companies">
-            <img src="/assets/Ajinomoto.svg" class="company">
-            <img src="/assets/Ajinomoto.svg" class="company">
-            <img src="/assets/Ajinomoto.svg" class="company">
-            <img src="/assets/Ajinomoto.svg" class="company">
-            <img src="/assets/Ajinomoto.svg" class="company">
-            <img src="/assets/Ajinomoto.svg" class="company">
-            <img src="/assets/Ajinomoto.svg" class="company">
-            <img src="/assets/Ajinomoto.svg" class="company">
-            <img src="/assets/Ajinomoto.svg" class="company">
-            <img src="/assets/Ajinomoto.svg" class="company">
-            <img src="/assets/Ajinomoto.svg" class="company">
-            <img src="/assets/Ajinomoto.svg" class="company">
+            <% Company.all.limit(12).each do |i| %>
+            <%= link_to image_tag(i.icon.to_s, class: "company") , "/companies/#{i.id}" %>
+            <% end %>
         </div>
     </div>
     <div class="top-contents">
-        <% if logged_in %>
+        <% if logged_in? %>
         <div class="profile-wrapper">
             <p><%= current_user.name %>さんのためのトップリンク</p>
             <div class="my-top-links">
+                <% current_user.work_styles.order("RANDOM()").limit(1).each do |i| %>
                 <div class="my-top-link">
                     <img src="/assets/school.svg">
-                    <p>慶應義塾大学</p>
+                    <p><a href="/special_link?work_style=<%= i.id %>"></a><%= i.name %></p>
                 </div>
+                <% end %>
+                <% current_user.welfares.order("RANDOM()").limit(1).each do |i| %>
                 <div class="my-top-link">
                     <img src="/assets/school.svg">
-                    <p>慶應義塾大学</p>
+                    <p><a href="/special_link?welfare=<%= i.id %>"></a><%= i.name %></p>
                 </div>
+                <% end %>
+                <% current_user.company_features.order("RANDOM()").limit(1).each do |i| %>
                 <div class="my-top-link">
                     <img src="/assets/school.svg">
-                    <p>慶應義塾大学</p>
+                    <p><a href="/special_link?company_feature=<%= i.id %>"></a><%= i.name %></p>
                 </div>
+                <% end %>
+                <% current_user.company_points.order("RANDOM()").limit(1).each do |i| %>
                 <div class="my-top-link">
                     <img src="/assets/school.svg">
-                    <p>慶應義塾大学</p>
+                    <p><a href="/special_link?company_point=<%= i.id %>"></a><%= i.name %></p>
                 </div>
+                <% end %>
             </div>
         </div>
         <% else %>
@@ -72,9 +71,26 @@
             <div class="head">
                 <p>最近チェックしたイベント</p>
             </div>
+            <% if logged_in? %>
+            <% EventHistory.where(user_id: current_user.id).order(id: "DESC").limit(1).each do |i| %>
             <div class="event-icon">
-                <img src="/assets/kikikanri.svg">
+                <%=image_tag Event.find_by(id: i.event_id).img.to_s %><a href="/events/<%=i.event_id%>"></a>
             </div>
+            <div class="top-page-event">
+                  <div class="top-page-event-right">
+                 <% Company.joins(:events).where(events:{id:[i.event_id]}).each do |i| %>
+                 <%=image_tag i.icon.to_s %>
+                 <% end %>
+                 </div>
+                 <div class="event-head-title">
+                     <p><%=Company.joins(:events).find_by(events:{id: i.event_id}).name %></p>
+                 </div>
+             </div>
+             <div class="your-watching-event">
+                 <%= Event.find_by(id: i.event_id).name %>
+             </div>
+            <% end %>
+            <% end %>
         </div>
         <div class="announce-wrapper">
             <img src="/assets/campagne1" class="campagne-icon">
@@ -106,7 +122,7 @@
         </div>
         <div class="company-feature-wrapper">
             <div class="head">
-                <p>企業の変わった特徴から探す</p>
+                <p>特徴からイベント・企業を探す</p>
             </div>
             <div class="companies-features">
                 <div class="companies-feature">
@@ -179,22 +195,16 @@
         <div class="browsing-recomended">
             <p>閲覧履歴に基づくおすすめのイベント</p>
             <div class="browsing-recomended-events">
+                <% if logged_in? %>
+                <% EventHistory.where(user_id: current_user.id).order(id: "DESC").limit(1).each do |i| %>
+                <% Event.includes(:company => :industries).where(industries:{id: Company.includes(:events).find_by(events:{id: i.event_id}).industries.pluck(:id)}).limit(4).each do |a| %>
                 <div class="browsing-recomended-event">
-                    <img src="/images/event_top.svg">
-                    <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス</p>
+                    <%= image_tag a.img.to_s %>
+                    <p><%= a.name %></p><a href="/events/<%= a.id %>"></a>
                 </div>
-                <div class="browsing-recomended-event">
-                    <img src="/images/event_top.svg">
-                    <p>【PR業界】危機管理広報とは？コー���レート広報のプロ集団・危機管理と広報/株式会社エイレックス</p>
-                </div>
-                <div class="browsing-recomended-event">
-                    <img src="/images/event_top.svg">
-                    <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス</p>
-                </div>
-                <div class="browsing-recomended-event">
-                    <img src="/images/event_top.svg">
-                    <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス</p>
-                </div>
+                <% end %>
+                <% end %>
+                <% end %>
             </div>
         </div>
         <div class="online-meeting">
@@ -223,3 +233,16 @@
         </div>
     </div>
 </div>
+<script>
+$(function(){
+    $('.my-top-link').click(function(){
+        location.href=$(this).find('a').attr('href');
+    });
+    $('.favorite-event-wrapper').click(function(){
+        location.href=$(this).find('a').attr('href');
+    });
+    $('.browsing-recomended-events').click(function(){
+        location.href=$(this).find('a').attr('href');
+    });
+});
+</script>

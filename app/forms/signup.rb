@@ -3,6 +3,7 @@ class Signup
   include ActiveModel::Attributes
   include ActiveModel::SecurePassword
   extend ActiveModel::Callbacks
+  include ActiveModel::Validations::Callbacks
 
   attr_accessor :remember_token, :activation_token, :reset_token
   attribute :email, :string
@@ -18,10 +19,11 @@ class Signup
             presence: true,
             format: { with: /\A.+@.+\z/ }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-  validates :name,presence: true, length: { maximum: 50 }, allow_blank: true
+  validates :name,presence: true, length: { maximum: 50 }
   validates :password, presence: true, length: { minimum: 6 }, confirmation: { allow_blank: true }
-  validates :kana, presence: true
+  validates :kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/}
   has_secure_password
+  before_validation :email_is_unique
   define_model_callbacks :save
   before_save   :downcase_email
   before_save :create_activation_digest
@@ -83,4 +85,10 @@ class Signup
            self.activation_token = User.new_token
            self.activation_digest = User.digest(activation_token)
        end
+       
+       def email_is_unique 
+        unless User.where(email: email).count == 0 
+          errors.add(:email, 'このメールアドレスは既に使われています') 
+        end 
+       end 
 end

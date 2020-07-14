@@ -14,7 +14,7 @@ class MypageAccountForm
             presence: true,
             format: { with: /\A.+@.+\z/ }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-  validates :password, presence: true, length: { minimum: 6 },allow_nil: true
+  validates :password, presence: true, length: { minimum: 6 }
   has_secure_password
   define_model_callbacks :save
   before_save   :downcase_email
@@ -22,6 +22,7 @@ class MypageAccountForm
   
 
   def save
+    return false if invalid?
     run_callbacks :save do
       return false if invalid?
       user = User.find(user_id)

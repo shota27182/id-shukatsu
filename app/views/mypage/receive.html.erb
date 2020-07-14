@@ -36,7 +36,7 @@
         <div class="profile-title">
            <div class="profile-title-left">受信設定</div>
            <div　class="profile-title-right">
-               <a href="#" class="btn signup">編集する</a>
+               <%= link_to '編集する', mypage_mail_type_path , class: 'btn signup' %>
            </div>
         </div>
         <div class="profile-contexts">
@@ -45,7 +45,7 @@
                     <p>メルマガ受信：</p>
                 </div>
                 <div class="profile-context-right">
-                    <p></p>
+                    <p><%= current_user.user_receive.magazine %></p>
                 </div>
             </div>
             <div class="profile-context">
@@ -53,17 +53,27 @@
                     <p>スカウト受信：</p>
                 </div>
                 <div class="profile-context-right">
-                    <p>サコタリョウヘイ</p>
-                </div>
-            </div>
-            <div class="profile-context">
-                <div class="profile-context-left">
-                    <p>お気に入り企業：</p>
-                </div>
-                <div class="profile-context-right">
-                    <p>サコタリョウヘイ</p>
+                    <p><%= current_user.user_receive.scout %></p>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div class="profile-container">
+    <div class="profile-form">
+        <div class="profile-title">
+           <div class="profile-title-left">その他の設定</div>
+           <div　class="profile-title-right">
+           </div>
+        </div>
+        <div class="profile-contexts">
+            <div class="profile-exit">
+                <%= link_to "＞ ログアウトする" , logout_path, {method: :delete}%>
+                <a href="/mypage/deactivation">＞ 退会手続きをする</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="profile-container">
+    <a href="/mypage" class="green-button"><  マイページに戻る</a>
 </div>

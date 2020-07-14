@@ -23,7 +23,7 @@ class MypageEducationsForm
     
 
   def save
-      raise ActiveRecord::RecordInvalid if invalid?
+      return false if invalid?
       ActiveRecord::Base.transaction do
         user = User.find(user_id)
         if !user.education.present?

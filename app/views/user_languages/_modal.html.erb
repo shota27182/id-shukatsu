@@ -11,18 +11,18 @@
         <div class="programming-title">
             <div class="programming-form">
                 <div class="form-detail form-top">
-                    <p>言語の種類</p>
+                    <p>その他の言語</p>
                     <%= f.select :language, UserLanguage.languages.keys, {prompt: '選択してください'} %>
                 </div>
                 <div class="form-detail form-top">
-                    <p>言語の種類</p>
+                    <p>レベル</p>
                     <%= f.select :level, UserLanguage.levels.keys, {prompt: '選択してください'} %>
                 </div>
             </div>
       </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <%= f.submit "Save", :class => "btn btn-primary" %>
+          <button type="button" class="btn btn-default" data-dismiss="modal">戻る</button>
+          <%= f.submit "保存する", :class => "btn btn-primary" %>
         </div>
       </div>
     <% end %>

@@ -1,5 +1,45 @@
 <header>
-    <div class="container">
+    <div class="container head-id">
+        <div class="l-drawer">
+            <input class="l-drawer__checkbox" id="drawerCheckbox" type="checkbox" >
+            <!-- ドロワーアイコン -->
+            <label class="l-drawer__icon" for="drawerCheckbox">
+              <span class="l-drawer__icon-parts"></span>
+            </label>
+            <!-- 背景を暗く -->
+            <label class="l-drawer__overlay" for="drawerCheckbox"></label>
+            <!-- ドロワーメニュー -->
+            <nav class="l-drawer__menu">
+                <ul>
+                  <% unless logged_in? %>
+                    <li class="slide-search">
+                      <a href="/login" class="menu-btn sm-login">ログイン</a>
+                      <a href="/users/sign_up" class="menu-btn signup">会員登録</a>
+                    </li>
+                  <% end %>
+                  <% if logged_in? %>
+                    <li class="slide-top">
+                      <a href="/mypage">マイページ</a>
+                    </li>
+                    <li class="slide-top">
+                      <a class="" href="/mypage/notifications">重要なお知らせ</a>
+                    </li>
+                  <% end %>
+                    <li class="slide-top">
+                      <a class="" href="/special_link">ID検索</a>
+                    </li>
+                    <li class="slide-top">
+                      <a href="/events">イベント情報一覧</a>
+                    </li>
+                    <li class="slide-top">
+                      <a href="/companies">認定企業一覧</a>
+                    </li>
+                    <li class="slide-top">
+                      <a href="/articles">特集記事</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
         <div class="header-left">
             <%=link_to image_tag("logo.svg", class:"logo"), root_path %>
         </div>
@@ -7,13 +47,33 @@
             <p>楽しく自由に就職活動する時代へ</p>
         </div>
         <div class="header-right">
-            <% if logged_in %>
-              <%=link_to image_tag('alart.svg'), mypage_notification_path,{class:"header-image-right"} %>
+            <% if logged_in? %>
+              <%=link_to image_tag('alart.svg'), '/mypage/notifications',{class:"header-image-right"} %>
               <%=link_to image_tag('mypage.svg'), mypage_path  %>
             <% else %>
               <a href="/login" class="btn login">ログイン</a>
-              <a href="/users/sign_up" class="btn signup">会員登録</a>
+              <a href="/users/sign_up" class="btn signup pc-version">会員登録</a>
             <% end %>
         </div>
     </div>
 </header>
+<script>
+    (function() {
+    var $body   = $('body');
+    var $btn   = $('.toggle_btn');
+    var $mask  = $('#mask');
+    var open   = 'open'; // class
+    // menu open close
+    $btn.on( 'click', function() {
+      if ( $body.hasClass( open ) ) {
+        $body.removeClass( open );
+      } else {
+        $body.addClass( open );
+      }
+    });
+    // mask close
+    $mask.on('click', function() {
+      $body.removeClass( open );
+    });
+} )
+</script>

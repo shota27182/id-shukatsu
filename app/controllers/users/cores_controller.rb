@@ -1,5 +1,5 @@
 class Users::CoresController < ApplicationController
-  before_action :logged_in_user
+  before_action :basic_registered_user
   layout 'application2.html.erb'
   
   def index

@@ -1,10 +1,10 @@
 class Mypage::GeneralController < ApplicationController
-    before_action :logged_in_user
+    before_action :core_registered_user
     def index
         user = User.find(current_user.id)
         general = user.general
         if general.present?
-            @mypage_generals_form = MypageGeneralsForm.new(name: user.name, address1: general.address1, address2: general.address2, building_name: general.building_name,tel: general.tel,birthday: general.birthday)
+            @mypage_generals_form = MypageGeneralsForm.new(kana: user.kana, sex: general.sex,name: user.name, address1: general.address1, address2: general.address2, building_name: general.building_name,tel: general.tel,birthday: general.birthday)
         else
             @mypage_generals_form = MypageGeneralsForm.new(name: user.name)
         end
@@ -22,7 +22,7 @@ class Mypage::GeneralController < ApplicationController
     private
       
       def mypage_generals_form_params
-          params.require(:mypage_generals_form).permit(:name,:birthday,:tel,:address1,:address2,:building_name).merge(user_id: current_user.id)
+          params.require(:mypage_generals_form).permit(:kana, :sex, :name,:birthday,:tel,:address1,:address2,:building_name).merge(user_id: current_user.id)
       end
       
       def birthday_join

@@ -1,0 +1,34 @@
+<div class="event-entry-title">
+    <h2>キャンセル内容の確認</h2>
+</div>
+<div class="event-schedule-title">
+    <div class="event-schedule-image">
+        <%= image_tag @event.img.to_s %>
+    </div>
+    <div class="event-schedule-head">
+        <div class="event-schedule-head-left">
+            <% Company.joins(:events).where(events:{id:[@event.id]}).each do |i| %>
+            <%=image_tag i.icon.to_s %>
+            <% end %>
+        </div>
+        <div class="event-schedule-head-right">
+            <p><%= @event.name %></p>
+        </div>
+    </div>
+</div>
+<div class="event-schedule-title schedule-top">
+    <% EventSchedule.includes(:user_events).where(user_events: {user_id: current_user.id,event_id: @event.id }).each do |event_schedule| %>
+    <h2><%=event_schedule.title %></h2>
+    <div class="event-schedule">
+        <img src="/assets/clock.svg">
+        <p class="entry-date"><%= event_schedule.holding_day.strftime("%m/%d") %><%= %w((日) (月) (火) (水) (木) (金) (土))[event_schedule.holding_day.wday] %></p>
+        <p class="entry-time"><%= event_schedule.start_time.strftime('%H:%M') %> - <%= event_schedule.end_time.strftime('%H:%M') %></p>
+        <img src="/assets/location.svg">
+        <p class="entry-location"><%= event_schedule.address + event_schedule.place%></p>
+    </div>
+    <% end %>
+</div>
+<div class="event-schedule-bottom">
+    <a href="javascript:history.back()" class="event-schedule-bottom-left"> 戻る</a>
+    <%= link_to 'キャンセルを完了する',"/events/#{@event.id}/entry/cancel",method: :delete,class:'event-schedule-bottom-right' %>
+</div>

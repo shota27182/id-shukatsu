@@ -30,7 +30,7 @@
             </div>
             <ul class="partner-menu-lists section guu">
                 <li class="partner-menu-list">
-                    <a href="#">> <span>本選考</span></a>
+                    <a href="/partner_page/event">> <span>本選考</span></a>
                 </li>
                 <li class="partner-menu-list">
                     <a>> <span>ジョブ・インターン</span></a>
@@ -47,7 +47,7 @@
             </div>
             <ul class="partner-menu-lists section nuu">
                 <li class="partner-menu-list">
-                    <a href="#">> <span>本選考</span></a>
+                    <a href="/partner_page/profile">> <span>本選考</span></a>
                 </li>
                 <li class="partner-menu-list">
                     <a>> <span>ジョブ・インターン</span></a>
@@ -97,156 +97,104 @@
         <div class="dashboard-situation">
             <h3>エントリー状況</h3>
             <h4>本選考</h4>
+            <% current_company.events.where(category:1).each do |i| %>
             <div class="entry-situation">
                 <div class="dashboard-title">
-                    <h4>イベントタイトル</h4>
-                    <div class="event-title">
-                        <img src="/assets/clock.svg">
-                        <p class="entry-date">4/14(月)</p>
-                        <p class="entry-time">16:00 - 18:00</p>
-                        <img src="/assets/location.svg">
-                        <p class="entry-location">東京都渋谷区千駄ヶ谷４丁目１９ー１</p>
-                    </div>
+                    <h4><%= i.name %></h4>
                 </div>
                 <div class="entry-people">
                     <div class="entry-person">
                         <h6>本日のエントリー数</h6>
-                        <h2 class="entry-color">2<span>名</span></h2>
+                        <h2 class="entry-color"><%= UserEvent.where(event_id: i.id).where("created_at >= ?", Time.current.beginning_of_day).count %><span>名</span></h2>
                     </div>
                     <div class="entry-person">
                         <h6>本日のキャンセル数</h6>
-                        <h2 class="cancel-color">2<span>名</span></h2>
+                        <h2 class="cancel-color"><%= CancelUser.where(event: i.id).where("created_at >= ?", Time.current.beginning_of_day).count %><span>名</span></h2>
                     </div>
                     <div class="entry-person">
                         <h6>総エントリー数</h6>
-                        <h2 class="entry-color">32<span>名</span></h2>
+                        <h2 class="entry-color"><%= UserEvent.where(event_id: i.id).count + CancelUser.where(event: i.id).count %><span>名</span></h2>
                     </div>
                     <div class="entry-person">
                         <h6>総キャンセル数</h6>
-                        <h2 class="cancel-color">2<span>名</span></h2>
+                        <h2 class="cancel-color"><%= CancelUser.where(event: i.id).count %><span>名</span></h2>
                     </div>
                     <div class="entry-blank">
                     
                     </div>
                     <div class="entry-person">
                         <h6>参加予定数</h6>
-                        <h2 class="entry-color">2<span>名</span></h2>
+                        <h2 class="entry-color"><%= UserEvent.where(event_id: i.id).count %><span>名</span></h2>
                     </div>
                 </div>
             </div>
-            <div class="entry-situation">
-                <div class="dashboard-title">
-                    <h4>イベントタイトル</h4>
-                    <div class="event-title">
-                        <img src="/assets/clock.svg">
-                        <p class="entry-date">4/14(月)</p>
-                        <p class="entry-time">16:00 - 18:00</p>
-                        <img src="/assets/location.svg">
-                        <p class="entry-location">東京都渋谷区千駄ヶ谷４丁目１９ー１</p>
-                    </div>
-                </div>
-                <div class="entry-people">
-                    <div class="entry-person">
-                        <h6>本日のエントリー数</h6>
-                        <h2 class="entry-color">2<span>名</span></h2>
-                    </div>
-                    <div class="entry-person">
-                        <h6>本日のキャンセル数</h6>
-                        <h2 class="cancel-color">2<span>名</span></h2>
-                    </div>
-                    <div class="entry-person">
-                        <h6>総エントリー数</h6>
-                        <h2 class="entry-color">32<span>名</span></h2>
-                    </div>
-                    <div class="entry-person">
-                        <h6>総キャンセル数</h6>
-                        <h2 class="cancel-color">2<span>名</span></h2>
-                    </div>
-                    <div class="entry-blank">
-                    
-                    </div>
-                    <div class="entry-person">
-                        <h6>参加予定数</h6>
-                        <h2 class="entry-color">2<span>名</span></h2>
-                    </div>
-                </div>
-            </div>
+            <% end %>
             <h4>インターン・ジョブ</h4>
+            <% current_company.events.where(category:2).each do |i| %>
             <div class="entry-situation">
                 <div class="dashboard-title">
-                    <h4>イベントタイトル</h4>
-                    <div class="event-title">
-                        <img src="/assets/clock.svg">
-                        <p class="entry-date">4/14(月)</p>
-                        <p class="entry-time">16:00 - 18:00</p>
-                        <img src="/assets/location.svg">
-                        <p class="entry-location">東京都渋谷区千駄ヶ谷４丁目１９ー１</p>
-                    </div>
+                    <h4><%= i.name %></h4>
                 </div>
                 <div class="entry-people">
                     <div class="entry-person">
                         <h6>本日のエントリー数</h6>
-                        <h2 class="entry-color">2<span>名</span></h2>
+                        <h2 class="entry-color"><%= UserEvent.where(event_id: i.id).where("created_at >= ?", Time.current.beginning_of_day).count %><span>名</span></h2>
                     </div>
                     <div class="entry-person">
                         <h6>本日のキャンセル数</h6>
-                        <h2 class="cancel-color">2<span>名</span></h2>
+                        <h2 class="cancel-color"><%= CancelUser.where(event: i.id).where("created_at >= ?", Time.current.beginning_of_day).count %><span>名</span></h2>
                     </div>
                     <div class="entry-person">
                         <h6>総エントリー数</h6>
-                        <h2 class="entry-color">32<span>名</span></h2>
+                        <h2 class="entry-color"><%= UserEvent.where(event_id: i.id).count + CancelUser.where(event: i.id).count %><span>名</span></h2>
                     </div>
                     <div class="entry-person">
                         <h6>総キャンセル数</h6>
-                        <h2 class="cancel-color">2<span>名</span></h2>
+                        <h2 class="cancel-color"><%= CancelUser.where(event: i.id).count %><span>名</span></h2>
                     </div>
                     <div class="entry-blank">
-                        
+                    
                     </div>
                     <div class="entry-person">
                         <h6>参加予定数</h6>
-                        <h2 class="entry-color">2<span>名</span></h2>
+                        <h2 class="entry-color"><%= UserEvent.where(event_id: i.id).count %><span>名</span></h2>
                     </div>
                 </div>
             </div>
+            <% end %>
             <h4>説明会・企業セミナー</h4>
+            <% current_company.events.where(category:3).each do |i| %>
             <div class="entry-situation">
                 <div class="dashboard-title">
-                    <h4>イベントタイトル</h4>
-                    <div class="event-title">
-                        <img src="/assets/clock.svg">
-                        <p class="entry-date">4/14(月)</p>
-                        <p class="entry-time">16:00 - 18:00</p>
-                        <img src="/assets/location.svg">
-                        <p class="entry-location">東京都渋谷区千駄ヶ谷４丁目１９ー１</p>
-                    </div>
+                    <h4><%= i.name %></h4>
                 </div>
                 <div class="entry-people">
                     <div class="entry-person">
                         <h6>本日のエントリー数</h6>
-                        <h2 class="entry-color">2<span>名</span></h2>
+                        <h2 class="entry-color"><%= UserEvent.where(event_id: i.id).where("created_at >= ?", Time.current.beginning_of_day).count %><span>名</span></h2>
                     </div>
                     <div class="entry-person">
                         <h6>本日のキャンセル数</h6>
-                        <h2 class="cancel-color">2<span>名</span></h2>
+                        <h2 class="cancel-color"><%= CancelUser.where(event: i.id).where("created_at >= ?", Time.current.beginning_of_day).count %><span>名</span></h2>
                     </div>
                     <div class="entry-person">
                         <h6>総エントリー数</h6>
-                        <h2 class="entry-color">32<span>名</span></h2>
+                        <h2 class="entry-color"><%= UserEvent.where(event_id: i.id).count + CancelUser.where(event: i.id).count %><span>名</span></h2>
                     </div>
                     <div class="entry-person">
                         <h6>総キャンセル数</h6>
-                        <h2 class="cancel-color">2<span>名</span></h2>
+                        <h2 class="cancel-color"><%= CancelUser.where(event: i.id).count %><span>名</span></h2>
                     </div>
                     <div class="entry-blank">
-                        
+                    
                     </div>
                     <div class="entry-person">
                         <h6>参加予定数</h6>
-                        <h2 class="entry-color">2<span>名</span></h2>
+                        <h2 class="entry-color"><%= UserEvent.where(event_id: i.id).count %><span>名</span></h2>
                     </div>
                 </div>
             </div>
+            <% end %>
         </div>
     </div>
 </div>

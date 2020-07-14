@@ -1,5 +1,6 @@
 class PartnerPageController < ApplicationController
   layout 'application4.html.erb'
+  before_action :logged_in_company
   
   def index
   end

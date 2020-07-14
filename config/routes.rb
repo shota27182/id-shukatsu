@@ -2,8 +2,13 @@ Rails.application.routes.draw do
 
 
   
+  get 'edit_mail/index'
+  get 'admin_user/index'
   namespace :mypage do
-    get 'notification/index'
+    get 'deactivation/index'
+  end
+  namespace :mypage do
+    get 'edit_favorite/index'
   end
   get 'articles/show'
 
@@ -35,6 +40,7 @@ Rails.application.routes.draw do
   get 'mypage/skill', to: 'mypage#skill'
   get 'mypage/receive', to: 'mypage#receive'
   get 'mypage/favorite', to: 'mypage#favorite'
+  get 'mypage/edit_favorite', to: 'mypage#edit_favorite'
   get 'mypage/entry' , to: 'mypage#entry'
   get 'articles', to: 'articles#index'
   get 'partner_page/dashboard', to: 'partner_page#index'
@@ -72,16 +78,22 @@ Rails.application.routes.draw do
     resources :mentarity, only: [:create]
     get 'account', to:'account#index'
     resources :account, only: [:create]
-    get 'notification', to:'notification#index'
-    resources :notification, only: [:show]
+    get 'notifications', to: 'notifications#index'
+    resources :notifications, only: [:show]
+    get 'deactivation', to: 'deactivation#index'
+    resources :deactivation, only: [:create]
+    get 'mail_type', to: 'mail_type#index'
+    resources :mail_type, only: [:create]
   end
   
   namespace :partner_page do
     get 'apply', to: 'apply#index' 
     get 'event', to: 'event#index'
-    resources :entry, only: [:new, :create, :edit, :update]
-    resources :internship, only: [:new, :create,:edit, :update]
-    resources :seminar, only: [:new, :create, :edit, :update]
+    resources :events, only: [:edit]
+    put 'events/:id', to: 'events#update', as: 'update_event'
+    resources :entry, only: [:new, :create]
+    resources :internship, only: [:new, :create]
+    resources :seminar, only: [:new, :create]
     get 'edit_general', to: 'edit_general#index'
     resources :edit_general, only: [:create]
     get 'edit_unique', to: 'edit_unique#index'
@@ -95,17 +107,27 @@ Rails.application.routes.draw do
     post 'login', to: 'sessions#create'
   end
   
+  namespace :admin_page do
+    resources :companies , only: [:new, :create, :edit, :update]
+  end
+  
   get '/companies', to: 'companies#index'
   get 'companies/:id', to: 'companies#show'
   post '/companies/:id/like', to: 'companies#like'
-  get 'companies/search'
+  delete '/companies/:id/dislike', to: 'companies#dislike'
+  delete '/companies/:id/unfavorite', to: 'companies#unfavorite'
   get '/events', to: 'events#index'
   get 'events/:id', to: 'events#show'
   get 'special_link', to: 'special_link#index'
+  get 'search' , to: 'search#index'
   
   resources :events do
     resources :entry, only: [:new, :create]
     get 'entry/complete'
+    get 'entry/edit_schedule'
+    get 'entry/cancel'
+    delete 'entry/cancel', to: 'entry#destroy'
+    get 'entry/complete_cancel'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

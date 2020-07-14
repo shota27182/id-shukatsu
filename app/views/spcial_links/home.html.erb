@@ -11,18 +11,9 @@
                     <p>業界</p>
                 </div>
                 <div class="search-category-item">
-                    <% if params[:industry] %>
-                        <% @industries.each do |i| %>
-                            <%= check_box_tag :industry, i.id , @IndustriesSearch.include?(i.id), class:"category"%>
-                            <%= label_tag i.name %><br>
-                        <% end %>
-                    <% else %>
-                        <% @industries.each do |i| %>
-                            <%= check_box_tag :industry, i.id ,checked = false, class:"category"%>
-                            <%= label_tag i.name %><br>
-                        <% end %>
-                    <% end %>
-                </div>
+                <% @industries.each do |i| %>
+                    <%= link_to i.name, special_link_path(industry: i.id) %>
+                <% end %>
                 <div class="search-category-title">
                     <p>地域</p>
                 </div>

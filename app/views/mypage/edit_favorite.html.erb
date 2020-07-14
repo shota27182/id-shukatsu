@@ -1,0 +1,35 @@
+<div class="profile-container profile-top">
+    <a href="/mypage" class="profile-mypage-link"><マイページに戻る</a>
+    <h2>お気に入り企業</h2>
+    <p>ID就活では入力した志望情報を元におすすめの企業、イベント情報をお伝えいたします。</p>
+    <p>※企業が個人の志望情報を特定することはありません。(詳しくは<a href="#">こちら</a>)</p>
+    
+    <div class="profile-form">
+        <div class="profile-title">
+           <div class="profile-title-left">登録済み</div>
+           <div　class="profile-title-right">
+           </div>
+        </div>
+        <div class="profile-companies">
+            <% unless current_user.user_companies.present? %>
+            <div class="profile-none-company">
+                お気に入り企業は登録されていません
+            </div>
+            <% end %>
+            <% current_user.companies.each do |i| %>
+            <div class="profile-company">
+                <div class="profile-company-left">
+                    <%= image_tag i.icon.to_s %>
+                </div>
+                <div class="profile-company-middle">
+                    <p><% i.industries.limit(2).each do |b|%><span><%= b.name %> </span><% end %></p>
+                    <%= link_to i.name,"/companies/#{i.id}" %>
+                </div>
+                <div class="profile-company-delete">
+                    <%= link_to '削除', "/companies/#{i.id}/unfavorite" ,method: :delete %>
+                </div>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>

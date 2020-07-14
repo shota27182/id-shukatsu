@@ -1,6 +1,6 @@
 <div class="partner-contents">
     <div class="partner-menus">
-        <div class="partner-menu partner-change">
+        <div class="partner-menu">
             <a href="/partner_page/dashboard">ダッシュボード</a>
         </div>
         <div class="partner-menu">
@@ -24,13 +24,13 @@
             </ul>
         </div>
         <div class="partner-menu">
-            <div class="partner-menu-item secList" id="guu">
+            <div class="partner-menu-item secList partner-change" id="guu">
                 <p>求人管理</p>
                 <img src="/assets/partner_bar.svg">
             </div>
-            <ul class="partner-menu-lists section guu">
+            <ul class="partner-menu-lists guu">
                 <li class="partner-menu-list">
-                    <a href="/partner_page/event">> <span>本選考</span></a>
+                    <a href="/partner_page/event">> 本選考</a>
                 </li>
                 <li class="partner-menu-list">
                     <a>> <span>ジョブ・インターン</span></a>
@@ -97,121 +97,70 @@
         <div class="dashboard-situation">
             <div class="partner-profile-title">
                 <p>本選考</p>
-                <a href="/partner_page/entry/new">編集する　　></a>
+                <a href="/partner_page/entry/new">新規作成する　　></a>
             </div>
             <div class="partner-event-entries">
+                <% current_company.events.where(category:1).each do |i| %>
                 <div class="partner-event-entry">
                     <div class="partner-event-entry-title">
-                        <p>最終更新日：2019/09/30</p>
-                        <a>編集する</a>
+                        <p>最終更新日：<%= i.updated_at.strftime("%Y/%m/%d") %></p>
+                        <%= link_to '編集する', edit_partner_page_event_path(i) %>
                     </div>
                     <div class="partner-event-entry-body">
-                        <h4>本選考のタイトルをここに書く</h4>
-                        <div class="event-title">
-                            <img src="/assets/clock.svg">
-                            <p class="entry-date">4/14(月)</p>
-                            <p class="entry-time">16:00 - 18:00</p><br>
-                            <img src="/assets/location.svg">
-                            <p class="entry-location">東京都渋谷区千駄ヶ谷４丁目１９ー１</p>
-                        </div>
+                        <h4><%= i.name %></h4>
                     </div>
                     <div class="partner-event-entry-bottom">
-                        <p>現在応募人数：<span>58</span>人</p>
+                        <p>現在応募人数：<span><%= UserEvent.where(event_id: i.id).count %></span>人</p>
                         <a href="#">応募者一覧  ></a>
                     </div>
                 </div>
-                <div class="partner-event-entry">
-                    <div class="partner-event-entry-title">
-                        <p>最終更新日：2019/09/30</p>
-                        <a>編集する</a>
-                    </div>
-                    <div class="partner-event-entry-body">
-                        <h4>本選考のタイトルをここに書く</h4>
-                        <div class="event-title">
-                            <img src="/assets/clock.svg">
-                            <p class="entry-date">4/14(月)</p>
-                            <p class="entry-time">16:00 - 18:00</p><br>
-                            <img src="/assets/location.svg">
-                            <p class="entry-location">東京都渋谷区千駄ヶ谷４丁目１９ー１</p>
-                        </div>
-                    </div>
-                    <div class="partner-event-entry-bottom">
-                        <p>現在応募人数：<span>58</span>人</p>
-                        <a href="#">応募者一覧  ></a>
-                    </div>
-                </div>
-                <div class="partner-event-entry">
-                    <div class="partner-event-entry-title">
-                        <p>最終更新日：2019/09/30</p>
-                        <a>編集する</a>
-                    </div>
-                    <div class="partner-event-entry-body">
-                        <h4>本選考のタイトルをここに書く</h4>
-                        <div class="event-title">
-                            <img src="/assets/clock.svg">
-                            <p class="entry-date">4/14(月)</p>
-                            <p class="entry-time">16:00 - 18:00</p><br>
-                            <img src="/assets/location.svg">
-                            <p class="entry-location">東京都渋谷区千駄ヶ谷４丁目１９ー１</p>
-                        </div>
-                    </div>
-                    <div class="partner-event-entry-bottom">
-                        <p>現在応募人数：<span>58</span>人</p>
-                        <a href="#">応募者一覧  ></a>
-                    </div>
-                </div>
-                <div class="partner-event-entry">
-                    <div class="partner-event-entry-title">
-                        <p>最終更新日：2019/09/30</p>
-                        <a>編集する</a>
-                    </div>
-                    <div class="partner-event-entry-body">
-                        <h4>本選考のタイトルをここに書く</h4>
-                        <div class="event-title">
-                            <img src="/assets/clock.svg">
-                            <p class="entry-date">4/14(月)</p>
-                            <p class="entry-time">16:00 - 18:00</p><br>
-                            <img src="/assets/location.svg">
-                            <p class="entry-location">東京都渋谷区千駄ヶ谷４丁目１９ー１</p>
-                        </div>
-                    </div>
-                    <div class="partner-event-entry-bottom">
-                        <p>現在応募人数：<span>58</span>人</p>
-                        <a href="#">応募者一覧  ></a>
-                    </div>
-                </div>
-                <div class="partner-event-entry">
-                    <div class="partner-event-entry-title">
-                        <p>最終更新日：2019/09/30</p>
-                        <a>編集する</a>
-                    </div>
-                    <div class="partner-event-entry-body">
-                        <h4>本選考のタイトルをここに書く</h4>
-                        <div class="event-title">
-                            <img src="/assets/clock.svg">
-                            <p class="entry-date">4/14(月)</p>
-                            <p class="entry-time">16:00 - 18:00</p><br>
-                            <img src="/assets/location.svg">
-                            <p class="entry-location">東京都渋谷区千駄ヶ谷４丁目１９ー１</p>
-                        </div>
-                    </div>
-                    <div class="partner-event-entry-bottom">
-                        <p>現在応募人数：<span>58</span>人</p>
-                        <a href="#">応募者一覧  ></a>
-                    </div>
-                </div>
+                <% end %>
             </div>
         </div>
         <div class="dashboard-situation">
-            <h3>ジョブ・インターン</h3>
+            <div class="partner-profile-title">
+                <p>ジョブ・インターン</p>
+                <a href="/partner_page/internship/new">新規作成する　　></a>
+            </div>
             <div class="partner-event-entries">
-                
+                <% current_company.events.where(category:2).each do |i| %>
+                <div class="partner-event-entry">
+                    <div class="partner-event-entry-title">
+                        <p>最終更新日：<%= i.updated_at.strftime("%Y/%m/%d") %></p>
+                        <%= link_to '編集する', edit_partner_page_event_path(i) %>
+                    </div>
+                    <div class="partner-event-entry-body">
+                        <h4><%= i.name %></h4>
+                    </div>
+                    <div class="partner-event-entry-bottom">
+                        <p>現在応募人数：<span><%= UserEvent.where(event_id: i.id).count %></span>人</p>
+                        <a href="#">応募者一覧  ></a>
+                    </div>
+                </div>
+                <% end %>
             </div>
         </div>
         <div class="dashboard-situation">
-            <h3>説明会・企業セミナー</h3>
+            <div class="partner-profile-title">
+                <p>説明会・企業セミナー</p>
+                <a href="/partner_page/seminar/new">新規作成する　　></a>
+            </div>
             <div class="partner-event-entries">
-                
+                <% current_company.events.where(category:3).each do |i| %>
+                <div class="partner-event-entry">
+                    <div class="partner-event-entry-title">
+                        <p>最終更新日：<%= i.updated_at.strftime("%Y/%m/%d") %></p>
+                        <%= link_to '編集する', edit_partner_page_event_path(i) %>
+                    </div>
+                    <div class="partner-event-entry-body">
+                        <h4><%= i.name %></h4>
+                    </div>
+                    <div class="partner-event-entry-bottom">
+                        <p>現在応募人数：<span><%= UserEvent.where(event_id: i.id).count %></span>人</p>
+                        <a href="#">応募者一覧  ></a>
+                    </div>
+                </div>
+                <% end %>
             </div>
         </div>
     </div>

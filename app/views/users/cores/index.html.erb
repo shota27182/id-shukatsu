@@ -15,6 +15,9 @@
                        <%= af.label(class: "profile-check"){ af.text } %>
                     <% end %>
                  </div>
+                 <% if @users_cores_form.errors.include?(:company_scale_ids) %>
+                    <p style="color: red;">志望企業規模を1つ以上選択してください。</p>
+                 <% end %>
              </div>
              <div class="form-detail">
                  <p>志望業界</p>
@@ -24,6 +27,9 @@
                        <%= bf.label(class: "profile-check"){ bf.text } %>
                      <% end %>
                  </div>
+                 <% if @users_cores_form.errors.include?(:industry_ids) %>
+                    <p style="color: red;">志望業界を1つ以上選択してください。</p>
+                 <% end %>
              </div>
              <div class="form-detail">
                  <p>志望職種</p>
@@ -33,6 +39,9 @@
                        <%= cf.label(class: "profile-check"){ cf.text } %>
                      <% end %>
                  </div>
+                 <% if @users_cores_form.errors.include?(:occupation_ids) %>
+                    <p style="color: red;">志望職種を1つ以上選択してください。</p>
+                 <% end %>
              </div>
              <div class="form-detail">
                  <p>志望勤務エリア</p>
@@ -42,6 +51,9 @@
                        <%= df.label(class: "profile-check"){ df.text } %>
                      <% end %>
                  </div>
+                 <% if @users_cores_form.errors.include?(:work_area_ids) %>
+                    <p style="color: red;">志望勤務エリアを1つ以上選択してください。</p>
+                 <% end %>
              </div>
              <div class="form-detail">
                  <p>重視する働き方</p>
@@ -51,6 +63,9 @@
                          <%= ef.label(class: "profile-check"){ ef.text } %>
                      <% end %>
                  </div>
+                 <% if @users_cores_form.errors.include?(:work_style_ids) %>
+                    <p style="color: red;">重視する働き方を1つ以上選択してください。</p>
+                 <% end %>
              </div>
              <div class="form-detail">
                  <p>重視する福利厚生</p>
@@ -60,6 +75,9 @@
                         <%= ff.label(class: "profile-check"){ ff.text } %>
                      <% end %>
                  </div>
+                 <% if @users_cores_form.errors.include?(:welfare_ids) %>
+                    <p style="color: red;">重視する福利厚生を1つ以上選択してください。</p>
+                 <% end %>
              </div>
              <div class="form-detail">
                  <p>重視する企業の特徴</p>
@@ -69,6 +87,9 @@
                          <%= gf.label(class: "profile-check"){ gf.text } %>
                      <% end %>
                  </div>
+                 <% if @users_cores_form.errors.include?(:company_feature_ids) %>
+                    <p style="color: red;">重視する企業の特徴を1つ以上選択してください。</p>
+                 <% end %>
              </div>
              <div class="form-detail">
                  <p>重視するポイント</p>
@@ -78,6 +99,9 @@
                         <%= hf.label(class: "profile-check"){ hf.text } %>
                      <% end %>
                  </div>
+                 <% if @users_cores_form.errors.include?(:company_point_ids) %>
+                    <p style="color: red;">重視するポイントを1つ以上選択してください。</p>
+                 <% end %>
              </div>
 　　         <%= hidden_field_tag :id, @user.id %>
 　　　　　　<%= f.submit  "プロフィールの登録を完了する", class: "form-submit" %>

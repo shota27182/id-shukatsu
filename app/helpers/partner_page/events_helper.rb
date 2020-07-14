@@ -1,0 +1,2 @@
+module PartnerPage::EventsHelper
+end

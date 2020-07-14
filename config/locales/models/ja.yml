@@ -1,0 +1,31 @@
+ja:
+  activerecord:
+    models:
+      event: イベント
+    attributes:
+      event:
+        name: イベント名
+        place: 開催場所
+        content: イベント内容
+  activemodel:
+    models:
+      signup: 新規登録フォーム
+    attributes:
+      signup:
+        name: 名前
+        kana: フリガナ
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+      users_basics_form:
+        address1: 住所1
+        address2: 住所2
+        building_name: 建物名・部屋番号
+        tel: 電話番号
+        highschool: 出身高校
+        classification: 文理
+        seminar: ゼミ・研究室
+        university: 大学名
+        faculty: 学科
+        department: 学部
+        

@@ -8,52 +8,67 @@
             </div>
             <div class="search-category">
                 <div class="search-category-title">
-                    <p>業界</p>
-                </div>
-                <div class="search-category-item">
-                    <% if params[:industry] %>
-                        <% @industries.each do |i| %>
-                            <%= check_box_tag :industry, i.id , @IndustriesSearch.include?(i.id), class:"category"%>
-                            <%= label_tag i.name %><br>
-                        <% end %>
+                    <% if @IndustriesSearch.blank? %>
+                    <input type="checkbox" class="search-way" id="label2" />
                     <% else %>
-                        <% @industries.each do |i| %>
-                            <%= check_box_tag :industry, i.id ,checked = false, class:"category"%>
-                            <%= label_tag i.name %><br>
-                        <% end %>
+                    <input type="checkbox" class="search-way" id="label2" checked="true" />
                     <% end %>
+                    <label for="label2" class="search-way-title">業界</label>
+                    <div class="search-category-item hidden-show">
+                        <% if params[:industry] %>
+                            <% @industries.each do |i| %>
+                                <%= check_box_tag :industry, i.id , @IndustriesSearch.include?(i.id), class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% else %>
+                            <% @industries.each do |i| %>
+                                <%= check_box_tag :industry, i.id ,checked = false, class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% end %>
+                    </div>
                 </div>
                 <div class="search-category-title">
-                    <p>地域</p>
-                </div>
-                <div class="search-category-item">
-                    <% if params[:area] %>
-                        <% @WorkAreas.each do |i| %>
-                            <%= check_box_tag :work_area, i.id , @AreasSearch.include?(i.id),class:"category"%>
-                            <%= label_tag i.name %><br>
-                        <% end %>
+                    <% if @AreasSearch.blank? %>
+                    <input type="checkbox" class="search-way" id="label3" />
                     <% else %>
-                        <% @WorkAreas.each do |i| %>
-                            <%= check_box_tag :work_area, i.id ,checked = false,class:"category"%>
-                            <%= label_tag i.name %><br>
-                        <% end %>
+                    <input type="checkbox" class="search-way" id="label3" checked="true" />
                     <% end %>
+                    <label for="label3" class="search-way-title">地域</label>
+                    <div class="search-category-item hidden-show">
+                        <% if params[:area] %>
+                            <% @WorkAreas.each do |i| %>
+                                <%= check_box_tag :work_area, i.id , @AreasSearch.include?(i.id),class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% else %>
+                            <% @WorkAreas.each do |i| %>
+                                <%= check_box_tag :work_area, i.id ,checked = false,class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% end %>
+                    </div>
                 </div>
                 <div class="search-category-title">
-                    <p>募集職種</p>
-                </div>
-                <div class="search-category-item">
-                    <% if params[:occupation] %>
-                        <% @occupations.each do |i| %>
-                            <%= check_box_tag :occupation, i.id,@OccupationsSearch.include?(i.id) , class:"category"%>
-                            <%= label_tag i.name %><br>
-                        <% end %>
+                    <% if @OccupationsSearch.blank? %>
+                    <input type="checkbox" class="search-way" id="label1" />
                     <% else %>
-                        <% @occupations.each do |i| %>
-                            <%= check_box_tag :occupation, i.id,checked = false , class:"category"%>
-                            <%= label_tag i.name %><br>
-                        <% end %>
+                    <input type="checkbox" class="search-way" id="label1" checked="true" />
                     <% end %>
+                    <label for="label1" class="search-way-title">募集職種</label>
+                    <div class="search-category-item hidden-show">
+                        <% if params[:occupation] %>
+                            <% @occupations.each do |i| %>
+                                <%= check_box_tag :occupation, i.id,@OccupationsSearch.include?(i.id) , class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% else %>
+                            <% @occupations.each do |i| %>
+                                <%= check_box_tag :occupation, i.id,checked = false , class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% end %>
+                    </div>
                 </div>
             </div>
             <div class="identity-search">
@@ -70,73 +85,93 @@
             <div class="search-category identity-condition-click">
             <% end %>
                 <div class="search-category-title">
-                    <p>働き方</p>
-                </div>
-                <div class="search-category-item">
-                    <% if params[:work_style] %>
-                        <% @WorkStyles.each do |i| %>
-                            <%= check_box_tag :work_style, i.id , @WorkStylesSearch.include?(i.id), class:"category"%>
-                            <%= label_tag i.name %><br>
-                        <% end %>
+                    <% if @WorkStylesSearch.blank? %>
+                    <input type="checkbox" class="search-way" id="label4" />
                     <% else %>
-                        <% @WorkStyles.each do |i| %>
-                            <%= check_box_tag :work_style, i.id ,checked = false, class:"category"%>
-                            <%= label_tag i.name %><br>
-                        <% end %>
+                    <input type="checkbox" class="search-way" id="label4" checked="true" />
                     <% end %>
+                    <label for="label4" class="search-way-title">働き方</label>
+                    <div class="search-category-item hidden-show">
+                        <% if params[:work_style] %>
+                            <% @WorkStyles.each do |i| %>
+                                <%= check_box_tag :work_style, i.id , @WorkStylesSearch.include?(i.id), class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% else %>
+                            <% @WorkStyles.each do |i| %>
+                                <%= check_box_tag :work_style, i.id ,checked = false, class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% end %>
+                    </div>
                 </div>
                 <div class="search-category-title">
-                    <p>福利厚生</p>
-                </div>
-                <div class="search-category-item">
-                    <% if params[:welfare] %>
-                        <% @welfares.each do |i| %>
-                            <%= check_box_tag :welfare, i.id , @WelfaresSearch.include?(i.id),class:"category"%>
-                            <%= label_tag i.name %><br>
-                        <% end %>
+                    <% if @WelfaresSearch.blank? %>
+                    <input type="checkbox" class="search-way" id="label5" />
                     <% else %>
-                        <% @welfares.each do |i| %>
-                            <%= check_box_tag :welfare, i.id ,checked = false,class:"category"%>
-                            <%= label_tag i.name %><br>
-                        <% end %>
+                    <input type="checkbox" class="search-way" id="label5" checked="true" />
                     <% end %>
+                    <label for="label5" class="search-way-title">福利厚生</label>
+                    <div class="search-category-item hidden-show">
+                        <% if params[:welfare] %>
+                            <% @welfares.each do |i| %>
+                                <%= check_box_tag :welfare, i.id , @WelfaresSearch.include?(i.id),class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% else %>
+                            <% @welfares.each do |i| %>
+                                <%= check_box_tag :welfare, i.id ,checked = false,class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% end %>
+                    </div>
                 </div>
                 <div class="search-category-title">
-                    <p>企業の特徴</p>
-                </div>
-                <div class="search-category-item">
-                    <% if params[:feature] %>
-                        <% @features.each do |i| %>
-                            <%= check_box_tag :company_feature, i.id,@FeaturesSearch.include?(i.id) , class:"category"%>
-                            <%= label_tag i.name %><br>
-                        <% end %>
+                    <% if @FeaturesSearch.blank? %>
+                    <input type="checkbox" class="search-way" id="label6" />
                     <% else %>
-                        <% @features.each do |i| %>
-                            <%= check_box_tag :company_feature, i.id,checked = false , class:"category"%>
-                            <%= label_tag i.name %><br>
-                        <% end %>
+                    <input type="checkbox" class="search-way" id="label6" checked="true" />
                     <% end %>
+                    <label for="label6" class="search-way-title">企業の特徴</label>
+                    <div class="search-category-item hidden-show">
+                        <% if params[:feature] %>
+                            <% @features.each do |i| %>
+                                <%= check_box_tag :company_feature, i.id,@FeaturesSearch.include?(i.id) , class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% else %>
+                            <% @features.each do |i| %>
+                                <%= check_box_tag :company_feature, i.id,checked = false , class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% end %>
+                    </div>
                 </div>
                 <div class="search-category-title">
-                    <p>採用の特徴</p>
-                </div>
-                <div class="search-category-item">
-                    <% if params[:point] %>
-                        <% @points.each do |i| %>
-                            <%= check_box_tag :company_point, i.id,@PointsSearch.include?(i.id) , class:"category"%>
-                            <%= label_tag i.name %><br>
-                        <% end %>
+                    <% if @PointsSearch.blank? %>
+                    <input type="checkbox" class="search-way" id="label7" />
                     <% else %>
-                        <% @points.each do |i| %>
-                            <%= check_box_tag :company_point, i.id,checked = false , class:"category"%>
-                            <%= label_tag i.name %><br>
-                        <% end %>
+                    <input type="checkbox" class="search-way" id="label7" checked="true" />
                     <% end %>
+                    <label for="label7" class="search-way-title">選考の特徴</label>
+                    <div class="search-category-item hidden-show">
+                        <% if params[:point] %>
+                            <% @points.each do |i| %>
+                                <%= check_box_tag :company_point, i.id,@PointsSearch.include?(i.id) , class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% else %>
+                            <% @points.each do |i| %>
+                                <%= check_box_tag :company_point, i.id,checked = false , class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% end %>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="company-contents">
-            <% if params[:industry] %>
+        <div class="company-contents" id="companies-results">
+            <% if params[:industry] || params[:name]%>
                 <div class="company-contents-wrapper">
                     <% @get_companies.each do |get_company| %>
                     <div class="company-box">
@@ -181,8 +216,9 @@
                     </div>
                     <% end %>
                 </div>
+                <%= paginate(@get_companies) %>
             <% else %>
-                <% if logged_in %>
+                <% if logged_in? && current_user.status == 'core_registered' %>
                 <div class="recomended-search" id="recomended-first">
                     <p>あなたにオススメな検索</p>
                     <div class="recomended-search-contents">
@@ -299,6 +335,9 @@
                             <img src="/assets/progress_bar2.svg">
                         </div>
                     </div>
+                    <div class="recomended-search-middle">
+                            <p>プロフィール登録後に<br>あなた専用のトップリンクに変わります</p>
+                    </div>
                 </div>
                 <% end %>
                 <div class="companies-wrapper">
@@ -393,7 +432,7 @@
     var point_vals = $('input[name=company_point]:checked').map(function(){
         return  $(this).val();
     }).get();
-    window.location.href = '/companies?industry=' + industry_vals + '&area=' + area_vals + '&occupation=' + occupation_vals + '&work_style=' + work_style_vals + '&welfare=' + welfare_vals + '&feature=' + feature_vals + '&point=' + point_vals;
+    window.location.href = '/companies?industry=' + industry_vals + '&area=' + area_vals + '&occupation=' + occupation_vals + '&work_style=' + work_style_vals + '&welfare=' + welfare_vals + '&feature=' + feature_vals + '&point=' + point_vals + '#companies-results';
     
   });
   

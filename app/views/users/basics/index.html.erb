@@ -26,27 +26,45 @@
                 <%= f.label "男性", for:"sex_male", class:"profile-radio-label" %>
                 <%= f.radio_button :sex, :female, id:"sex_female", class:"profile-radio-button" %>
                 <%= f.label "女性", for:"sex_female", class:"profile-radio-label"%>
+                <% if @users_basics_form.errors.include?(:sex) %>
+                <p style="color: red;"><%= @users_basics_form.errors.full_messages_for(:sex).first %>
+                <% end %>
             　</div>
           </div>
           <div class="form-detail profile-birthday">
               <p>生年月日</p>
               <%= f.date_select :birthday, start_year: 1990, end_year: 2005, use_month_numbers: true %>
+              <% if @users_basics_form.errors.include?(:birthday) %>
+                <p style="color: red;"><%= @users_basics_form.errors.full_messages_for(:birthday).first %>
+              <% end %>
           </div>
           <div class="form-detail">
               <p>住所１</p>
               <%=f.text_field :address1, class:"form-field" %>
+              <% if @users_basics_form.errors.include?(:address1) %>
+                <p style="color: red;"><%= @users_basics_form.errors.full_messages_for(:address1).first %>
+              <% end %>
           </div>
           <div class="form-detail">
               <p>住所２</p>
               <%=f.text_field :address2, class:"form-field" %>
+              <% if @users_basics_form.errors.include?(:address2) %>
+                <p style="color: red;"><%= @users_basics_form.errors.full_messages_for(:address2).first %>
+              <% end %>
           </div>
           <div class="form-detail">
               <p>建物名・部屋番号</p>
               <%=f.text_field :building_name, class:"form-field" %>
+              <% if @users_basics_form.errors.include?(:building_name) %>
+                <p style="color: red;"><%= @users_basics_form.errors.full_messages_for(:building_name).first %>
+              <% end %>
           </div>
           <div class="form-detail">
              <p>電話番号</p>
              <%= f.text_field :tel,placeholder: '08012341234', required: true ,class:"form-field"%>
+             <% if @users_basics_form.errors.include?(:name) %>
+                <p style="color: red;"><%= @users_basics_form.errors.full_messages_for(:name).first %>
+              <% end %>
           </div>
       </div>
       <div class="general-profile">
@@ -54,18 +72,27 @@
         　<div class="form-detail">
               <p>大学名</p>
               <%=f.text_field :university, class:"form-field" %>
+              <% if @users_basics_form.errors.include?(:university) %>
+                <p style="color: red;"><%= @users_basics_form.errors.full_messages_for(:university).first %>
+              <% end %>
           </div>
           <div class="form-detail">
               <p>学部(研究科)</p>
               <%=f.text_field :faculty, class:"form-field" %>
+              <% if @users_basics_form.errors.include?(:faculty) %>
+                <p style="color: red;"><%= @users_basics_form.errors.full_messages_for(:faculty).first %>
+              <% end %>
           </div>
           <div class="form-detail">
               <p>学科(専攻)</p>
               <%=f.text_field :department, class:"form-field" %>
+              <% if @users_basics_form.errors.include?(:department) %>
+                <p style="color: red;"><%= @users_basics_form.errors.full_messages_for(:department).first %>
+              <% end %>
           </div>
           <div class="form-detail">
               <p>学年</p>
-              <%= f.collection_select(:grade_id, Grade.all, :id, :name,{prompt: ""}, {class: "form-field"}) %>
+              <%= f.collection_select(:grade_id, Grade.all, :id, :name, { selected: 1 }, {class: "form-field"}) %>
           </div>
           <div class="form-detail">
               <p>文理</p>
@@ -75,14 +102,50 @@
                 <%= f.radio_button :classification, :science, id:"classification_science", class:"profile-radio-button" %>
                 <%= f.label :classification_science, "理系",for:"classification_science", class:"profile-radio-label"%>
             　</div>
+            　<% if @users_basics_form.errors.include?(:classification) %>
+                <p style="color: red;"><%= @users_basics_form.errors.full_messages_for(:classification).first %>
+                <% end %>
           </div>
           <div class="form-detail profile-birthday">
               <p>ゼミ・研究室</p>
               <%=f.text_field :seminar, class:"form-field" %>
+              <% if @users_basics_form.errors.include?(:seminar) %>
+                <p style="color: red;"><%= @users_basics_form.errors.full_messages_for(:seminar).first %>
+              <% end %>
           </div>
         　<div class="form-detail profile-birthday">
               <p>出身高校</p>
               <%=f.text_field :highschool, class:"form-field" %>
+              <% if @users_basics_form.errors.include?(:highschool) %>
+                <p style="color: red;"><%= @users_basics_form.errors.full_messages_for(:highschool).first %>
+              <% end %>
+          </div>
+      </div>
+      <div class="general-profile">
+        <div class="general-title">連絡の受信方法について</div>
+          <div class="form-detail">
+              <p>ID就活からのメルマガを受け取る</p>
+              <div class="profile-radio">
+                <%= f.radio_button :magazine, :メールで受け取る, id:"magazine_receive", class:"profile-radio-button" %>
+                <%= f.label :magazine_receive, "メールで受け取る",for:"magazine_receive", class:"profile-radio-label" %>
+                <%= f.radio_button :magazine, :受け取らない, id:"magazine_unreceive", class:"profile-radio-button" %>
+                <%= f.label :magazine_unreceive, "受け取らない",for:"magazine_unreceive", class:"profile-radio-label"%>
+            　</div>
+            　<% if @users_basics_form.errors.include?(:magazine) %>
+                <p style="color: red;"><%= @users_basics_form.errors.full_messages_for(:magazine).first %>
+                <% end %>
+          </div>
+          <div class="form-detail">
+              <p>ID就活からのスカウトを受け取る</p>
+              <div class="profile-radio">
+                <%= f.radio_button :scout, :メールで受け取る, id:"scout_receive", class:"profile-radio-button" %>
+                <%= f.label :scout_receive, "メールで受け取る",for:"scout_receive", class:"profile-radio-label" %>
+                <%= f.radio_button :scout, :受け取らない, id:"scout_unreceive", class:"profile-radio-button" %>
+                <%= f.label :scout_unreceive, "受け取らない",for:"scout_unreceive", class:"profile-radio-label"%>
+            　</div>
+            　<% if @users_basics_form.errors.include?(:scout) %>
+                <p style="color: red;"><%= @users_basics_form.errors.full_messages_for(:scout).first %>
+                <% end %>
           </div>
       </div>
         <%= f.submit "次のステップへ進む", class: "form-submit" %>

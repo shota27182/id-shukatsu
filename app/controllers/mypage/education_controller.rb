@@ -4,7 +4,7 @@ class Mypage::EducationController < ApplicationController
         user = User.find(current_user.id)
         education = user.education
         if education.present?
-            @mypage_educations_form = MypageEducationsForm.new(university: education.university, department: education.department, faculty: education.faculty, highschool: education.highschool, seminar: education.seminar)
+            @mypage_educations_form = MypageEducationsForm.new(grade_id: education.grade_id,classification: education.classification,university: education.university, department: education.department, faculty: education.faculty, highschool: education.highschool, seminar: education.seminar)
         else
             @mypage_educations_form = MypageEducationsForm.new
         end

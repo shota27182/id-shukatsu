@@ -8,40 +8,181 @@
             </div>
             <div class="search-category">
                 <div class="search-category-title">
-                    <p>業界</p>
-                </div>
-                <div class="search-category-item">
-                    <% if params[:industry] %>
-                        <% @industries.each do |i| %>
-                            <%= check_box_tag :industry, i.id , @IndustriesSearch.include?(i.id), class:"category"%>
-                            <%= label_tag i.name %><br>
-                        <% end %>
+                    <% if @CategoriesSearch.blank? %>
+                    <input type="checkbox" class="search-way" id="label1" />
                     <% else %>
-                        <% @industries.each do |i| %>
-                            <%= check_box_tag :industry, i.id ,checked = false, class:"category"%>
-                            <%= label_tag i.name %><br>
-                        <% end %>
+                    <input type="checkbox" class="search-way" id="label1" checked="true"/>
                     <% end %>
+                    <label for="label1" class="search-way-title">イベント種別</label>
+                    <div class="search-category-item hidden-show">
+                        <% if params[:category] %>
+                            <%= check_box_tag :category, 1 , @CategoriesSearch.include?(1), class:"category"%>
+                            <%= label_tag '本選考' %><br>
+                            <%= check_box_tag :category, 2 , @CategoriesSearch.include?(2), class:"category"%>
+                            <%= label_tag 'インターン・ジョブ' %><br>
+                            <%= check_box_tag :category, 3 , @CategoriesSearch.include?(3), class:"category"%>
+                            <%= label_tag '説明会・企業セミナー' %><br>
+                            <%= check_box_tag :category, 4 , @CategoriesSearch.include?(4), class:"category"%>
+                            <%= label_tag '合同説明会・交流会' %><br>
+                            <%= check_box_tag :category, 5 , @CategoriesSearch.include?(5), class:"category"%>
+                            <%= label_tag '就活対策' %><br>
+                        <% else %>
+                            <%= check_box_tag :category, 1 ,checked = false , class:"category"%>
+                            <%= label_tag '本選考' %><br>
+                            <%= check_box_tag :category, 2 , checked = false, class:"category"%>
+                            <%= label_tag 'インターン・ジョブ' %><br>
+                            <%= check_box_tag :category, 3 , checked = false , class:"category"%>
+                            <%= label_tag '説明会・企業セミナー' %><br>
+                            <%= check_box_tag :category, 4 , checked = false, class:"category"%>
+                            <%= label_tag '合同説明会・交流会' %><br>
+                            <%= check_box_tag :category, 5 , checked = false, class:"category"%>
+                            <%= label_tag '就活対策' %><br>
+                        <% end %>
+                    </div>
                 </div>
                 <div class="search-category-title">
-                    <p>地域</p>
-                </div>
-                <div class="search-category-item">
-                    <% if params[:area] %>
-                        <% @WorkAreas.each do |i| %>
-                            <%= check_box_tag :work_area, i.id , @AreasSearch.include?(i.id),class:"category"%>
-                            <%= label_tag i.name %><br>
-                        <% end %>
+                    <% if @IndustriesSearch.blank? %>
+                    <input type="checkbox" class="search-way" id="label2" />
                     <% else %>
-                        <% @WorkAreas.each do |i| %>
-                            <%= check_box_tag :work_area, i.id ,checked = false,class:"category"%>
-                            <%= label_tag i.name %><br>
-                        <% end %>
+                    <input type="checkbox" class="search-way" id="label2" checked="true" />
                     <% end %>
+                    <label for="label2" class="search-way-title">業界</label>
+                    <div class="search-category-item hidden-show">
+                        <% if params[:industry] %>
+                            <% @industries.each do |i| %>
+                                <%= check_box_tag :industry, i.id , @IndustriesSearch.include?(i.id), class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% else %>
+                            <% @industries.each do |i| %>
+                                <%= check_box_tag :industry, i.id ,checked = false, class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="search-category-title">
+                    <% if @AreasSearch.blank? %>
+                    <input type="checkbox" class="search-way" id="label3" />
+                    <% else %>
+                    <input type="checkbox" class="search-way" id="label3" checked="true" />
+                    <% end %>
+                    <label for="label3" class="search-way-title">地域</label>
+                    <div class="search-category-item hidden-show">
+                        <% if params[:area] %>
+                            <% @WorkAreas.each do |i| %>
+                                <%= check_box_tag :work_area, i.id , @AreasSearch.include?(i.id),class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% else %>
+                            <% @WorkAreas.each do |i| %>
+                                <%= check_box_tag :work_area, i.id ,checked = false,class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+            <div class="identity-search">
+                <p>こだわり条件</p>
+                <% if @WorkStylesSearch.blank? && @WelfaresSearch.blank? && @FeaturesSearch.blank? && @PointsSearch.blank? %>
+                <span id="identity-condition-click">+</span>
+                <% else %>
+                <span id="identity-condition-click">-</span>
+                <% end %>
+            </div>
+            <% if @WorkStylesSearch.blank? && @WelfaresSearch.blank? && @FeaturesSearch.blank? && @PointsSearch.blank? %>
+            <div class="search-category identity-condition-click section">
+            <% else %>
+            <div class="search-category identity-condition-click">
+            <% end %>
+                <div class="search-category-title">
+                    <% if @WorkStylesSearch.blank? %>
+                    <input type="checkbox" class="search-way" id="label4" />
+                    <% else %>
+                    <input type="checkbox" class="search-way" id="label4" checked="true" />
+                    <% end %>
+                    <label for="label4" class="search-way-title">働き方</label>
+                    <div class="search-category-item hidden-show">
+                        <% if params[:work_style] %>
+                            <% @WorkStyles.each do |i| %>
+                                <%= check_box_tag :work_style, i.id , @WorkStylesSearch.include?(i.id), class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% else %>
+                            <% @WorkStyles.each do |i| %>
+                                <%= check_box_tag :work_style, i.id ,checked = false, class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="search-category-title">
+                    <% if @WelfaresSearch.blank? %>
+                    <input type="checkbox" class="search-way" id="label5" />
+                    <% else %>
+                    <input type="checkbox" class="search-way" id="label5" checked="true" />
+                    <% end %>
+                    <label for="label5" class="search-way-title">福利厚生</label>
+                    <div class="search-category-item hidden-show">
+                        <% if params[:welfare] %>
+                            <% @welfares.each do |i| %>
+                                <%= check_box_tag :welfare, i.id , @WelfaresSearch.include?(i.id),class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% else %>
+                            <% @welfares.each do |i| %>
+                                <%= check_box_tag :welfare, i.id ,checked = false,class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="search-category-title">
+                    <% if @FeaturesSearch.blank? %>
+                    <input type="checkbox" class="search-way" id="label6" />
+                    <% else %>
+                    <input type="checkbox" class="search-way" id="label6" checked="true" />
+                    <% end %>
+                    <label for="label6" class="search-way-title">企業の特徴</label>
+                    <div class="search-category-item hidden-show">
+                        <% if params[:feature] %>
+                            <% @features.each do |i| %>
+                                <%= check_box_tag :company_feature, i.id,@FeaturesSearch.include?(i.id) , class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% else %>
+                            <% @features.each do |i| %>
+                                <%= check_box_tag :company_feature, i.id,checked = false , class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="search-category-title">
+                    <% if @PointsSearch.blank? %>
+                    <input type="checkbox" class="search-way" id="label7" />
+                    <% else %>
+                    <input type="checkbox" class="search-way" id="label7" checked="true" />
+                    <% end %>
+                    <label for="label7" class="search-way-title">選考の特徴</label>
+                    <div class="search-category-item hidden-show">
+                        <% if params[:point] %>
+                            <% @points.each do |i| %>
+                                <%= check_box_tag :company_point, i.id,@PointsSearch.include?(i.id) , class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% else %>
+                            <% @points.each do |i| %>
+                                <%= check_box_tag :company_point, i.id,checked = false , class:"category"%>
+                                <%= label_tag i.name %><br>
+                            <% end %>
+                        <% end %>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="company-contents">
+        <div class="company-contents" id="event-results">
             <% if params[:industry] %>
                 <div class="events-searches">
                     <% @get_events.each do |a| %>
@@ -50,7 +191,7 @@
                             <%=image_tag a.img.to_s %>
                         </div>
                         <div class="events-search-title">
-                            <% a.companies.each do |b|%><%= image_tag b.icon.to_s %><% end %>
+                            <%= image_tag Company.find_by(id: a.company_id).icon.to_s %>
                             <p><a href="/events/<%=a.id %>"></a><%= a.name %></p>
                         </div>
                         <div class="events-search-schedules">
@@ -60,13 +201,13 @@
                                     <div class="event-title">
                                         <h2><%= c.title %></h2>
                                         <img src="/assets/clock.svg">
-                                        <p class="entry-date">4/14(月)</p>
-                                        <p class="entry-time">16:00 - 18:00</p>
+                                        <p class="entry-date"><%= c.holding_day.strftime("%m/%d") %><%= %w((日) (月) (火) (水) (木) (金) (土))[c.holding_day.wday] %></p>
+                                        <p class="entry-time"><%= c.start_time.strftime('%H:%M') %> - <%= c.end_time.strftime('%H:%M') %></p>
                                         <img src="/assets/location.svg">
-                                        <p class="entry-location">東京都渋谷区千駄ヶ谷４丁目１９ー１</p>
+                                        <p class="entry-location"><%= c.address + c.place%></p>
                                     </div>
                                     <div class="event-entry">
-                                        <p>締切 6月9日（火）</p>
+                                        <p>締切 <%= c.deadline.strftime("%m月%d日") %><%= %w((日) (月) (火) (水) (木) (金) (土))[c.deadline.wday] %>）</p>
                                     </div>
                                 </div>
                             </div>
@@ -74,22 +215,105 @@
                         </div>
                     </div>
                     <% end %>
-                    <div class="events-search">
-                        
-                    </div>
-                    <div class="events-search">
-                        
-                    </div>
-                    <div class="events-search">
-                        
+                </div>
+                <%= paginate(@get_events) %>
+            <% else %>
+                <% if logged_in? && current_user.status == 'core_registered' %>
+                <div class="recomended-search" id="recomended-first">
+                    <p>あなたにオススメな検索</p>
+                    <div class="recomended-search-contents">
+                        <div class="recomended-before second">
+                            <img src="/assets/progress_bar.svg">
+                        </div>
+                        <% @user.work_styles.order("RANDOM()").limit(1).each do |i| %>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p><a href="/companies?industry=&area=&occupation=&work_style=<%= i.id %>&welfare=&feature=&point="></a><%= i.name %></p>
+                        </div>
+                        <% end %>
+                        <% @user.welfares.order("RANDOM()").limit(1).each do |i| %>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p><a href="/companies?industry=&area=&occupation=&work_style=&welfare=<%= i.id %>&feature=&point="></a><%= i.name %></p>
+                        </div>
+                        <% end %>
+                        <% @user.company_features.order("RANDOM()").limit(1).each do |i| %>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p><a href="/companies?industry=&area=&occupation=&work_style=&welfare=&feature=<%= i.id %>&point="></a><%= i.name %></p>
+                        </div>
+                        <% end %>
+                        <% @user.company_points.order("RANDOM()").limit(1).each do |i| %>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p><a href="/companies?industry=&area=&occupation=&work_style=&welfare=&feature=&point=<%= i.id %>"></a><%= i.name %></p>
+                        </div>
+                        <% end %>
+                        <% @user.industries.order("RANDOM()").limit(1).each do |i| %>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p><a href="/companies?industry=<%= i.id %>&area=&occupation=&work_style=&welfare=&feature=&point="></a><%= i.name %></p>
+                        </div>
+                        <% end %>
+                        <div class="recomended-after second">
+                            <img src="/assets/progress_bar2.svg">
+                        </div>
                     </div>
                 </div>
-            <% else %>
+                <div class="recomended-search" id="recomended-second">
+                    <p>あなたにオススメな検索</p>
+                    <div class="recomended-search-contents">
+                        <div class="recomended-before first">
+                            <img src="/assets/progress_bar.svg">
+                        </div>
+                        <% @user.work_areas.order("RANDOM()").limit(1).each do |i| %>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p><a href="/companies?industry=&area=<%= i.id %>&occupation=&work_style=&welfare=&feature=&point="></a><%= i.name %></p>
+                        </div>
+                        <% end %>
+                        <% @user.company_points.order("RANDOM()").limit(1).each do |i| %>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p><a href="/companies?industry=&area=&occupation=&work_style=&welfare=&feature=&point=<%= i.id %>"></a><%= i.name %></p>
+                        </div>
+                        <% end %>
+                        <% @user.occupations.order("RANDOM()").limit(1).each do |i| %>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p><a href="/companies?industry=&area=&occupation=<%= i.id %>&work_style=&welfare=&feature=&point="></a><%= i.name %></p>
+                        </div>
+                        <% end %>
+                        <% @user.welfares.order("RANDOM()").limit(1).each do |i| %>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p><a href="/companies?industry=&area=&occupation=&work_style=&welfare=<%= i.id %>&feature=&point="></a><%= i.name %></p>
+                        </div>
+                        <% end %>
+                        <% @user.company_features.order("RANDOM()").limit(1).each do |i| %>
+                        <div class="recomended-search-content first">
+                            <img src="/assets/school.svg">
+                            <p><a href="/companies?industry=&area=&occupation=&work_style=&welfare=&feature=<%= i.id %>&point="></a><%= i.name %></p>
+                        </div>
+                        <% end %>
+                        <div class="recomended-after first">
+                            <img src="/assets/progress_bar2.svg">
+                        </div>
+                    </div>
+                </div>
+                <% else %>
                 <div class="recomended-search">
                     <p>あなたにオススメな検索</p>
                     <div class="recomended-search-contents">
                         <div class="recomended-before">
                             <img src="/assets/progress_bar.svg">
+                        </div>
+                        <div class="recomended-search-contents">
+                            
+                        </div>
+                        <div class="recomended-search-content">
+                            <img src="/assets/school.svg">
+                            <p>理系</p>
                         </div>
                         <div class="recomended-search-content">
                             <img src="/assets/school.svg">
@@ -107,15 +331,15 @@
                             <img src="/assets/school.svg">
                             <p>慶應義塾大学</p>
                         </div>
-                        <div class="recomended-search-content">
-                            <img src="/assets/school.svg">
-                            <p>慶應義塾大学</p>
-                        </div>
                         <div class="recomended-after">
                             <img src="/assets/progress_bar2.svg">
                         </div>
                     </div>
+                    <div class="recomended-search-middle">
+                            <p>プロフィール登録後に<br>あなた専用のトップリンクに変わります</p>
+                    </div>
                 </div>
+                <% end %>
                 <div class="companies-wrapper">
                     <p>注目の新着のイベント</p>
                     <div class="companies-search">
@@ -148,36 +372,18 @@
                 <div class="companies-wrapper">
                     <p>金融会社のイベント</p>
                     <div class="companies-search">
+                        <% Event.includes(:company => :industries).where(industries: { id: 3 }).limit(8).each do |a| %>
                         <div class="event-search">
-                            <img src="/images/event_top.svg">
-                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                            <%=image_tag a.img.to_s %>
+                            <p><a href="/events/<%= a.id %>"></a><%= a.name %></p>
                         </div>
-                        <div class="event-search">
-                            <img src="/images/event_top.svg">
-                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
-                        </div>
-                        <div class="event-search">
-                            <img src="/images/event_top.svg">
-                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
-                        </div>
-                        <div class="event-search">
-                            <img src="/images/event_top.svg">
-                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
-                        </div>
-                        <div class="event-search">
-                            <img src="/images/event_top.svg">
-                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
-                        </div>
-                        <div class="event-search">
-                            <img src="/images/event_top.svg">
-                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
-                        </div>
+                        <% end %>
                     </div>
                 </div>
                 <div class="companies-wrapper">
                     <p>テレワーク実施企業のイベント</p>
                     <div class="companies-search">
-                        <% WorkStyle.includes(:companies => :events).find_by_id(5).companies.map{ |company| company.events }.flatten.each do |a| %>
+                        <% Event.includes(company: :work_styles).where(work_styles: { id: 2 }).limit(8).each do |a| %>
                         <div class="event-search">
                             <%=image_tag a.img.to_s %>
                             <p><a href="/events/<%= a.id %>"></a><%= a.name %></p>
@@ -194,6 +400,9 @@
     $(function(){
     $('.category').on('change', function(){
     /// チェックされたvalue値を配列として取得
+    var category_vals = $('input[name=category]:checked').map(function(){
+      return $(this).val();
+    }).get();
     var industry_vals = $('input[name=industry]:checked').map(function(){
       return $(this).val();
     }).get();
@@ -203,14 +412,52 @@
     var occupation_vals = $('input[name=occupation]:checked').map(function(){
         return  $(this).val();
     }).get();
-    window.location.href = '/events?industry=' + industry_vals + '&area=' + area_vals + '&occupation=' + occupation_vals;
+    var work_style_vals = $('input[name=work_style]:checked').map(function(){
+        return  $(this).val();
+    }).get();
+    var welfare_vals = $('input[name=welfare]:checked').map(function(){
+        return  $(this).val();
+    }).get();
+    var feature_vals = $('input[name=company_feature]:checked').map(function(){
+        return  $(this).val();
+    }).get();
+    var point_vals = $('input[name=company_point]:checked').map(function(){
+        return  $(this).val();
+    }).get();
+    window.location.href = '/events?category=' + category_vals + '&industry=' + industry_vals + '&area=' + area_vals  + '&work_style=' + work_style_vals + '&welfare=' + welfare_vals + '&feature=' + feature_vals + '&point=' + point_vals + '#event-results';
     
   });
+  
+  $("#identity-condition-click").click(function () {
+        if ($(this).text() === "+") {
+            $(this).text("-");
+        } else {
+            $(this).text("+");
+        }
+        $('.'+$(this).attr('id')).toggle();
+    });
+    
+  $('.section').hide();
+    $('#recomended-second').hide();
   
   $('.events-search').click(function(){
         location.href=$(this).find('a').attr('href');
     });
     $('.event-search').click(function(){
+        location.href=$(this).find('a').attr('href');
+    });
+    
+    $('#recomended-second').hide();
+    $('.second').click(function(){
+        $('#recomended-second').show();
+        $('#recomended-first').hide();
+    });
+    $('.first').click(function(){
+        $('#recomended-first').show();
+        $('#recomended-second').hide();
+    });
+    
+    $('.recomended-search-content').click(function(){
         location.href=$(this).find('a').attr('href');
     });
    

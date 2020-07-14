@@ -1,24 +1,37 @@
+<%= form_with model: @mypage_generals_form, method: :post, url: mypage_general_path, local: true do |f| %>
 <div class="sign-up">
     <div class="form-heading">プロフィール登録</div>
     <div class="form-explaration">
         <p>ID就活ではご登録情報を元に最適な就活サービスを提供いたします。<br>プロフィール情報は必ずご入力いただきますようお願いいたします。</p>
         <p class="profile-promise">※学生にとって不利益になる情報を企業にリークしたり、公開することは一切ありません。詳しくはプライバシーポリシーをご覧ください。</p>
     </div>
-    <%= form_with model: @mypage_generals_form, method: :post, url: mypage_general_path, local: true do |f| %>
       <div class="general-profile">
         <div class="general-title">基本情報</div>
           <div class="form-detail form-top">
               <p>名前</p>
               <%=f.text_field :name, class: "form-field"  %>
+              <% if @mypage_generals_form.errors.include?(:name) %>
+                <p style="color: red;"><%= @mypage_generals_form.errors.full_messages_for(:name).first %>
+              <% end %>
+          </div>
+          <div class="form-detail form-top">
+              <p>フリガナ</p>
+              <%=f.text_field :kana, class: "form-field"  %>
+              <% if @mypage_generals_form.errors.include?(:kana) %>
+                <p style="color: red;"><%= @mypage_generals_form.errors.full_messages_for(:kana).first %>
+              <% end %>
           </div>
           <div class="form-detail">
               <p>性別</p>
               <div class="profile-radio">
-                 <%= f.radio_button :classification, :文系, class:"profile-radio-button" %>
-                 <%=f.label "文系", class:"profile-radio-label gender-left" %>
-                 <%= f.radio_button :classification, :理系, class:"profile-radio-button" %>
-                 <%= f.label "理系", class:"profile-radio-label gender-right"%>
+                <%= f.radio_button :sex, :male, id:"sex_male", class:"profile-radio-button" %>
+                <%= f.label "男性", for:"sex_male", class:"profile-radio-label" %>
+                <%= f.radio_button :sex, :female, id:"sex_female", class:"profile-radio-button" %>
+                <%= f.label "女性", for:"sex_female", class:"profile-radio-label"%>
             　</div>
+            　<% if @mypage_generals_form.errors.include?(:sex) %>
+                <p style="color: red;"><%= @mypage_generals_form.errors.full_messages_for(:sex).first %>
+              <% end %>
           </div>
           <div class="form-detail profile-birthday">
               <p>生年月日</p>
@@ -27,20 +40,35 @@
           <div class="form-detail">
               <p>住所１</p>
               <%=f.text_field :address1, class:"form-field" %>
+              <% if @mypage_generals_form.errors.include?(:address1) %>
+                <p style="color: red;"><%= @mypage_generals_form.errors.full_messages_for(:address1).first %>
+              <% end %>
           </div>
           <div class="form-detail">
               <p>住所２</p>
               <%=f.text_field :address2, class:"form-field" %>
+              <% if @mypage_generals_form.errors.include?(:address2) %>
+                <p style="color: red;"><%= @users_basics_form.errors.full_messages_for(:address2).first %>
+              <% end %>
           </div>
           <div class="form-detail">
               <p>建物名・部屋番号</p>
               <%=f.text_field :building_name, class:"form-field" %>
+              <% if @mypage_generals_form.errors.include?(:building_name) %>
+                <p style="color: red;"><%= @mypage_generals_form.errors.full_messages_for(:building_name).first %>
+              <% end %>
           </div>
           <div class="form-detail">
              <p>電話番号</p>
              <%= f.text_field :tel,placeholder: '08012341234', required: true ,class:"form-field"%>
+             <% if @mypage_generals_form.errors.include?(:tel) %>
+                <p style="color: red;"><%= @mypage_generals_form.errors.full_messages_for(:tel).first %>
+              <% end %>
           </div>
       </div>
-      <%= f.submit "次のステップへ進む", class: "form-submit" %>
-    <% end %>
+</div>
+<div class="profile-container">
+  <a href="javascript:history.back()" class="event-schedule-bottom-left">戻る</a>
+  <%= f.submit "編集内容を更新する", class: "event-schedule-bottom-right" %>
+  <% end %>
 </div>

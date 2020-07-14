@@ -1,9 +1,9 @@
 class PartnerPage::EditRequirementsController < ApplicationController
+  before_action :logged_in_company
   layout 'application4.html.erb'
   def index
     @company = Company.find(current_company.id)
     @company.company_profiles.build
-    @company.build_company_requirement
   end
   
   def create
@@ -18,6 +18,6 @@ class PartnerPage::EditRequirementsController < ApplicationController
   private
       
       def company_params
-        params.require(:company).permit(company_profiles_attributes:[:id, :title, :content, :_destroy],company_requirement_attributes:[:occupation, :work, :qualification, :holiday, :welfare])
+        params.require(:company).permit(company_profiles_attributes:[:id, :title, :content, :_destroy],company_requirement_attributes:[:id,:occupation, :work, :qualification, :holiday, :welfare])
       end
 end
