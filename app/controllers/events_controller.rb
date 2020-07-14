@@ -63,6 +63,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event_schedule = @event.event_schedules.all
     @company =  Company.joins(:events).find_by(events:{id:@event.id})
+    @recently_visit = cookies[:item_name].split(',') if cookies[:item_name]
     render :layout => 'application3'
     
     if logged_in?

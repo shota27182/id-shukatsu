@@ -46,6 +46,8 @@ Rails.application.routes.draw do
   get 'partner_page/dashboard', to: 'partner_page#index'
   get 'partner_page/profile', to: 'partner_page#profile'
   get 'entry/new'
+  get 'password_resets/wait'
+  get 'password_resets/complete'
   resources :articles, only:[:show]
   resources :users, only:[:update]
   resources :account_activations, only: [:edit]

@@ -3,6 +3,7 @@ class IndexController < ApplicationController
     if logged_in?
       
     end
+    @recently_visit = cookies[:event_id].split(',') if cookies[:event_id]
   end
   
   

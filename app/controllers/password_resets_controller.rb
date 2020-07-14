@@ -11,10 +11,13 @@ class PasswordResetsController < ApplicationController
     if @user
       @user.create_reset_digest
       @user.send_password_reset_email
-      redirect_to root_url
+      redirect_to '/password_reset/wait'
     else
       render 'new'
     end
+  end
+  
+  def wait
   end
 
   def edit
@@ -29,10 +32,13 @@ class PasswordResetsController < ApplicationController
       render 'edit'
     elsif @user.update_attributes(user_params)
       log_in @user
-      redirect_to @user
+      redirect_to '/password_reset/complete'
     else
       render 'edit'
     end  
+  end
+  
+  def complete
   end
   
   private

@@ -4,40 +4,126 @@
     <div class="content-companies-index">
         <div class="search-box">
             <div class="search-title">
-                <p>絞り込み条件</p>
+                <p>カテゴリー</p>
             </div>
             <div class="search-category">
                 <div class="search-category-title">
-                    <p>業界</p>
-                </div>
-                <div class="search-category-item">
-                    <% if params[:industry] %>
-                        <% @industries.each do |i| %>
-                            <%= check_box_tag :industry, i.id , @IndustriesSearch.include?(i.id), class:"category"%>
-                            <%= label_tag i.name %><br>
-                        <% end %>
+                    <% if params[:categoey]  == 1 %>
+                    <input type="checkbox" class="search-way" id="label2"  checked="true" />
                     <% else %>
-                        <% @industries.each do |i| %>
-                            <%= check_box_tag :industry, i.id ,checked = false, class:"category"%>
-                            <%= label_tag i.name %><br>
-                        <% end %>
+                    <input type="checkbox" class="search-way" id="label2" />
                     <% end %>
+                    <label for="label2" class="search-way-title">就活初心者向けコンテンツ</label>
+                    <div class="search-category-item hidden-show">
+                        <p><%= link_to '就活初心者向けコンテンツ一覧' , articles_path(category: 1)%></p>
+                        <p><%= link_to '就活の基礎' , articles_path(category: 1, sub_category: 1)%></p>
+                        <p><%= link_to '自己分析' , articles_path(category: 1, sub_category: 2)%></p>
+                        <p><%= link_to '企業・業界分析' , articles_path(category: 1, sub_category: 3)%></p>
+                    </div>
                 </div>
                 <div class="search-category-title">
-                    <p>地域</p>
-                </div>
-                <div class="search-category-item">
-                    <% if params[:area] %>
-                        <% @WorkAreas.each do |i| %>
-                            <%= check_box_tag :work_area, i.id , @AreasSearch.include?(i.id),class:"category"%>
-                            <%= label_tag i.name %><br>
-                        <% end %>
+                    <% if params[:category] == 2 %>
+                    <input type="checkbox" class="search-way" id="label3" checked="true" />
                     <% else %>
-                        <% @WorkAreas.each do |i| %>
-                            <%= check_box_tag :work_area, i.id ,checked = false,class:"category"%>
-                            <%= label_tag i.name %><br>
-                        <% end %>
+                    <input type="checkbox" class="search-way" id="label3" />
                     <% end %>
+                    <label for="label3" class="search-way-title">業界別コンテンツ</label>
+                    <div class="search-category-item hidden-show">
+                        <p><%= link_to '業界別コンテンツ一覧' , articles_path(category: 2)%></p>
+                        <p><%= link_to 'コンサル' , articles_path(category: 2, sub_category: 1)%></p>
+                        <p><%= link_to '金融' , articles_path(category: 2, sub_category: 2)%></p>
+                        <p><%= link_to 'メーカー' , articles_path(category: 2, sub_category: 3)%></p>
+                        <p><%= link_to '商社' , articles_path(category: 2, sub_category: 4)%></p>
+                        <p><%= link_to 'IT・通信' , articles_path(category: 2, sub_category: 5)%></p>
+                        <p><%= link_to '広告・マスコミ' , articles_path(category: 2, sub_category: 6)%></p>
+                        <p><%= link_to '人材・教育' , articles_path(category: 2, sub_category: 7)%></p>
+                        <p><%= link_to 'インフラ・交通' , articles_path(category: 2, sub_category: 8)%></p>
+                        <p><%= link_to '不動産・建築' , articles_path(category: 2, sub_category: 9)%></p>
+                        <p><%= link_to '旅行・観光' , articles_path(category: 2, sub_category: 10)%></p>
+                        <p><%= link_to 'ブライダル' , articles_path(category: 2, sub_category: 11)%></p>
+                        <p><%= link_to '医療・福祉' , articles_path(category: 2, sub_category: 12)%></p>
+                        <p><%= link_to '小売・流通' , articles_path(category: 2, sub_category: 13)%></p>
+                        <p><%= link_to '公務員・団体職員' , articles_path(category: 2, sub_category: 14)%></p>
+                        <p><%= link_to 'その他' , articles_path(category: 2, sub_category: 15)%></p>
+                    </div>
+                </div>
+                <div class="search-category-title">
+                    <% if params[:category] == 3 %>
+                    <input type="checkbox" class="search-way" id="label4" checked="true" />
+                    <% else %>
+                    <input type="checkbox" class="search-way" id="label4" />
+                    <% end %>
+                    <label for="label4" class="search-way-title">選考対策コンテンツ</label>
+                    <div class="search-category-item hidden-show">
+                        <p><%= link_to '選考対策コンテンツ一覧' , articles_path(category: 3)%></p>
+                        <p><%= link_to 'エントリーシート(ES)' , articles_path(category: 3, sub_category: 1)%></p>
+                        <p><%= link_to '志望動機' , articles_path(category: 3, sub_category: 2)%></p>
+                        <p><%= link_to '筆記試験・Webテスト' , articles_path(category: 3, sub_category: 3)%></p>
+                        <p><%= link_to 'グループディスカッション(GD)' , articles_path(category: 3, sub_category: 4)%></p>
+                        <p><%= link_to '面接' , articles_path(category: 3, sub_category: 5)%></p>
+                        <p><%= link_to 'インターン・ジョブ' , articles_path(category: 3, sub_category: 6)%></p>
+                        <p><%= link_to 'OB訪問・リクルーター面接' , articles_path(category: 3, sub_category: 7)%></p>
+                    </div>
+                </div>
+                <div class="search-category-title">
+                    <% if params[:area] %>
+                    <input type="checkbox" class="search-way" id="label5" checked="true" />
+                    <% else %>
+                    <input type="checkbox" class="search-way" id="label5" />
+                    <% end %>
+                    <label for="label5" class="search-way-title">所属別コンテンツ</label>
+                    <div class="search-category-item hidden-show">
+                        <p><%= link_to '所属別コンテンツ一覧' , articles_path(category: 4)%></p>
+                        <p><%= link_to '体育会系' , articles_path(category: 4, sub_category: 1)%></p>
+                        <p><%= link_to '女子学生' , articles_path(category: 4, sub_category: 2)%></p>
+                        <p><%= link_to '理系学生' , articles_path(category: 4, sub_category: 3)%></p>
+                        <p><%= link_to '大学院生' , articles_path(category: 4, sub_category: 4)%></p>
+                        <p><%= link_to '留学生・帰国子女・海外大生' , articles_path(category: 4, sub_category: 5)%></p>
+                        <p><%= link_to '早期就活生(1,2年生向け)' , articles_path(category: 4, sub_category: 6)%></p>
+                    </div>
+                </div>
+                <div class="search-category-title">
+                    <% if params[:area] %>
+                    <input type="checkbox" class="search-way" id="label6" checked="true" />
+                    <% else %>
+                    <input type="checkbox" class="search-way" id="label6" />
+                    <% end %>
+                    <label for="label6" class="search-way-title">キャリアコンテンツ</label>
+                    <div class="search-category-item hidden-show">
+                        <p><%= link_to 'キャリアコンテンツ一覧' , articles_path(category: 5)%></p>
+                        <p><%= link_to '日系大手でのキャリア' , articles_path(category: 5, sub_category: 1)%></p>
+                        <p><%= link_to '外資系でのキャリア' , articles_path(category: 5, sub_category: 2)%></p>
+                        <p><%= link_to 'ベンチャーでのキャリア' , articles_path(category: 5, sub_category: 3)%></p>
+                        <p><%= link_to 'その他のキャリア' , articles_path(category: 5, sub_category: 4)%></p>
+                    </div>
+                </div>
+                <div class="search-category-title">
+                    <% if params[:area] %>
+                    <input type="checkbox" class="search-way" id="labe7" checked="true" />
+                    <% else %>
+                    <input type="checkbox" class="search-way" id="label7" />
+                    <% end %>
+                    <label for="label7" class="search-way-title">内定者向けコンテンツ</label>
+                    <div class="search-category-item hidden-show">
+                        <p><%= link_to '内定者向けコンテンツ一覧' , articles_path(category: 5)%></p>
+                        <p><%= link_to '入社先の選択' , articles_path(category: 5, sub_category: 1)%></p>
+                        <p><%= link_to '内定辞退' , articles_path(category: 5, sub_category: 2)%></p>
+                        <p><%= link_to '内定後の課題・スキルアップ' , articles_path(category: 5, sub_category: 3)%></p>
+                    </div>
+                </div>
+                <div class="search-category-title">
+                    <% if params[:area] %>
+                    <input type="checkbox" class="search-way" id="label3" checked="true" />
+                    <% else %>
+                    <input type="checkbox" class="search-way" id="label3" />
+                    <% end %>
+                    <label for="label3" class="search-way-title">その他のコンテンツ</label>
+                    <div class="search-category-item hidden-show">
+                        <p><%= link_to 'その他のコンテンツ一覧' , articles_path(category: 6)%></p>
+                        <p><%= link_to 'インタービュー' , articles_path(category: 6, sub_category: 1)%></p>
+                        <p><%= link_to '連載記事' , articles_path(category: 6, sub_category: 2)%></p>
+                        <p><%= link_to '息抜きコンテンツ' , articles_path(category: 6, sub_category: 3)%></p>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,9 +1,8 @@
 
-<p>Hi <%= @user.name %>,</p>
+<p>このメールは,ID就活に登録を希望されている方へ、</p>
+<p>ご本人様確認のため自動的にお送りしています。</p>
 
-<p>
-Welcome to the Sample App! Click on the link below to activate your account:
-</p>
+<p>以下のURLにアクセスしていただき、プロフィールを入力していただくと登録が完了となります。</p>
 
 <%= link_to "Activate", edit_account_activation_url(@user.activation_token,
                                                     email: @user.email) %>
