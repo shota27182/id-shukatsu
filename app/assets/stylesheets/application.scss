@@ -32,10 +32,13 @@ body {
 
 
 .top-wrapper{
-    background-image: url("top.png");
     height:297px;
     width:100%;
-    background-size:cover;
+}
+
+.top-wrapper img{
+    width:100%;
+    height:297px;
 }
 
 
@@ -2460,12 +2463,14 @@ footer{
     
     
     .top-wrapper{
-        background-image: url("top.png");
-        height:297px;
-        width:100%;
-        background-size:cover;
+        height:126px;
+        width:100%
     }
     
+    .top-wrapper{
+        height:126px;
+        width:100%;
+    }
     
     
     header{
