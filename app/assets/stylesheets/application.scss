@@ -2447,7 +2447,7 @@ footer{
 }
 
 
-@media screen and (min-width: 0px) and (max-device-width: 920px) {
+@media screen and (max-width: 920px) {
     body {
       margin: 0;
       font-family: "Hiragino Kaku Gothic ProN";
@@ -2467,7 +2467,7 @@ footer{
         width:100%
     }
     
-    .top-wrapper{
+    .top-wrapper img{
         height:126px;
         width:100%;
     }
