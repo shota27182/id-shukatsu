@@ -1,2 +1,2 @@
-$(".product-index").html("<%= escape_javascript(render 'index') %>")
+$(".product-index").html("<%= escape_javascript(render 'index', locals: { user_programming: @user_programmings }) %>")
 $("#programming-modal").modal("hide")

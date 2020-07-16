@@ -76,6 +76,12 @@ class CompaniesController < ApplicationController
     redirect_to "/companies/#{@company.id}"
   end
   
+  def good
+  end
+  
+  def bad
+  end
+  
   def dislike
     @user_company = UserCompany.find_by(user_id: current_user.id, company_id: params[:id])
     @user_company.destroy
