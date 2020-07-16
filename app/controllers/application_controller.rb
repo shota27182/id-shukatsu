@@ -40,6 +40,10 @@ class ApplicationController < ActionController::Base
     end
     
     def core_registered?
+      !current_user.nil? && current_user.status == 'core_registered'
+    end
+    
+    def core_registered?
       current_user.status == 'core_registered'
     end
     

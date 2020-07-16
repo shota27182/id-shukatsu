@@ -35,8 +35,13 @@ class Signup
   def save
     run_callbacks :save do
       return false if invalid?
-      user = User.new(name: name, email: email, password: password, kana: kana, password_confirmation: password_confirmation,activation_digest: activation_digest,activation_token: activation_token)
-      user.save!
+      if User.where(email: email).count == 0
+        user = User.new(name: name, email: email, password: password, kana: kana, password_confirmation: password_confirmation,activation_digest: activation_digest,activation_token: activation_token)
+        user.save!
+      else
+        user = User.find_by(email: email)
+        user.update(name: name, email: email, password: password, kana: kana, password_confirmation: password_confirmation,activation_digest: activation_digest,activation_token: activation_token)
+      end
       user.send_activation_email
       true
     end
@@ -87,8 +92,10 @@ class Signup
        end
        
        def email_is_unique 
-        unless User.where(email: email).count == 0 
-          errors.add(:email, 'このメールアドレスは既に使われています') 
+        unless User.where(email: email).count == 0
+          if User.find_by(email: email).activated == true
+              errors.add(:email, 'このメールアドレスは既に使われています')
+          end
         end 
        end 
 end

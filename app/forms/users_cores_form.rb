@@ -23,7 +23,7 @@ class UsersCoresForm
 
 
   def save
-      return false if invalid?
+      raise ActiveRecord::RecordInvalid if invalid?
       user = User.find(user_id)
       user.update_attributes!(company_feature_ids: company_feature_ids, company_point_ids: company_point_ids, welfare_ids: welfare_ids, work_style_ids: work_style_ids, company_scale_ids: company_scale_ids,industry_ids: industry_ids,occupation_ids: occupation_ids, work_area_ids: work_area_ids)
       user.update(status:'core_registered')

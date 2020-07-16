@@ -6,11 +6,24 @@ class UserToeicsController < ApplicationController
   
   def new
     @user_toeic = UserToeic.new
+    respond_to do |format| 
+      format.html{ redirect_to @user_toeic, notice: 'User was successfully created.' }
+      format.js {} 
   end
   
   def create
     @user_toeic = UserToeic.new(user_toeic_params)
-    @user_toeic.save
+    respond_to do |format|
+      if @user_toeic.save
+        format.html { redirect_to @user_toeic, notice: 'User was successfully created.' }
+        format.json { render :show, status: :created, location: @user_toeic }
+        format.js { @status = "success"}
+      else
+        format.html { render :new }
+        format.json { render json: @user_toeic.errors, status: :unprocessable_entity }
+        format.js { @status = "fail" }
+      end
+    end
   end
   
   def edit
@@ -18,8 +31,19 @@ class UserToeicsController < ApplicationController
   end
   
   def update
-    @user_eiken = UserEiken.update(user_eiken_params)
-    @user_programmings = current_user.user_programmings.all
+    @user_toeic = UserToeic.find_by(id: params[:id])
+    respond_to do |format|
+      if @user_toeic.update(user_toeic_params)
+        format.html { redirect_to @user_toeic, notice: 'User was successfully created.' }
+        format.json { render :show, status: :created, location: @user_toeic }
+        format.js { @status = "success"}
+      else
+        format.html { render :new }
+        format.json { render json: @user_toeic.errors, status: :unprocessable_entity }
+        format.js { @status = "fail" }
+      end
+    end
+    
   end
   
   private

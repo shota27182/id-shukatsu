@@ -1,6 +1,2 @@
-<% @user_languages.each do |user_language| %>
-  <tr>
-    <td><%= user_language.language %></td>
-    <td><%= link_to 'Edit', edit_user_language_path(user_language), remote: true %></td>
-  </tr>
-<% end %>
+<td><%= user_language.language %></td>
+<td><%= link_to '編集する', edit_user_language_path(user_language), remote: true %></td>

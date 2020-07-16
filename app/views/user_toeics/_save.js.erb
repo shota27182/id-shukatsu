@@ -1,2 +1,2 @@
-$(".product-index").html("<%= escape_javascript(render 'index') %>")
+$("#profile-user-toeic").html("<%= escape_javascript(render 'index',locals: {user_toeic: @user_toeic}) %>")
 $("#toeic-modal").modal("hide")

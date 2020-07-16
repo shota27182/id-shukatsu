@@ -15,24 +15,45 @@
                 <div class="profile-context-left">
                     <p>英検：</p>
                 </div>
-                <div class="profile-context-right">
-                    <%= render '/user_eikens/index'  %>
+                <div class="profile-context-right" id="profile-user-eiken">
+                    <%  if @user_eiken.nil? %>
+                      <%= link_to "追加する",new_user_eiken_path, remote: true %>
+                      <div id="eiken-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+                    <% else  %>
+                      <%= current_user.user_eiken.eiken %>
+                      <td><%= link_to 'Edit', edit_user_eiken_path(@user_eiken), remote: true %></td>
+                      <div id="eiken-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+                    <% end  %>
                 </div>
             </div>
             <div class="profile-context">
                 <div class="profile-context-left">
                     <p>TOEIC：</p>
                 </div>
-                <div class="profile-context-right">
-                    <%= render '/user_toeics/index' %>
+                <div class="profile-context-right" id="profile-user-toeic">
+                    <%  if @user_toeic.nil? %>
+                      <%= link_to "追加する",new_user_toeic_path, remote: true %>
+                      <div id="toeic-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+                    <% else  %>
+                    <%= @user_toeic.toeic %>
+                        <td><%= link_to 'Edit', edit_user_toeic_path(@user_toeic), remote: true %></td>
+                        <div id="toeic-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+                    <% end %>
                 </div>
             </div>
             <div class="profile-context">
                 <div class="profile-context-left">
                     <p>TOEFL：</p>
                 </div>
-                <div class="profile-context-right">
-                    <%= render '/user_toefls/index' %>
+                <div class="profile-context-right" id="profile-user-toefl">
+                    <%  if @user_toefl.nil? %>
+                      <%= link_to "追加する",new_user_toefl_path, remote: true %>
+                      <div id="toefl-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+                    <% else  %>
+                      <%= @user_toefl.toefl %>
+                      <td><%= link_to 'Edit', edit_user_toefl_path(@user_toefl), remote: true %></td>
+                      <div id="toefl-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+                    <% end  %>
                 </div>
             </div>
             <div class="profile-context">
@@ -40,7 +61,14 @@
                     <p>その他の言語：</p>
                 </div>
                 <div class="profile-context-right">
-                    <%= render '/user_languages/index' %>
+                    <% UserLanguage.where(user_id: current_user.id).each do |user_language| %>
+                        <tr id="user_language_buttons_<%= user_language.id %>">
+                          <td><%= user_language.language %></td>
+                          <td><%= link_to '編集する', edit_user_language_path(user_language), remote: true %></td>
+                        </tr>
+                    <% end %>
+                    <tr id="profile-user-language">
+                    </tr>
                 </div>
             </div>
             <%= link_to "+ 言語を追加する",new_user_language_path, class: 'mypage-programming-post', remote: true %>

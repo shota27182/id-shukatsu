@@ -1,2 +1,2 @@
-$(".product-index").html("<%= escape_javascript(render 'index') %>")
+$("#profile-user-eiken").html("<%= j(render 'index', locals: {user_eiken: @user_eiken}) %>")
 $("#eiken-modal").modal("hide")

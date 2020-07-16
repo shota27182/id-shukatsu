@@ -1,1 +1,2 @@
-<%= render 'save' %>
+$("#profile-user-toefl").html("<%= j(render 'index',locals: {user_toefl: @user_toefl}) %>")
+$("#toefl-modal").modal("hide")
