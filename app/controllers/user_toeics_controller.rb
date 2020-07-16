@@ -6,9 +6,6 @@ class UserToeicsController < ApplicationController
   
   def new
     @user_toeic = UserToeic.new
-    respond_to do |format| 
-      format.html{ redirect_to @user_toeic, notice: 'User was successfully created.' }
-      format.js {} 
   end
   
   def create
