@@ -21,6 +21,7 @@ gem 'romaji'
 gem 'font-awesome-rails'
 gem 'kaminari'
 gem 'js_cookie_rails', '~> 2.2'
+gem 'fog'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '4.3.1'
