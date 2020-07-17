@@ -1,2 +1,4 @@
-$("#profile-user-language").append("<%= j(render ('index', user_language: @user_language) %>")
+$("#profile-user-language").html("<%= escape_javascript(render partial:'index', locals:{user_languages: @user_languages}) %>")
+$('div.modal-backdrop.in').remove()
+$('body').removeClass('modal-open')
 $("#language-modal").modal("hide")

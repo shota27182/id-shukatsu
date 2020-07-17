@@ -6,44 +6,22 @@ class UserToeflsController < ApplicationController
   
   def new
     @user_toefl = UserToefl.new
-    respond_to do |format| 
-      format.html{ redirect_to @user_toefl, notice: 'User was successfully created.' }
-      format.js {} 
-    end
   end
   
   def create
     @user_toefl = UserToefl.new(user_toefl_params)
-    respond_to do |format|
-      if @user_toefl.save
-        format.html { redirect_to @user_toefl, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user_toefl }
-        format.js { @status = "success"}
-      else
-        format.html { render :new }
-        format.json { render json: @user_toefl.errors, status: :unprocessable_entity }
-        format.js { @status = "fail" }
-      end
-    end
+    @user_toefl.save
+    @user_toefl = current_user.user_toefl
   end
   
   def edit
-    @user_toefl = UserToefl.find_by(id: params[:id])
+    @user_toefl = current_user.user_toefl
   end
   
   def update
-    @user_toefl = UserToefl.find_by(id: params[:id])
-    respond_to do |format|
-      if @user_toefl.update(user_toefl_params)
-        format.html { redirect_to @user_toefl, notice: 'User was successfully created.' }
-        format.json { render :show, location: @user_toefl }
-        format.js { @status = "success"}
-      else
-        format.html { render :new }
-        format.json { render json: @user_toefl.errors, status: :unprocessable_entity }
-        format.js { @status = "fail" }
-      end
-    end
+    @user_toefl = current_user.user_toefl
+    @user_toefl.update(user_toefl_params)
+    @user_toefl = current_user.user_toefl
   end
   
   private

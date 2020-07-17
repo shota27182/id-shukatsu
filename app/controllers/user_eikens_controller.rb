@@ -11,15 +11,17 @@ class UserEikensController < ApplicationController
   def create
     @user_eiken = UserEiken.new(user_eiken_params)
     @user_eiken.save
+    @user_eiken = current_user.user_eiken
   end
   
   def edit
-    @user_eiken = UserEiken.find_by(id: params[:id])
+    @user_eiken = current_user.user_eiken
   end
   
   def update
-    @user_eiken = UserEiken.update(user_eiken_params)
-    @user_programmings = current_user.user_programmings.all
+    @user_eiken = current_user.user_eiken
+    @user_eiken.update(user_eiken_params)
+    @user_eiken = current_user.user_eiken
   end
   
   private

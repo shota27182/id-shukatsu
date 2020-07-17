@@ -1,8 +1,3 @@
-<%  if @user_experience.nil? %>
-  <%= link_to "追加する",new_user_experience_path, remote: true %>
-  <div id="experience-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
-<% else  %>
-  <%= current_user.user_experience.experience %>
-  <td><%= link_to 'Edit', edit_user_experience_path(@user_experience), remote: true %></td>
-  <div id="experience-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
-<% end  %>
+<p class="eiken-right"><%= user_experience.experience %></p>
+<td class="eiken-left"><%= link_to '編集する', edit_user_experience_path(user_experience), remote: true %></td>
+<div id="experience-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

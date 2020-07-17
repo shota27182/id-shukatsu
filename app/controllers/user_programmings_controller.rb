@@ -11,7 +11,7 @@ class UserProgrammingsController < ApplicationController
   def create
     @user_programming = UserProgramming.new(user_programming_params)
     @user_programming.save
-    @user_programmings = current_user.user_programmings.all
+    @user_programmings = current_user.user_programmings
   end
   
   def edit
@@ -19,8 +19,15 @@ class UserProgrammingsController < ApplicationController
   end
   
   def update
-    @user_programming = UserProgramming.update(user_programming_params)
+    @user_programming = UserProgramming.find_by(id: params[:id])
+    @user_programming.update(user_programming_params)
     @user_programmings = current_user.user_programmings.all
+  end
+  
+  def destroy
+    @user_programming = UserProgramming.find_by(params[:id])
+    @user_programming.destroy
+    @user_programmings = current_user.user_programmings
   end
   
   private

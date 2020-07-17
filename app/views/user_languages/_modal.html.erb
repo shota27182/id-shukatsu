@@ -5,18 +5,18 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title">プログラミングスキル</h4>
+        <h4 class="modal-title">その他の言語</h4>
       </div>
       <div class="modal-body">
         <div class="programming-title">
             <div class="programming-form">
                 <div class="form-detail form-top">
                     <p>その他の言語</p>
-                    <%= f.select :language, UserLanguage.languages.keys, {prompt: '選択してください'} %>
+                    <%= f.select :language, UserLanguage.languages.keys %>
                 </div>
                 <div class="form-detail form-top">
                     <p>レベル</p>
-                    <%= f.select :level, UserLanguage.levels.keys, {prompt: '選択してください'} %>
+                    <%= f.select :level, UserLanguage.levels.keys %>
                 </div>
             </div>
       </div>

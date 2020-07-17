@@ -1,2 +1,4 @@
-$("#profile-user-eiken").html("<%= j(render 'index', locals: {user_eiken: @user_eiken}) %>")
+$("#profile-user-eiken").html("<%= escape_javascript(render partial: '/user_eikens/index', locals:{user_eiken: @user_eiken}) %>")
+$('div.modal-backdrop.in').remove()
+$('body').removeClass('modal-open')
 $("#eiken-modal").modal("hide")

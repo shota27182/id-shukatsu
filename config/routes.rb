@@ -53,11 +53,11 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :generals, only:[:create]
-  resources :user_programmings, only: [:new, :create, :edit, :update]
+  resources :user_programmings, only: [:new, :create, :edit, :update, :destroy]
   resources :user_eikens, only: [:new, :create, :edit, :update]
   resources :user_toeics, only: [:new, :create, :edit, :update]
   resources :user_toefls, only: [:new, :create, :edit, :update]
-  resources :user_languages, only: [:new, :create, :edit, :update]
+  resources :user_languages, only: [:new, :create, :edit, :update, :destroy]
   resources :user_internships, only: [:new, :create, :edit, :update]
   resources :user_experiences, only: [:new, :create, :edit, :update]
 

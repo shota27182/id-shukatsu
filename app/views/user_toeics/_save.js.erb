@@ -1,2 +1,4 @@
-$("#profile-user-toeic").html("<%= escape_javascript(render 'index',locals: {user_toeic: @user_toeic}) %>")
+$("#profile-user-toeic").html("<%= escape_javascript(render partial: 'index',locals: {user_toeic: @user_toeic}) %>")
+$('div.modal-backdrop.in').remove()
+$('body').removeClass('modal-open')
 $("#toeic-modal").modal("hide")

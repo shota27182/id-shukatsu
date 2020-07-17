@@ -11,6 +11,7 @@ class UserExperiencesController < ApplicationController
   def create
     @user_experience = UserExperience.new(user_experience_params)
     @user_experience.save
+    @user_experience = current_user.user_experience
   end
   
   def edit
@@ -19,7 +20,7 @@ class UserExperiencesController < ApplicationController
   
   def update
     @user_experience = UserExperience.update(user_experience_params)
-    @user_experiences = current_user.user_experience
+    @user_experience = current_user.user_experience
   end
   
   private

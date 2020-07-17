@@ -10,37 +10,18 @@ class UserToeicsController < ApplicationController
   
   def create
     @user_toeic = UserToeic.new(user_toeic_params)
-    respond_to do |format|
-      if @user_toeic.save
-        format.html { redirect_to @user_toeic, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user_toeic }
-        format.js { @status = "success"}
-      else
-        format.html { render :new }
-        format.json { render json: @user_toeic.errors, status: :unprocessable_entity }
-        format.js { @status = "fail" }
-      end
-    end
+    @user_toeic.save
+    @user_toeic = current_user.user_toeic
   end
   
   def edit
-    @user_toeic = UserToeic.find_by(id: params[:id])
+    @user_toeic = current_user.user_toeic
   end
   
   def update
-    @user_toeic = UserToeic.find_by(id: params[:id])
-    respond_to do |format|
-      if @user_toeic.update(user_toeic_params)
-        format.html { redirect_to @user_toeic, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user_toeic }
-        format.js { @status = "success"}
-      else
-        format.html { render :new }
-        format.json { render json: @user_toeic.errors, status: :unprocessable_entity }
-        format.js { @status = "fail" }
-      end
-    end
-    
+    @user_toeic = current_user.user_toeic
+    @user_toeic.update(user_toeic_params)
+    @user_toeic = current_user.user_toeic
   end
   
   private

@@ -1,6 +1,5 @@
-<% @user_programmings.each do |user_programming| %>
-  <tr>
-    <td><%= Programming.find_by(id: user_programming.programming_id).name %></td>
-    <td><%= link_to 'Edit', edit_user_programming_path(user_programming), remote: true %></td>
-  </tr>
+<% user_programmings.each do |user_programming| %>
+  <p class="eiken-right programming-dark"><%= Programming.find_by(id: user_programming.programming_id).name %></p>
+  <td class="eiken-left"><%= link_to '編集', edit_user_programming_path(user_programming), remote: true %>・<%= link_to '削除',user_programming_path(user_programming), method: :delete, remote: true %></td>
+  <p class="eiken-max eiken-dark"><%= user_programming.description %></p>
 <% end %>

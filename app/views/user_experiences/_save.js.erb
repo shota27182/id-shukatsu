@@ -1,2 +1,4 @@
-$(".product-index").html("<%= escape_javascript(render 'index') %>")
+$("#profile-user-experience").html("<%= escape_javascript(render partial: 'index', locals:{user_experience: @user_experience}) %>")
+$('div.modal-backdrop.in').remove()
+$('body').removeClass('modal-open')
 $("#experience-modal").modal("hide")

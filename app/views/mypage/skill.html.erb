@@ -20,8 +20,8 @@
                       <%= link_to "追加する",new_user_eiken_path, remote: true %>
                       <div id="eiken-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
                     <% else  %>
-                      <%= current_user.user_eiken.eiken %>
-                      <td><%= link_to 'Edit', edit_user_eiken_path(@user_eiken), remote: true %></td>
+                      <p class="eiken-right"><%= current_user.user_eiken.eiken %><p>
+                      <td class="eiken-left"><%= link_to '編集する', edit_user_eiken_path(@user_eiken), remote: true %></td>
                       <div id="eiken-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
                     <% end  %>
                 </div>
@@ -35,8 +35,8 @@
                       <%= link_to "追加する",new_user_toeic_path, remote: true %>
                       <div id="toeic-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
                     <% else  %>
-                    <%= @user_toeic.toeic %>
-                        <td><%= link_to 'Edit', edit_user_toeic_path(@user_toeic), remote: true %></td>
+                        <p class="eiken-right"><%= @user_toeic.toeic %>pt</p>
+                        <td class="eiken-left"><%= link_to '編集する', edit_user_toeic_path(@user_toeic), remote: true %></td>
                         <div id="toeic-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
                     <% end %>
                 </div>
@@ -50,8 +50,8 @@
                       <%= link_to "追加する",new_user_toefl_path, remote: true %>
                       <div id="toefl-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
                     <% else  %>
-                      <%= @user_toefl.toefl %>
-                      <td><%= link_to 'Edit', edit_user_toefl_path(@user_toefl), remote: true %></td>
+                      <p class="eiken-right"><%= @user_toefl.type %> <%= @user_toefl.toefl %>pt</p>
+                      <td class="eiken-left"><%= link_to '編集する', edit_user_toefl_path(@user_toefl), remote: true %></td>
                       <div id="toefl-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
                     <% end  %>
                 </div>
@@ -60,12 +60,10 @@
                 <div class="profile-context-left">
                     <p>その他の言語：</p>
                 </div>
-                <div class="profile-context-right">
+                <div class="profile-context-right" id="profile-user-language">
                     <% UserLanguage.where(user_id: current_user.id).each do |user_language| %>
-                        <tr id="user_language_buttons_<%= user_language.id %>">
-                          <td><%= user_language.language %></td>
-                          <td><%= link_to '編集する', edit_user_language_path(user_language), remote: true %></td>
-                        </tr>
+                        <p class="eiken-right eiken-dark"><%= user_language.language %>  <%= user_language.level %></p>
+                        <td class="eiken-left eiken-dark"><%= link_to '編集', edit_user_language_path(user_language), remote: true %>・<%= link_to '削除',user_language_path(user_language), method: :delete, remote: true %></td>
                     <% end %>
                     <tr id="profile-user-language">
                     </tr>
@@ -88,8 +86,12 @@
                 <div class="profile-context-left">
                     <p>言語：</p>
                 </div>
-                <div class="profile-context-right">
-                    <%= render '/user_programmings/index'  %>
+                <div class="profile-context-right" id="profile-user-programming">
+                    <% @user_programmings.each do |user_programming| %>
+                      <p class="eiken-right programming-dark"><%= Programming.find_by(id: user_programming.programming_id).name %></p>
+                      <td class="eiken-left programming-dark"><%= link_to '編集', edit_user_programming_path(user_programming), remote: true %>・<%= link_to '削除',user_programming_path(user_programming), method: :delete, remote: true %></td>
+                      <p class="eiken-max eiken-dark"><%= user_programming.description %></p>
+                    <% end %>
                 </div>
             </div>
             <%= link_to "+ プログラミングスキルを追加する",new_user_programming_path, class: 'mypage-programming-post', remote: true %>
@@ -109,16 +111,30 @@
                 <div class="profile-context-left">
                     <p>学生時代の経歴：</p>
                 </div>
-                <div class="profile-context-right">
-                    <%= render '/user_experiences/index' %>
+                <div class="profile-context-right" id="profile-user-experience">
+                    <%  if @user_experience.nil? %>
+                      <%= link_to "追加する",new_user_experience_path, remote: true %>
+                      <div id="experience-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+                    <% else  %>
+                      <p class="eiken-right"><%= current_user.user_experience.experience %></p>
+                      <td class="eiken-left"><%= link_to '編集する', edit_user_experience_path(@user_experience), remote: true %></td>
+                      <div id="experience-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+                    <% end  %>
                 </div>
             </div>
             <div class="profile-context">
                 <div class="profile-context-left">
                     <p>インターン経歴：</p>
                 </div>
-                <div class="profile-context-right">
-                    <%= render '/user_internships/index' %>
+                <div class="profile-context-right" id="profile-user-internship">
+                    <%  if @user_internship.nil? %>
+                      <%= link_to "追加する",new_user_internship_path, remote: true %>
+                      <div id="internship-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+                    <% else  %>
+                      <p class="eiken-right"><%= current_user.user_internship.internship %></p>
+                      <td class="eiken-left"><%= link_to '編集する', edit_user_internship_path(@user_internship), remote: true %></td>
+                      <div id="internship-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+                    <% end  %>
                 </div>
             </div>
         </div>

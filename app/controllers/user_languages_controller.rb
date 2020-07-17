@@ -11,18 +11,8 @@ class UserLanguagesController < ApplicationController
   
   def create
     @user_language = UserLanguage.new(user_language_params)
-    respond_to do |format|
-      if @user_language.save
-        format.html { redirect_to @user_language, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user_language }
-        format.js { @status = "success"}
-      else
-        format.html { render :new }
-        format.json { render json: @user_language.errors, status: :unprocessable_entity }
-        format.js { @status = "fail" }
-      end
-    end
-       
+    @user_language.save
+    @user_languages = current_user.user_languages
   end
   
   def edit
@@ -31,17 +21,14 @@ class UserLanguagesController < ApplicationController
   
   def update
     @user_language = UserLanguage.find_by(id: params[:id])
-    respond_to do |format|
-      if @user_language.update(user_language_params)
-        format.html { redirect_to @user_lamguage, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user_language }
-        format.js { @status = "success"}
-      else
-        format.html { render :new }
-        format.json { render json: @user_language.errors, status: :unprocessable_entity }
-        format.js { @status = "fail" }
-      end
-    end
+    @user_language.update(user_language_params)
+    @user_languages = current_user.user_languages
+  end
+  
+  def destroy
+    @user_language = UserLanguage.find_by(id: params[:id])
+    @user_language.destroy
+    @user_languages = current_user.user_languages
   end
   
   private

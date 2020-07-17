@@ -11,6 +11,7 @@ class UserInternshipsController < ApplicationController
   def create
     @user_internship = UserInternship.new(user_internship_params)
     @user_internship.save
+    @user_internship = current_user.user_internship
   end
   
   def edit
@@ -19,6 +20,7 @@ class UserInternshipsController < ApplicationController
   
   def update
     @user_internship = UserInternship.update(user_internship_params)
+    @user_internship = current_user.user_internship
     @user_internship = current_user.user_internship
   end
   
