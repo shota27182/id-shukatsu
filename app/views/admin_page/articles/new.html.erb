@@ -1,0 +1,9 @@
+<div class="field">
+    <%= form_with model: @article, method: :post, url: admin_page_articles_path, local: true do |f| %>
+    <%= f.label :title %><br>
+    <%= f.text_area :title %><br>
+    <%= f.label :content %><br>
+    <%= f.rich_text_area :content %><br>
+    <%= f.submit 'Save' %>
+    <% end %>
+ </div>

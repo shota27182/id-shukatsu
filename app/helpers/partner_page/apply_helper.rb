@@ -1,2 +1,0 @@
-module PartnerPage::ApplyHelper
-end

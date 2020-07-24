@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
 
   
+  namespace :admin_page do
+    get 'articles/new'
+  end
   get 'edit_mail/index'
   get 'admin_user/index'
   namespace :mypage do
@@ -111,6 +114,7 @@ Rails.application.routes.draw do
   
   namespace :admin_page do
     resources :companies , only: [:new, :create, :edit, :update]
+    resources :articles, only: [:new, :create, :edit, :update]
   end
   
   get '/companies', to: 'companies#index'
@@ -128,6 +132,7 @@ Rails.application.routes.draw do
     get 'entry/complete'
     get 'entry/edit_schedule'
     get 'entry/cancel'
+    post 'entry/edit_complete'
     delete 'entry/cancel', to: 'entry#destroy'
     get 'entry/complete_cancel'
   end

@@ -16,6 +16,7 @@
         </div>
     </div>
 </div>
+<%= form_with model: @user_event, method: :post, url: event_entry_edit_complete_path, local: true do |f| %>
 <% EventSchedule.includes(:user_events).where(user_events: {user_id: current_user.id,event_id: @event.id }).each do |event_schedule| %>
 <div class="event-schedule-title schedule-top">
     <h2>現在選択している日程</h2>
@@ -31,28 +32,47 @@
     </div>
     <h2>変更する日程</h2>
     <div class="event-schedule-middle">
-        <% @event.event_schedules.all.each do |event_schedule| %>
+        <%= f.collection_radio_buttons(:event_schedule_id , @event.event_schedules.all, :id, :id ) do |a| %>
+        <% if EventSchedule.find_by(id: a.text) !=  EventSchedule.includes(:user_events).find_by(user_events: {user_id: current_user.id,event_id: @event.id }) %>
         <div class="entry-area">
             <div class="event-title">
-                <h2><%=event_schedule.title %></h2>
+                <h2><%=EventSchedule.find_by(id: a.text).title %></h2>
                 <img src="/assets/clock.svg">
-                <p class="entry-date"><%= event_schedule.holding_day.strftime("%m/%d") %><%= %w((日) (月) (火) (水) (木) (金) (土))[event_schedule.holding_day.wday] %></p>
-                <p class="entry-time"><%= event_schedule.start_time.strftime('%H:%M') %> - <%= event_schedule.end_time.strftime('%H:%M') %></p>
+                <p class="entry-date"><%= EventSchedule.find_by(id: a.text).holding_day.strftime("%m/%d") %><%= %w((日) (月) (火) (水) (木) (金) (土))[EventSchedule.find_by(id: a.text).holding_day.wday] %></p>
+                <p class="entry-time"><%= EventSchedule.find_by(id: a.text).start_time.strftime('%H:%M') %> - <%= EventSchedule.find_by(id: a.text).end_time.strftime('%H:%M') %></p>
                 <img src="/assets/location.svg">
-                <p class="entry-location"><%= event_schedule.address + event_schedule.place%></p>
+                <p class="entry-location"><%= EventSchedule.find_by(id: a.text).address + EventSchedule.find_by(id: a.text).place%></p>
             </div>
             <div class="event-entry">
-                <p>締切 <%= event_schedule.deadline.strftime("%m月%d日") %><%= %w((日) (月) (火) (水) (木) (金) (土))[event_schedule.deadline.wday] %></p>
-                <div class="entry-button">
-                    <%= link_to 'エントリーする'%>
+                <p>締切 <%= EventSchedule.find_by(id: a.text).deadline.strftime("%m月%d日") %><%= %w((日) (月) (火) (水) (木) (金) (土))[EventSchedule.find_by(id: a.text).deadline.wday] %></p>
+                <div class="entry-button select-change">
+                    <%= a.radio_button %>
+                    <label for="event_schedule_id_<%= a.text %>", class='event-change-label'>エントリーする</label>
                 </div>
             </div>
         </div>
+        <% end %>
         <% end %>
     </div>
 </div>
 <% end %>
 <div class="event-schedule-bottom">
     <%=link_to '戻る', '/mypage/entry' ,class:'event-schedule-bottom-left'%>
-    <%= link_to '日程を変更する',event_entry_index_path(event_schedule: params[:event_schedule]),method: :post,class:'event-schedule-bottom-right' %>
+    <%= f.submit '日程を変更する',class: 'event-schedule-bottom-right' , id: "button2" %>
 </div>
+<% end %>
+
+<script type="text/javascript">
+    $(function(){
+      var btn = $('button');
+      btn.click(function(){
+        btn.removeClass('active');
+        $(this).addClass('active');
+      });
+    });
+    $('.button').on('click', function(){
+        var click =  $(this).data('id');
+        
+        $('#selected').text(click);
+    });
+</script>

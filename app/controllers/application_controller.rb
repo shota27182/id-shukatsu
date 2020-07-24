@@ -54,4 +54,11 @@ class ApplicationController < ActionController::Base
         redirect_to partner_user_login_url
       end
     end
+    
+    def event_applied_user
+      if current_user.events.include?(Event.find_by(id: params[:event_id]))
+         store_location
+         redirect_to '/events'
+      end
+    end
 end

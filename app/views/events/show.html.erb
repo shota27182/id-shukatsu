@@ -98,11 +98,75 @@
                 </div>
             </div>
             <div class="company-introduction">
-                <div class="company-introduction-title"><%= @company.name %>の他の募集情報</div>
-                <% @company.events.each do |i| %>
-                <% unless i == @event %>
-                <%=i.name %>
+                <div class="company-introduction-title other-introduction"><%= @company.name %>の他の募集情報</div>
+                <% if (@company.events.where(category: 1).count >= 2 && @event.category == 1) || (@company.events.where(category: 1).count >= 1 && @event.category != 1) %>
+                    <div class="other-event-title">本選考</div>
+                    <div class="other-event-content">
+                    <% @company.events.where(category: 1).each do |i| %>
+                        <% Event.find_by(id: i.id).event_schedules.each do |a| %>
+                            <div class="entry-area go-to-other-event">
+                                <a href="/events/<%= i.id %>"></a>
+                               <div class="event-title">
+                                   <h2><%=i.name %></h2>
+                                   <img src="/assets/clock.svg">
+                                   <p class="entry-date"><%= a.holding_day.strftime("%m/%d") %><%= %w((日) (月) (火) (水) (木) (金) (土))[a.holding_day.wday] %></p>
+                                   <p class="entry-time"><%= a.start_time.strftime('%H:%M') %> - <%= a.end_time.strftime('%H:%M') %></p>
+                                   <img src="/assets/location.svg">
+                                   <p class="entry-location"><%= a.address + a.place%></p>
+                                </div>
+                                <div class="event-entry">
+                                    <p>締切 <%= a.deadline.strftime("%m月%d日") %><%= %w((日) (月) (火) (水) (木) (金) (土))[a.deadline.wday] %></p>
+                                </div>
+                            </div>
+                        <% end %>
+                    <% end %>
+                    </div>
                 <% end %>
+                <% if (@company.events.where(category: 2).count >= 2 && @event.category == 2) || (@company.events.where(category: 2).count >= 1 && @event.category != 2) %>
+                    <div class="other-event-title">インターンシップ・ジョブ</div>
+                    <div class="other-event-content">
+                    <% @company.events.where(category: 2).each do |i| %>
+                        <% Event.find_by(id: i.id).event_schedules.each do |a| %>
+                            <div class="entry-area go-to-other-event">
+                                <a href="/events/<%= i.id %>"></a>
+                               <div class="event-title">
+                                   <h2><%=i.name %></h2>
+                                   <img src="/assets/clock.svg">
+                                   <p class="entry-date"><%= a.holding_day.strftime("%m/%d") %><%= %w((日) (月) (火) (水) (木) (金) (土))[a.holding_day.wday] %></p>
+                                   <p class="entry-time"><%= a.start_time.strftime('%H:%M') %> - <%= a.end_time.strftime('%H:%M') %></p>
+                                   <img src="/assets/location.svg">
+                                   <p class="entry-location"><%= a.address + a.place%></p>
+                                </div>
+                                <div class="event-entry">
+                                    <p>締切 <%= a.deadline.strftime("%m月%d日") %><%= %w((日) (月) (火) (水) (木) (金) (土))[a.deadline.wday] %></p>
+                                </div>
+                            </div>
+                        <% end %>
+                    <% end %>
+                    </div>
+                <% end %>
+                <% if (@company.events.where(category: 3).count >= 2 && @event.category == 3) || (@company.events.where(category: 3).count >= 1 && @event.category != 3) %>
+                    <div class="other-event-title">説明会・企業セミナー</div>
+                    <div class="other-event-content">
+                    <% @company.events.where(category: 3).each do |i| %>
+                        <% Event.find_by(id: i.id).event_schedules.each do |a| %>
+                            <div class="entry-area go-to-other-event">
+                                <a href="/events/<%= i.id %>"></a>
+                               <div class="event-title">
+                                   <h2><%=i.name %></h2>
+                                   <img src="/assets/clock.svg">
+                                   <p class="entry-date"><%= a.holding_day.strftime("%m/%d") %><%= %w((日) (月) (火) (水) (木) (金) (土))[a.holding_day.wday] %></p>
+                                   <p class="entry-time"><%= a.start_time.strftime('%H:%M') %> - <%= a.end_time.strftime('%H:%M') %></p>
+                                   <img src="/assets/location.svg">
+                                   <p class="entry-location"><%= a.address + a.place%></p>
+                                </div>
+                                <div class="event-entry">
+                                    <p>締切 <%= a.deadline.strftime("%m月%d日") %><%= %w((日) (月) (火) (水) (木) (金) (土))[a.deadline.wday] %></p>
+                                </div>
+                            </div>
+                        <% end %>
+                    <% end %>
+                    </div>
                 <% end %>
             </div>
         </div>
@@ -113,19 +177,23 @@
             <div class="company-event-information quick-entry pc-version">
                 <div class="company-event-head">簡単エントリー</div>
                 <%= form_with url: new_event_entry_path(@event), method: :get, local: true do |f|%>
-                <%= f.collection_radio_buttons(:event_schedule , @event_schedule, :id, :id ) do |b| %>
-                <div class="company-event-quick">
-                    <div class="company-event-quick-left">
-                        <%= b.radio_button %>
-                        <%= EventSchedule.find(b.text).holding_day.strftime("%m/%d") %>
-                    </div>
-                    <div class="company-event-quick-right">
-                        <p><%= EventSchedule.find(b.text).start_time.strftime('%H:%M') %>~<%= EventSchedule.find(b.text).start_time.strftime('%H:%M') %></p>
-                        <p><%= EventSchedule.find(b.text).address %></p>
-                    </div>
-                </div>
-                <% end %>
-                <%= f.submit 'エントリーする',class: "form-submit", id: "button1" %>
+                    <%= f.collection_radio_buttons(:event_schedule , @event_schedule, :id, :id ) do |b| %>
+                        <div class="company-event-quick">
+                            <div class="company-event-quick-left">
+                                <%= b.radio_button %>
+                                <%= EventSchedule.find(b.text).holding_day.strftime("%m/%d") %>
+                            </div>
+                            <div class="company-event-quick-right">
+                                <p><%= EventSchedule.find(b.text).start_time.strftime('%H:%M') %>~<%= EventSchedule.find(b.text).start_time.strftime('%H:%M') %></p>
+                                <p><%= EventSchedule.find(b.text).address %></p>
+                            </div>
+                        </div>
+                    <% end %>
+                    <% if current_user.events.include?(@event) %>
+                        <p>エントリー済み</p>
+                    <% else %>
+                        <%= f.submit 'エントリーする',class: "form-submit", id: "button1" %>
+                    <% end %>
                 <% end %>
             </div>
         </div>
@@ -139,6 +207,10 @@ $(function() {
 		const str1 = $('input:radio[name="event_schedule"]:checked').val();
 		window.location.href = $(location).attr('href') + '/entry/new?event_schedule=' + str1
 	});
+	
+	$('.go-to-other-event').click(function(){
+        location.href=$(this).find('a').attr('href');
+    });
 	
 });
 ;(function() {

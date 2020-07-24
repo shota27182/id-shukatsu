@@ -86,7 +86,9 @@
             </div>
             <% end %>
             <div class="entry-change">
+                <% if EventSchedule.where(event_id: i.id).count > 1 %>
                 <%= link_to "日程変更", event_entry_edit_schedule_path(i) ,class: "entry-change-first" %>
+                <% end %>
                 <%= link_to "キャンセルする", event_entry_cancel_path(i) , class: "entry-change-second" %>
             </div>
         </div>

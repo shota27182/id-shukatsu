@@ -1,2 +1,0 @@
-module Mypage::ProgrammingHelper
-end

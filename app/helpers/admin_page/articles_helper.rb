@@ -1,0 +1,2 @@
+module AdminPage::ArticlesHelper
+end

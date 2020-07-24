@@ -1,2 +1,0 @@
-module Users::GeneralHelper
-end
