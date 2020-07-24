@@ -10,13 +10,13 @@ default: &default
 
   # Additional paths webpack should lookup modules
   # ['app/assets', 'engine/foo/app/assets']
-  additional_paths: []
+  resolved_paths: []
 
   # Reload manifest.json on all requests so we reload latest compiled packs
   cache_manifest: false
 
   # Extract and emit a css file
-  extract_css: true
+  extract_css: false
 
   static_assets_extensions:
     - .jpg
@@ -51,9 +51,6 @@ development:
   <<: *default
   compile: true
 
-  # Set to false if using HMR for CSS
-  extract_css: true
-
   # Reference: https://webpack.js.org/configuration/dev-server/
   dev_server:
     https: false
@@ -87,6 +84,9 @@ production:
 
   # Production depends on precompilation of packs prior to booting for performance.
   compile: false
+
+  # Extract and emit a css file
+  extract_css: true
 
   # Cache manifest.json for performance
   cache_manifest: true
