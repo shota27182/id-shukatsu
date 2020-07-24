@@ -18,6 +18,7 @@
 /*global location*/
 //= require bootstrap-sprockets
 //= require cocoon
+import "path to application.scss"
 
 
 
