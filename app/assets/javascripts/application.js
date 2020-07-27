@@ -13,6 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require summernote/summernote-bs4.min
+//= require summernote-init
+//= require popper
 //= require_tree .
 /*global $*/
 /*global location*/

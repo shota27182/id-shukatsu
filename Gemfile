@@ -6,6 +6,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 5.2'
 gem 'bootstrap-sass', '3.3.7'
+gem 'bootstrap', '~> 4.0.0'
+gem 'paperclip'
 gem 'bcrypt',         '3.1.12'
 # Use sqlite3 as the database for Active Record
 # Use Puma as the app server
@@ -34,6 +36,7 @@ gem 'turbolinks', '~> 5.0.1'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7.0'
 gem 'cocoon'
+gem 'summernote-rails', '~> 0.8.10.0'
 gem 'carrierwave'
 gem 'mini_magick'
 # Use Redis adapter to run Action Cable in production

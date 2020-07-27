@@ -1,10 +1,20 @@
 class AdminPage::ArticlesController < ApplicationController
+  def index
+  end
+  
   def new
     @article = Article.new
   end
   
   def create
-    @article.save
+    @article = Article.create(post_params)
+    redirect_to '/admin_page/articles'
+  end
+  
+  def edit
+  end
+  
+  def update
   end
   
   private

@@ -8,7 +8,7 @@ class AdminPage::CompaniesController < ApplicationController
   def create
     @company = Company.new(company_params)
     if @company.save
-      redirect_to "/admin_page/index"
+      redirect_to "/admin_page/companies"
     else
       render action"new"
     end

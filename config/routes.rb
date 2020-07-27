@@ -2,9 +2,7 @@ Rails.application.routes.draw do
 
 
   
-  namespace :admin_page do
-    get 'articles/new'
-  end
+  
   get 'edit_mail/index'
   get 'admin_user/index'
   namespace :mypage do
@@ -114,7 +112,11 @@ Rails.application.routes.draw do
   
   namespace :admin_page do
     resources :companies , only: [:new, :create, :edit, :update]
+    get 'articles', to: 'articles#index'
     resources :articles, only: [:new, :create, :edit, :update]
+    resources :articles do
+      resources :article_images, only: [:create]
+    end
   end
   
   get '/companies', to: 'companies#index'

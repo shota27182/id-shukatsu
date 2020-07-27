@@ -3,7 +3,47 @@
     <%= f.label :title %><br>
     <%= f.text_area :title %><br>
     <%= f.label :content %><br>
-    <%= f.rich_text_area :content %><br>
+    <%= f.text_field :content, 'data-provider': :summernote %><br>
     <%= f.submit 'Save' %>
     <% end %>
  </div>
+<script>
+   $(document).ready(function() {
+
+  function sendFile(file, editor,welEditable) {
+    data = new FormData();
+    data.append("article_image[image]", file);
+    $.ajax({
+      url: '/articles//article_images',
+      data: data,
+      cache: false,
+      contentType: false,
+      processData: false,
+      type: 'POST',
+      success: function(data){
+        editor.insertImage(welEditable, data.url);
+      }
+    });
+  }
+  
+  $('[data-provider="summernote"]').each(function(){
+      $(this).summernote({
+        lang: 'ja-JP',
+        height: 250,
+        toolbar: [
+      ['style', ['bold', 'italic', 'underline', 'clear']],
+      ['font', ['strikethrough']],
+      ['fontsize', ['fontsize']],
+      ['color', ['color']],
+      ['para', ['ul', 'ol', 'paragraph']],
+      ['table', ['table']],
+      ['height', ['height']],
+      ['insert', ['link', 'picture', 'video']],
+    ],
+    onImageUpload: function(files, editor, welEditable) {
+        sendFile(files[0], editor,welEditable);
+    }
+      });
+    })
+});
+</script>
