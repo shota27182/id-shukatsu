@@ -408,7 +408,7 @@
 </div>
 
 <script>
-    $(function(){
+    $(document).on('turbolinks:load', function(){
     $('.category').on('change', function(){
     /// チェックされたvalue値を配列として取得
     var industry_vals = $('input[name=industry]:checked').map(function(){

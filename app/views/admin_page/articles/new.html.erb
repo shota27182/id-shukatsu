@@ -8,7 +8,7 @@
     <% end %>
  </div>
 <script>
-   $(document).ready(function() {
+   $(document).on('turbolinks:load', function() {
 
   function sendFile(file, editor,welEditable) {
     data = new FormData();
