@@ -73,7 +73,6 @@ class CompaniesController < ApplicationController
   def like
     UserCompany.create(user_id: current_user.id, company_id: params[:id])
     @company = Company.find(params[:id])
-    redirect_to "/companies/#{@company.id}"
   end
   
   def good
@@ -86,7 +85,6 @@ class CompaniesController < ApplicationController
     @user_company = UserCompany.find_by(user_id: current_user.id, company_id: params[:id])
     @user_company.destroy
     @company = Company.find(params[:id])
-    redirect_to "/companies/#{@company.id}"
   end
   
   def unfavorite

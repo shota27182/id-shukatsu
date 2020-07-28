@@ -13,8 +13,11 @@
   function sendFile(file, editor,welEditable) {
     data = new FormData();
     data.append("article_image[image]", file);
+    var protocol = "//",
+        host = location.host,
+        master_dir = location + '/article_images';
     $.ajax({
-      url: '/articles//article_images',
+      url: master_dir
       data: data,
       cache: false,
       contentType: false,

@@ -1,6 +1,6 @@
 class EntryController < ApplicationController
   before_action :logged_in_user
-  before_action :event_applied_user, only:[:new, :create, :complete]
+  before_action :event_applied_user, only:[:new, :create]
   
   def new
     @event_schedule = EventSchedule.find_by(id:params[:event_schedule])

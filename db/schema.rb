@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_27_061455) do
+ActiveRecord::Schema.define(version: 2020_07_28_035054) do
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string "email"
+    t.string "name"
+    t.string "activation_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "article_images", force: :cascade do |t|
     t.integer "article_id"

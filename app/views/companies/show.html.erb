@@ -9,15 +9,21 @@
                 <p><% @company.industries.each do |a| %><span><%=a.name %> </span><% end %></p>
                 <h2><%= @company.name %></h2>
             </div>
-            <div class="company-head-right">
+            <div class="company-head-super-right" id="company-btn">
                 <% if logged_in? %>
                     <% if UserCompany.where(user_id: current_user.id,company_id: params[:id]).present? %>
-                    <%= link_to 'お気に入り登録済み', {controller: "companies", action: "dislike", id: @company.id } ,method: :delete %>
+                        <div class="company-head-right company-head-next-right">
+                            <%= link_to 'お気に入り登録済み', {controller: "companies", action: "dislike", id: @company.id } ,method: :delete, remote: true %>
+                        </div>
                     <% else %>
-                    <%= link_to 'お気に入りに登録する',{controller: "companies", action: "like", id: @company.id }, method: :post %>
+                        <div class="company-head-right">
+                            <%= link_to 'お気に入りに登録する',{controller: "companies", action: "like", id: @company.id }, method: :post, remote: true %>
+                        </div>
                     <% end %>
                 <% else %>
-                <a href="/login">お気に入りに登録する</a>
+                    <div class="company-head-right">
+                        <a href="/login">お気に入りに登録する</a>
+                    </div>
                 <% end %>
             </div>
         </div>
@@ -149,47 +155,57 @@
                     </div>
                 </div>
             </div>
-            <div class="company-event-information">
-               <div class="company-event-head">この企業のイベント情報</div>
-               <div class="company-event-middle">
-                   <div class="company-event-title">本選考</div>
-                   <ul class="company-event-links">
-                       <% @company.events.where(category: 1).each do  |i|%>
-                       <li class="company-event-link"><a href="/events/<%= i.id %>"></a>
-                       <div class="company-event-link-left"><%=i.name  %></div>
-                       <div class="company-event-link-right">></div>
-                       </li>
-                       <% end %>
-                    </ul>
-                    <div class="company-event-title">インターン・ジョブ</div>
-                    <ul class="company-event-links">
-                        <% @company.events.where(category: 2).each do  |i| %>
-                        <li class="company-event-link"><a href="/events/<%= i.id %>"></a>
-                        <div class="company-event-link-left"><%=i.name  %></div>
-                        <div class="company-event-link-right">></div>
-                        </li>
+            <% if @company.events.present? %>
+                <div class="company-event-information">
+                   <div class="company-event-head">この企業のイベント情報</div>
+                   <div class="company-event-middle">
+                       <% if @company.events.where(category: 1).present? %>
+                           <div class="company-event-title">本選考</div>
+                           <ul class="company-event-links">
+                               <% @company.events.where(category: 1).each do  |i|%>
+                               <li class="company-event-link"><a href="/events/<%= i.id %>"></a>
+                               <div class="company-event-link-left"><%=i.name  %></div>
+                               <div class="company-event-link-right">></div>
+                               </li>
+                               <% end %>
+                            </ul>
                         <% end %>
-                    </ul>
-                    <div class="company-event-title">説明会・企業���ミナー</div>
-                    <ul class="company-event-links">
-                        <% @company.events.where(category: 3).each do  |i| %>
-                        <li class="company-event-link"><a href="/events/<%= i.id %>"></a>
-                        <div class="company-event-link-left"><%=i.name  %></div>
-                        <div class="company-event-link-right">></div>
-                        </li>
+                        <% if @company.events.where(category: 2).present? %>
+                            <div class="company-event-title">インターン・ジョブ</div>
+                            <ul class="company-event-links">
+                                <% @company.events.where(category: 2).each do  |i| %>
+                                <li class="company-event-link"><a href="/events/<%= i.id %>"></a>
+                                <div class="company-event-link-left"><%=i.name  %></div>
+                                <div class="company-event-link-right">></div>
+                                </li>
+                                <% end %>
+                            </ul>
                         <% end %>
-                    </ul>
-                    <div class="company-event-title">合同説明会・交流会</div>
-                    <ul class="company-event-links">
-                        <% @company.events.where(category: 4).each do  |i| %>
-                        <li class="company-event-link"><a href="/events/<%= i.id %>"></a>
-                        <div class="company-event-link-left"><%=i.name  %></div>
-                        <div class="company-event-link-right">></div>
-                        </li>
+                        <% if @company.events.where(category: 3).present? %>
+                            <div class="company-event-title">説明会・企業セミナー</div>
+                            <ul class="company-event-links">
+                                <% @company.events.where(category: 3).each do  |i| %>
+                                <li class="company-event-link"><a href="/events/<%= i.id %>"></a>
+                                <div class="company-event-link-left"><%=i.name  %></div>
+                                <div class="company-event-link-right">></div>
+                                </li>
+                                <% end %>
+                            </ul>
                         <% end %>
-                    </ul>
+                        <% if @company.events.where(category: 4).present? %>
+                            <div class="company-event-title">合同説明会・交流会</div>
+                            <ul class="company-event-links">
+                                <% @company.events.where(category: 4).each do  |i| %>
+                                <li class="company-event-link"><a href="/events/<%= i.id %>"></a>
+                                <div class="company-event-link-left"><%=i.name  %></div>
+                                <div class="company-event-link-right">></div>
+                                </li>
+                                <% end %>
+                            </ul>
+                        <% end %>
+                    </div>
                 </div>
-            </div>
+            <% end %>
         </div>
     </div>
 </div>

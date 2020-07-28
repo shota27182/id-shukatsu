@@ -1,0 +1,9 @@
+<% if UserCompany.where(user_id: current_user.id,company_id: company.id).present? %>
+    <div class="company-head-right company-head-next-right">
+        <%= link_to 'お気に入り登録済み', {controller: "companies", action: "dislike", id: company.id } ,method: :delete, remote: true %>
+    </div>
+<% else %>
+    <div class="company-head-right">
+        <%= link_to 'お気に入りに登録する',{controller: "companies", action: "like", id: company.id }, method: :post, remote: true %>
+    </div>
+<% end %>
