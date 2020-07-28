@@ -26,9 +26,7 @@ gem 'font-awesome-rails'
 gem 'kaminari'
 gem 'js_cookie_rails', '~> 2.2'
 gem 'fog-aws'
-gem 'actiontext', github: 'kobaltz/actiontext', branch: 'archive', require: 'action_text'
 gem "image_processing", "~> 1.2"
-gem 'webpacker'
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '4.3.1'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
