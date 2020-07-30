@@ -19,16 +19,7 @@
 //= require bootstrap-sprockets
 //= require cocoon
 //= require summernote/summernote-bs4.min
-//= require summernote-image-attributes
-//= require summernote-add-text-tags
-//= require summernote-image-captionit
-//= require summernote-image-title
-//= require summernote-image-shape
-//= require summernote-ext-addclass
-//= require summernote-table-of-contents
-//= require summernote-nugget
-//= require summernote-templates
-//= require summernote-fontawesome
+//= require summernote/lang/summernote-ja-JP
 
 
 

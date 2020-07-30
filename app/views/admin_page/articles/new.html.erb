@@ -53,53 +53,16 @@
           $(document).on('turbolinks:load', function() {
             return $('[data-provider="summernote"]').each(function() {
               return $(this).summernote({
-                inheritPlaceholder: true,
-                  addclass: {
-                    debug: false,
-                    classTags: [{title:"Button",value:"btn btn-success"},"jumbotron", "lead","img-rounded","img-circle", "img-responsive","btn", "btn btn-success","btn btn-danger","text-muted", "text-primary", "text-warning", "text-danger", "text-success", "table-bordered", "table-responsive", "alert", "alert alert-success", "alert alert-info", "alert alert-warning", "alert alert-danger", "visible-sm", "hidden-xs", "hidden-md", "hidden-lg", "hidden-print"]
-                },
-                  toolbar: [
-                 ['fontsize', ['fontsize']],
-                 ['custom',['caseConverter']],
-                 ['color',['color']],
-                 ['para', ['ul', 'ol', 'paragraph']],
-                 ['fontstyleextra', ['strikethrough', 'underline', 'hr', 'superscript', 'subscript']],
-                  ['table', ['table']],
-                  ['insert', ['link', 'picture', 'video','tableofcontent','nugget']],
-                 ['style', ['style','bold', 'italic', 'add-text-tags', 'clear', 'addclass']]
-                 ],
-                nugget: {
-                    list: [ // list of your nuggets
-                        '[[code nugget 1]]',
-                        '[[code nugget 2]]',
-                        '[[code nugget 2]]'
-                    ]
-                },
-                popover: {
-                    image: [
-                        ['custom', ['imageShapes']],
-                        ['custom', ['imageTitle']],
-                        ['custom', ['captionIt']],
-                        ['custom', ['imageAttributes']],
-                        ['imagesize', ['imageSize100', 'imageSize50', 'imageSize25']],
-                        ['float', ['floatLeft', 'floatRight', 'floatNone']],
-                        ['remove', ['removeMedia']]
-                    ],
-                },
-                lang: 'en-US', // Change to your chosen language
-                imageAttributes:{
-                    icon:'<i class="note-icon-pencil"/>',
-                    removeEmpty:false, // true = remove attributes | false = leave empty if present
-                    disableUpload: false // true = don't display Upload Options | Display Upload Options
-                },
-                captionIt:{
-                    figureClass:'{figure-class/es}',
-                    figcaptionClass:'{figcapture-class/es}',
-                    captionText:'{Default Caption Editable Placeholder Text if Title or Alt are empty}'
-                },
-                onImageUpload: function(files, editor, welEditable) {
-                    sendFile(files[0], editor,welEditable);
-                },
+                toolbar: [
+                          ['style', ['style']],
+                          ['font', ['bold', 'underline', 'clear']],
+                          ['fontname', ['fontname']],
+                          ['color', ['color']],
+                          ['para', ['ul', 'ol', 'paragraph']],
+                          ['table', ['table']],
+                          ['insert', ['link', 'picture', 'video']],
+                          ['view', ['fullscreen', 'codeview', 'help']],
+                        ],
                 callbacks: {
                   onInit: function() {
                     console.log('Summernote is launched');
