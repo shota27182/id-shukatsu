@@ -14,18 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require summernote/summernote-bs4.min
-//= require summernote-image-attributes
-//= require summernote-add-text-tags
-//= require summernote-case-converter
-//= require summernote-image-captionit
-//= require summernote-image-title
-//= require summernote-image-shape
-//= require summernote-ext-addclass
-//= require summernote-table-of-contents
-//= require summernote-nugget
-//= require summernote-templates
-//= require summernote-fontawesome
-//= require summernote-classes
 //= require summernote-init.coffee
 
 //= require popper
