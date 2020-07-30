@@ -15,7 +15,6 @@
 //= require turbolinks
 
 //= require popper
-//= require_tree .
 //= require bootstrap-sprockets
 //= require cocoon
 //= require froala_editor.min.js
@@ -45,6 +44,8 @@
 //= require plugins/url.min.js
 //= require plugins/video.min.js
 //= require languages/ja.js
+
+//= require_tree .
 
 
 
