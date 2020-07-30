@@ -101,6 +101,10 @@ GEM
     font-awesome-rails (4.7.0.5)
       railties (>= 3.2, < 6.1)
     formatador (0.2.5)
+    froala-editor-sdk (1.4.0)
+      mime-types (~> 3.1)
+      mini_magick (~> 4.5)
+      wysiwyg-rails (~> 3.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     guard (2.16.2)
@@ -298,6 +302,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2.2)
   fog-aws
   font-awesome-rails
+  froala-editor-sdk
   guard (= 2.16.2)
   guard-minitest (= 2.4.4)
   image_processing (~> 1.2)

@@ -1,4 +1,6 @@
 class AdminPage::ArticleImagesController < ApplicationController
+  
+  IMAGE_EXT = [".gif", ".jpeg", ".jpg", ".png", ".svg"]
   def create
     @article_image = ArticleImage.new(params.require(:article_image).permit(:image))
     @article_image.save

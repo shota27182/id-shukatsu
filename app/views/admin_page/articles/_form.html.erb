@@ -1,0 +1,19 @@
+<div class="field">
+    <%= simple_form_for(@article, url: admin_page_articles_path) do |f| %>
+    <%= f.label :title %><br>
+    <%= f.text_area :title %><br>
+    <%= f.label :content %><br>
+    <%= f.input_field :content, class: 'summernote',as: :summernote %><br>
+    <%= f.submit 'Save' %>
+    <% end %>
+ </div>
+<script>
+       $(function() {
+	        new FroalaEditor('#article_content',{
+                  language: 'ja',
+                  heightMin: 500,
+                  heightMax: 1000,
+                  imageUploadToS3: <%= @aws_data.to_json.html_safe %>,
+            });
+	    });
+</script>
