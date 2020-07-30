@@ -3,4 +3,7 @@ class Mypage::NotificationController < ApplicationController
   def index
     @notifications = Notification.where(user_id: 16).where('start_on <=?',DateTime.current)
   end
+  
+  def show
+  end
 end

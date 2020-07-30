@@ -12,12 +12,16 @@
  *
  *= require_tree .
  *= require_self
+ *= require froala_editor.min.css
+ *= require froala_style.min.css
  */
+ 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
 @import "summernote-bs4";
 @import "summernote-custom-theme.min";
+@import "summernote-add-text-tags";
  
 body {
   margin-right: auto;

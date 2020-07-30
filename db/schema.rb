@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_28_035054) do
+ActiveRecord::Schema.define(version: 2020_07_28_095005) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email"
@@ -389,6 +389,10 @@ ActiveRecord::Schema.define(version: 2020_07_28_035054) do
     t.integer "event_schedule_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "activate"
+    t.date "activated_at"
+    t.boolean "inactivate"
+    t.date "inactivated_at"
     t.index ["event_id"], name: "index_user_events_on_event_id"
     t.index ["event_schedule_id"], name: "index_user_events_on_event_schedule_id"
     t.index ["user_id"], name: "index_user_events_on_user_id"

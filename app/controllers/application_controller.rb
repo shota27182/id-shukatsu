@@ -56,7 +56,7 @@ class ApplicationController < ActionController::Base
     end
     
     def event_applied_user
-      if current_user.events.include?(Event.find_by(id: params[:event_id]))
+      if current_user.events.where(events:{id: params[:event_id]}).includes(:user_events).where(user_events:{activate: true}).present?
          store_location
          redirect_to '/events'
       end

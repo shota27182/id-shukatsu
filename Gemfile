@@ -35,6 +35,8 @@ gem 'turbolinks', '~> 5.0.1'
 gem 'jbuilder', '~> 2.7.0'
 gem 'cocoon'
 gem 'summernote-rails', '~> 0.8.10.0'
+gem 'simple_form'
+gem "wysiwyg-rails"
 gem 'carrierwave'
 gem 'mini_magick'
 # Use Redis adapter to run Action Cable in production

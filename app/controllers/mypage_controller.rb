@@ -34,19 +34,19 @@ class MypageController < ApplicationController
   
   def entry
     if params[:category] == "job"
-      @events = current_user.events.where(events:{category: [1]})
+      @events = current_user.events.where(events:{category: [1]}).includes(:user_events).where(user_events:{activate: true})
     end
     if !params[:category]
-      @events = current_user.events.where(events:{category: 2})
+      @events = current_user.events.where(events:{category: 2}).includes(:user_events).where(user_events:{activate: true})
     end
     if params[:category] == "seminar"
-      @events = current_user.events.where(events:{category: [3]})
+      @events = current_user.events.where(events:{category: [3]}).includes(:user_events).where(user_events:{activate: true})
     end
     if params[:category] == "group-seminar"
-      @events = current_user.events.where(events:{category: [4]})
+      @events = current_user.events.where(events:{category: [4]}).includes(:user_events).where(user_events:{activate: true})
     end
     if params[:category] == "job-prepare"
-      @events = current_user.events.where(events:{category: [5]})
+      @events = current_user.events.where(events:{category: [5]}).includes(:user_events).where(user_events:{activate: true})
     end
   end
   

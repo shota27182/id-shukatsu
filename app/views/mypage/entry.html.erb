@@ -67,7 +67,7 @@
             </div>
             <div class="mypage-entry-middle">
                 <div class="mypage-entry-middle-left">
-                    <% Company.joins(:events).where(events:{id:[i.id]}).each do |a| %>
+                    <% Company.joins(:events).where(events:{id: i.id}).each do |a| %>
                     <%=image_tag a.icon.to_s %>
                     <% end %>
                 </div>
@@ -75,7 +75,7 @@
                     <%= i.name %>
                 </div>
             </div>
-            <% EventSchedule.includes(:user_events).where(user_events: {user_id: current_user.id,event_id: i.id }).each do |event_schedule| %>
+            <% EventSchedule.includes(:user_events).where(user_events: {user_id: current_user.id,event_id: i.id}).each do |event_schedule| %>
             <div class="event-title">
                 <h2><%=event_schedule.title %></h2>
                 <img src="/assets/clock.svg">

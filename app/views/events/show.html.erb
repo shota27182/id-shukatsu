@@ -189,7 +189,7 @@
                             </div>
                         </div>
                     <% end %>
-                    <% if current_user.events.include?(@event) %>
+                    <% if current_user.events.where(id: params[:id]).includes(:user_events).where(user_events: {activate: true}).present? %>
                         <p>エントリー済み</p>
                     <% else %>
                         <%= f.submit 'エントリーする',class: "form-submit", id: "button1" %>

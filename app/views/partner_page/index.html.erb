@@ -109,22 +109,22 @@
                     </div>
                     <div class="entry-person">
                         <h6>本日のキャンセル数</h6>
-                        <h2 class="cancel-color"><%= CancelUser.where(event: i.id).where("created_at >= ?", Time.current.beginning_of_day).count %><span>名</span></h2>
+                        <h2 class="cancel-color"><%= UserEvent.where(event: i.id, inactivate: true).where("inactivated_at >= ?", Time.current.beginning_of_day).count %><span>名</span></h2>
                     </div>
                     <div class="entry-person">
                         <h6>総エントリー数</h6>
-                        <h2 class="entry-color"><%= UserEvent.where(event_id: i.id).count + CancelUser.where(event: i.id).count %><span>名</span></h2>
+                        <h2 class="entry-color"><%= UserEvent.where(event_id: i.id).count %><span>名</span></h2>
                     </div>
                     <div class="entry-person">
                         <h6>総キャンセル数</h6>
-                        <h2 class="cancel-color"><%= CancelUser.where(event: i.id).count %><span>名</span></h2>
+                        <h2 class="cancel-color"><%= UserEvent.where(event_id: i.id, inactivate: true).count %><span>名</span></h2>
                     </div>
                     <div class="entry-blank">
                     
                     </div>
                     <div class="entry-person">
                         <h6>参加予定数</h6>
-                        <h2 class="entry-color"><%= UserEvent.where(event_id: i.id).count %><span>名</span></h2>
+                        <h2 class="entry-color"><%= UserEvent.where(event_id: i.id, activate: true).count %><span>名</span></h2>
                     </div>
                 </div>
             </div>
@@ -142,22 +142,22 @@
                     </div>
                     <div class="entry-person">
                         <h6>本日のキャンセル数</h6>
-                        <h2 class="cancel-color"><%= CancelUser.where(event: i.id).where("created_at >= ?", Time.current.beginning_of_day).count %><span>名</span></h2>
+                        <h2 class="cancel-color"><%= UserEvent.where(event: i.id, inactivate: true).where("inactivated_at >= ?", Time.current.beginning_of_day).count %><span>名</span></h2>
                     </div>
                     <div class="entry-person">
                         <h6>総エントリー数</h6>
-                        <h2 class="entry-color"><%= UserEvent.where(event_id: i.id).count + CancelUser.where(event: i.id).count %><span>名</span></h2>
+                        <h2 class="entry-color"><%= UserEvent.where(event_id: i.id).count %><span>名</span></h2>
                     </div>
                     <div class="entry-person">
                         <h6>総キャンセル数</h6>
-                        <h2 class="cancel-color"><%= CancelUser.where(event: i.id).count %><span>名</span></h2>
+                        <h2 class="cancel-color"><%= UserEvent.where(event_id: i.id, inactivate: true).count %><span>名</span></h2>
                     </div>
                     <div class="entry-blank">
                     
                     </div>
                     <div class="entry-person">
                         <h6>参加予定数</h6>
-                        <h2 class="entry-color"><%= UserEvent.where(event_id: i.id).count %><span>名</span></h2>
+                        <h2 class="entry-color"><%= UserEvent.where(event_id: i.id, activate: true).count %><span>名</span></h2>
                     </div>
                 </div>
             </div>
@@ -175,22 +175,22 @@
                     </div>
                     <div class="entry-person">
                         <h6>本日のキャンセル数</h6>
-                        <h2 class="cancel-color"><%= CancelUser.where(event: i.id).where("created_at >= ?", Time.current.beginning_of_day).count %><span>名</span></h2>
+                        <h2 class="cancel-color"><%= UserEvent.where(event: i.id, inactivate: true).where("inactivated_at >= ?", Time.current.beginning_of_day).count %><span>名</span></h2>
                     </div>
                     <div class="entry-person">
                         <h6>総エントリー数</h6>
-                        <h2 class="entry-color"><%= UserEvent.where(event_id: i.id).count + CancelUser.where(event: i.id).count %><span>名</span></h2>
+                        <h2 class="entry-color"><%= UserEvent.where(event_id: i.id).count %><span>名</span></h2>
                     </div>
                     <div class="entry-person">
                         <h6>総キャンセル数</h6>
-                        <h2 class="cancel-color"><%= CancelUser.where(event: i.id).count %><span>名</span></h2>
+                        <h2 class="cancel-color"><%= UserEvent.where(event_id: i.id, inactivate: true).count %><span>名</span></h2>
                     </div>
                     <div class="entry-blank">
                     
                     </div>
                     <div class="entry-person">
                         <h6>参加予定数</h6>
-                        <h2 class="entry-color"><%= UserEvent.where(event_id: i.id).count %><span>名</span></h2>
+                        <h2 class="entry-color"><%= UserEvent.where(event_id: i.id, activate: true).count %><span>名</span></h2>
                     </div>
                 </div>
             </div>

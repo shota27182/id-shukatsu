@@ -9,7 +9,7 @@ class EntryController < ApplicationController
   end
   
   def create
-    @user_event = UserEvent.new(user_id:current_user.id, event_id:params[:event_id],event_schedule_id:params[:event_schedule])
+    @user_event = UserEvent.new(user_id:current_user.id, event_id:params[:event_id],event_schedule_id:params[:event_schedule], activate: true, activated_at: Date.current)
     if @user_event.save!
       @event_schedule = EventSchedule.find_by(id: params[:event_schedule])
       current_user.create_notification_event_schedule!(current_user, @event_schedule)
@@ -46,8 +46,7 @@ class EntryController < ApplicationController
   def destroy
     @event = Event.find(params[:event_id])
     @user_event = UserEvent.find_by(user_id:current_user.id, event_id:params[:event_id])
-    @user_event.destroy
-    CancelUser.create(user: current_user.id, event: params[:event_id])
+    @user_event.update(activate: false, inactivate: true, inactivated_at: Date.current)
     redirect_to event_entry_complete_cancel_path
   end
   
