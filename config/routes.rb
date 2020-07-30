@@ -114,9 +114,7 @@ Rails.application.routes.draw do
     resources :companies , only: [:new, :create, :edit, :update]
     get 'articles', to: 'articles#index'
     resources :articles, only: [:new, :create, :edit, :update]
-    resources :articles do
-      resources :article_images, only: [:create]
-    end
+    resources :article_images, only: [:create]
   end
   
   get '/companies', to: 'companies#index'

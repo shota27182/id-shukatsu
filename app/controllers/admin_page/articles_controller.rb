@@ -7,7 +7,7 @@ class AdminPage::ArticlesController < ApplicationController
   end
   
   def create
-    @article = Article.create(post_params)
+    @article = Article.create(article_params)
     redirect_to '/admin_page/articles'
   end
   
@@ -18,8 +18,8 @@ class AdminPage::ArticlesController < ApplicationController
   end
   
   private
-      def post_params
-        params.require(:post).permit(:img, :title, :content)
+      def article_params
+        params.require(:article).permit(:title, :content)
       end
       
 end

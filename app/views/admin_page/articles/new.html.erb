@@ -1,14 +1,43 @@
 <div class="field">
-    <%= form_with model: @article, method: :post, url: admin_page_articles_path, local: true do |f| %>
+    <%= simple_form_for(@article, url: admin_page_articles_path) do |f| %>
     <%= f.label :title %><br>
     <%= f.text_area :title %><br>
     <%= f.label :content %><br>
-    <%= f.text_field :content, class: 'summernote' %><br>
+    <%= f.input_field :content, class: 'summernote',as: :summernote %><br>
     <%= f.submit 'Save' %>
     <% end %>
  </div>
 <script>
       $(document).ready(function() {
+        
+        sendFile: function(admin_page_article_images_path, file, toSummernote) {
+            var data;
+            data = new FormData;
+            data.append('article_image[image]', file);
+            $.ajax({
+              data: data,
+              type: 'POST',
+              url: admin_page_article_images_path,
+              cache: false,
+              contentType: false,
+              processData: false,
+              success: function(data) {
+                console.log('file uploading...');
+                if (typeof data.errors !== 'undefined' && data.errors !== null) {
+                  console.log('ops! errors...');
+                  return $.each(data.errors, function(key, messages) {
+                    return $.each(messages, function(key, message) {
+                      return alert(message);
+                    });
+                  });
+                } else {
+                  console.log('inserting image in to editor...');
+                  return toSummernote.summernote('insertImage', data.url);
+                }
+              }
+            });
+          },
+        
         $('.summernote').summernote({
           addclass: {
             debug: false,
@@ -52,6 +81,9 @@
             figureClass:'{figure-class/es}',
             figcaptionClass:'{figcapture-class/es}',
             captionText:'{Default Caption Editable Placeholder Text if Title or Alt are empty}'
+        },
+        onImageUpload: function(files, editor, welEditable) {
+            sendFile(files[0], editor,welEditable);
         }
     });
       });
