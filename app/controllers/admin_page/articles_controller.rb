@@ -1,5 +1,5 @@
 class AdminPage::ArticlesController < ApplicationController
-  before_action :hash_init, only: [:index, :new, :create, :edit]
+  before_action :hash_init, only: [ :create]
   
   def index
   end
