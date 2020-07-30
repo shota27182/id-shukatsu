@@ -35,7 +35,6 @@ gem 'turbolinks', '~> 5.0.1'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7.0'
 gem 'cocoon'
-gem 'summernote-rails', '~> 0.8.10.0'
 gem 'simple_form'
 gem "wysiwyg-rails"
 gem 'carrierwave'
