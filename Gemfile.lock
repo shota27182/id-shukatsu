@@ -50,10 +50,6 @@ GEM
       execjs
     bcrypt (3.1.12)
     bindex (0.8.1)
-    bootstrap (4.0.0)
-      autoprefixer-rails (>= 6.0.3)
-      popper_js (>= 1.12.9, < 2)
-      sass (>= 3.5.2)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -187,7 +183,6 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     pg (0.20.0)
-    popper_js (1.16.0)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -297,7 +292,6 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (= 3.1.12)
-  bootstrap (~> 4.0.0)
   bootstrap-sass (= 3.3.7)
   byebug (= 9.0.6)
   carrierwave

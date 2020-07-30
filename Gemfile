@@ -6,7 +6,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 5.2'
 gem 'bootstrap-sass', '3.3.7'
-gem 'bootstrap', '~> 4.0.0'
+# gem 'bootstrap', '~> 4.0.0'
 gem 'paperclip'
 gem 'bcrypt',         '3.1.12'
 # Use sqlite3 as the database for Active Record

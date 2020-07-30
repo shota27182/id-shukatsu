@@ -10,7 +10,6 @@
 <script>
        $(function() {
 	        new FroalaEditor('#article_content',{
-                  language: 'ja',
                   heightMin: 500,
                   heightMax: 1000,
                   imageUploadToS3: <%= @aws_data.to_json.html_safe %>,

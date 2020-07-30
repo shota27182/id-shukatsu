@@ -44,7 +44,6 @@
 //= require languages/ja.js
 
 //= require turbolinks
-//= require popper
 //= require_tree .
 
 
