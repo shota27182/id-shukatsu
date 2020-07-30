@@ -26,7 +26,7 @@
 //= require summernote-templates
 //= require summernote-fontawesome
 //= require summernote-classes
-//= require summernote-init
+//= require summernote-init.coffee
 
 //= require popper
 //= require_tree .
