@@ -7,3 +7,153 @@
     <%= f.submit 'Save' %>
     <% end %>
  </div>
+<script>
+        (function() {
+          var deleteFile, sendFile;
+        
+          sendFile = function(file, toSummernote) {
+            var data;
+            data = new FormData;
+            data.append('article_image[image]', file);
+            return $.ajax({
+              data: data,
+              type: 'POST',
+              url: '/admin_page/article_images',
+              cache: false,
+              contentType: false,
+              processData: false,
+              success: function(data) {
+                var img;
+                img = document.createElement('IMG');
+                img.src = data.url;
+                console.log(data);
+                img.setAttribute('id', "sn-image-" + data.article_image_id);
+                toSummernote.summernote('insertNode', img);
+                return toSummernote[0].oldValue = $('.note-editable.card-block')[0].innerHTML;
+              }
+            });
+          };
+        
+          deleteFile = function(file_id) {
+            return $.ajax({
+              type: 'DELETE',
+              url: "/admin_page/article_images/" + file_id,
+              cache: false,
+              contentType: false,
+              processData: false
+            });
+          };
+        
+          Array.prototype.diff = function(a) {
+            return this.filter(function(i) {
+              return a.indexOf(i) < 0;
+            });
+          };
+        
+          $(document).on('turbolinks:load', function() {
+            return $('[data-provider="summernote"]').each(function() {
+              return $(this).summernote({
+                inheritPlaceholder: true,
+                  addclass: {
+                    debug: false,
+                    classTags: [{title:"Button",value:"btn btn-success"},"jumbotron", "lead","img-rounded","img-circle", "img-responsive","btn", "btn btn-success","btn btn-danger","text-muted", "text-primary", "text-warning", "text-danger", "text-success", "table-bordered", "table-responsive", "alert", "alert alert-success", "alert alert-info", "alert alert-warning", "alert alert-danger", "visible-sm", "hidden-xs", "hidden-md", "hidden-lg", "hidden-print"]
+                },
+                  toolbar: [
+                 ['fontsize', ['fontsize']],
+                 ['custom',['caseConverter']],
+                 ['color',['color']],
+                 ['para', ['ul', 'ol', 'paragraph']],
+                 ['fontstyleextra', ['strikethrough', 'underline', 'hr', 'superscript', 'subscript']],
+                  ['table', ['table']],
+                  ['insert', ['link', 'picture', 'video','tableofcontent','nugget']],
+                 ['style', ['style','bold', 'italic', 'add-text-tags', 'clear', 'addclass']]
+                 ],
+                nugget: {
+                    list: [ // list of your nuggets
+                        '[[code nugget 1]]',
+                        '[[code nugget 2]]',
+                        '[[code nugget 2]]'
+                    ]
+                },
+                popover: {
+                    image: [
+                        ['custom', ['imageShapes']],
+                        ['custom', ['imageTitle']],
+                        ['custom', ['captionIt']],
+                        ['custom', ['imageAttributes']],
+                        ['imagesize', ['imageSize100', 'imageSize50', 'imageSize25']],
+                        ['float', ['floatLeft', 'floatRight', 'floatNone']],
+                        ['remove', ['removeMedia']]
+                    ],
+                },
+                lang: 'en-US', // Change to your chosen language
+                imageAttributes:{
+                    icon:'<i class="note-icon-pencil"/>',
+                    removeEmpty:false, // true = remove attributes | false = leave empty if present
+                    disableUpload: false // true = don't display Upload Options | Display Upload Options
+                },
+                captionIt:{
+                    figureClass:'{figure-class/es}',
+                    figcaptionClass:'{figcapture-class/es}',
+                    captionText:'{Default Caption Editable Placeholder Text if Title or Alt are empty}'
+                },
+                onImageUpload: function(files, editor, welEditable) {
+                    sendFile(files[0], editor,welEditable);
+                },
+                callbacks: {
+                  onInit: function() {
+                    console.log('Summernote is launched');
+                    return this.oldValue = this.value;
+                  },
+                  onImageUpload: function(files, e) {
+                    console.log("Files were uploaded: ");
+                    console.log(files);
+                    return sendFile(files[0], $(this));
+                  },
+                  onMediaDelete: function(target, editor, editable) {
+                    var upload_id;
+                    console.log(target);
+                    console.log("File was deleted : " + target);
+                    upload_id = target[0].id.split('-').slice(-1)[0];
+                    console.log(upload_id);
+                    if (!!upload_id) {
+                      deleteFile(upload_id);
+                      this.oldValue = $('.note-editable.card-block')[0].innerHTML;
+                    }
+                    return target.remove();
+                  },
+                  onKeyup: function(e) {
+                    var deletedImage, deletedImages, matches, myRegexp, newImages, newValue, oldImages, _i, _len, _results;
+                    if (e.keyCode === 8 || e.keyCode === 46) {
+                      newValue = e.target.innerHTML;
+                      oldImages = this.oldValue.match(/<img\s(?:.+?)>/g);
+                      oldImages = oldImages ? oldImages : [];
+                      newImages = newValue.match(/<img\s(?:.+?)>/g);
+                      newImages = newImages ? newImages : [];
+                      this.oldValue = newValue;
+                      deletedImages = newImages ? oldImages.diff(newImages) : [];
+                      if (deletedImages.length > 0) {
+                        _results = [];
+                        for (_i = 0, _len = deletedImages.length; _i < _len; _i++) {
+                          deletedImage = deletedImages[_i];
+                          myRegexp = /\/uploads\/upload\/image\/(.+?)\/(.+?)\"/g;
+                          matches = myRegexp.exec(deletedImage);
+                          if (confirm("Are you sure?\nYou can't revert if images have been deleted.")) {
+                            deleteFile(matches[1]);
+                            _results.push(console.log("* Permanently removed : " + matches[1] + ": " + matches[2]));
+                          } else {
+                            _results.push(void 0);
+                          }
+                        }
+                        return _results;
+                      }
+                    }
+                  }
+                }
+              });
+            });
+          });
+        
+        }).call(this);
+   
+</script>
