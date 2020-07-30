@@ -33,47 +33,88 @@ $(document).on 'turbolinks:load', ->
   $('[data-provider="summernote"]').each ->
     $(this).summernote
       inheritPlaceholder: true
-      addclass: {
-                 debug: false,
-                 classTags: [{title:"Button",value:"btn btn-success"},"jumbotron", "lead","img-rounded","img-circle", "img-responsive","btn", "btn btn-success","btn btn-danger","text-muted", "text-primary", "text-warning", "text-danger", "text-success", "table-bordered", "table-responsive", "alert", "alert alert-success", "alert alert-info", "alert alert-warning", "alert alert-danger", "visible-sm", "hidden-xs", "hidden-md", "hidden-lg", "hidden-print"]
-                }
       toolbar: [
-                ['fontsize', ['fontsize']],
-                ['custom',['caseConverter']],
-                ['color',['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['fontstyleextra', ['strikethrough', 'underline', 'hr', 'superscript', 'subscript']],
-                ['table', ['table']],
-                ['insert', ['link', 'picture', 'video','tableofcontent','nugget']],
-                ['style', ['style','bold', 'italic', 'add-text-tags', 'clear', 'addclass']]
+                [
+                  'fontsize'
+                  ['fontsize']
+                ]
+                [
+                  'custom'
+                  ['caseConverter']
+                ]
+                [
+                  'color'
+                  ['color']
+                ]
+                [
+                  'para'
+                  ['ul', 'ol', 'paragraph']
+                ]
+                [
+                  'fontstyleextra'
+                  ['strikethrough', 'underline', 'hr', 'superscript', 'subscript']
+                ]
+                [
+                  'table'
+                  ['table']
+                ]
+                [
+                  'insert'
+                  ['link', 'picture', 'video','tableofcontent','nugget']
+                ]
+                [
+                  'style'
+                  ['style','bold', 'italic', 'add-text-tags', 'clear']
+                ]
                ]
       nugget: {
                 list: [ 
-                       '[[code nugget 1]]',
-                        '[[code nugget 2]]',
+                       '[[code nugget 1]]'
+                        '[[code nugget 2]]'
                         '[[code nugget 2]]'
                       ]
               }
       popover: {
                  image: [
-                         ['custom', ['imageShapes']],
-                         ['custom', ['imageTitle']],
-                         ['custom', ['captionIt']],
-                         ['custom', ['imageAttributes']],
-                         ['imagesize', ['imageSize100', 'imageSize50', 'imageSize25']],
-                         ['float', ['floatLeft', 'floatRight', 'floatNone']],
-                         ['remove', ['removeMedia']]
+                         [
+                           'custom'
+                           ['imageShapes']
+                          ]
+                         [
+                           'custom'
+                           ['imageTitle']
+                          ]
+                         [
+                           'custom'
+                           ['captionIt']
+                          ]
+                         [
+                           'custom'
+                           ['imageAttributes']
+                          ]
+                         [
+                           'imagesize'
+                           ['imageSize100', 'imageSize50', 'imageSize25']
+                          ]
+                         [
+                           'float'
+                           ['floatLeft', 'floatRight', 'floatNone']
+                          ]
+                         [
+                           'remove'
+                           ['removeMedia']
+                          ]
                         ] 
                 }
       lang: 'en-US', 
       imageAttributes:{
-                        icon:'<i class="note-icon-pencil"/>',
-                        removeEmpty:false, 
+                        icon:'<i class="note-icon-pencil"/>'
+                        removeEmpty:false
                         disableUpload: false 
                       }
       captionIt:{
-                 figureClass:'{figure-class/es}',
-                 figcaptionClass:'{figcapture-class/es}',
+                 figureClass:'{figure-class/es}'
+                 figcaptionClass:'{figcapture-class/es}'
                  captionText:'{Default Caption Editable Placeholder Text if Title or Alt are empty}'
                 }
       callbacks:
