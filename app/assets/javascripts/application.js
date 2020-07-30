@@ -13,15 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-
-
-//= require popper
-//= require_tree .
-/*global $*/
-/*global location*/
-//= require bootstrap-sprockets
-//= require cocoon
-
 //= require summernote/summernote-bs4.min
 //= require summernote-image-attributes
 //= require summernote-add-text-tags
@@ -36,6 +27,14 @@
 //= require summernote-fontawesome
 //= require summernote-classes
 //= require summernote-init
+
+//= require popper
+//= require_tree .
+/*global $*/
+/*global location*/
+//= require bootstrap-sprockets
+//= require cocoon
+
 
 
 
