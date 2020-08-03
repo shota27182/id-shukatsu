@@ -1,5 +1,7 @@
 <div class="field">
     <%= simple_form_for(@article, url: admin_page_articles_path) do |f| %>
+    <%= f.label :img %>
+    <%= f.file_field :img %>
     <%= f.label :title %><br>
     <%= f.text_area :title %><br>
     <%= f.label :content %><br>
