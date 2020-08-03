@@ -60,7 +60,7 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "id_shukatsu_#{Rails.env}"
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: 'id-shukatsu.com' }
+  config.action_mailer.default_url_options = { host: 'www.id-shukatsu.com' }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
       user_name: ENV['SENDGRID_USERNAME'],
