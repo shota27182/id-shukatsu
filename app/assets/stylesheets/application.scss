@@ -55,6 +55,24 @@ body {
   background-color:#F2F2F2;
 }
 
+.note-editable h2{
+    border-left:solid 2px #3B6DA0;
+    padding:10px 16px;
+}
+
+.note-editable h3{
+    padding-bottom:6.5px;
+    border-bottom:solid 1px #D6D6D6;
+}
+
+.blockquote{
+    color:#3B6DA0;
+}
+
+.hr{
+    color:#D6D6D6;
+}
+
 .container{
     margin-left:3%;
     margin-right:3%;
