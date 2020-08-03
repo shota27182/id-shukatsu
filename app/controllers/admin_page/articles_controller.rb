@@ -1,11 +1,21 @@
 class AdminPage::ArticlesController < ApplicationController
-  before_action :hash_init, only: [ :create]
+ 
   
   def index
   end
   
   def new
     @article = Article.new
+    options = {
+        bucket: 'backup-id-shukatsu',
+        region: 'ap-northest-1',
+        keyStart: 'uploads/',
+        acl: 'public-read',
+        accessKey: ENV['S3_ACCESS_KEY'],
+        secretKey: ENV['S3_SECRET_KEY'],
+    }
+
+    @aws_data = FroalaEditorSDK::S3.data_hash(options)
   end
   
   def create
@@ -14,6 +24,16 @@ class AdminPage::ArticlesController < ApplicationController
   end
   
   def edit
+    options = {
+        bucket: 'backup-id-shukatsu',
+        region: 'ap-northest-1',
+        keyStart: 'uploads/',
+        acl: 'public-read',
+        accessKey: ENV["aws_access_key_id"],
+        secretKey: ENV["aws_secret_access_key"]
+    }
+
+    @aws_data = FroalaEditorSDK::S3.data_hash(options)
   end
   
   def update
@@ -30,7 +50,7 @@ class AdminPage::ArticlesController < ApplicationController
           keyStart: 'uploads/', # uploads/filename.png
           acl: 'public-read',
           accessKey: ENV["aws_access_key_id"],
-          secretKey: ENV["aws_secret_access_key"],
+          secretKey: ENV["aws_secret_access_key"]
         }
           @aws_data = FroalaEditorSDK::S3.data_hash(options)
       end
