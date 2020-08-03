@@ -1,1 +1,123 @@
-<%= render "form", collection: @aws_data %>
+<div class="field">
+    <%= simple_form_for(@article, url: admin_page_articles_path) do |f| %>
+    <%= f.label :title %><br>
+    <%= f.text_area :title %><br>
+    <%= f.label :content %><br>
+    <%= f.input_field :content, class: 'summernote',as: :summernote %><br>
+    <%= f.submit 'Save' %>
+    <% end %>
+ </div>
+<script>
+        (function() {
+          var deleteFile, sendFile;
+        
+          sendFile = function(file, toSummernote) {
+            var data;
+            data = new FormData;
+            data.append('article_image[image]', file);
+            return $.ajax({
+              data: data,
+              type: 'POST',
+              url: '/admin_page/article_images',
+              cache: false,
+              contentType: false,
+              processData: false,
+              success: function(data) {
+                var img;
+                img = document.createElement('IMG');
+                img.src = data.url;
+                console.log(data);
+                img.setAttribute('id', "sn-image-" + data.article_image_id);
+                toSummernote.summernote('insertNode', img);
+                return toSummernote[0].oldValue = $('.note-editable.card-block')[0].innerHTML;
+              }
+            });
+          };
+        
+          deleteFile = function(file_id) {
+            return $.ajax({
+              type: 'DELETE',
+              url: "/admin_page/article_images/" + file_id,
+              cache: false,
+              contentType: false,
+              processData: false
+            });
+          };
+        
+          Array.prototype.diff = function(a) {
+            return this.filter(function(i) {
+              return a.indexOf(i) < 0;
+            });
+          };
+        
+          $(document).on('turbolinks:load', function() {
+            return $('[data-provider="summernote"]').each(function() {
+              return $(this).summernote({
+                lang: 'ja-JP',
+                toolbar: [
+                          ['style', ['style']],
+                          ['font', ['bold', 'underline', 'clear']],
+                          ['fontname', ['fontname']],
+                          ['color', ['color']],
+                          ['para', ['ul', 'ol', 'paragraph']],
+                          ['table', ['table']],
+                          ['insert', ['link', 'picture', 'video']],
+                          ['view', ['fullscreen', 'codeview', 'help']],
+                        ],
+                callbacks: {
+                  onInit: function() {
+                    console.log('Summernote is launched');
+                    return this.oldValue = this.value;
+                  },
+                  onImageUpload: function(files, e) {
+                    console.log("Files were uploaded: ");
+                    console.log(files);
+                    return sendFile(files[0], $(this));
+                  },
+                  onMediaDelete: function(target, editor, editable) {
+                    var upload_id;
+                    console.log(target);
+                    console.log("File was deleted : " + target);
+                    upload_id = target[0].id.split('-').slice(-1)[0];
+                    console.log(upload_id);
+                    if (!!upload_id) {
+                      deleteFile(upload_id);
+                      this.oldValue = $('.note-editable.card-block')[0].innerHTML;
+                    }
+                    return target.remove();
+                  },
+                  onKeyup: function(e) {
+                    var deletedImage, deletedImages, matches, myRegexp, newImages, newValue, oldImages, _i, _len, _results;
+                    if (e.keyCode === 8 || e.keyCode === 46) {
+                      newValue = e.target.innerHTML;
+                      oldImages = this.oldValue.match(/<img\s(?:.+?)>/g);
+                      oldImages = oldImages ? oldImages : [];
+                      newImages = newValue.match(/<img\s(?:.+?)>/g);
+                      newImages = newImages ? newImages : [];
+                      this.oldValue = newValue;
+                      deletedImages = newImages ? oldImages.diff(newImages) : [];
+                      if (deletedImages.length > 0) {
+                        _results = [];
+                        for (_i = 0, _len = deletedImages.length; _i < _len; _i++) {
+                          deletedImage = deletedImages[_i];
+                          myRegexp = /\/uploads\/upload\/image\/(.+?)\/(.+?)\"/g;
+                          matches = myRegexp.exec(deletedImage);
+                          if (confirm("Are you sure?\nYou can't revert if images have been deleted.")) {
+                            deleteFile(matches[1]);
+                            _results.push(console.log("* Permanently removed : " + matches[1] + ": " + matches[2]));
+                          } else {
+                            _results.push(void 0);
+                          }
+                        }
+                        return _results;
+                      }
+                    }
+                  }
+                }
+              });
+            });
+          });
+        
+        }).call(this);
+   
+</script>

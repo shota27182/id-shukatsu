@@ -20,6 +20,11 @@ class AdminPage::CompaniesController < ApplicationController
   def index
   end
   
+  def import
+    Company.import(params[:file])
+    redirect_to '/admin_page/companies'
+  end
+  
   private
       
       def company_params

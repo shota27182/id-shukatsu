@@ -111,7 +111,11 @@ Rails.application.routes.draw do
   end
   
   namespace :admin_page do
+    get 'companies', to: 'companies#index'
     resources :companies , only: [:new, :create, :edit, :update]
+    resources :companies do
+      collection { post :import }
+    end
     get 'articles', to: 'articles#index'
     resources :articles, only: [:new, :create, :edit, :update]
     resources :article_images, only: [:create]

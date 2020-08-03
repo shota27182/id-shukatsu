@@ -27,6 +27,7 @@ gem 'kaminari'
 gem 'js_cookie_rails', '~> 2.2'
 gem 'fog-aws'
 gem "froala-editor-sdk"
+gem 'summernote-rails'
 gem "image_processing", "~> 1.2"
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '4.3.1'
