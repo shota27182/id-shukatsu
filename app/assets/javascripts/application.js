@@ -42,6 +42,7 @@
 //= require plugins/url.min.js
 //= require plugins/video.min.js
 //= require summernote/summernote-bs4.min
+//= require summernote-image-attributes
 //= require activestorage
 
 //= require turbolinks

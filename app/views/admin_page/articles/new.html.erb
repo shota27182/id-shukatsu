@@ -53,15 +53,33 @@
           $(document).on('turbolinks:load', function() {
             return $('[data-provider="summernote"]').each(function() {
               return $(this).summernote({
+                imageAttributes: {
+                  	icon: '<i class="note-icon-pencil"/>',
+                	figureClass: 'figureClass',
+                	figcaptionClass: 'captionClass',
+                	captionText: 'Caption Goes Here.',
+                	manageAspectRatio: true // true = Lock the Image Width/Height, Default to true
+                },
+                popover: {
+                    image: [
+                        ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],,
+                        ['float', ['floatLeft', 'floatRight', 'floatNone']],
+                        ['remove', ['removeMedia']],
+                        ['custom', ['imageAttributes']],
+                    ],
+                },
                 lang: 'ja-JP',
                 toolbar: [
                           ['style', ['style']],
-                          ['font', ['bold', 'underline', 'clear']],
+                          ['font', ['bold', 'underline', 'clear', 'fontsizeunit']],
                           ['fontname', ['fontname']],
+                          ['fontsize', ['fontsize']],
                           ['color', ['color']],
+                          ['strikethrough',['strikethrough']],
+                          ['fontsizeunit',['fontsizeunit']],
                           ['para', ['ul', 'ol', 'paragraph']],
                           ['table', ['table']],
-                          ['insert', ['link', 'picture', 'video']],
+                          ['insert', ['link', 'picture', 'video', 'hr']],
                           ['view', ['fullscreen', 'codeview', 'help']],
                         ],
                 callbacks: {
