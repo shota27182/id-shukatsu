@@ -5,7 +5,11 @@
         </div>
         <div class="companies">
             <% Company.all.limit(12).each do |i| %>
-            <%= link_to image_tag(i.icon.to_s, class: "company") , "/companies/#{i.id}" %>
+                <% if i.icon.present? %>
+                    <%= link_to image_tag(i.icon.to_s, class: "company") , "/companies/#{i.id}" %>
+                <% else %>
+                    <%= link_to image_tag('no_image.png', class: "company"), "/companies/#{i.id}" %>
+                <% end %>
             <% end %>
         </div>
     </div>
@@ -79,7 +83,11 @@
             <div class="top-page-event">
                   <div class="top-page-event-right">
                  <% Company.joins(:events).where(events:{id:[i.event_id]}).each do |i| %>
-                 <%=image_tag i.icon.to_s %>
+                     <% if i.icon.present? %>
+                         <%=image_tag i.icon.to_s %>
+                    <% else %>
+                        <img src="/assets/no_image.png">
+                    <% end %>
                  <% end %>
                  </div>
                  <div class="event-head-title">

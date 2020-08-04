@@ -176,12 +176,20 @@
                     <% @get_companies.each do |get_company| %>
                     <div class="company-box">
                         <div class="company-box-head-image">
-                            <%= image_tag get_company.img.to_s %>
+                            <% if get_company.img.present? %>
+                                <%= image_tag get_company.img.to_s %>
+                            <% else %>
+                                <img src="/assets/no_image.png">
+                            <% end %>
                         </div>
                         <div class="company-box-head">
                             <p><% get_company.industries.limit(2).each do |h| %><span><%= h.name %> </span><% end %></p>
                             <div class="company-box-title">
-                                <%= image_tag get_company.icon.to_s %>
+                                <% if get_company.icon.present? %>
+                                    <%= image_tag get_company.icon.to_s %>
+                                <% else %>
+                                    <img src="/assets/no_image.png">
+                                <% end %>
                                 <h2><a href="/companies/<%= get_company.id %>"></a><%= get_company.name %></h2>
                             </div>
                         </div>
@@ -345,7 +353,11 @@
                     <div class="companies-search">
                         <% Company.joins(:work_styles).where(work_styles: {id: [2]}).limit(8).each do |a| %>
                         <div class="company-search">
-                            <%= image_tag a.icon.to_s %>
+                            <% if a.icon.present? %>
+                                <%= image_tag a.icon.to_s %>
+                            <% else %>
+                                <img src="/assets/no_image.png">
+                            <% end %>
                             <p><a href="/companies/<%= a.id %>"><%= a.name %></a></p>
                         </div>
                         <% end %>
@@ -356,7 +368,11 @@
                     <div class="companies-search">
                         <% Company.joins(:work_styles).where(work_styles: {id: [1]}).limit(8).each do |a| %>
                         <div class="company-search">
-                            <%= image_tag a.icon.to_s %>
+                            <% if a.icon.present? %>
+                                <%= image_tag a.icon.to_s %>
+                            <% else %>
+                                <img src="/assets/no_image.png">
+                            <% end %>
                             <p><a href="/companies/<%= a.id %>"><%= a.name %></a></p>
                         </div>
                         <% end %>
