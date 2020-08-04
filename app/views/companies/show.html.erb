@@ -60,48 +60,59 @@
                 <div class="company-introduction-title">会社紹介</div>
                 <%= simple_format(@company.introduction) %>
             </div>
+            <% if @company.company_requirement.present? %>
             <div class="company-introduction">
                 <div class="company-introduction-title">募集要項</div>
-                <div class="recruit-form">
-                    <div class="recruit-form-left">
-                        <p>募集職種</p>
+                <% if @company.company_requirement.occupation.present? %>
+                    <div class="recruit-form">
+                        <div class="recruit-form-left">
+                            <p>募集職種</p>
+                        </div>
+                        <div class="recruit-form-right">
+                            <%= simple_format(@company.company_requirement.occupation) %>
+                        </div>
                     </div>
-                    <div class="recruit-form-right">
-                        <%= simple_format(@company.company_requirement.occupation) %>
+                <% end %>
+                <% if @company.company_requirement.work.present? %>
+                    <div class="recruit-form">
+                        <div class="recruit-form-left">
+                            <p>業務内容</p>
+                        </div>
+                        <div class="recruit-form-right">
+                            <%= simple_format(@company.company_requirement.work) %>
+                        </div>
                     </div>
-                </div>
-                <div class="recruit-form">
-                    <div class="recruit-form-left">
-                        <p>業務内容</p>
+                <% end %>
+                <% if @company.company_requirement.qualification.present? %>
+                    <div class="recruit-form">
+                        <div class="recruit-form-left">
+                            <p>応募資格</p>
+                        </div>
+                        <div class="recruit-form-right">
+                            <%= simple_format(@company.company_requirement.qualification) %>
+                        </div>
                     </div>
-                    <div class="recruit-form-right">
-                        <%= simple_format(@company.company_requirement.work) %>
+                <% end %>
+                <% if @company.company_requirement.holiday.present? %>
+                    <div class="recruit-form">
+                        <div class="recruit-form-left">
+                            <p>休日・休暇</p>
+                        </div>
+                        <div class="recruit-form-right">
+                            <%= simple_format(@company.company_requirement.holiday) %>
+                        </div>
                     </div>
-                </div>
-                <div class="recruit-form">
-                    <div class="recruit-form-left">
-                        <p>応募資格</p>
+                <% end %>
+                <% if @company.company_requirement.welfare.present? %>
+                    <div class="recruit-form">
+                        <div class="recruit-form-left">
+                            <p>待遇・福利厚生</p>
+                        </div>
+                        <div class="recruit-form-right">
+                            <%= simple_format(@company.company_requirement.welfare) %>
+                        </div>
                     </div>
-                    <div class="recruit-form-right">
-                        <%= simple_format(@company.company_requirement.qualification) %>
-                    </div>
-                </div>
-                <div class="recruit-form">
-                    <div class="recruit-form-left">
-                        <p>休日・休暇</p>
-                    </div>
-                    <div class="recruit-form-right">
-                        <%= simple_format(@company.company_requirement.holiday) %>
-                    </div>
-                </div>
-                <div class="recruit-form">
-                    <div class="recruit-form-left">
-                        <p>待遇・福利厚生</p>
-                    </div>
-                    <div class="recruit-form-right">
-                        <%= simple_format(@company.company_requirement.welfare) %>
-                    </div>
-                </div>
+                <% end %>
                 <% @company.company_profiles.each do |b| %>
                 <div class="recruit-form">
                     <div class="recruit-form-left">
@@ -113,6 +124,7 @@
                 </div>
                 <% end %>
             </div>
+            <% end %>
         </div>
         <div class="company-middle-right">
             <div class="company-information">
@@ -124,35 +136,45 @@
                     <div class="company-introduction-right">
                         <%= @company.name %>
                     </div>
-                    <div class="company-introduction-left-second">
-                        <img src="/assets/location2.svg">
-                    </div>
-                    <div class="company-middle-right-second">
-                        <%= @company.address %>
-                    </div>
-                    <div class="company-middle-left-second">
-                        <img src="/assets/category.svg">
-                    </div>
-                    <div class="company-middle-right-second">
-                        <%= @company.category %>
-                    </div>
-                    <div class="company-middle-left-second">
-                        <img src="/assets/company-member.svg">
-                    </div>
-                    <div class="company-middle-right-second">
-                        <%= @company.category %>
-                    </div>
-                    <div class="company-middle-left-second">
-                        <img src="/assets/establishment.svg">
-                    </div>
-                    <div class="company-middle-right-second">
-                        <%= @company.category %>
-                    </div>
-                    <div class="company-middle-left-second">
-                        <img src="/assets/company-link.svg"></div>
-                    <div class="company-middle-right-second">
-                        <%= @company.category %>
-                    </div>
+                    <% if @company.address.present? %>
+                        <div class="company-introduction-left-second">
+                            <img src="/assets/location2.svg">
+                        </div>
+                        <div class="company-middle-right-second">
+                            <%= @company.address %>
+                        </div>
+                    <% end %>
+                    <% if @company.category.present? %>
+                        <div class="company-middle-left-second">
+                            <img src="/assets/category.svg">
+                        </div>
+                        <div class="company-middle-right-second">
+                            <%= @company.category %>
+                        </div>
+                    <% end %>
+                    <% if @company.people.present? %>
+                        <div class="company-middle-left-second">
+                            <img src="/assets/company-member.svg">
+                        </div>
+                        <div class="company-middle-right-second">
+                            <%= @company.people %>
+                        </div>
+                    <% end %>
+                    <% if @company.establishment.present? %>
+                        <div class="company-middle-left-second">
+                            <img src="/assets/establishment.svg">
+                        </div>
+                        <div class="company-middle-right-second">
+                            <%= @company.establishment %>
+                        </div>
+                    <% end %>
+                    <% if @company.url.present? %>
+                        <div class="company-middle-left-second">
+                            <img src="/assets/company-link.svg"></div>
+                        <div class="company-middle-right-second">
+                            <%= @company.url %>
+                        </div>
+                    <% end %>
                 </div>
             </div>
             <% if @company.events.present? %>

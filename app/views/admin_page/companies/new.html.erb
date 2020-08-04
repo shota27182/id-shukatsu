@@ -144,19 +144,19 @@
          </div>
          <div class="form-detail">
             <p>業務内容</p>
-            <%=af.text_field :work, required: true, class:"form-field", style: 'height:200px;,line-height:200px;' %>
+            <%=af.text_area :work, required: true, class:"form-field", style: 'height:200px;,line-height:200px;' %>
          </div>
          <div class="form-detail">
             <p>応募資格</p>
-            <%=af.text_field :qualification, required: true, class:"form-field", style: 'height:200px;,line-height:200px;' %>
+            <%=af.text_area :qualification, required: true, class:"form-field", style: 'height:200px;,line-height:200px;' %>
          </div>
          <div class="form-detail">
             <p>休日・休暇</p>
-            <%=af.text_field :holiday, required: true, class:"form-field", style: 'height:200px;,line-height:200px;' %>
+            <%=af.text_area :holiday, required: true, class:"form-field", style: 'height:200px;,line-height:200px;' %>
          </div>
          <div class="form-detail">
             <p>待遇・福利厚生</p>
-            <%=af.text_field :welfare, required: true, class:"form-field", style: 'height:200px;,line-height:200px;' %>
+            <%=af.text_area :welfare, required: true, class:"form-field", style: 'height:200px;,line-height:200px;' %>
          </div>
          <%=f.hidden_field :category, :value => 1 %>
          <% end %>
