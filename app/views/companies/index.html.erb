@@ -349,9 +349,9 @@
                 </div>
                 <% end %>
                 <div class="companies-wrapper">
-                    <p>テレワーク実施企業</p>
+                    <p>多角的な事業展開をしている企業</p>
                     <div class="companies-search">
-                        <% Company.joins(:work_styles).where(work_styles: {id: [2]}).limit(8).each do |a| %>
+                        <% Company.joins(:company_features).where(company_features: {id: [7]}).limit(8).each do |a| %>
                         <div class="company-search">
                             <% if a.icon.present? %>
                                 <%= image_tag a.icon.to_s %>
@@ -364,9 +364,9 @@
                     </div>
                 </div>
                 <div class="companies-wrapper">
-                    <p>フレックスタイム制実施の企業</p>
+                    <p>年間休日が多い企業</p>
                     <div class="companies-search">
-                        <% Company.joins(:work_styles).where(work_styles: {id: [1]}).limit(8).each do |a| %>
+                        <% Company.joins(:welfares).where(welfares: {id: [15]}).limit(8).each do |a| %>
                         <div class="company-search">
                             <% if a.icon.present? %>
                                 <%= image_tag a.icon.to_s %>
@@ -379,40 +379,18 @@
                     </div>
                 </div>
                 <div class="companies-wrapper">
-                    <p>家賃補助実施の企業</p>
+                    <p>安定経営の企業</p>
                     <div class="companies-search">
+                        <% Company.joins(:company_features).where(company_features: {id: [9]}).limit(8).each do |a| %>
                         <div class="company-search">
-                            <img src="/assets/sapporo_beer2.svg">
-                            <p>サッポロビール株式会社</p>
+                            <% if a.icon.present? %>
+                                <%= image_tag a.icon.to_s %>
+                            <% else %>
+                                <img src="/assets/no_image.png">
+                            <% end %>
+                            <p><a href="/companies/<%= a.id %>"><%= a.name %></a></p>
                         </div>
-                        <div class="company-search">
-                            <img src="/assets/sapporo_beer2.svg">
-                            <p>サッポロビール株式会社</p>
-                        </div>
-                        <div class="company-search">
-                            <img src="/assets/sapporo_beer2.svg">
-                            <p>サッポロビール株式会社</p>
-                        </div>
-                        <div class="company-search">
-                            <img src="/assets/sapporo_beer2.svg">
-                            <p>サッポロビール株式会社</p>
-                        </div>
-                        <div class="company-search">
-                            <img src="/assets/sapporo_beer2.svg">
-                            <p>サッポロビール株式会社</p>
-                        </div>
-                        <div class="company-search">
-                            <img src="/assets/sapporo_beer2.svg">
-                            <p>サッポロビール株式会社</p>
-                        </div>
-                        <div class="company-search">
-                            <img src="/assets/sapporo_beer2.svg">
-                            <p>サッポロビール株式会社</p>
-                        </div>
-                        <div class="company-search">
-                            <img src="/assets/sapporo_beer2.svg">
-                            <p>サッポロビール株式会社</p>
-                        </div>
+                        <% end %>
                     </div>
                 </div>
             <% end %>

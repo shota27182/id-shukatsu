@@ -40,10 +40,10 @@
             </div>
             <div class="identity-search">
                 <p>こだわり条件</p>
-                <% if @WorkStylesSearch.blank? && @WelfaresSearch.blank? && @FeaturesSearch.blank? && @PointsSearch.blank? %>
-                <span id="identity-condition-click">+</span>
-                <% else %>
+                <% if params[:work_style] ||  params[:welfare] || params[:feature] || params[:point] %>
                 <span id="identity-condition-click">-</span>
+                <% else %>
+                <span id="identity-condition-click">+</span>
                 <% end %>
             </div>
             <% if params[:work_style] ||  params[:welfare] || params[:feature] || params[:point] %>
@@ -150,25 +150,25 @@
             </div>
             <div class="companies-wrapper">
                     <% if params[:industry] || params[:area] || params[:work_style] ||  params[:welfare] || params[:feature] || params[:point] %>
-                    <p><%= @special_title %></p>
+                        <p><%= @special_title %></p>
                     <% else %>
-                    <p>テレワーク実施企業</p>
+                        <p>関東の企業</p>
                     <% end %>
                     <div class="companies-search">
                         <% if params[:industry] || params[:area] || params[:work_style] ||  params[:welfare] || params[:feature] || params[:point] %>
-                        <% @company.limit(8).each do |a| %>
-                        <div class="company-search">
-                            <%= image_tag a.icon.to_s %>
-                            <p><a href="/companies/<%= a.id %>"><%= a.name %></a></p>
-                        </div>
-                        <% end %>
+                            <% @company.limit(8).each do |a| %>
+                                <div class="company-search">
+                                    <%= image_tag a.icon.to_s %>
+                                    <p><a href="/companies/<%= a.id %>"><%= a.name %></a></p>
+                                </div>
+                            <% end %>
                         <% else %>
-                        <% Company.joins(:work_styles).where(work_styles: {id: [2]}).limit(8).each do |a| %>
-                        <div class="company-search">
-                            <%= image_tag a.icon.to_s %>
-                            <p><a href="/companies/<%= a.id %>"><%= a.name %></a></p>
-                        </div>
-                        <% end %>
+                            <% Company.joins(:work_areas).where(work_areas: {id: [1]}).limit(8).each do |a| %>
+                                <div class="company-search">
+                                    <%= image_tag a.icon.to_s %>
+                                    <p><a href="/companies/<%= a.id %>"><%= a.name %></a></p>
+                                </div>
+                            <% end %>
                         <% end %>
                     </div>
             </div>
