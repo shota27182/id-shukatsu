@@ -74,8 +74,8 @@ body {
 }
 
 .container{
-    margin-left:3%;
-    margin-right:3%;
+    margin-left: 0 auto;
+    margin-right: 0 auto;
     padding-left:0px;
     padding-right:0px;
 }
@@ -1421,6 +1421,18 @@ footer{
     margin-bottom:20px;
 }
 
+.company-box:hover{
+    background-color:#CECECE;
+}
+
+.company-box:hover img{
+     opacity: 0.6;
+}
+
+.company-box:hover .company-box-feature{
+    opacity:0.6;
+}
+
 .company-box-head-image img{
     width:100%;
     height:87px;
@@ -1629,14 +1641,26 @@ footer{
     margin:16px 3.5%;
 }
 
+.company-search:hover{
+     background-color:#CECECE;
+}
+
 .event-search{
     width:30%;
     margin:9px 1.6%;
 }
 
+.event-search:hover{
+    background-color:#CECECE;
+}
+
 .event-search img{
     width:100%;
     height:157px;
+}
+
+.event-search:hover img{
+    opacity: 0.6;
 }
 
 .event-search p{
@@ -1648,6 +1672,10 @@ footer{
     height:130px;
     border-radius:50%;
     border:solid 1px  #D6D6D6;
+}
+
+.company-search:hover img{
+    opacity: 0.6;
 }
 
 .company-search p{
