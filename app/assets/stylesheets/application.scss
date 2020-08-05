@@ -170,6 +170,10 @@ header{
     height:44.5px;
     line-height:44.5px;
 }
+
+.header-menu:hover{
+    background-color:#012448;
+}
     
 .header-menu a{
     width:100%;
@@ -220,16 +224,26 @@ header{
     display:block;
 }
 
+
 .companies a img{
     height:69px;
     width:100%;
 }
+
+.companies a:hover{
+    background-color:#CECECE;
+}
+
 
 .company{
     width:100%;
     border:solid 1px #E5E5E5;
 }
 
+.company:hover{
+    background-color:#CECECE;
+    opacity:0.6;
+}
 .top-contents{
     margin-top:18px;
     display:flex;
@@ -295,6 +309,10 @@ header{
     margin-right:2.5%;
     margin-bottom:3%;
     height:47%;
+}
+
+.my-top-link:hover{
+    background-color:#CECECE;
 }
 
 .my-top-link p{
@@ -858,6 +876,14 @@ footer{
     display:flex;
 }
 
+.mypage-item:hover{
+    background-color:#CECECE;
+}
+
+.mypage-item:hover img{
+    transparent:0.6;
+}
+
 .mypage-item a{
     font-size:16px;
     color:#000F1F;
@@ -898,6 +924,10 @@ footer{
     text-align:center;
     margin-right:2%;
     margin-bottom:12px;
+}
+
+.mypage-link:hover{
+    background-color:#CECECE;
 }
 
 .mypage-links p{
@@ -1577,6 +1607,10 @@ footer{
     width:15%;
     height:106px;
     margin:0px 1.5%;
+}
+
+.recomended-search-content:hover{
+    background-color:#CECECE;
 }
 
 .recomended-search-content img{
@@ -2654,35 +2688,27 @@ footer{
 }
 
 @media screen and (min-width: 0px) and (max-device-width: 920px) {
-    body {
-      margin: 0;
-      font-family: "Hiragino Kaku Gothic ProN";
-      background-color:#F2F2F2;
+    body{
+        min-height: 100vh;
     }
     
     .container{
         margin-left:0%;
         margin-right:0%;
-        padding-left:0px;
-        padding-right:0px;
     }
     
     
     .top-wrapper{
         height:126px;
-        width:100%
     }
     
     .top-wrapper img{
         height:126px;
-        width:100%;
     }
     
     
     header{
         height:63px;
-        width:100%;
-        background-color:#FFFFFF;
         position:absolute;
         top:0px;
     }
@@ -2870,10 +2896,6 @@ footer{
     
     
     
-    .logo{
-        margin-top:14px;
-    }
-    
     .header-message{
         display:none!important;
     }
@@ -2895,8 +2917,6 @@ footer{
     }
     
     .login{
-        color:black;
-        border:solid 1px #707070;
         margin-left:-70px;
         margin-right:-70px;
     }
@@ -3198,7 +3218,7 @@ footer{
     
     .release-planning{
         padding-top:12px;
-        width:32%;
+        width:100%;
         background-color:white;
         margin-top:18px;
         margin-right:2%;
@@ -3212,7 +3232,7 @@ footer{
     
     .consulting-introduce{
         padding-top:12px;
-        width:32%;
+        width:100%;
         background-color:white;
         margin-top:18px;
     }
@@ -3269,7 +3289,7 @@ footer{
     
     .online-meeting{
         margin-top:18px;
-        width:66%;
+        width:100%;
         margin-right:2%;
     }
     
@@ -3278,10 +3298,8 @@ footer{
     }
     
     .recruit-support{
-        width:32%;
-        background-color:white;
-        margin-top:18px;
-        padding-top:12px;
+        width:100%;
+        margin-bottom:34px;
     }
     
     .recruit-support p{
@@ -3311,14 +3329,14 @@ footer{
     }
     
     footer{
-        height:52.04px;
+        height:90px;
         width:100%;
         background-color:#012448;
     }
     
     .footer-menus{
         margin-top:18px;
-        margin-left:24%;
+        margin-left:10%;
     }
     
     .footer-menu{
@@ -3805,19 +3823,6 @@ footer{
         color:#5D5D5D;
     }
     
-    .event-big-click{
-        border-bottom:solid 1px #3B6DA0;
-    }
-    
-    .event-small-click{
-        background-color:#62A2E3;
-        border:solid 1px #3B6DA0;
-    }
-    
-    .event-small-click a{
-        color:white;
-    }
-    
     .event-big-category a{
         font-size:16px;
         color:black;
@@ -3827,10 +3832,6 @@ footer{
         border-radius:50%;
         border:solid 1px  #D6D6D6;
         width:80%;
-    }
-    
-    .event-big-click a{
-        color:#3B6DA0;
     }
     
     .company-head-left{
@@ -3874,11 +3875,6 @@ footer{
         font-size:16px;
         color:white;
         line-height:35px;
-    }
-    
-    .registered-likes{
-        color:black;
-        
     }
     
     .company-head{
@@ -3958,14 +3954,6 @@ footer{
         margin-top:6px;
     }
     
-    .company-event-head{
-        background-color:#3B6DA0;
-        color:white;
-        text-align:center;
-        height:40px;
-        line-height:40px;
-    }
-    
     .company-event-middle{
         padding:0px 4%;
     }
@@ -3980,20 +3968,6 @@ footer{
     .company-event-links{
         list-style: none;
         padding-left:0px;
-    }
-    
-    .company-event-link{
-        display:flex;
-        border-bottom:solid 1px #D6D6D6;
-        padding-left:3%;
-        padding-right:3%;
-        background-color:#F5FAFF;
-        height:52px;
-        line-height:52px;
-    }
-    
-    .company-event-link-left{
-        width:97%;
     }
     
     .company-event-lnk-right{
@@ -4343,19 +4317,6 @@ footer{
         margin-top:-20px;
     }
     
-    .recomended-search-middle{
-        z-index:1;
-        position:absolute;
-        width:100%;
-        height:100%;
-        background: rgba(96,96,96, 0.7);
-        top:0px;
-        left:0px;
-        text-align:center;
-        color:white;
-        padding-top:60px;
-    }
-    
     .companies-wrapper{
         width:100%;
         background-color:white;
@@ -4392,7 +4353,7 @@ footer{
     
     .event-search img{
         width:100%;
-        height:93px;
+        height:102px;
     }
     
     .event-search p{
@@ -4474,7 +4435,6 @@ footer{
     }
     
     .event-title h2{
-        font-size:12px;
         margin-top:5px;
     }
     
@@ -4490,27 +4450,6 @@ footer{
     
     .entry-time{
         padding-right:24.8px;
-    }
-    
-    .entry-location{
-        padding-left:4.4px;
-    }
-    
-    .event-entry p{
-        font-size:10px;
-        text-align:center;
-        color:#FF0000;
-    }
-    
-    .event-entry a{
-        display:block;
-        color:white;
-        background-color:#62A2E3;
-        text-align:center;
-        line-height:20px;
-        font-size:10px;
-        border-radius:4px;
-        border:solid 1px #3B6DA0;
     }
     
     .entry-button{
@@ -4536,21 +4475,10 @@ footer{
         justify-content:space-between;
     }
     
-    .event-schedule-image img{
-        width:100%;
-        height:100%;
-    }
-    
     .event-schedule-head-left{
         width:10%;
         padding-right:2%;
         padding-top:5px;
-    }
-    
-    .event-schedule-head-left img{
-        width:100%;
-        height:100%;
-        border:solid 2px #EFEFEF;
     }
     
     .event-schedule-head-right{
@@ -4558,22 +4486,9 @@ footer{
         padding-top:10px;
     }
     
-    .event-schedule-head-right p{
-        font-size:16px;
-    }
-    
-    .schedule-top{
-        margin-top:18px;
-    }
-    
     .event-schedule-title h2{
         font-size:16px;
         margin-top:0px;
-    }
-    
-    .event-schedule p{
-        display:inline-block;
-        font-size:14px;
     }
     
     .event-schedule-bottom{
@@ -4629,16 +4544,6 @@ footer{
         border-bottom:solid 2px #D6D6D6;
     }
     
-    .entry-complete-top h2{
-        font-size:20px;
-    }
-    
-    .entry-complete-top h1{
-        font-size:28px;
-        color:#3B6DA0;
-        margin-bottom:14px;
-    }
-    
     .entry-complete-top{
         font-size:14px;
     }
@@ -4657,23 +4562,10 @@ footer{
         width:15%;
     }
     
-    .entry-complete-company-left img{
-        width:100%;
-        height:100%;
-        border-radius:50%;
-        border:solid 1px  #D6D6D6;
-    }
-    
     .entry-complete-company-middle{
         width:65%;
         height:80px;
         padding-left:4%;
-    }
-    
-    .entry-complete-company-middle p{
-        font-size:24px;
-        line-height:80px;
-        margin-bottom:0px;
     }
     
     .entry-complete-company{
@@ -4691,14 +4583,6 @@ footer{
         margin-top:14px;
     }
     
-    .entry-complete-company-right a{
-        color:white;
-        line-height:70px;
-        text-align:center;
-        font-size:16px;
-        width:20%;
-    }
-    
     .entry-complete-rollback{
         margin-left:24%;
         margin-top:18px;
@@ -4709,11 +4593,6 @@ footer{
         line-height:40px;
         background-color:#62A2E3;
         border-radius:4px;
-    }
-    
-    .entry-complete-rollback a{
-        color:white;
-        font-size:16px;
     }
     
     .article-top{
@@ -4813,27 +4692,6 @@ footer{
         line-height:54px;
         width:92%;
         padding-left:3%;
-    }
-    
-    .partner-menu-item img{
-        transform: rotate( 90deg );
-    }
-    
-    .partner-menu a{
-        color:white;
-        font-size:18px;
-        line-height:54px;
-        width:92%;
-        padding-left:3%;
-    }
-    
-    
-    .partner-menu ul{
-        padding:0px;
-        width:100%;
-    }
-    
-    .partner-menu-lists{
     }
     
     .partner-menu-list{
@@ -4962,10 +4820,6 @@ footer{
         width:100%;
     }
     
-    .dashboard-situation table{
-        width:100%;
-    }
-    
     .partner-date-body{
         border-right:solid 2px #D6D6D6;
         border-bottom:solid 2px #D6D6D6;
@@ -5052,18 +4906,6 @@ footer{
         color:#62A2E3;
     }
     
-    .partner-event-entry-bottom a{
-        color:white;
-        display:block;
-        width:34%;
-        background-color:#62A2E3;
-        height:24px;
-        line-height:24px;
-        border-radius:8px;
-        padding-left:9%;
-        font-size:10px;
-    }
-    
     .partner-profile-title{
         display:flex;
     }
@@ -5072,18 +4914,6 @@ footer{
         font-size:20px;
         width:79%;
         padding:0px;
-    }
-    
-    .partner-profile-title a{
-        color:white;
-        display:block;
-        width:21%;
-        background-color:#62A2E3;
-        height:26px;
-        line-height:26px;
-        border-radius:8px;
-        padding-left:6.9%;
-        font-size:12px;
     }
     
     .partner-profile-left{
@@ -5126,15 +4956,6 @@ footer{
         width:21%;
     }
     
-    .partner-profile-icon img{
-        width:61%;
-    }
-    
-    .partner-profile-icon p{
-        font-size:8px;
-        color:#707070;
-    }
-    
     .partner-icon-left{
         border:solid 1px #707070;
     }
@@ -5156,11 +4977,6 @@ footer{
         
     }
     
-    .partner-menu-list span{
-        color:#C6C6C6;
-        border-bottom:0px;
-    }
-    
     .profile-notification-index{
         margin:0px 2% 30.5px 2%;
         border-bottom:solid 1px #D6D6D6;
@@ -5178,11 +4994,6 @@ footer{
         width:100%;
     }
     
-    .mypage-entry-main-img img{
-        width:100%;
-        height:193px;
-    }
-    
     .mypage-entry-middle{
         display:flex;
         margin-top:5px;
@@ -5192,11 +5003,6 @@ footer{
     
     .mypage-entry-middle-left{
         width:9.2%;
-    }
-    
-    .mypage-entry-middle-left img{
-        width:81.3%;
-        border:solid 2px #EFEFEF;
     }
     
     .mypage-entry-midlde-right{
@@ -5241,5 +5047,18 @@ footer{
     
     .mypage-entry-img{
         display:block;
+    }
+    
+    .article-middle{
+        display:block;
+    }
+    
+    .article-right{
+        width:100%;
+    }
+    
+    .article-left{
+        width:100%;
+        padding-right:0px;
     }
 }

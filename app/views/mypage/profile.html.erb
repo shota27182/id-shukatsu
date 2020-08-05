@@ -7,7 +7,7 @@
     <div class="profile-form">
         <div class="profile-title">
             <div class="profile-title-left">基本情報</div>
-            <div　class="profile-title-right">
+            <div class="profile-title-right">
                 <a href="/mypage/general" class="btn signup">編集する</a>
             </div>
         </div>
@@ -85,7 +85,7 @@
     <div class="profile-form">
         <div class="profile-title">
            <div class="profile-title-left">所属情報</div>
-           <div　class="profile-title-right">
+           <div class="profile-title-right">
                <a href="/mypage/education" class="btn signup">編集する</a>
            </div>
         </div>
@@ -131,7 +131,7 @@
                     <p>学年：</p>
                 </div>
                 <div class="profile-context-right">
-                    
+                    <p><%= Grade.find_by(id: @user.education.grade_id).name %></p>
                 </div>
             </div>
             <div class="profile-context">
@@ -187,7 +187,7 @@
     <div class="profile-form">
         <div class="profile-title">
            <div class="profile-title-left">志望</div>
-           <div　class="profile-title-right">
+           <div class="profile-title-right">
                <a href="/mypage/wish" class="btn signup">編集する</a>
            </div>
         </div>
@@ -239,7 +239,7 @@
     <div class="profile-form">
         <div class="profile-title">
            <div class="profile-title-left">重視する項目</div>
-           <div　class="profile-title-right">
+           <div class="profile-title-right">
                <a href="/mypage/mentarity" class="btn signup">編集する</a>
            </div>
         </div>
