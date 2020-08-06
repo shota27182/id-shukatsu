@@ -7,6 +7,8 @@ Rails.application.configure do
   config.public_file_server.enabled = true
 
   config.cache_classes = true
+  
+  GA.tracker = "UA-104768843-11"
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
