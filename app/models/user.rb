@@ -92,27 +92,10 @@ class User < ApplicationRecord
     
     def create_notification_event_schedule!(current_user, event_schedule)
         entry_notification = current_user.notifications.build(
-            action: 'entry_first',
-            start_on: DateTime.current,
             title: '「' + Event.find_by(id: event_schedule.event_id).name + '」' + 'の申し込みが完了いたしました',
             content:  'この度は' + '「' + Event.find_by(id: event_schedule.event_id).name + '」' + 'にお申込みいただきありがとうございます。'
             )
-        entry_second_notification = current_user.notifications.build(
-            action: 'entry_second',
-            start_on: event_schedule.holding_day.to_time.to_datetime - 3,
-            title: '「' + Event.find_by(id: event_schedule.event_id).name + '」' + '3日前前です',
-            content: '「' + Event.find_by(id: event_schedule.event_id).name + '」' + 'まで3日前となりました。今一度場所や持ち物のご確認をお願いいたします。' 
-            )
-        entry_third_notification = current_user.notifications.build(
-            action: 'entry_third',
-            start_on: event_schedule.holding_day.to_time.to_datetime - 1,
-            title: '「' + Event.find_by(id: event_schedule.event_id).name + '」'  + '1日前です',
-            content: '「' + Event.find_by(id: event_schedule.event_id).name + 'まで1日前となりました。今一度場所や持ち物のご確認をお願いいたします。'
-            )
         entry_notification.save!
-        entry_second_notification.save!
-        entry_third_notification.save!
-        
     end
     
     private
