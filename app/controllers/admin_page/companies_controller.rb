@@ -1,4 +1,6 @@
 class AdminPage::CompaniesController < ApplicationController
+  layout 'application4.html.erb'
+  
   def new
     @company = Company.new
     @company.build_company_requirement
@@ -18,11 +20,16 @@ class AdminPage::CompaniesController < ApplicationController
   end
 
   def index
+    @companies = Company.all.page(params[:page]).per(12)
   end
   
   def import
     Company.import(params[:file])
     redirect_to '/admin_page/companies'
+  end
+  
+  def show
+    @company = Company.find_by(id: params[:id])
   end
   
   private

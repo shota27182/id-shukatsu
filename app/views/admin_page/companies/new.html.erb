@@ -1,172 +1,288 @@
-<div class="partner-sign-up">
-    <div class="form-heading">会社情報</div>
-    <%= form_with model: @company, method: :post, url: admin_page_companies_path, local: true do |f| %>
-      <div class="general-profile">
-        <div class="general-title">基本情報</div>
-            <div class="form-detail">
-            <p>メールアドレス</p>
-            <%=f.email_field :email, required: true, class: "form-field" %>
-            <% if @company.errors.include?(:email) %>
-            <p style="color: red;"><%= @user.errors.full_messages_for(:email).first %>
-            <% end %>
-          </div>
-          <div class="form-detail">
-            <p>パスワード</p>
-            <%=f.password_field :password, required: true, class: "form-field"  %>
-            <% if @company.errors.include?(:password) %>
-            <p style="color: red;"><%= @user.errors.full_messages_for(:password).first %>
-            <% end %>
-          </div>
-          <div class="form-detail">
-            <p>もう一度パスワードを入力してください</p>
-            <%= f.password_field :password_confirmation, required: true, class: "form-field" %>
-            <% if @company.errors.include?(:password_confirmation) %>
-            <p style="color: red;"><%= @user.errors.full_messages_for(:password_confirmation).first %>
-            <% end %>
-          </div>
-          <div class="form-detail form-top">
-            <p>会社ロゴ:</p>
-            <%= f.file_field :icon %>
-          </div>
-          <div>
-            <p>会社イメージ画像：</p>
-            <%= f.file_field :img %>
-          </div>
-          <div class="form-detail form-top">
-              <p>名前</p>
-              <%=f.text_field :name, required: true, class: "form-field"  %>
-          </div>
-          <div class="form-detail">
-              <p>フリガナ</p>
-              <%=f.text_field :kana, required: true, class:"form-field" %>
-          </div>
-          <div class="form-detail">
-              <p>住所</p>
-              <%=f.text_field :address, required: true, class:"form-field" %>
-          </div>
-          <div class="form-detail">
-              <p>事業内容</p>
-              <%=f.text_field :category, required: true, class:"form-field" %>
-          </div>
-          <div class="form-detail">
-              <p>従業員数</p>
-              <%=f.number_field :people, required: true, class:"form-field" %>
-          </div>
-          <div class="form-detail profile-birthday">
-              <p>設立年月日</p>
-              <%= f.date_select :establishment, start_year: 1800, end_year: 2020, use_month_numbers: true %>
-          </div>
-          <div class="form-detail">
-              <p>採用ページリンク</p>
-              <%=f.text_field :url, required: true, class:"form-field" %>
-          </div>
-          <div class="form-detail">
-              <p>紹介文</p>
-              <%=f.text_field :introduction, required: true, class:"form-field" %>
-          </div>
-      </div>
-            <div class="form-detail form-top">
-                 <p>企業規模</p>
-                 <div class="profile-core-form">
-                    <%= f.collection_check_boxes(:company_scale_ids,CompanyScale.all, :id, :name) do |af| %>
-                       <%= af.check_box(class: "checkbox")  %>
-                       <%= af.label(class: "profile-check"){ af.text } %>
+<div class="partner-contents">
+    <div class="partner-menus">
+        <div class="partner-menu">
+            <a href="/partner_page/dashboard">ダッシュボード</a>
+        </div>
+        <div class="partner-menu">
+            <div class="partner-menu-item secList" id="fuu">
+                <p>ユーザー管理</p>
+                <img src="/assets/partner_bar.svg">
+            </div>
+            <ul class="partner-menu-lists section fuu">
+                <li class="partner-menu-list">
+                    <a href="/partner_page/apply">> <span>ユーザー検索</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a href="/partner_page/apply">> <span>新規ユーザー登録</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>ジョブ・インターン</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>説明会・企業セミナー</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="partner-menu">
+            <div class="partner-menu-item secList partner-change" id="guu">
+                <p>会社管理</p>
+                <img src="/assets/partner_bar.svg">
+            </div>
+            <ul class="partner-menu-lists section guu">
+                <li class="partner-menu-list">
+                    <a href="/partner_page/event">> <span>会社一覧</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>会社検索</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>新規会社登録</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="partner-menu">
+            <div class="partner-menu-item secList" id="nuu">
+                <p>イベント管理</p>
+                <img src="/assets/partner_bar.svg">
+            </div>
+            <ul class="partner-menu-lists section nuu">
+                <li class="partner-menu-list">
+                    <a href="/partner_page/profile">> <span>イベント一覧</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>イベント検索</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>新規イベント登録</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="partner-menu">
+            <div class="partner-menu-item secList" id="muu">
+                <p>記事管理</p>
+                <img src="/assets/partner_bar.svg">
+            </div>
+            <ul class="partner-menu-lists section muu">
+                <li class="partner-menu-list">
+                    <a href="#">> <span>記事一覧</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>記事検索</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>新規記事登録</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="partner-menu">
+            <div class="partner-menu-item secList ruu">
+                <p>広告管理</p>
+                <img src="/assets/partner_bar.svg">
+            </div>
+            <ul class="partner-menu-lists section ruu">
+                <li class="partner-menu-list">
+                    <a href="#">> <span>本選考</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>ジョブ・インターン</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>説明会・企業セミナー</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="partner-dashboard">
+        <h2>会社管理</h2>
+        <%= form_tag import_admin_page_companies_path, multipart: true do %>
+            <p>CSVインポートする</p>
+            <%= file_field_tag :file %>
+            <%= submit_tag "インポート" %>
+        <% end %>
+        <div class="partner-sign-up">
+            <div class="form-heading">会社情報</div>
+            <%= form_with model: @company, method: :post, url: admin_page_companies_path, local: true do |f| %>
+              <div class="general-profile">
+                <div class="general-title">基本情報</div>
+                    <div class="form-detail">
+                    <p>メールアドレス</p>
+                    <%=f.email_field :email, required: true, class: "form-field" %>
+                    <% if @company.errors.include?(:email) %>
+                    <p style="color: red;"><%= @user.errors.full_messages_for(:email).first %>
                     <% end %>
+                  </div>
+                  <div class="form-detail">
+                    <p>パスワード</p>
+                    <%=f.password_field :password, required: true, class: "form-field"  %>
+                    <% if @company.errors.include?(:password) %>
+                    <p style="color: red;"><%= @user.errors.full_messages_for(:password).first %>
+                    <% end %>
+                  </div>
+                  <div class="form-detail">
+                    <p>もう一度パスワードを入力してください</p>
+                    <%= f.password_field :password_confirmation, required: true, class: "form-field" %>
+                    <% if @company.errors.include?(:password_confirmation) %>
+                    <p style="color: red;"><%= @user.errors.full_messages_for(:password_confirmation).first %>
+                    <% end %>
+                  </div>
+                  <div class="form-detail form-top">
+                    <p>会社ロゴ:</p>
+                    <%= f.file_field :icon %>
+                  </div>
+                  <div>
+                    <p>会社イメージ画像：</p>
+                    <%= f.file_field :img %>
+                  </div>
+                  <div class="form-detail form-top">
+                      <p>名前</p>
+                      <%=f.text_field :name, required: true, class: "form-field"  %>
+                  </div>
+                  <div class="form-detail">
+                      <p>フリガナ</p>
+                      <%=f.text_field :kana, required: true, class:"form-field" %>
+                  </div>
+                  <div class="form-detail">
+                      <p>住所</p>
+                      <%=f.text_field :address, required: true, class:"form-field" %>
+                  </div>
+                  <div class="form-detail">
+                      <p>事業内容</p>
+                      <%=f.text_field :category, required: true, class:"form-field" %>
+                  </div>
+                  <div class="form-detail">
+                      <p>従業員数</p>
+                      <%=f.number_field :people, required: true, class:"form-field" %>
+                  </div>
+                  <div class="form-detail profile-birthday">
+                      <p>設立年月日</p>
+                      <%= f.date_select :establishment, start_year: 1800, end_year: 2020, use_month_numbers: true %>
+                  </div>
+                  <div class="form-detail">
+                      <p>採用ページリンク</p>
+                      <%=f.text_field :url, required: true, class:"form-field" %>
+                  </div>
+                  <div class="form-detail">
+                      <p>紹介文</p>
+                      <%=f.text_field :introduction, required: true, class:"form-field" %>
+                  </div>
+              </div>
+                    <div class="form-detail form-top">
+                         <p>企業規模</p>
+                         <div class="profile-core-form">
+                            <%= f.collection_check_boxes(:company_scale_ids,CompanyScale.all, :id, :name) do |af| %>
+                               <%= af.check_box(class: "checkbox")  %>
+                               <%= af.label(class: "profile-check"){ af.text } %>
+                            <% end %>
+                         </div>
+                     </div>
+                     <div class="form-detail">
+                         <p>業界</p>
+                         <div class="profile-core-form ">
+                             <%= f.collection_check_boxes(:industry_ids,Industry.all, :id, :name) do |bf| %>
+                                <%= bf.check_box(class: "checkbox")  %>
+                                <%= bf.label(class: "profile-check"){ bf.text } %>
+                             <% end %>
+                         </div>
+                     </div>
+                     <div class="form-detail">
+                         <p>職種</p>
+                         <div class="profile-core-form">
+                             <%= f.collection_check_boxes(:occupation_ids,Occupation.all, :id, :name) do |cf| %>
+                                 <%= cf.check_box(class: "checkbox")  %>
+                                 <%= cf.label(class: "profile-check"){ cf.text } %>
+                             <% end %>
+                         </div>
+                     </div>
+                     <div class="form-detail">
+                         <p>勤務エリア</p>
+                         <div class="profile-core-form">
+                             <%= f.collection_check_boxes(:work_area_ids,WorkArea.all, :id, :name) do |df| %>
+                             <%= df.check_box(class: "checkbox")  %>
+                             <%= df.label(class: "profile-check"){ df.text } %>
+                             <% end %>
+                         </div>
+                     </div>
+                     <div class="form-detail">
+                         <p>働き方</p>
+                         <div class="profile-core-form">
+                             <%= f.collection_check_boxes(:work_style_ids,WorkStyle.all, :id, :name) do |ef| %>
+                                 <%= ef.check_box(class: "checkbox")  %>
+                                 <%= ef.label(class: "profile-check"){ ef.text } %>
+                             <% end %>
+                         </div>
+                     </div>
+                     <div class="form-detail">
+                         <p>福利厚生</p>
+                         <div class="profile-core-form core-welfare">
+                             <%= f.collection_check_boxes(:welfare_ids,Welfare.all, :id, :name) do |ff| %>
+                                <%= ff.check_box(class: "checkbox")  %>
+                                <%= ff.label(class: "profile-check"){ ff.text } %>
+                             <% end %>
+                         </div>
+                     </div>
+                     <div class="form-detail">
+                         <p>企業の特徴</p>
+                         <div class="profile-core-form core-company-feature">
+                             <%= f.collection_check_boxes(:company_feature_ids,CompanyFeature.all, :id, :name) do |gf| %>
+                                 <%= gf.check_box(class: "checkbox")  %>
+                                 <%= gf.label(class: "profile-check"){ gf.text } %>
+                             <% end %>
+                         </div>
+                     </div>
+                     <div class="form-detail">
+                         <p>選考の特徴</p>
+                         <div class="profile-core-form">
+                             <%= f.collection_check_boxes(:company_point_ids,CompanyPoint.all, :id, :name) do |hf| %>
+                                <%= hf.check_box(class: "checkbox")  %>
+                                <%= hf.label(class: "profile-check"){ hf.text } %>
+                             <% end %>
+                         </div>
+                     </div>
+                <%= f.fields_for :company_requirement do |af| %>
+                <div class="form-detail form-top">
+                    <p>募集職種</p>
+                    <%=af.text_area :occupation, required: true, class:"form-field", style: 'height:200px;,line-height:200px;' %>
                  </div>
-             </div>
-             <div class="form-detail">
-                 <p>業界</p>
-                 <div class="profile-core-form ">
-                     <%= f.collection_check_boxes(:industry_ids,Industry.all, :id, :name) do |bf| %>
-                        <%= bf.check_box(class: "checkbox")  %>
-                        <%= bf.label(class: "profile-check"){ bf.text } %>
+                 <div class="form-detail">
+                    <p>業務内容</p>
+                    <%=af.text_area :work, required: true, class:"form-field", style: 'height:200px;,line-height:200px;' %>
+                 </div>
+                 <div class="form-detail">
+                    <p>応募資格</p>
+                    <%=af.text_area :qualification, required: true, class:"form-field", style: 'height:200px;,line-height:200px;' %>
+                 </div>
+                 <div class="form-detail">
+                    <p>休日・休暇</p>
+                    <%=af.text_area :holiday, required: true, class:"form-field", style: 'height:200px;,line-height:200px;' %>
+                 </div>
+                 <div class="form-detail">
+                    <p>待遇・福利厚生</p>
+                    <%=af.text_area :welfare, required: true, class:"form-field", style: 'height:200px;,line-height:200px;' %>
+                 </div>
+                 <%=f.hidden_field :category, :value => 1 %>
+                 <% end %>
+                 <div id="profiles-association-insertion-point" >
+                     <%= f.fields_for :company_profiles do |builder| %>
+                         <%= render 'company_profile_fields', f: builder %>
                      <% end %>
                  </div>
-             </div>
-             <div class="form-detail">
-                 <p>職種</p>
-                 <div class="profile-core-form">
-                     <%= f.collection_check_boxes(:occupation_ids,Occupation.all, :id, :name) do |cf| %>
-                         <%= cf.check_box(class: "checkbox")  %>
-                         <%= cf.label(class: "profile-check"){ cf.text } %>
-                     <% end %>
-                 </div>
-             </div>
-             <div class="form-detail">
-                 <p>勤務エリア</p>
-                 <div class="profile-core-form">
-                     <%= f.collection_check_boxes(:work_area_ids,WorkArea.all, :id, :name) do |df| %>
-                     <%= df.check_box(class: "checkbox")  %>
-                     <%= df.label(class: "profile-check"){ df.text } %>
-                     <% end %>
-                 </div>
-             </div>
-             <div class="form-detail">
-                 <p>働き方</p>
-                 <div class="profile-core-form">
-                     <%= f.collection_check_boxes(:work_style_ids,WorkStyle.all, :id, :name) do |ef| %>
-                         <%= ef.check_box(class: "checkbox")  %>
-                         <%= ef.label(class: "profile-check"){ ef.text } %>
-                     <% end %>
-                 </div>
-             </div>
-             <div class="form-detail">
-                 <p>福利厚生</p>
-                 <div class="profile-core-form core-welfare">
-                     <%= f.collection_check_boxes(:welfare_ids,Welfare.all, :id, :name) do |ff| %>
-                        <%= ff.check_box(class: "checkbox")  %>
-                        <%= ff.label(class: "profile-check"){ ff.text } %>
-                     <% end %>
-                 </div>
-             </div>
-             <div class="form-detail">
-                 <p>企業の特徴</p>
-                 <div class="profile-core-form core-company-feature">
-                     <%= f.collection_check_boxes(:company_feature_ids,CompanyFeature.all, :id, :name) do |gf| %>
-                         <%= gf.check_box(class: "checkbox")  %>
-                         <%= gf.label(class: "profile-check"){ gf.text } %>
-                     <% end %>
-                 </div>
-             </div>
-             <div class="form-detail">
-                 <p>選考の特徴</p>
-                 <div class="profile-core-form">
-                     <%= f.collection_check_boxes(:company_point_ids,CompanyPoint.all, :id, :name) do |hf| %>
-                        <%= hf.check_box(class: "checkbox")  %>
-                        <%= hf.label(class: "profile-check"){ hf.text } %>
-                     <% end %>
-                 </div>
-             </div>
-        <%= f.fields_for :company_requirement do |af| %>
-        <div class="form-detail form-top">
-            <p>募集職種</p>
-            <%=af.text_area :occupation, required: true, class:"form-field", style: 'height:200px;,line-height:200px;' %>
-         </div>
-         <div class="form-detail">
-            <p>業務内容</p>
-            <%=af.text_area :work, required: true, class:"form-field", style: 'height:200px;,line-height:200px;' %>
-         </div>
-         <div class="form-detail">
-            <p>応募資格</p>
-            <%=af.text_area :qualification, required: true, class:"form-field", style: 'height:200px;,line-height:200px;' %>
-         </div>
-         <div class="form-detail">
-            <p>休日・休暇</p>
-            <%=af.text_area :holiday, required: true, class:"form-field", style: 'height:200px;,line-height:200px;' %>
-         </div>
-         <div class="form-detail">
-            <p>待遇・福利厚生</p>
-            <%=af.text_area :welfare, required: true, class:"form-field", style: 'height:200px;,line-height:200px;' %>
-         </div>
-         <%=f.hidden_field :category, :value => 1 %>
-         <% end %>
-         <div id="profiles-association-insertion-point" >
-             <%= f.fields_for :company_profiles do |builder| %>
-                 <%= render 'company_profile_fields', f: builder %>
-             <% end %>
-         </div>
-         <%= link_to_add_association '＋  募集要項を追加する', f, :company_profiles,class: 'mypage-programming-post',data: {association_insertion_node: '#profiles-association-insertion-point',association_insertion_method: 'append'} %>
-      </div>
-      <%= f.submit "次のステップへ進む", class: "form-submit" %>
-    <% end %>
+                 <%= link_to_add_association '＋  募集要項を追加する', f, :company_profiles,class: 'mypage-programming-post',data: {association_insertion_node: '#profiles-association-insertion-point',association_insertion_method: 'append'} %>
+              </div>
+              <%= f.submit "次のステップへ進む", class: "form-submit" %>
+            <% end %>
+        </div>
+    </div>
 </div>
+
+<script>
+  $(function(){
+  $('.section').hide();
+  
+  $('.secList').on('click',function(){
+        // クリックした要素の ID と違うクラス名のセクションを非表示
+    $('.section').not($('.'+$(this).attr('id'))).hide();
+    // クリックした要素の ID と同じクラスのセクションを表示
+    $('.'+$(this).attr('id')).toggle();
+  });
+});
+</script>

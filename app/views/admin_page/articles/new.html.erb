@@ -1,16 +1,133 @@
-<div class="field">
-    <%= simple_form_for(@article, url: admin_page_articles_path) do |f| %>
-    <%= f.label :img %>
-    <%= f.file_field :img %>
-    <%= f.label :title %><br>
-    <%= f.text_area :title %><br>
-    <%= f.label :content %><br>
-    <%= f.input_field :content, class: 'summernote',as: :summernote %><br>
-    <%= f.submit 'Save' %>
-    <% end %>
- </div>
+<div class="partner-contents">
+    <div class="partner-menus">
+        <div class="partner-menu">
+            <a href="/partner_page/dashboard">ダッシュボード</a>
+        </div>
+        <div class="partner-menu">
+            <div class="partner-menu-item secList" id="fuu">
+                <p>ユーザー管理</p>
+                <img src="/assets/partner_bar.svg">
+            </div>
+            <ul class="partner-menu-lists section fuu">
+                <li class="partner-menu-list">
+                    <a href="/partner_page/apply">> <span>ユーザー検索</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a href="/partner_page/apply">> <span>新規ユーザー登録</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>ジョブ・インターン</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>説明会・企業セミナー</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="partner-menu">
+            <div class="partner-menu-item secList" id="guu">
+                <p>会社管理</p>
+                <img src="/assets/partner_bar.svg">
+            </div>
+            <ul class="partner-menu-lists section guu">
+                <li class="partner-menu-list">
+                    <a href="/admin_page/companies">> <span>会社一覧</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>会社検索</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a href="/admin_page/companies/new">> <span>新規会社登録</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="partner-menu">
+            <div class="partner-menu-item secList" id="nuu">
+                <p>イベント管理</p>
+                <img src="/assets/partner_bar.svg">
+            </div>
+            <ul class="partner-menu-lists section nuu">
+                <li class="partner-menu-list">
+                    <a href="/partner_page/profile">> <span>イベント一覧</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>イベント検索</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>新規イベント登録</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="partner-menu">
+            <div class="partner-menu-item secList partner-change" id="muu">
+                <p>記事管理</p>
+                <img src="/assets/partner_bar.svg">
+            </div>
+            <ul class="partner-menu-lists section muu">
+                <li class="partner-menu-list">
+                    <a href="/admin_page/articles">> <span>記事一覧</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>記事検索</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a href="/admin_page/articles/new">> <span>新規記事登録</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="partner-menu">
+            <div class="partner-menu-item secList ruu">
+                <p>広告管理</p>
+                <img src="/assets/partner_bar.svg">
+            </div>
+            <ul class="partner-menu-lists section ruu">
+                <li class="partner-menu-list">
+                    <a href="#">> <span>本選考</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>ジョブ・インターン</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>説明会・企業セミナー</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="partner-dashboard">
+        <h2>記事管理</h2>
+        <div class="field">
+          <%= simple_form_for(@article, url: admin_page_articles_path) do |f| %>
+          <%= f.label :img %>
+          <%= f.file_field :img %>
+          <%= f.label :title %><br>
+          <%= f.text_area :title %><br>
+          <%= f.label :content %><br>
+          <%= f.input_field :content, class: 'summernote',as: :summernote %><br>
+          <div class="form-detail">
+                 <p>タグ</p>
+                 <div class="profile-core-form">
+                     <%= f.collection_check_boxes(:tag_ids,Tag.all, :id, :name) do |hf| %>
+                        <%= hf.check_box(class: "checkbox")  %>
+                        <%= hf.label(class: "profile-check"){ hf.text } %>
+                     <% end %>
+                 </div>
+          </div>
+          <%= f.submit 'Save' %>
+          <% end %>
+       </div>
+    </div>
+</div>
 <script>
         (function() {
+          
+          $('.section').hide();
+  
+          $('.secList').on('click',function(){
+                // クリックした要素の ID と違うクラス名のセクションを非表示
+            $('.section').not($('.'+$(this).attr('id'))).hide();
+            // クリックした要素の ID と同じクラスのセクションを表示
+            $('.'+$(this).attr('id')).toggle();
+          });
+          
           var deleteFile, sendFile;
         
           sendFile = function(file, toSummernote) {

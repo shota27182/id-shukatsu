@@ -129,45 +129,24 @@
         </div>
         <div class="company-contents">
             <% if params[:category] %>
+                <div class="article-category">
+                    <% if !params[:sub_category] %>
+                        <h4>#<%= params[:category] %></h4>
+                    <% else %>
+                        <h4>#<%= params[:sub_category] %></h4>
+                    <% end %>
+                </div>
                 <div class="events-searches">
-                    <div class="events-search">
-                        <div class="events-search-head">
-                            <img src="/assets/event_top.svg">
-                        </div>
-                        <div class="events-search-title">
-                            <img src="/assets/event_schedule_top.svg">
-                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団/株式会社エイレックス</p>
-                        </div>
-                        <div class="events-search-schedules">
-                            <div class="events-search-schedule">
-                                <div class="entry-area">
-                                    <div class="event-title">
-                                        <h2>【AREX夏季インターンシップ】経営コンサルティングコース第１クール</h2>
-                                        <img src="/assets/clock.svg">
-                                        <p class="entry-date">4/14(月)</p>
-                                        <p class="entry-time">16:00 - 18:00</p>
-                                        <img src="/assets/location.svg">
-                                        <p class="entry-location">東京都渋谷区千駄ヶ谷４丁目１９ー１</p>
-                                     </div>
-                                     <div class="event-entry">
-                                         <p>締切 6月9日（火）</p>
-                                    </div>
-                                </div>
+                    <% @article.each do |article| %>
+                        <div class="article-search">
+                            <div class="article-search-head">
+                                <%=image_tag article.img.to_s%>
                             </div>
-                            <div class="events-search-schedule">
-                                
+                            <div class="events-search-title">
+                                <p><a href="/articles/<%= article.id %>"></a><%= article.title%></p>
                             </div>
                         </div>
-                    </div>
-                    <div class="events-search">
-                        
-                    </div>
-                    <div class="events-search">
-                        
-                    </div>
-                    <div class="events-search">
-                        
-                    </div>
+                    <% end %>
                 </div>
             <% else %>
                 <div class="article-top">
@@ -246,6 +225,10 @@
   $('.event-search').click(function(){
         location.href=$(this).find('a').attr('href');
     });
+    $('.article-search').click(function(){
+        location.href=$(this).find('a').attr('href');
+    });
+    
    
 });
 </script>

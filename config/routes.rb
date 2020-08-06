@@ -112,7 +112,7 @@ Rails.application.routes.draw do
   
   namespace :admin_page do
     get 'companies', to: 'companies#index'
-    resources :companies , only: [:new, :create, :edit, :update]
+    resources :companies , only: [:new, :create, :edit, :update, :show]
     resources :companies do
       collection { post :import }
     end

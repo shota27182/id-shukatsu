@@ -16,12 +16,15 @@
                     <a href="/partner_page/apply">> <span>新規ユーザー登録</span></a>
                 </li>
                 <li class="partner-menu-list">
-                    <a>> <span>メール配信管理</span></a>
+                    <a>> <span>ジョブ・インターン</span></a>
+                </li>
+                <li class="partner-menu-list">
+                    <a>> <span>説明会・企業セミナー</span></a>
                 </li>
             </ul>
         </div>
         <div class="partner-menu">
-            <div class="partner-menu-item secList partner-change" id="guu">
+            <div class="partner-menu-item secList" id="guu">
                 <p>会社管理</p>
                 <img src="/assets/partner_bar.svg">
             </div>
@@ -55,7 +58,7 @@
             </ul>
         </div>
         <div class="partner-menu">
-            <div class="partner-menu-item secList" id="muu">
+            <div class="partner-menu-item secList partner-change" id="muu">
                 <p>記事管理</p>
                 <img src="/assets/partner_bar.svg">
             </div>
@@ -90,60 +93,20 @@
         </div>
     </div>
     <div class="partner-dashboard">
-        <h2>会社管理</h2>
-        <div class="company-contents-wrapper">
-                <% @companies.each do |get_company| %>
-                    <div class="company-box">
-                        <div class="company-box-head-image">
-                            <% if get_company.img.present? %>
-                                <%= image_tag get_company.img.to_s %>
-                            <% else %>
-                                <img src="/assets/no_image.png">
-                            <% end %>
-                        </div>
-                        <div class="company-box-head">
-                            <p><% get_company.industries.limit(2).each do |h| %><span><%= h.name %> </span><% end %></p>
-                            <div class="company-box-title">
-                                <% if get_company.icon.present? %>
-                                    <%= image_tag get_company.icon.to_s %>
-                                <% else %>
-                                    <img src="/assets/no_image.png">
-                                <% end %>
-                                <h2><a href="/admin_page/companies/<%= get_company.id %>"></a><%= get_company.name %></h2>
+        <h2>記事管理</h2>
+        <div class="events-searches">
+                <% @articles.each do |article| %>
+                        <div class="article-search">
+                            <div class="article-search-head">
+                                <%=image_tag article.img.to_s%>
+                            </div>
+                            <div class="events-search-title">
+                                <p><a href="/admin_page/articles/<%= article.id %>/edit"></a><%= article.title%></p>
                             </div>
                         </div>
-                        <div class="company-box-foot">
-                            <div class="company-box-features">
-                                <% get_company.work_styles.limit(4).each do |a| %>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p><%= a.name %></p>
-                                </div>
-                                <% end %>
-                                <% get_company.welfares.limit(4).each do |b| %>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p><%= b.name %></p>
-                                </div>
-                                <% end %>
-                                <% get_company.company_features.limit(4).each do |c| %>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p><%= c.name %></p>
-                                </div>
-                                <% end %>
-                                <% get_company.company_points.limit(3).each do |d| %>
-                                <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
-                                    <p><%= d.name %></p>
-                                </div>
-                                <% end %>
-                            </div>
-                        </div>
-                    </div>
-                    <% end %>
-                </div>
-            <%= paginate(@companies) %>
+                <% end %>
+        </div>
+        <%= paginate(@articles) %>
     </div>
 </div>
 
@@ -157,7 +120,7 @@
     // クリックした要素の ID と同じクラスのセクションを表示
     $('.'+$(this).attr('id')).toggle();
   });
-  $('.company-box').click(function(){
+  $('.article-search').click(function(){
         location.href=$(this).find('a').attr('href');
     });
 });
