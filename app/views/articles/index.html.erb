@@ -189,30 +189,12 @@
                 <div class="companies-wrapper">
                     <p>人気コラム</p>
                     <div class="companies-search">
+                        <% Article.all.order(day_pageview: :desc).limit(6).each do |i| %>
                         <div class="event-search">
-                            <img src="/images/event_top.svg">
-                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
+                            <%= image_tag i.img.to_s %>
+                            <p><a href="/articles/<%= i.id %>"></a><%= i.title %></p>
                         </div>
-                        <div class="event-search">
-                            <img src="/images/event_top.svg">
-                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
-                        </div>
-                        <div class="event-search">
-                            <img src="/images/event_top.svg">
-                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
-                        </div>
-                        <div class="event-search">
-                            <img src="/images/event_top.svg">
-                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
-                        </div>
-                        <div class="event-search">
-                            <img src="/images/event_top.svg">
-                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
-                        </div>
-                        <div class="event-search">
-                            <img src="/images/event_top.svg">
-                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
-                        </div>
+                        <% end %>
                     </div>
                 </div>
             <% end %>

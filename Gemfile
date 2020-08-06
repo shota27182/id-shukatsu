@@ -30,6 +30,7 @@ gem "froala-editor-sdk"
 gem 'summernote-rails'
 gem 'roo'
 gem 'google-analytics-rails'
+gem 'google-api-client'
 gem "image_processing", "~> 1.2"
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '4.3.1'
@@ -39,6 +40,7 @@ gem 'turbolinks', '~> 5.0.1'
 gem 'jbuilder', '~> 2.7.0'
 gem 'cocoon'
 gem 'simple_form'
+gem 'whenever', require: false
 gem "wysiwyg-rails"
 gem 'carrierwave'
 gem 'mini_magick'
