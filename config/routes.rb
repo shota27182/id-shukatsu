@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   
   
+  namespace :admin_page do
+    get 'events/index'
+    get 'events/new'
+  end
   get 'edit_mail/index'
   get 'admin_user/index'
   namespace :mypage do
@@ -111,6 +115,11 @@ Rails.application.routes.draw do
   end
   
   namespace :admin_page do
+    get 'events', to: 'events/index'
+    resources :events, only: [:new, :create, :edit, :update]
+    resources :events do
+      collection { post :import }
+    end
     get 'companies', to: 'companies#index'
     resources :companies , only: [:new, :create, :edit, :update, :show]
     resources :companies do
