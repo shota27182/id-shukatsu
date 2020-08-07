@@ -613,9 +613,41 @@ header{
 }
 
 footer{
-    height:52.04px;
     width:100%;
     background-color:#012448;
+}
+
+.footer-top{
+    background-color:#1B4169;
+    padding:15px 0px;
+}
+
+.footer-top a{
+    color:white;
+}
+
+.footer-to-top{
+    text-align:center;
+}
+
+.footer-middle{
+    background-color:#022E5C;
+    padding:56px 0px 48px 0px;
+}
+
+.footer-middle ul{
+    list-style:none;
+    padding-left:0px;
+}
+
+.footer-middle h4{
+    color:white;
+    font-size:14px;
+}
+
+.footer-middle a{
+    color:white;
+    font-size:10px;
 }
 
 .footer-menus{
@@ -3361,7 +3393,6 @@ footer{
     }
     
     footer{
-        height:90px;
         width:100%;
         background-color:#012448;
     }
@@ -5092,5 +5123,9 @@ footer{
     .article-left{
         width:100%;
         padding-right:0px;
+    }
+    
+    .footer-middle{
+        display:none;
     }
 }

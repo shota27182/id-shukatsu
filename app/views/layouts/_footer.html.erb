@@ -1,4 +1,51 @@
 <footer>
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="footer-to-top">
+                    <a href="#head">トップに戻る</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-middle">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h4>働き方別の企業・イベント</h4>
+                    <ul>
+                        <% WorkStyle.all.each do |i| %>
+                        <li><%=link_to i.name ,special_link_path(work_style: i.id)%></li>
+                        <% end %>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h4>福利厚生別の企業・イベント</h4>
+                    <ul>
+                        <% Welfare.all.each do |i|%>
+                        <li><%=link_to i.name ,special_link_path(welfare: i.id)%></li>
+                        <%  end %>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h4>企業の特徴別の企業・イベント</h4>
+                    <ul>
+                        <% CompanyFeature.all.each do |i| %>
+                        <li><%=link_to i.name ,special_link_path(feature: i.id)%></li>
+                        <% end %>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h4>採用の特徴別の企業・イベント</h4>
+                    <ul>
+                        <% CompanyPoint.all.each do |i| %>
+                        <li><%=link_to i.name ,special_link_path(point: i.id)%></li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="footer-menus">
             <div class="footer-menu">
