@@ -351,36 +351,18 @@
                 <div class="companies-wrapper">
                     <p>注目の新着のイベント</p>
                     <div class="companies-search">
-                        <div class="event-search">
-                            <img src="/images/event_top.svg">
-                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
-                        </div>
-                        <div class="event-search">
-                            <img src="/images/event_top.svg">
-                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
-                        </div>
-                        <div class="event-search">
-                            <img src="/images/event_top.svg">
-                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
-                        </div>
-                        <div class="event-search">
-                            <img src="/images/event_top.svg">
-                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
-                        </div>
-                        <div class="event-search">
-                            <img src="/images/event_top.svg">
-                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
-                        </div>
-                        <div class="event-search">
-                            <img src="/images/event_top.svg">
-                            <p>【PR業界】危機管理広報とは？コーポレート広報のプロ集団・危機管理と広報/株式会社エイレックス社</p>
-                        </div>
+                        <% Event.all.order(id: :desc).limit(6).each do |i| %>
+                            <div class="event-search">
+                                <%= image_tag i.img.to_s %>
+                                <p><a href="/events/<%= i.id %>"></a><%= i.name %></p>
+                            </div>
+                        <% end %>
                     </div>
                 </div>
                 <div class="companies-wrapper">
-                    <p>金融会社のイベント</p>
+                    <p>IT・インターネット企業のイベント</p>
                     <div class="companies-search">
-                        <% Event.includes(:company => :industries).where(industries: { id: 3 }).limit(8).each do |a| %>
+                        <% Event.includes(:company => :industries).where(industries: { id: 1 }).limit(8).each do |a| %>
                         <div class="event-search">
                             <%=image_tag a.img.to_s %>
                             <p><a href="/events/<%= a.id %>"></a><%= a.name %></p>
@@ -389,9 +371,9 @@
                     </div>
                 </div>
                 <div class="companies-wrapper">
-                    <p>テレワーク実施企業のイベント</p>
+                    <p>関東の企業のイベント</p>
                     <div class="companies-search">
-                        <% Event.includes(company: :work_styles).where(work_styles: { id: 2 }).limit(8).each do |a| %>
+                        <% Event.includes(company: :work_areas).where(work_areas: { id: 1 }).limit(8).each do |a| %>
                         <div class="event-search">
                             <%=image_tag a.img.to_s %>
                             <p><a href="/events/<%= a.id %>"></a><%= a.name %></p>
