@@ -92,7 +92,12 @@
         </div>
     </div>    
     <div class="partner-sign-up">
-        <div class="form-heading">会社情報</div>
+        <h2>イベント管理</h2>
+        <%= form_tag import_admin_page_events_path, multipart: true do %>
+            <p>CSVインポートする</p>
+            <%= file_field_tag :file %>
+            <%= submit_tag "インポート" %>
+        <% end %>
         <%= form_with model: @event, method: :post, url: partner_page_entry_index_path, local: true do |f| %>
           <div class="general-profile">
             <div class="general-title">基本情報</div>
