@@ -13,5 +13,7 @@ class AdminPage::EventsController < ApplicationController
   end
   
   def import
+    Event.import(params[:file])
+    redirect_to '/admin_page/events'
   end
 end

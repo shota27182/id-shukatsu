@@ -200,15 +200,23 @@
                                 <div class="entry-area">
                                     <div class="event-title">
                                         <h2><%= c.title %></h2>
-                                        <img src="/assets/clock.svg">
-                                        <p class="entry-date"><%= c.holding_day.strftime("%m/%d") %><%= %w((日) (月) (火) (水) (木) (金) (土))[c.holding_day.wday] %></p>
-                                        <p class="entry-time"><%= c.start_time.strftime('%H:%M') %> - <%= c.end_time.strftime('%H:%M') %></p>
-                                        <img src="/assets/location.svg">
-                                        <p class="entry-location"><%= c.address + c.place%></p>
+                                        <% if c.holding_day.present? %>
+                                            <img src="/assets/clock.svg">
+                                            <p class="entry-date"><%= c.holding_day.strftime("%m/%d") %><%= %w((日) (月) (火) (水) (木) (金) (土))[c.holding_day.wday] %></p>
+                                        <% end %>
+                                        <% if c.start_time.present? && c.end_time.present? %>
+                                            <p class="entry-time"><%= c.start_time.strftime('%H:%M') %> - <%= c.end_time.strftime('%H:%M') %></p>
+                                        <% end %>
+                                        <% if c.address.present? && c.place.present? %>
+                                            <img src="/assets/location.svg">
+                                            <p class="entry-location"><%= c.address + c.place%></p>
+                                        <% end %>
                                     </div>
-                                    <div class="event-entry">
-                                        <p>締切 <%= c.deadline.strftime("%m月%d日") %><%= %w((日) (月) (火) (水) (木) (金) (土))[c.deadline.wday] %>）</p>
-                                    </div>
+                                    <% if c.deadline.present? %>
+                                        <div class="event-entry">
+                                            <p>締切 <%= c.deadline.strftime("%m月%d日") %><%= %w((日) (月) (火) (水) (木) (金) (土))[c.deadline.wday] %>）</p>
+                                        </div>
+                                    <% end %>
                                 </div>
                             </div>
                             <% end %>

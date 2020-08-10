@@ -24,11 +24,17 @@
                 <div class="company-event-quick">
                     <div class="company-event-quick-left">
                         <%= b.radio_button %>
-                        <%= EventSchedule.find(b.text).holding_day.strftime("%m/%d") %>
+                        <% if EventSchedule.find(b.text).holding_day.present? %>
+                            <%= EventSchedule.find(b.text).holding_day.strftime("%m/%d") %>
+                        <% end %>
                     </div>
                     <div class="company-event-quick-right">
-                        <p><%= EventSchedule.find(b.text).start_time.strftime('%H:%M') %>~<%= EventSchedule.find(b.text).start_time.strftime('%H:%M') %></p>
-                        <p><%= EventSchedule.find(b.text).address %></p>
+                        <% if EventSchedule.find(b.text).start_time.present? && EventSchedule.find(b.text).end_time.present? %>
+                            <p><%= EventSchedule.find(b.text).start_time.strftime('%H:%M') %>~<%= EventSchedule.find(b.text).start_time.strftime('%H:%M') %></p>
+                        <% end %>
+                        <% if EventSchedule.find(b.text).address.present? %>
+                            <p><%= EventSchedule.find(b.text).address %></p>
+                        <% end %>
                     </div>
                 </div>
                 <% end %>
@@ -81,15 +87,29 @@
                            <div class="event-title">
                                <h2><%=event_schedule.title %></h2>
                                <img src="/assets/clock.svg">
-                               <p class="entry-date"><%= event_schedule.holding_day.strftime("%m/%d") %><%= %w((日) (月) (火) (水) (木) (金) (土))[event_schedule.holding_day.wday] %></p>
-                               <p class="entry-time"><%= event_schedule.start_time.strftime('%H:%M') %> - <%= event_schedule.end_time.strftime('%H:%M') %></p>
-                               <img src="/assets/location.svg">
-                               <p class="entry-location"><%= event_schedule.address + event_schedule.place%></p>
+                               <% if event_schedule.holding_day.present? %>
+                                   <p class="entry-date"><%= event_schedule.holding_day.strftime("%m/%d") %><%= %w((日) (月) (火) (水) (木) (金) (土))[event_schedule.holding_day.wday] %></p>
+                                <% end %>
+                                <% if event_schedule.start_time.present? && event_schedule.end_time.present? %>
+                                   <p class="entry-time"><%= event_schedule.start_time.strftime('%H:%M') %> - <%= event_schedule.end_time.strftime('%H:%M') %></p>
+                                <% end %>
+                                <% if event_schedule.address.present? && event_schedule.place.present? %>
+                                   <img src="/assets/location.svg">
+                                   <p class="entry-location"><%= event_schedule.address + event_schedule.place%></p>
+                                <% end %>
                             </div>
                             <div class="event-entry">
-                                <p>締切 <%= event_schedule.deadline.strftime("%m月%d日") %><%= %w((日) (月) (火) (水) (木) (金) (土))[event_schedule.deadline.wday] %></p>
+                                <% if event_schedule.deadline.present? %>
+                                    <p>締切 <%= event_schedule.deadline.strftime("%m月%d日") %><%= %w((日) (月) (火) (水) (木) (金) (土))[event_schedule.deadline.wday] %></p>
+                                <% end %>
                                 <div class="entry-button">
-                                    <%= link_to 'エントリーする',new_event_entry_path(@event,event_schedule:event_schedule.id)%>
+                                    <% if current_user.events.where(id: params[:id]).includes(:user_events).where(user_events: {activate: true}).present? %>
+                                        <p>エントリー済み</p>
+                                    <% elsif EventSchedule.find_by(event_id: params[:id]).url.present? %>
+                                        <%= link_to 'エントリーする', EventSchedule.find_by(event_id: params[:id]).url %>
+                                    <% else %>
+                                        <%= link_to 'エントリーする',new_event_entry_path(@event,event_schedule:event_schedule.id)%>
+                                    <% end %>
                                 </div>
                             </div>
                         </div>
@@ -109,14 +129,22 @@
                                <div class="event-title">
                                    <h2><%=i.name %></h2>
                                    <img src="/assets/clock.svg">
-                                   <p class="entry-date"><%= a.holding_day.strftime("%m/%d") %><%= %w((日) (月) (火) (水) (木) (金) (土))[a.holding_day.wday] %></p>
-                                   <p class="entry-time"><%= a.start_time.strftime('%H:%M') %> - <%= a.end_time.strftime('%H:%M') %></p>
-                                   <img src="/assets/location.svg">
-                                   <p class="entry-location"><%= a.address + a.place%></p>
+                                   <% if a.holding_day.present? %>
+                                       <p class="entry-date"><%= a.holding_day.strftime("%m/%d") %><%= %w((日) (月) (火) (水) (木) (金) (土))[a.holding_day.wday] %></p>
+                                    <% end %>
+                                    <% if a.start_time.present? && a.end_time.present? %>
+                                       <p class="entry-time"><%= a.start_time.strftime('%H:%M') %> - <%= a.end_time.strftime('%H:%M') %></p>
+                                    <% end %>
+                                    <% if a.address.present? && a.place.present? %>
+                                       <img src="/assets/location.svg">
+                                       <p class="entry-location"><%= a.address + a.place%></p>
+                                    <% end %>
                                 </div>
-                                <div class="event-entry">
-                                    <p>締切 <%= a.deadline.strftime("%m月%d日") %><%= %w((日) (月) (火) (水) (木) (金) (土))[a.deadline.wday] %></p>
-                                </div>
+                                <% if a.deadline.present? %>
+                                    <div class="event-entry">
+                                        <p>締切 <%= a.deadline.strftime("%m月%d日") %><%= %w((日) (月) (火) (水) (木) (金) (土))[a.deadline.wday] %></p>
+                                    </div>
+                                <% end %>
                             </div>
                         <% end %>
                     <% end %>
@@ -132,14 +160,22 @@
                                <div class="event-title">
                                    <h2><%=i.name %></h2>
                                    <img src="/assets/clock.svg">
-                                   <p class="entry-date"><%= a.holding_day.strftime("%m/%d") %><%= %w((日) (月) (火) (水) (木) (金) (土))[a.holding_day.wday] %></p>
-                                   <p class="entry-time"><%= a.start_time.strftime('%H:%M') %> - <%= a.end_time.strftime('%H:%M') %></p>
-                                   <img src="/assets/location.svg">
-                                   <p class="entry-location"><%= a.address + a.place%></p>
+                                   <% if a.holding_day.present? %>
+                                       <p class="entry-date"><%= a.holding_day.strftime("%m/%d") %><%= %w((日) (月) (火) (水) (木) (金) (土))[a.holding_day.wday] %></p>
+                                    <% end %>
+                                    <% if a.start_time.present? && a.end_time.present? %>
+                                       <p class="entry-time"><%= a.start_time.strftime('%H:%M') %> - <%= a.end_time.strftime('%H:%M') %></p>
+                                    <% end %>
+                                    <% if a.address.present? && a.place.present? %>
+                                       <img src="/assets/location.svg">
+                                       <p class="entry-location"><%= a.address + a.place%></p>
+                                    <% end %>
                                 </div>
-                                <div class="event-entry">
-                                    <p>締切 <%= a.deadline.strftime("%m月%d日") %><%= %w((日) (月) (火) (水) (木) (金) (土))[a.deadline.wday] %></p>
-                                </div>
+                                <% if a.deadline.present? %>
+                                    <div class="event-entry">
+                                        <p>締切 <%= a.deadline.strftime("%m月%d日") %><%= %w((日) (月) (火) (水) (木) (金) (土))[a.deadline.wday] %></p>
+                                    </div>
+                                <% end %>
                             </div>
                         <% end %>
                     <% end %>
@@ -155,14 +191,22 @@
                                <div class="event-title">
                                    <h2><%=i.name %></h2>
                                    <img src="/assets/clock.svg">
-                                   <p class="entry-date"><%= a.holding_day.strftime("%m/%d") %><%= %w((日) (月) (火) (水) (木) (金) (土))[a.holding_day.wday] %></p>
-                                   <p class="entry-time"><%= a.start_time.strftime('%H:%M') %> - <%= a.end_time.strftime('%H:%M') %></p>
-                                   <img src="/assets/location.svg">
-                                   <p class="entry-location"><%= a.address + a.place%></p>
+                                   <% if a.holding_day.present? %>
+                                       <p class="entry-date"><%= a.holding_day.strftime("%m/%d") %><%= %w((日) (月) (火) (水) (木) (金) (土))[a.holding_day.wday] %></p>
+                                    <% end %>
+                                    <% if a.start_time.present? && a.end_time.present? %>
+                                       <p class="entry-time"><%= a.start_time.strftime('%H:%M') %> - <%= a.end_time.strftime('%H:%M') %></p>
+                                    <% end %>
+                                    <% if a.address.present? && a.place.present? %>
+                                       <img src="/assets/location.svg">
+                                       <p class="entry-location"><%= a.address + a.place%></p>
+                                    <% end %>
                                 </div>
-                                <div class="event-entry">
-                                    <p>締切 <%= a.deadline.strftime("%m月%d日") %><%= %w((日) (月) (火) (水) (木) (金) (土))[a.deadline.wday] %></p>
-                                </div>
+                                <% if a.deadline.present? %>
+                                    <div class="event-entry">
+                                        <p>締切 <%= a.deadline.strftime("%m月%d日") %><%= %w((日) (月) (火) (水) (木) (金) (土))[a.deadline.wday] %></p>
+                                    </div>
+                                <% end %>
                             </div>
                         <% end %>
                     <% end %>
@@ -181,16 +225,24 @@
                         <div class="company-event-quick">
                             <div class="company-event-quick-left">
                                 <%= b.radio_button %>
-                                <%= EventSchedule.find(b.text).holding_day.strftime("%m/%d") %>
+                                <% if EventSchedule.find(b.text).holding_day.present? %>
+                                    <%= EventSchedule.find(b.text).holding_day.strftime("%m/%d") %>
+                                <% end %>
                             </div>
                             <div class="company-event-quick-right">
-                                <p><%= EventSchedule.find(b.text).start_time.strftime('%H:%M') %>~<%= EventSchedule.find(b.text).start_time.strftime('%H:%M') %></p>
-                                <p><%= EventSchedule.find(b.text).address %></p>
+                                <% if EventSchedule.find(b.text).start_time.present? && EventSchedule.find(b.text).end_time.present? %>
+                                    <p><%= EventSchedule.find(b.text).start_time.strftime('%H:%M') %>~<%= EventSchedule.find(b.text).start_time.strftime('%H:%M') %></p>
+                                <% end %>
+                                <% if EventSchedule.find(b.text).address.present? %>
+                                    <p><%= EventSchedule.find(b.text).address %></p>
+                                <% end %>
                             </div>
                         </div>
                     <% end %>
                     <% if current_user.events.where(id: params[:id]).includes(:user_events).where(user_events: {activate: true}).present? %>
                         <p>エントリー済み</p>
+                    <% elsif EventSchedule.find_by(event_id: params[:id]).url.present? %>
+                        <%= link_to 'エントリーする', EventSchedule.find_by(event_id: params[:id]).url, class: "form-submit", id: "button1" %>
                     <% else %>
                         <%= f.submit 'エントリーする',class: "form-submit", id: "button1" %>
                     <% end %>
