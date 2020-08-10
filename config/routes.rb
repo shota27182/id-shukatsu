@@ -3,10 +3,6 @@ Rails.application.routes.draw do
 
   
   
-  namespace :admin_page do
-    get 'events/index'
-    get 'events/new'
-  end
   get 'edit_mail/index'
   get 'admin_user/index'
   namespace :mypage do

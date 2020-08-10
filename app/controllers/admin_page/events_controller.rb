@@ -12,8 +12,27 @@ class AdminPage::EventsController < ApplicationController
   def create
   end
   
+  def edit
+    @event = Event.find_by(id: params[:id])
+  end
+  
+  def update
+    @event = Event.find_by(id: params[:id])
+    if @event.update(event_params)
+      redirect_to "/partner_page/event"
+    else
+      render 'edit'
+    end
+  end
+  
   def import
     Event.import(params[:file])
     redirect_to '/admin_page/events'
   end
+  
+  private
+      
+      def event_params
+        params.require(:event).permit(:id, :name, :img, :introduction, :point, :flow, event_profiles_attributes:[:id,:title, :content,:_destroy])
+      end
 end
