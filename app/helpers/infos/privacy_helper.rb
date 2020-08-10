@@ -1,0 +1,2 @@
+module Infos::PrivacyHelper
+end

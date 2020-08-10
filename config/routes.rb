@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   
   
   
+  namespace :infos do
+    get 'privacy/index'
+  end
   get 'edit_mail/index'
   get 'admin_user/index'
   namespace :mypage do
@@ -127,6 +130,10 @@ Rails.application.routes.draw do
     get 'articles', to: 'articles#index'
     resources :articles, only: [:new, :create, :edit, :update]
     resources :article_images, only: [:create]
+  end
+  
+  namespace :infos do
+    get 'privacy', to: 'privacy#index'
   end
   
   get '/companies', to: 'companies#index'
