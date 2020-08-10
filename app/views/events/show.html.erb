@@ -103,7 +103,7 @@
                                     <p>締切 <%= event_schedule.deadline.strftime("%m月%d日") %><%= %w((日) (月) (火) (水) (木) (金) (土))[event_schedule.deadline.wday] %></p>
                                 <% end %>
                                 <div class="entry-button">
-                                    <% if current_user.events.where(id: params[:id]).includes(:user_events).where(user_events: {activate: true}).present? %>
+                                    <% if logged_in? && current_user.events.where(id: params[:id]).includes(:user_events).where(user_events: {activate: true}).present? %>
                                         <p>エントリー済み</p>
                                     <% elsif EventSchedule.find_by(event_id: params[:id]).url.present? %>
                                         <%= link_to 'エントリーする', EventSchedule.find_by(event_id: params[:id]).url %>
@@ -239,7 +239,7 @@
                             </div>
                         </div>
                     <% end %>
-                    <% if current_user.events.where(id: params[:id]).includes(:user_events).where(user_events: {activate: true}).present? %>
+                    <% if logged_in? && current_user.events.where(id: params[:id]).includes(:user_events).where(user_events: {activate: true}).present? %>
                         <p>エントリー済み</p>
                     <% elsif EventSchedule.find_by(event_id: params[:id]).url.present? %>
                         <%= link_to 'エントリーする', EventSchedule.find_by(event_id: params[:id]).url, class: "form-submit", id: "button1" %>

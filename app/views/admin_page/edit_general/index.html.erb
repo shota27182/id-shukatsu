@@ -1,0 +1,93 @@
+<div class="partner-sign-up">
+    <div class="form-heading">会社情報</div>
+    <%= form_with model: @partner_user_general_form, method: :post, url: admin_page_company_edit_general_index_path, local: true do |f| %>
+      <div class="general-profile">
+        <div class="general-title">基本情報</div>
+          <div class="form-detail form-top">
+            <p>会社ロゴ:</p>
+            <%= f.file_field :icon %>
+          </div>
+          <div>
+            <p>会社イメージ画像：</p>
+            <%= f.file_field :img %>
+          </div>
+          <div class="form-detail form-top">
+              <p>名前</p>
+              <%=f.text_field :name, class: "form-field"  %>
+          </div>
+          <div class="form-detail">
+              <p>フリガナ</p>
+              <%=f.text_field :kana, class:"form-field" %>
+          </div>
+          <div class="form-detail">
+              <p>住所</p>
+              <%=f.text_field :address, class:"form-field" %>
+          </div>
+          <div class="form-detail">
+              <p>事業内容</p>
+              <%=f.text_field :category, class:"form-field" %>
+          </div>
+          <div class="form-detail">
+              <p>従業員数</p>
+              <%=f.number_field :people, class:"form-field" %>
+          </div>
+          <div class="form-detail profile-birthday">
+              <p>設立年月日</p>
+              <%= f.date_select :establishment, start_year: 1800, end_year: 2020, use_month_numbers: true %>
+          </div>
+          <div class="form-detail">
+              <p>採用ページリンク</p>
+              <%=f.text_field :url, class:"form-field" %>
+          </div>
+          <div class="form-detail">
+              <p>紹介文</p>
+              <%=f.text_field :introduction, class:"form-field" %>
+          </div>
+      </div>
+      <%= f.submit "次のステップへ進む", class: "form-submit" %>
+    <% end %>
+</div>
+
+<script>
+  $(document).on('turbolinks:load', function () {
+  $(function () {
+    // 画像をプレビュー表示させる.prev-contentを作成
+    function buildHTML(image) {
+      var html =
+        `
+        <div class="prev-content">
+          <img src="${image}", alt="preview" class="prev-image">
+        </div>
+        `
+      return html;
+    }
+
+    // 画像が選択された時に発火します
+    $(document).on('change', '.hidden_file', function () {
+      // .file_filedからデータを取得して変数fileに代入します
+      var file = this.files[0];
+      // FileReaderオブジェクトを作成します
+      var reader = new FileReader();
+      // DataURIScheme文字列を取得します
+      reader.readAsDataURL(file);
+      // 読み込みが完了したら処理が実行されます
+      reader.onload = function () {
+        // 読み込んだファイルの内容を取得して変数imageに代入します
+        var image = this.result;
+        // プレビュー画像がなければ処理を実行します
+        if ($('.prev-content').length == 0) {
+          // 読み込んだ画像ファイルをbuildHTMLに渡します
+          var html = buildHTML(image)
+          // 作成した.prev-contentをiconの代わりに表示させます
+          $('.prev-contents').prepend(html);
+          // 画像が表示されるのでiconを隠します
+          $('.photo-icon').hide();
+        } else {
+          // もし既に画像がプレビューされていれば画像データのみを入れ替えます
+          $('.prev-content .prev-image').attr({ src: image });
+        }
+      }
+    });
+  });
+});
+</script>

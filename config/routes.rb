@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   
   
+  
   get 'edit_mail/index'
   get 'admin_user/index'
   namespace :mypage do
@@ -120,6 +121,8 @@ Rails.application.routes.draw do
     resources :companies , only: [:new, :create, :edit, :update, :show]
     resources :companies do
       collection { post :import }
+      get 'edit_general', to: 'edit_general#index'
+      resources :edit_general ,only: [:create]
     end
     get 'articles', to: 'articles#index'
     resources :articles, only: [:new, :create, :edit, :update]
