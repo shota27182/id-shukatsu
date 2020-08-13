@@ -2755,6 +2755,43 @@ footer{
     margin:0 1.5%;
 }
 
+.content-info-privacy{
+    margin:0px 16px;
+}
+
+.privacy-title{
+    margin:24px 0px 12px 0px;
+    font-size:20px;
+}
+
+.privacy-body{
+    background-color:white;
+    padding:2px 12px 24px 12px;
+    color: #8a8f9c;
+}
+
+.privacy-body h2{
+    font-size:14px;
+    margin:16px 0px 8px;
+    color: #053053;
+}
+
+.privacy-text-right{
+    text-align:right;
+}
+
+.privacy-body p{
+    font-size:12px;
+    margin-bottom:16px;
+}
+
+.privacy-body h4{
+    font-size:14px;
+    color: #053053;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 @media screen and (min-width: 0px) and (max-device-width: 920px) {
     body{
         min-height: 100vh;
