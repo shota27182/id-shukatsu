@@ -34,5 +34,9 @@
 </div>
 <div class="event-schedule-bottom">
     <%=link_to '戻る', event_path(@event),class:'event-schedule-bottom-left'%>
-    <%= link_to 'エントリーを完了する',event_entry_index_path(event_schedule: params[:event_schedule]),method: :post,class:'event-schedule-bottom-right' %>
+    <% if @event_schedule.url.present? %>
+        <%= link_to 'エントリーを完了する', @event_schedule.url, class:'event-schedule-bottom-right' %>
+    <% else %>
+        <%= link_to 'エントリーを完了する',event_entry_index_path(event_schedule: params[:event_schedule]),method: :post,class:'event-schedule-bottom-right' %>
+    <% end %>
 </div>
