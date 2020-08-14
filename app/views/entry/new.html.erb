@@ -19,11 +19,17 @@
 <div class="event-schedule-title schedule-top">
     <h2><%=@event_schedule.title %></h2>
     <div class="event-schedule">
-        <img src="/assets/clock.svg">
-        <p class="entry-date"><%= @event_schedule.holding_day.strftime("%m/%d") %><%= %w((日) (月) (火) (水) (木) (金) (土))[@event_schedule.holding_day.wday] %></p>
-        <p class="entry-time"><%= @event_schedule.start_time.strftime('%H:%M') %> - <%= @event_schedule.end_time.strftime('%H:%M') %></p>
-        <img src="/assets/location.svg">
-        <p class="entry-location"><%= @event_schedule.address + @event_schedule.place%></p>
+        <%  if @event_schedule.holding_day.present? %>
+            <img src="/assets/clock.svg">
+            <p class="entry-date"><%= @event_schedule.holding_day.strftime("%m/%d") %><%= %w((日) (月) (火) (水) (木) (金) (土))[@event_schedule.holding_day.wday] %></p>
+        <% end %>
+        <% if @event_schedule.start_time.present? && @event_schedule.end_time.present? %>
+            <p class="entry-time"><%= @event_schedule.start_time.strftime('%H:%M') %> - <%= @event_schedule.end_time.strftime('%H:%M') %></p>
+        <% end %>
+        <% if @event_schedule.address.present? && @event_schedule.place.present? %>
+            <img src="/assets/location.svg">
+            <p class="entry-location"><%= @event_schedule.address + @event_schedule.place%></p>
+        <% end %>
     </div>
 </div>
 <div class="event-schedule-bottom">

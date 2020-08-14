@@ -109,8 +109,6 @@
                                 <div class="entry-button">
                                     <% if logged_in? && current_user.events.where(id: params[:id]).includes(:user_events).where(user_events: {activate: true}).present? %>
                                         <p>エントリー済み</p>
-                                    <% elsif EventSchedule.find_by(event_id: params[:id]).url.present? %>
-                                        <%= link_to 'エントリーする', EventSchedule.find_by(event_id: params[:id]).url %>
                                     <% else %>
                                         <%= link_to 'エントリーする',new_event_entry_path(@event,event_schedule:event_schedule.id)%>
                                     <% end %>
@@ -245,8 +243,6 @@
                     <% end %>
                     <% if logged_in? && current_user.events.where(id: params[:id]).includes(:user_events).where(user_events: {activate: true}).present? %>
                         <p>エントリー済み</p>
-                    <% elsif EventSchedule.find_by(event_id: params[:id]).url.present? %>
-                        <%= link_to 'エントリーする', EventSchedule.find_by(event_id: params[:id]).url, class: "form-submit", id: "button1" %>
                     <% else %>
                         <%= f.submit 'エントリーする',class: "form-submit", id: "button1" %>
                     <% end %>
