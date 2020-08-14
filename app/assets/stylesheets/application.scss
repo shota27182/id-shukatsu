@@ -2794,7 +2794,6 @@ footer{
 
 @media screen and (min-width: 0px) and (max-device-width: 920px) {
     body{
-        min-height: 100vh;
         margin-right:0px;
         margin-left:0px;
     }
@@ -5169,6 +5168,12 @@ footer{
     }
     
     .footer-middle{
-        display:none;
+        padding-top:10px;
+        padding-bottom:10px;
+    }
+    
+    .footer-middle p{
+        color:white;
+        font-size:10px;
     }
 }
