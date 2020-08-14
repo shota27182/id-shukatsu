@@ -46,7 +46,7 @@
         </div>
         <% else %>
         <div class="profile-wrapper">
-            <p>迫田良平さんのためのトップリンク</p>
+            <p>あなたのためのトップリンク</p>
             <div class="my-top-links">
                 <div class="my-top-link">
                     <img src="/assets/school.svg">
@@ -200,10 +200,10 @@
             <img src="/assets/consul_introduce.svg">
             <a>詳しくはこちら</a>
         </div>
+        <% if logged_in? && !EventHistory.where(user_id: current_user.id).nil? %>
         <div class="browsing-recomended">
             <p>閲覧履歴に基づくおすすめのイベント</p>
             <div class="browsing-recomended-events">
-                <% if logged_in? %>
                 <% EventHistory.where(user_id: current_user.id).order(id: "DESC").limit(1).each do |i| %>
                 <% Event.includes(:company => :industries).where(industries:{id: Company.includes(:events).find_by(events:{id: i.event_id}).industries.pluck(:id)}).limit(4).each do |a| %>
                 <div class="browsing-recomended-event">
@@ -212,9 +212,9 @@
                 </div>
                 <% end %>
                 <% end %>
-                <% end %>
             </div>
         </div>
+        <% end %>
         <div class="online-meeting">
             <img src="/assets/online-meeting.svg">
         </div>

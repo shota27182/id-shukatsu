@@ -37,20 +37,6 @@
                         <% end %>
                     </div>
                 </div>
-            </div>
-            <div class="identity-search">
-                <p>こだわり条件</p>
-                <% if params[:work_style] ||  params[:welfare] || params[:feature] || params[:point] %>
-                <span id="identity-condition-click">-</span>
-                <% else %>
-                <span id="identity-condition-click">+</span>
-                <% end %>
-            </div>
-            <% if params[:work_style] ||  params[:welfare] || params[:feature] || params[:point] %>
-            <div class="search-category identity-condition-click">
-            <% else %>
-            <div class="search-category identity-condition-click section">
-            <% end %>
                 <div class="search-category-title">
                     <% if params[:work_style] %>
                     <input type="checkbox" class="search-way" id="label4" checked="true" />

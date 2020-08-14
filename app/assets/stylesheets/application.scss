@@ -262,7 +262,7 @@ header{
 }
 
 .profile-wrapper p{
-    font-size:16px;
+    font-size:14px;
     margin-left:4%;
     padding-top:12px;
 }
@@ -281,7 +281,7 @@ header{
 }
 
 .my-top-link-middle p{
-    font-size:22px;
+    font-size:20px;
     color:white;
     text-align:center;
     margin-left:10%;
@@ -516,6 +516,12 @@ header{
     margin-bottom:14px;
 }
 
+.release-planning a{
+    display:block;
+    margin-left:3.5%;
+    margin-bottom:14px;
+}
+
 .consulting-introduce{
     padding-top:12px;
     width:32%;
@@ -525,6 +531,12 @@ header{
 
 .consulting-introduce img{
     width:93%;
+    margin-left:3.5%;
+    margin-bottom:14px;
+}
+
+.consulting-introduce a{
+    display:block;
     margin-left:3.5%;
     margin-bottom:14px;
 }
@@ -3176,7 +3188,7 @@ footer{
         margin-right:0px;
     }
     .head p{
-        font-size:16px;
+        font-size:14px;
         margin-left:3.5%;
     }
     
@@ -3271,8 +3283,6 @@ footer{
         color:white;
         text-align:center;
         font-size:10px;
-        -webkit-transform: scale(0.7);
-        -webkit-transform-origin:0 0;
         padding-top:35%;
     }
     
@@ -3316,11 +3326,13 @@ footer{
         width:80%;
         margin-left:10%;
         margin-bottom:14px;
+        height:92px;
     }
     
     .companies-feature p{
         text-align:center;
         font-size:12px;
+        margin-bottom:0px;
     }
     
     .release-planning{
@@ -3336,6 +3348,7 @@ footer{
         margin-left:3.5%;
         margin-bottom:14px;
     }
+    
     
     .consulting-introduce{
         padding-top:12px;
@@ -3369,7 +3382,7 @@ footer{
     }
     
     .browsing-recomended p{
-        font-size:16px;
+        font-size:14px;
         margin-left:1.3%;
     }
     
@@ -3411,7 +3424,7 @@ footer{
     
     .recruit-support p{
         margin-left:4%;
-        font-size:16px;
+        font-size:14px;
     }
     
     .recruit-support-contents{
@@ -3433,6 +3446,7 @@ footer{
     
     .recruit-support-content p{
         text-align:center;
+        font-size:12px;
     }
     
     footer{
@@ -4432,7 +4446,7 @@ footer{
     .companies-wrapper p{
         margin-left:1.7%;
         padding-top:14px;
-        font-size:20px;
+        font-size:16px;
     }
     
     .companies-search{
@@ -5176,5 +5190,13 @@ footer{
     .footer-middle p{
         color:white;
         font-size:10px;
+    }
+    
+    .article-head h1{
+        font-size:20px;
+    }
+    
+    .article-main-img{
+        height:200px;
     }
 }
