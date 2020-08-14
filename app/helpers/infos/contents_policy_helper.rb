@@ -1,0 +1,2 @@
+module Infos::ContentsPolicyHelper
+end
