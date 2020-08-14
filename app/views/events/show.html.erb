@@ -51,22 +51,26 @@
                         <%= simple_format(@event.introduction) %>
                     </div>
                 </div>
-                <div class="recruit-form">
-                    <div class="recruit-form-left">
-                        <p>本ガイダンスのポイント</p>
+                <% if @event.point.present? %>
+                    <div class="recruit-form">
+                        <div class="recruit-form-left">
+                            <p>本ガイダンスのポイント</p>
+                        </div>
+                        <div class="recruit-form-right">
+                            <%= simple_format(@event.point) %>
+                        </div>
                     </div>
-                    <div class="recruit-form-right">
-                        <%= simple_format(@event.point) %>
+                <% end %>
+                <% if @event.flow.present? %>
+                    <div class="recruit-form">
+                        <div class="recruit-form-left">
+                            <p>当日のプログラム</p>
+                        </div>
+                        <div class="recruit-form-right">
+                            <%= simple_format(@event.flow) %>
+                        </div>
                     </div>
-                </div>
-                <div class="recruit-form">
-                    <div class="recruit-form-left">
-                        <p>当日のプログラム</p>
-                    </div>
-                    <div class="recruit-form-right">
-                        <%= simple_format(@event.flow) %>
-                    </div>
-                </div>
+                <% end %>
                 <% @event.event_profiles.each do |a| %>
                 <div class="recruit-form">
                     <div class="recruit-form-left">
