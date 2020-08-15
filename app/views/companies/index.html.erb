@@ -70,41 +70,6 @@
                         <% end %>
                     </div>
                 </div>
-            </div>
-            <div class="identity-search">
-                <p>こだわり条件</p>
-                <% if @WorkStylesSearch.blank? && @WelfaresSearch.blank? && @FeaturesSearch.blank? && @PointsSearch.blank? %>
-                <span id="identity-condition-click">+</span>
-                <% else %>
-                <span id="identity-condition-click">-</span>
-                <% end %>
-            </div>
-            <% if @WorkStylesSearch.blank? && @WelfaresSearch.blank? && @FeaturesSearch.blank? && @PointsSearch.blank? %>
-            <div class="search-category identity-condition-click section">
-            <% else %>
-            <div class="search-category identity-condition-click">
-            <% end %>
-                <div class="search-category-title">
-                    <% if @WorkStylesSearch.blank? %>
-                    <input type="checkbox" class="search-way" id="label4" />
-                    <% else %>
-                    <input type="checkbox" class="search-way" id="label4" checked="true" />
-                    <% end %>
-                    <label for="label4" class="search-way-title">働き方</label>
-                    <div class="search-category-item hidden-show">
-                        <% if params[:work_style] %>
-                            <% @WorkStyles.each do |i| %>
-                                <%= check_box_tag :work_style, i.id , @WorkStylesSearch.include?(i.id), class:"category"%>
-                                <%= label_tag i.name %><br>
-                            <% end %>
-                        <% else %>
-                            <% @WorkStyles.each do |i| %>
-                                <%= check_box_tag :work_style, i.id ,checked = false, class:"category"%>
-                                <%= label_tag i.name %><br>
-                            <% end %>
-                        <% end %>
-                    </div>
-                </div>
                 <div class="search-category-title">
                     <% if @WelfaresSearch.blank? %>
                     <input type="checkbox" class="search-way" id="label5" />

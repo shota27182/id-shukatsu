@@ -1428,6 +1428,7 @@ footer{
 
 .search-box{
     width:22%;
+    margin-bottom:18px;
 }
 
 .search-title{
@@ -2803,6 +2804,34 @@ footer{
     color: #053053;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.acd-check{
+    display:none;
+}
+
+.acd-label{
+    background: #707070;
+    color: white;
+    display: block;
+    margin-bottom: 1px;
+    padding: 10px;
+    width:100%;
+}
+
+.acd-content{
+    height: 0;
+    opacity: 0;
+    transition: .5s;
+    visibility: hidden;
+    width:100%;
+}
+
+.acd-check:checked + .acd-label + .acd-content{
+    height: 180px;
+    opacity: 1;
+    padding: 10px;
+    visibility: visible;
 }
 
 @media screen and (min-width: 0px) and (max-device-width: 920px) {
