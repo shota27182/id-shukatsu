@@ -1295,6 +1295,7 @@ footer{
 
 .company-middle-right-second{
     width:92.5%;
+    word-break: break-all;
 }
 
 .company-introduction-right{
@@ -1347,8 +1348,6 @@ footer{
     padding-left:3%;
     padding-right:3%;
     background-color:#F5FAFF;
-    height:52px;
-    line-height:52px;
 }
 
 .company-event-link-left{
@@ -2838,6 +2837,7 @@ footer{
     body{
         margin-right:0px;
         margin-left:0px;
+        width:100%;
     }
     
     .container{
@@ -4083,6 +4083,7 @@ footer{
     
     .company-middle-right-second{
         width:92.5%;
+        word-break: break-all;
     }
     
     .company-introduction-right{

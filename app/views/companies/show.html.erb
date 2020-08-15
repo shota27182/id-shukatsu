@@ -172,7 +172,7 @@
                         <div class="company-middle-left-second">
                             <img src="/assets/company-link.svg"></div>
                         <div class="company-middle-right-second">
-                            <%= @company.url %>
+                            <%= link_to @company.url, @company.url, target: :_blank %>
                         </div>
                     <% end %>
                 </div>
