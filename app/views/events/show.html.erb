@@ -90,7 +90,9 @@
                        <div class="entry-area">
                            <div class="event-title">
                                <h2><%=event_schedule.title %></h2>
-                               <img src="/assets/clock.svg">
+                               <% if event_schedule.holding_day.present? || ( event_schedule.start_time.present? && event_schedule.end_time.present?) %>
+                                   <img src="/assets/clock.svg">
+                                <% end %>
                                <% if event_schedule.holding_day.present? %>
                                    <p class="entry-date"><%= event_schedule.holding_day.strftime("%m/%d") %><%= %w((日) (月) (火) (水) (木) (金) (土))[event_schedule.holding_day.wday] %></p>
                                 <% end %>
@@ -119,6 +121,7 @@
                     </div>
                 </div>
             </div>
+            <% if @company.events.count >= 2 %>
             <div class="company-introduction">
                 <div class="company-introduction-title other-introduction"><%= @company.name %>の他の募集情報</div>
                 <% if (@company.events.where(category: 1).count >= 2 && @event.category == 1) || (@company.events.where(category: 1).count >= 1 && @event.category != 1) %>
@@ -215,6 +218,7 @@
                     </div>
                 <% end %>
             </div>
+            <% end %>
         </div>
         <div class="company-middle-right">
             <div class="company-information">
