@@ -1552,6 +1552,9 @@ footer{
     line-height:29px;
     width:91%;
     padding-left:2.4%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .company-box-title img{
@@ -1659,6 +1662,9 @@ footer{
     font-size:16px;
     height:50px;
     line-height:50px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .events-search-schedules{
