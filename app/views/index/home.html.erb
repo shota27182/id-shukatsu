@@ -20,25 +20,25 @@
             <div class="my-top-links">
                 <% current_user.work_styles.order("RANDOM()").limit(1).each do |i| %>
                 <div class="my-top-link">
-                    <img src="/assets/school.svg">
+                    <img src="/assets/重視する働き方.svg">
                     <p><a href="/special_link?work_style=<%= i.id %>"></a><%= i.name %></p>
                 </div>
                 <% end %>
                 <% current_user.welfares.order("RANDOM()").limit(1).each do |i| %>
                 <div class="my-top-link">
-                    <img src="/assets/school.svg">
+                    <img src="/assets/重視する福利厚生.svg">
                     <p><a href="/special_link?welfare=<%= i.id %>"></a><%= i.name %></p>
                 </div>
                 <% end %>
                 <% current_user.company_features.order("RANDOM()").limit(1).each do |i| %>
                 <div class="my-top-link">
-                    <img src="/assets/school.svg">
+                    <img src="/assets/重視する企業の特徴.svg">
                     <p><a href="/special_link?company_feature=<%= i.id %>"></a><%= i.name %></p>
                 </div>
                 <% end %>
                 <% current_user.company_points.order("RANDOM()").limit(1).each do |i| %>
                 <div class="my-top-link">
-                    <img src="/assets/school.svg">
+                    <img src="/assets/重視する採用の特徴.svg">
                     <p><a href="/special_link?company_point=<%= i.id %>"></a><%= i.name %></p>
                 </div>
                 <% end %>
@@ -49,20 +49,20 @@
             <p>あなたのためのトップリンク</p>
             <div class="my-top-links">
                 <div class="my-top-link">
-                    <img src="/assets/school.svg">
-                    <p>慶應義塾大学</p>
+                    <img src="/assets/重視する働き方.svg">
+                    <p>テレワーク</p>
                 </div>
                 <div class="my-top-link">
-                    <img src="/assets/school.svg">
-                    <p>慶應義塾大学</p>
+                    <img src="/assets/重視する福利厚生.svg">
+                    <p>年間休日多</p>
                 </div>
                 <div class="my-top-link">
-                    <img src="/assets/school.svg">
-                    <p>慶應義塾大学</p>
+                    <img src="/assets/重視する企業の特徴.svg">
+                    <p>部活動あり</p>
                 </div>
                 <div class="my-top-link">
-                    <img src="/assets/school.svg">
-                    <p>慶應義塾大学</p>
+                    <img src="/assets/重視する採用の特徴.svg">
+                    <p>私服ok</p>
                 </div>
             </div>
             <div class="my-top-link-middle">
@@ -134,24 +134,24 @@
             </div>
             <div class="companies-features">
                 <div class="companies-feature">
-                    <img src="/assets/telework.svg">
-                    <p>テレワーク歓迎</p>
+                    <img src="/assets/重視する企業の特徴.svg">
+                    <a href="/special_link?feature=7">多角的な事業展開</a>
                 </div>
                 <div class="companies-feature">
-                    <img src="/assets/telework.svg">
-                    <p>テレワーク歓迎</p>
+                    <img src="/assets/重視する福利厚生.svg">
+                    <a href="/special_link?welfare=6">慶弔・災害支援あり</a>
                 </div>
                 <div class="companies-feature">
-                    <img src="/assets/telework.svg">
-                    <p>テレワーク歓迎</p>
+                    <img src="/assets/重視する働き方.svg">
+                    <a href="/special_link?work_style=9">完全週休二日制</p>
                 </div>
                 <div class="companies-feature">
-                    <img src="/assets/telework.svg">
-                    <p>テレワーク歓迎</p>
+                    <img src="/assets/志望業界.svg">
+                    <a href="/special_link?industry=1">IT・インターネット</a>
                 </div>
                 <div class="companies-feature">
-                    <img src="/assets/telework.svg">
-                    <p>テレワーク歓迎</p>
+                    <img src="/assets/志望勤務エリア.svg">
+                    <a href="/special_link?area=1">関東の企業</a>
                 </div>
             </div>
         </div>
@@ -250,6 +250,9 @@ $(function(){
         location.href=$(this).find('a').attr('href');
     });
     $('.browsing-recomended-events').click(function(){
+        location.href=$(this).find('a').attr('href');
+    });
+    $('.companies-feature').click(function(){
         location.href=$(this).find('a').attr('href');
     });
 });

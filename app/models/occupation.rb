@@ -3,4 +3,5 @@ class Occupation < ApplicationRecord
     has_many :users, through: :wish_occupations
     has_many :company_occupations
     has_many :occupations, through: :company_occupations
+    mount_uploader :image, EventImageUploader
 end

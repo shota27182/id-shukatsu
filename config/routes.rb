@@ -1,20 +1,7 @@
 Rails.application.routes.draw do
 
-
-  
-  
-  
-  namespace :infos do
-    get 'contents_policy/index'
-  end
   get 'edit_mail/index'
   get 'admin_user/index'
-  namespace :mypage do
-    get 'deactivation/index'
-  end
-  namespace :mypage do
-    get 'edit_favorite/index'
-  end
   get 'articles/show'
 
   namespace :users do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_10_012910) do
+ActiveRecord::Schema.define(version: 2020_08_16_081917) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -129,6 +129,7 @@ ActiveRecord::Schema.define(version: 2020_08_10_012910) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "company_industries", force: :cascade do |t|
@@ -153,6 +154,7 @@ ActiveRecord::Schema.define(version: 2020_08_10_012910) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "company_profiles", force: :cascade do |t|
@@ -180,6 +182,7 @@ ActiveRecord::Schema.define(version: 2020_08_10_012910) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "company_welfares", force: :cascade do |t|
@@ -315,6 +318,7 @@ ActiveRecord::Schema.define(version: 2020_08_10_012910) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "mentarity_company_features", force: :cascade do |t|
@@ -369,6 +373,7 @@ ActiveRecord::Schema.define(version: 2020_08_10_012910) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "programmings", force: :cascade do |t|
@@ -514,6 +519,7 @@ ActiveRecord::Schema.define(version: 2020_08_10_012910) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "wish_company_scales", force: :cascade do |t|
@@ -556,12 +562,14 @@ ActiveRecord::Schema.define(version: 2020_08_10_012910) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "work_styles", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
 end

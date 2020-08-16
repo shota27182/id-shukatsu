@@ -3,4 +3,5 @@ class Welfare < ApplicationRecord
     has_many :users, through: :mentarity_welfares
     has_many :company_welfares
     has_many :companies, through: :company_welfares
+    mount_uploader :image, EventImageUploader
 end

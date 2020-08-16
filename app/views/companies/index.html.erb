@@ -162,25 +162,25 @@
                             <div class="company-box-features">
                                 <% get_company.work_styles.limit(4).each do |a| %>
                                 <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
+                                    <img src="/assets/重視する働き方.svg">
                                     <p><%= a.name %></p>
                                 </div>
                                 <% end %>
                                 <% get_company.welfares.limit(4).each do |b| %>
                                 <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
+                                    <img src="/assets/重視する福利厚生.svg">
                                     <p><%= b.name %></p>
                                 </div>
                                 <% end %>
                                 <% get_company.company_features.limit(4).each do |c| %>
                                 <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
+                                    <img src="/assets/重視する企業の特徴.svg">
                                     <p><%= c.name %></p>
                                 </div>
                                 <% end %>
                                 <% get_company.company_points.limit(3).each do |d| %>
                                 <div class="company-box-feature">
-                                    <img src="/assets/telework.svg">
+                                    <img src="/assets/重視する採用の特徴.svg">
                                     <p><%= d.name %></p>
                                 </div>
                                 <% end %>
@@ -200,31 +200,31 @@
                         </div>
                         <% @user.work_styles.order("RANDOM()").limit(1).each do |i| %>
                         <div class="recomended-search-content">
-                            <img src="/assets/school.svg">
+                            <img src="/assets/重視する働き方.svg">
                             <p><a href="/companies?industry=&area=&occupation=&work_style=<%= i.id %>&welfare=&feature=&point="></a><%= i.name %></p>
                         </div>
                         <% end %>
                         <% @user.welfares.order("RANDOM()").limit(1).each do |i| %>
                         <div class="recomended-search-content">
-                            <img src="/assets/school.svg">
+                            <img src="/assets/重視する福利厚生.svg">
                             <p><a href="/companies?industry=&area=&occupation=&work_style=&welfare=<%= i.id %>&feature=&point="></a><%= i.name %></p>
                         </div>
                         <% end %>
                         <% @user.company_features.order("RANDOM()").limit(1).each do |i| %>
                         <div class="recomended-search-content">
-                            <img src="/assets/school.svg">
+                            <img src="/assets/重視する企業の特徴.svg">
                             <p><a href="/companies?industry=&area=&occupation=&work_style=&welfare=&feature=<%= i.id %>&point="></a><%= i.name %></p>
                         </div>
                         <% end %>
                         <% @user.company_points.order("RANDOM()").limit(1).each do |i| %>
                         <div class="recomended-search-content">
-                            <img src="/assets/school.svg">
+                            <img src="/assets/重視する採用の特徴.svg">
                             <p><a href="/companies?industry=&area=&occupation=&work_style=&welfare=&feature=&point=<%= i.id %>"></a><%= i.name %></p>
                         </div>
                         <% end %>
                         <% @user.industries.order("RANDOM()").limit(1).each do |i| %>
                         <div class="recomended-search-content">
-                            <img src="/assets/school.svg">
+                            <img src="/assets/志望業界.svg">
                             <p><a href="/companies?industry=<%= i.id %>&area=&occupation=&work_style=&welfare=&feature=&point="></a><%= i.name %></p>
                         </div>
                         <% end %>
@@ -241,31 +241,31 @@
                         </div>
                         <% @user.work_areas.order("RANDOM()").limit(1).each do |i| %>
                         <div class="recomended-search-content">
-                            <img src="/assets/school.svg">
+                            <img src="/assets/志望勤務エリア.svg">
                             <p><a href="/companies?industry=&area=<%= i.id %>&occupation=&work_style=&welfare=&feature=&point="></a><%= i.name %></p>
                         </div>
                         <% end %>
                         <% @user.company_points.order("RANDOM()").limit(1).each do |i| %>
                         <div class="recomended-search-content">
-                            <img src="/assets/school.svg">
+                            <img src="/assets/重視する採用の特徴.svg">
                             <p><a href="/companies?industry=&area=&occupation=&work_style=&welfare=&feature=&point=<%= i.id %>"></a><%= i.name %></p>
                         </div>
                         <% end %>
                         <% @user.occupations.order("RANDOM()").limit(1).each do |i| %>
                         <div class="recomended-search-content">
-                            <img src="/assets/school.svg">
+                            <img src="/assets/志望職種.svg">
                             <p><a href="/companies?industry=&area=&occupation=<%= i.id %>&work_style=&welfare=&feature=&point="></a><%= i.name %></p>
                         </div>
                         <% end %>
                         <% @user.welfares.order("RANDOM()").limit(1).each do |i| %>
                         <div class="recomended-search-content">
-                            <img src="/assets/school.svg">
+                            <img src="/assets/重視する福利厚生.svg">
                             <p><a href="/companies?industry=&area=&occupation=&work_style=&welfare=<%= i.id %>&feature=&point="></a><%= i.name %></p>
                         </div>
                         <% end %>
                         <% @user.company_features.order("RANDOM()").limit(1).each do |i| %>
                         <div class="recomended-search-content first">
-                            <img src="/assets/school.svg">
+                            <img src="/assets/重視する企業の特徴.svg">
                             <p><a href="/companies?industry=&area=&occupation=&work_style=&welfare=&feature=<%= i.id %>&point="></a><%= i.name %></p>
                         </div>
                         <% end %>
@@ -285,24 +285,24 @@
                             
                         </div>
                         <div class="recomended-search-content">
-                            <img src="/assets/school.svg">
-                            <p>理系</p>
+                            <img src="/assets/重視する企業の特徴.svg">
+                            <p>部活動あり</p>
                         </div>
                         <div class="recomended-search-content">
-                            <img src="/assets/school.svg">
-                            <p>理系</p>
+                            <img src="/assets/重視する働き方.svg">
+                            <p>テレワーク</p>
                         </div>
                         <div class="recomended-search-content">
-                            <img src="/assets/school.svg">
-                            <p>慶應義塾大学</p>
+                            <img src="/assets/重視する採用の特徴.svg">
+                            <p>私服ok</p>
                         </div>
                         <div class="recomended-search-content">
-                            <img src="/assets/school.svg">
-                            <p>慶應義塾大学</p>
+                            <img src="/assets/重視する福利厚生.svg">
+                            <p>年間休日多</p>
                         </div>
                         <div class="recomended-search-content">
-                            <img src="/assets/school.svg">
-                            <p>慶應義塾大学</p>
+                            <img src="/assets/志望業界.svg">
+                            <p>商社</p>
                         </div>
                         <div class="recomended-after">
                             <img src="/assets/progress_bar2.svg">
