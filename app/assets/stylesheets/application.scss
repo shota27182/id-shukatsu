@@ -337,6 +337,15 @@ header{
     height:337px;
     margin-right:2%;
 }
+
+.favorite-event-wrapper:hover{
+    background-color:#CECECE;
+}
+
+.favorite-event-wrapper:hover img{
+    opacity:0.6;
+}
+
 .head p{
     font-size:16px;
     margin-left:3.5%;
@@ -586,9 +595,17 @@ header{
     margin-right:1.5%;
 }
 
+.browsing-recomended-event:hover{
+    background-color:#CECECE;
+}
+
 .browsing-recomended-event img{
     width:100%;
     margin-bottom:19px;
+}
+
+.browsing-recomended-event:hover img{
+    opacity:0.6;
 }
 
 .browsing-recomended-event p{
@@ -776,6 +793,11 @@ footer{
     margin-top:14.3px;
     padding-bottom:30px;
     margin-bottom:235px;
+}
+
+.email-confirmaation{
+    margin-top:14.3px;
+    padding-bottom:30px;
 }
 
 .profile-tab{

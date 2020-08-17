@@ -11,10 +11,11 @@ class Users::CoresController < ApplicationController
     @user = User.find(current_user.id)
     @users_cores_form = UsersCoresForm.new(users_cores_form_params)
     @users_cores_form.save
-    current_user.notifications.build(
+    @notification = current_user.notifications.build(
       title: 'ID就活へようこそ',
       content: 'ID就活では、あなたの内定までの道のりをサポートします。すぐに使いこなせるよう、効率よく情報収集するコツをご紹介します！' 
       )
+    @notification.save
     redirect_to '/users/complete'
   rescue
     @user = User.find(current_user.id)

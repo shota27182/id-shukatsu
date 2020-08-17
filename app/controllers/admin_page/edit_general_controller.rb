@@ -1,6 +1,8 @@
 class AdminPage::EditGeneralController < ApplicationController
   def index
     @company = Company.find_by(id: params[:company_id])
+     @partner_user_general_form = PartnerUserGeneralForm.new(name: @company.name, introduction: @company.introduction, category: @company.category, people: @company.people,kana: @company.kana,
+                                                            img: @company.img, icon: @company.icon, url: @company.url, establishment: @company.establishment, address: @company.address)
   end
   
   def create

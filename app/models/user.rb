@@ -35,6 +35,14 @@ class User < ApplicationRecord
     has_many :notifications, dependent: :destroy
     has_many :event_histories, dependent: :destroy
     has_one :user_receive, dependent: :destroy
+    has_many :active_invitations, class_name:  "Invitation",
+                                  foreign_key: "invite_id",
+                                  dependent:   :destroy
+    has_many :inviting, through: :active_invitations, source: :invite
+    has_many :passive_invitations, class_name:  "Invitation",
+                                   foreign_key: "invited_id",
+                                   dependent:   :destroy
+    has_many :invited, through: :passive_invitations, source: :invited
     
     enum status:{
         no_registered: 0,
@@ -46,6 +54,13 @@ class User < ApplicationRecord
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
         BCrypt::Password.create(string, cost: cost)
+    end
+    
+    def generate_invitation_token
+        self.invitation_token = loop do
+          random_token = SecureRandom.hex(3)
+          break random_token unless User.exists?(invitation_token: random_token)
+        end
     end
     
     def User.new_token

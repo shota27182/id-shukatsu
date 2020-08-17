@@ -76,28 +76,28 @@
                 <p>最近チェックしたイベント</p>
             </div>
             <% if logged_in? %>
-            <% EventHistory.where(user_id: current_user.id).order(id: "DESC").limit(1).each do |i| %>
-            <div class="event-icon">
-                <%=image_tag Event.find_by(id: i.event_id).img.to_s %><a href="/events/<%=i.event_id%>"></a>
-            </div>
-            <div class="top-page-event">
-                  <div class="top-page-event-right">
-                 <% Company.joins(:events).where(events:{id:[i.event_id]}).each do |i| %>
-                     <% if i.icon.present? %>
-                         <%=image_tag i.icon.to_s %>
-                    <% else %>
-                        <img src="/assets/no_image.png">
-                    <% end %>
-                 <% end %>
+                <% EventHistory.where(user_id: current_user.id).order(id: "DESC").limit(1).each do |i| %>
+                <div class="event-icon">
+                    <%=image_tag Event.find_by(id: i.event_id).img.to_s %><a href="/events/<%=i.event_id%>"></a>
+                </div>
+                <div class="top-page-event">
+                      <div class="top-page-event-right">
+                     <% Company.joins(:events).where(events:{id:[i.event_id]}).each do |i| %>
+                         <% if i.icon.present? %>
+                             <%=image_tag i.icon.to_s %>
+                        <% else %>
+                            <img src="/assets/no_image.png">
+                        <% end %>
+                     <% end %>
+                     </div>
+                     <div class="event-head-title">
+                         <p><%=Company.joins(:events).find_by(events:{id: i.event_id}).name %></p>
+                     </div>
                  </div>
-                 <div class="event-head-title">
-                     <p><%=Company.joins(:events).find_by(events:{id: i.event_id}).name %></p>
+                 <div class="your-watching-event">
+                     <%= Event.find_by(id: i.event_id).name %>
                  </div>
-             </div>
-             <div class="your-watching-event">
-                 <%= Event.find_by(id: i.event_id).name %>
-             </div>
-            <% end %>
+                <% end %>
             <% end %>
         </div>
         <div class="announce-wrapper">
@@ -202,7 +202,7 @@
         </div>
         <% if logged_in? && !EventHistory.where(user_id: current_user.id).nil? %>
         <div class="browsing-recomended">
-            <p>閲覧履歴に基づくおすすめのイベント</p>
+            <p>あなたへのおすすめのイベント</p>
             <div class="browsing-recomended-events">
                 <% EventHistory.where(user_id: current_user.id).order(id: "DESC").limit(1).each do |i| %>
                 <% Event.includes(:company => :industries).where(industries:{id: Company.includes(:events).find_by(events:{id: i.event_id}).industries.pluck(:id)}).limit(4).each do |a| %>
@@ -214,6 +214,7 @@
                 <% end %>
             </div>
         </div>
+        <% else %>
         <% end %>
         <div class="online-meeting">
             <img src="/assets/online-meeting.svg">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_16_081917) do
+ActiveRecord::Schema.define(version: 2020_08_16_142010) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -321,6 +321,16 @@ ActiveRecord::Schema.define(version: 2020_08_16_081917) do
     t.string "image"
   end
 
+  create_table "invitations", force: :cascade do |t|
+    t.integer "invite_id"
+    t.integer "invited_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["invite_id", "invited_id"], name: "index_invitations_on_invite_id_and_invited_id", unique: true
+    t.index ["invite_id"], name: "index_invitations_on_invite_id"
+    t.index ["invited_id"], name: "index_invitations_on_invited_id"
+  end
+
   create_table "mentarity_company_features", force: :cascade do |t|
     t.integer "company_feature_id"
     t.datetime "created_at", null: false
@@ -512,6 +522,7 @@ ActiveRecord::Schema.define(version: 2020_08_16_081917) do
     t.datetime "reset_sent_at"
     t.integer "status", default: 0
     t.string "kana"
+    t.string "invitation_token"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

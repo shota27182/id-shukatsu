@@ -346,7 +346,7 @@
                 <div class="companies-wrapper">
                     <p>安定経営の企業</p>
                     <div class="companies-search">
-                        <% Company.joins(:company_features).where(company_features: {id: [9]}).limit(8).each do |a| %>
+                        <% Company.joins(:company_features).where(company_features: {id: [9]}).limit(6).each do |a| %>
                         <div class="company-search">
                             <% if a.icon.present? %>
                                 <%= image_tag a.icon.to_s %>
