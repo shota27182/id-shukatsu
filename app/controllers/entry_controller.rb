@@ -34,6 +34,8 @@ class EntryController < ApplicationController
     @user_event.destroy
     @user_event = UserEvent.new(user_id:current_user.id, event_id:params[:event_id],event_schedule_id:params[:event_schedule_id])
     if @user_event.save!
+      @event_schedule = EventSchedule.find_by(id: params[:event_schedule_id])
+      current_user.change_notification_event_schedule!(current_user, @event_schedule)
       redirect_to event_entry_complete_path
     end
   end

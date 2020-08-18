@@ -113,6 +113,14 @@ class User < ApplicationRecord
         entry_notification.save!
     end
     
+    def change_notification_event_schedule!(current_user, event_schedule)
+        change_notification =  current_user.notifications.build(
+            title: '「' + Event.find_by(id: event_schedule.event_id).name + '」' + 'の日程変更が完了いたしました',
+            content:   '「' + Event.find_by(id: event_schedule.event_id).name + '」' + 'の日程変更が完了いたしました。再度日程のご確認お願い致します'
+            )
+        change_notification.save!
+    end
+    
     private
        
        def downcase_email
