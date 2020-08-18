@@ -950,7 +950,8 @@ footer{
     background-color:white;
     width:30%;
     height:114px;
-    margin-right:2%;
+    margin-left:1.6%;
+    margin-right:1.6%;
     margin-bottom:17px;
     padding-left:12px;
     padding-top:12px;
@@ -2869,6 +2870,11 @@ footer{
     margin-top:21px;
 }
 
+.back-to-present{
+    padding-top:29px;
+    margin-bottom:16px;
+}
+
 @media screen and (min-width: 0px) and (max-device-width: 920px) {
     body{
         margin-right:0px;
@@ -3850,6 +3856,9 @@ footer{
     
     .mypage-link p{
         margin-top:26px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
     
     .mypage-menus{
@@ -5272,5 +5281,9 @@ footer{
     
     .article-main-img{
         height:200px;
+    }
+    
+    .back-to-present{
+        display:none;
     }
 }
