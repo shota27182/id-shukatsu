@@ -1356,6 +1356,8 @@ footer{
 
 .company-event-information{
     background-color:white;
+    margin-top:15px;
+    padding-bottom:18px;
 }
 
 .company-event-head{
@@ -4643,8 +4645,12 @@ footer{
     
     .event-entry-title{
         text-align:center;
-        padding-top:46px;
+        padding-top:80px;
         padding-bottom:20px;
+    }
+    
+    .event-entry-title h2{
+        font-size:20px;
     }
     
     .event-schedule-title{
@@ -4660,18 +4666,22 @@ footer{
     }
     
     .event-schedule-head-left{
-        width:10%;
+        width:20%;
         padding-right:2%;
         padding-top:5px;
     }
     
     .event-schedule-head-right{
-        width:90%;
+        width:80%;
         padding-top:10px;
     }
     
+    .event-schedule-head-right p{
+        font-size:14px;
+    }
+    
     .event-schedule-title h2{
-        font-size:16px;
+        font-size:14px;
         margin-top:0px;
     }
     
