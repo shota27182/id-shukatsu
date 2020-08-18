@@ -23,16 +23,7 @@ class PartnerUserGeneralForm
     attribute 'establishment(2i)'
     attribute 'establishment(3i)'
 
-    validates :name, presence: true
-    validates :introduction, presence: true
-    validates :category, presence: true
-    validates :people, presence: true
-    validates :img, presence: true
-    validates :icon, presence: true
-    validates :url, presence: true
-    validates :address, presence: true
-    validates :establishment, presence: true
-    validates :kana, presence: true
+   
 
   def save
       return false if invalid?

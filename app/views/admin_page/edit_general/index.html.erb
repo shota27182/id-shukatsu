@@ -31,10 +31,6 @@
               <p>従業員数</p>
               <%=f.number_field :people, class:"form-field" %>
           </div>
-          <div class="form-detail profile-birthday">
-              <p>設立年月日</p>
-              <%= f.date_select :establishment, start_year: 1800, end_year: 2020, use_month_numbers: true %>
-          </div>
           <div class="form-detail">
               <p>採用ページリンク</p>
               <%=f.text_field :url, class:"form-field" %>
