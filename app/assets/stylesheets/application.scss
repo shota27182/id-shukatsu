@@ -2880,6 +2880,7 @@ footer{
         margin-right:0px;
         margin-left:0px;
         width:100%;
+        overflow-x:hidden;
     }
     
     .container{
@@ -2926,8 +2927,6 @@ footer{
         display: block;
         width: 56px;
         height: 60px;
-        position: fixed;
-        left: 0;
         // ハンバーガーアイコンの中の線
         &-parts,
         &-parts:before,
