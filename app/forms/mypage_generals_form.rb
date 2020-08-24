@@ -17,7 +17,6 @@ class MypageGeneralsForm
     
     validates :address1, presence: true
     validates :address2, presence: true
-    validates :building_name, presence: true
     validates :tel, presence: true
     validates :name, presence: true
     validates :kana, presence: true
