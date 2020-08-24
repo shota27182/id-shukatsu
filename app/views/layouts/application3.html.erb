@@ -8,7 +8,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     
     <%= analytics_init if Rails.env.production? %>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale = 1.0,maximum-scale = 1.0,user-scalable = no">
     <%= render 'layouts/shim' %>
   </head>
 
