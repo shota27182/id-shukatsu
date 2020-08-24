@@ -26,8 +26,8 @@ class Users::BasicsController < ApplicationController
       end
       
       def already_basic_registered
-        if logged_in? && current_user.status == 'basic_registered'
-          redirect_to '/users/cores'
+        if logged_in? && (current_user.status == 'basic_registered' || current_user.status == 'core_registered')
+          redirect_to '/mypage'
         end
       end
 end
