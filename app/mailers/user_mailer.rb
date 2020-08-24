@@ -11,10 +11,9 @@ class UserMailer < ApplicationMailer
   def account_activation(user)
     @user = user
 
-    mail( from: '"送信者名" <info@id-shukatsu.com>',
+    mail( from: '"[ID就活 運営事務局]" <info@id-shukatsu.com>',
           to: user.email,
-          subject: 'お問い合わせありがとうございます。',
-          bcc: 'shota27182@gmai.com',
+          subject: '[ID就活]新規登録確認メール',
           reply_to: 'info@id-shukatsu.com' )
   end
 
