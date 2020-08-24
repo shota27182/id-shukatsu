@@ -44,8 +44,10 @@ class Signup
         user = User.find_by(email: email)
         user.update(name: name, email: email, password: password, kana: kana, password_confirmation: password_confirmation,activation_digest: activation_digest,activation_token: activation_token)
       end
-      invitation = user.passive_invitations.build(invite_id: User.find_by(invitation_token: invitation_token).id)
-      invitation.save
+      if invitation_token.present?
+        invitation = user.passive_invitations.build(invite_id: User.find_by(invitation_token: invitation_token).id)
+        invitation.save
+      end
       user.send_activation_email
       true
     end
@@ -104,7 +106,7 @@ class Signup
        end 
        
        def invitation_token_is_present
-         if User.where(invitation_token: invitation_token).count == 0
+         if invitation_token.present? && User.where(invitation_token: invitation_token).count == 0
             errors.add(:invitation_token, 'この招待コードは無効です')
          end
        end
