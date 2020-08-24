@@ -13,6 +13,13 @@ class ApplicationController < ActionController::Base
   end
 
   private
+  
+    def active_user
+      if logged_in?
+        store_location
+        redirect_to '/mypage'
+      end
+    end
 
     # ログイン済みユーザーかどうか確認
     def logged_in_user

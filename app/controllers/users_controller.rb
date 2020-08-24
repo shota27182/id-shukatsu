@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   layout 'application2.html.erb'
   before_action :logged_in_user, only: [:edit, :update]
+  before_action :active_user, only:[:new, :create]
   def new
     @user = Signup.new
   end
