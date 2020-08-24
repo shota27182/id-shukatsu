@@ -57,10 +57,14 @@ class User < ApplicationRecord
     end
     
     def generate_invitation_token
-        self.invitation_token = loop do
-          random_token = SecureRandom.hex(3)
-          break random_token unless User.exists?(invitation_token: random_token)
+        self.invitation_token = SecureRandom.hex(3)
+        while true do
+            if User.where(invitation_token: invitation_token).count == 0
+                break
+            end
+            self.invitation_token = SecureRandom.hex(3)
         end
+        update_attributes(invitation_token: invitation_token)
     end
     
     def User.new_token

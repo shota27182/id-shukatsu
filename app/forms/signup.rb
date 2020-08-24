@@ -14,6 +14,7 @@ class Signup
   attribute :name, :string
   attribute :activated_at, :datetime
   attribute :kana, :string
+  attribute :invitation_token, :string
 
   validates :email,
             presence: true,
@@ -24,6 +25,7 @@ class Signup
   validates :kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/}
   has_secure_password
   before_validation :email_is_unique
+  before_validation :invitation_token_is_present
   define_model_callbacks :save
   before_save   :downcase_email
   before_save :create_activation_digest
@@ -42,6 +44,8 @@ class Signup
         user = User.find_by(email: email)
         user.update(name: name, email: email, password: password, kana: kana, password_confirmation: password_confirmation,activation_digest: activation_digest,activation_token: activation_token)
       end
+      invitation = user.passive_invitations.build(invite_id: User.find_by(invitation_token: invitation_token).id)
+      invitation.save
       user.send_activation_email
       true
     end
@@ -98,4 +102,10 @@ class Signup
           end
         end 
        end 
+       
+       def invitation_token_is_present
+         if User.where(invitation_token: invitation_token).count == 0
+            errors.add(:invitation_token, 'この招待コードは無効です')
+         end
+       end
 end

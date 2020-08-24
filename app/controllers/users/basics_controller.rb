@@ -1,5 +1,6 @@
 class Users::BasicsController < ApplicationController
     before_action :logged_in_user
+    before_action :already_basic_registered
     layout 'application2.html.erb'
     
     def index
@@ -24,7 +25,9 @@ class Users::BasicsController < ApplicationController
             params.require(:users_basics_form).permit(:kana,:address1,:address2,:building_name,:tel,:birthday, :sex, :university ,:department ,:faculty ,:highschool, :seminar, :classification, :grade_id, :magazine, :scout).merge(user_id: current_user.id)
       end
       
-      def activated_user
-         
+      def already_basic_registered
+        if logged_in? && current_user.status == 'basic_registered'
+          redirect_to '/users/cores'
+        end
       end
 end

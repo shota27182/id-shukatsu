@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     end
     
     def basic_registered_user
-      unless logged_in? && current_user.status == 'basic_registered'
+      unless logged_in? && current_user.status == 'basic_registered' 
         store_location
         flash[:danger] = "Please log in."
         redirect_to '/users/basics'

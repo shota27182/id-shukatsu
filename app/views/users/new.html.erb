@@ -42,6 +42,13 @@
             <p style="color: red;"><%= @user.errors.full_messages_for(:password_confirmation).first %>
             <% end %>
           </div>
+          <div class="form-detail">
+            <p>招待コード(任意)</p>
+            <%= f.text_field :invitation_token, class: "form-field" %>
+            <% if @user.errors.include?(:invitation_token) %>
+            <p style="color: red;"><%= @user.errors.full_messages_for(:invitation_token).first %>
+            <% end %>
+          </div>
           <%=f.submit "確認メールを送信する", class: "form-submit" %>
   <% end %>
   <div class="form-confirmation">ログインすることにより、当社の<a href="/infos/terms" class="">利用規約</a>および<a href="/infos/privacy" class="">ライバシーポリシー規約</a>に同意したとみなされます。</div>

@@ -5,10 +5,10 @@
     <div class="profile-form">
         <div class="profile-companies">
             <div class="profile-notification-index">
-                <p><%= @notification.start_on.strftime("%Y/%m/%d") %></p>
+                <p><%= @notification.created_at.strftime("%Y/%m/%d") %></p>
             </div>
             <div class="profile-notification-index">
-                <p><%= @notification.content %></p>
+                <p><%= simple_format(@notification.content) %></p>
             </div>
         </div>
     </div>

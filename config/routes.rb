@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :mypage do
+    get 'friend_referrals/new'
+  end
   get 'edit_mail/index'
   get 'admin_user/index'
   get 'articles/show'
@@ -78,6 +81,7 @@ Rails.application.routes.draw do
     resources :deactivation, only: [:create]
     get 'mail_type', to: 'mail_type#index'
     resources :mail_type, only: [:create]
+    get 'friend_referrals/new', to: 'friend_referrals#new'
   end
   
   namespace :partner_page do
