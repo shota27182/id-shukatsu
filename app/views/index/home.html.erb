@@ -157,48 +157,56 @@
         </div>
         <div class="release-planning">
             <div class="head">
-                <p>リリース企画</p>
+                <p>IT×テレワーク企業の特集</p>
             </div>
-            <img src="/assets/release_planning.svg">
-            <a>詳しくはこちら</a>
+            <img src="/assets/IT×テレワーク.jpg">
+            <a href="/companies?industry=1&area=&occupation=&work_style=2&welfare=&feature=&point=#companies-results">詳しくはこちら</a>
         </div>
         <div class="release-planning">
             <div class="head">
-                <p>学生インフルエンサー募集</p>
+                <p>育児休暇×残業少実施企業のイベント特集</p>
             </div>
-            <img src="/assets/student_recruit.svg">
-            <a>詳しくはこちら</a>
+            <img src="/assets/育児休暇×残業少.jpg">
+            <a href="/events?category=&industry=&area=&work_style=&welfare=1&feature=4&point=#event-results">詳しくはこちら</a>
         </div>
         <div class="consulting-introduce">
             <div class="head">
-                <p>玉手箱対策〜mini模試試験〜</p>
+                <p>平均年齢が20代×成長性が高い企業特集</p>
             </div>
-            <img src="/assets/pre-test.svg">
-            <a>詳しくはこちら</a>
+            <img src="/assets/平均年齢が20代×成長性が高い.jpg">
+            <a href="/companies?industry=&area=&occupation=&work_style=&welfare=&feature=3,8&point=#companies-results">詳しくはこちら</a>
         </div>
-        <div class="id_introduce">
-            <img src="/assets/id_introduce.svg">
+        <div class="browsing-recomended">
+            <p>関東のイベント</p>
+            <div class="browsing-recomended-events">
+                <% Event.includes(:company => :work_areas).where(work_areas:{id: 1}).limit(4).each do |a| %>
+                <div class="browsing-recomended-event">
+                    <%= image_tag a.img.to_s %>
+                    <p><%= a.name %></p><a href="/events/<%= a.id %>"></a>
+                </div>
+                <% end %>
+            </div>
         </div>
         <div class="release-planning">
             <div class="head">
-                <p>おすすめの就活対策イベント</p>
+                <p>エントリーシート不要の企業特集</p>
             </div>
-            <img src="/assets/release_planning.svg">
-            <a>詳しくはこちら</a>
+            <img src="/assets/エントリーシート不要.jpg">
+            <a href="/companies?industry=&area=&occupation=&work_style=&welfare=&feature=&point=1#companies-results">詳しくはこちら</a>
         </div>
         <div class="release-planning">
             <div class="head">
-                <p>服装自由化制度「楽服就活」</p>
+                <p>安定経営×転勤なし企業のイベント特集</p>
             </div>
-            <img src="/assets/student_recruit.svg">
-            <a>詳しくはこちら</a>
+            <img src="/assets/安定経営×転勤なし.jpg">
+            <a href="/events?category=&industry=&area=&work_style=4&welfare=&feature=9&point=#event-results">詳しくはこちら</a>
         </div>
         <div class="consulting-introduce">
             <div class="head">
-                <p>コンサル業界特集</p>
+                <p>選考私服OK企業のイベント特集</p>
             </div>
-            <img src="/assets/consul_introduce.svg">
-            <a>詳しくはこちら</a>
+            <img src="/assets/選考私服OK.jpg">
+            <a href="/companies?industry=&area=&occupation=&work_style=&welfare=&feature=&point=3#companies-results">詳しくはこちら</a>
         </div>
         <% if logged_in? && !EventHistory.where(user_id: current_user.id).nil? %>
         <div class="browsing-recomended">
@@ -254,6 +262,12 @@ $(function(){
         location.href=$(this).find('a').attr('href');
     });
     $('.companies-feature').click(function(){
+        location.href=$(this).find('a').attr('href');
+    });
+    $('.release-planning').click(function(){
+        location.href=$(this).find('a').attr('href');
+    });
+    $('.consulting-introduce').click(function(){
         location.href=$(this).find('a').attr('href');
     });
 });

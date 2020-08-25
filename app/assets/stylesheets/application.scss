@@ -530,10 +530,18 @@ header{
     margin-right:2%;
 }
 
+.release-planning:hover{
+    background-color:#CECECE;
+}
+
 .release-planning img{
     width:93%;
     margin-left:3.5%;
     margin-bottom:14px;
+}
+
+.release-planning:hover img{
+    opacity:0.6;
 }
 
 .release-planning a{
@@ -549,10 +557,18 @@ header{
     margin-top:18px;
 }
 
+.consulting-introduce:hover{
+    background-color:#CECECE;
+}
+
 .consulting-introduce img{
     width:93%;
     margin-left:3.5%;
     margin-bottom:14px;
+}
+
+.consulting-introduce:hover img{
+    opacity:0.6;
 }
 
 .consulting-introduce a{

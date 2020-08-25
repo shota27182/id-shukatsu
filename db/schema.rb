@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_16_142010) do
+ActiveRecord::Schema.define(version: 2020_08_25_160919) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -125,11 +125,72 @@ ActiveRecord::Schema.define(version: 2020_08_16_142010) do
     t.index ["company_scale_id"], name: "index_company_company_scales_on_company_scale_id"
   end
 
+  create_table "company_condolences", force: :cascade do |t|
+    t.integer "company_id"
+    t.integer "condolence_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_company_condolences_on_company_id"
+    t.index ["condolence_id"], name: "index_company_condolences_on_condolence_id"
+  end
+
+  create_table "company_detail_generals", force: :cascade do |t|
+    t.integer "company_general_id"
+    t.integer "man"
+    t.integer "woman"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_general_id"], name: "index_company_detail_generals_on_company_general_id"
+  end
+
   create_table "company_features", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+  end
+
+  create_table "company_generals", force: :cascade do |t|
+    t.integer "company_id"
+    t.integer "man"
+    t.integer "woman"
+    t.integer "humanity_man"
+    t.integer "humanity_woman"
+    t.integer "science_man"
+    t.integer "science_woman"
+    t.integer "work_duration"
+    t.integer "overtime"
+    t.integer "holiday_use"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_company_generals_on_company_id"
+  end
+
+  create_table "company_healths", force: :cascade do |t|
+    t.integer "company_id"
+    t.integer "health_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_company_healths_on_company_id"
+    t.index ["health_id"], name: "index_company_healths_on_health_id"
+  end
+
+  create_table "company_holidays", force: :cascade do |t|
+    t.integer "company_id"
+    t.integer "holiday_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_company_holidays_on_company_id"
+    t.index ["holiday_id"], name: "index_company_holidays_on_holiday_id"
+  end
+
+  create_table "company_house_allowances", force: :cascade do |t|
+    t.integer "company_id"
+    t.integer "house_allowance_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_company_house_allowances_on_company_id"
+    t.index ["house_allowance_id"], name: "index_company_house_allowances_on_house_allowance_id"
   end
 
   create_table "company_industries", force: :cascade do |t|
@@ -139,6 +200,15 @@ ActiveRecord::Schema.define(version: 2020_08_16_142010) do
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_company_industries_on_company_id"
     t.index ["industry_id"], name: "index_company_industries_on_industry_id"
+  end
+
+  create_table "company_nursings", force: :cascade do |t|
+    t.integer "company_id"
+    t.integer "nursing_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_company_nursings_on_company_id"
+    t.index ["nursing_id"], name: "index_company_nursings_on_nursing_id"
   end
 
   create_table "company_occupations", force: :cascade do |t|
@@ -185,6 +255,15 @@ ActiveRecord::Schema.define(version: 2020_08_16_142010) do
     t.string "image"
   end
 
+  create_table "company_teleworks", force: :cascade do |t|
+    t.integer "company_id"
+    t.integer "telework_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_company_teleworks_on_company_id"
+    t.index ["telework_id"], name: "index_company_teleworks_on_telework_id"
+  end
+
   create_table "company_welfares", force: :cascade do |t|
     t.integer "company_id"
     t.integer "welfare_id"
@@ -210,6 +289,21 @@ ActiveRecord::Schema.define(version: 2020_08_16_142010) do
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_company_work_styles_on_company_id"
     t.index ["work_style_id"], name: "index_company_work_styles_on_work_style_id"
+  end
+
+  create_table "company_work_times", force: :cascade do |t|
+    t.integer "company_id"
+    t.integer "work_time_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_company_work_times_on_company_id"
+    t.index ["work_time_id"], name: "index_company_work_times_on_work_time_id"
+  end
+
+  create_table "condolences", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "departments", force: :cascade do |t|
@@ -314,6 +408,24 @@ ActiveRecord::Schema.define(version: 2020_08_16_142010) do
     t.string "name"
   end
 
+  create_table "healths", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "holidays", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "house_allowances", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "industries", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -379,6 +491,12 @@ ActiveRecord::Schema.define(version: 2020_08_16_142010) do
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
+  create_table "nursings", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "occupations", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -392,7 +510,22 @@ ActiveRecord::Schema.define(version: 2020_08_16_142010) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "salaries", force: :cascade do |t|
+    t.integer "company_id"
+    t.integer "first_salary"
+    t.integer "average_salary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_salaries_on_company_id"
+  end
+
   create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teleworks", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -581,6 +714,12 @@ ActiveRecord::Schema.define(version: 2020_08_16_142010) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+  end
+
+  create_table "work_times", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company: one
+  man: 1
+  woman: 1
+  humanity_man: 1
+  humanity_woman: 1
+  science_man: 1
+  science_woman: 1
+  work_duration: 1
+  overtime: 1
+  holiday_use: 1
+
+two:
+  company: two
+  man: 1
+  woman: 1
+  humanity_man: 1
+  humanity_woman: 1
+  science_man: 1
+  science_woman: 1
+  work_duration: 1
+  overtime: 1
+  holiday_use: 1

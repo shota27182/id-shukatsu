@@ -25,6 +25,23 @@ class Company < ApplicationRecord
     has_many :events, dependent: :destroy
     has_many :user_companies, dependent: :destroy
     has_many :users, through: :user_companies 
+    has_one :company_general, dependent: :destroy
+    has_many :company_teleworks, dependent: :destroy
+    has_many :teleworks, through: :company_teleworks
+    has_many :company_work_times, dependent: :destroy
+    has_many :work_times, through: :company_work_times
+    has_one :salary, dependent: :destroy
+    has_many :company_house_allowances, dependent: :destroy
+    has_many :house_allowances, through: :company_house_allowances
+    has_many :company_healthes, dependent: :destroy
+    has_many :healthes, through: :company_healthes
+    has_many :company_nursings, dependent: :destroy
+    has_many :nursings, through: :company_nursings
+    has_many :company_holidays, dependent: :destroy
+    has_many :holidays, through: :company_holidays
+    has_many :company_condolences, dependent: :destroy
+    has_many :condolences, through: :company_condolences
+    has_one :salary, dependent: :destroy
     
     accepts_nested_attributes_for :company_requirement
     accepts_nested_attributes_for :company_profiles
