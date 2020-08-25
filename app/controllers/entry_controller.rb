@@ -55,5 +55,4 @@ class EntryController < ApplicationController
   def complete_cancel
   end
   
-  
 end

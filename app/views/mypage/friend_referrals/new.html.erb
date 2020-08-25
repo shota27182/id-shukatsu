@@ -9,12 +9,26 @@
     <div class="general-profile">
           <div class="form-detail">
               <p>あなたの招待コード</p>
-              <div class="form-field">
-                <p><%= current_user.invitation_token %></p>
-              </div>
+              <input id="copyTarget" type="text" value="<%= current_user.invitation_token %>" readonly>
+                <button onclick="copyToClipboard()">コピーする</button>
           </div>
     </div>
 </div>
 <div class="profile-container">
     <a href="/mypage" class="green-button"><  マイページに戻る</a>
 </div>
+<script>
+        function copyToClipboard() {
+            // コピー対象をJavaScript上で変数として定義する
+            var copyTarget = document.getElementById("copyTarget");
+
+            // コピー対象のテキストを選択する
+            copyTarget.select();
+
+            // 選択しているテキストをクリップボードにコピーする
+            document.execCommand("Copy");
+
+            // コピーをお知らせする
+            alert("コピーできました！ : " + copyTarget.value);
+        }
+</script>

@@ -229,7 +229,7 @@
             <div class="company-event-information quick-entry pc-version">
                 <div class="company-event-head">簡単エントリー</div>
                 <%= form_with url: new_event_entry_path(@event), method: :get, local: true do |f|%>
-                    <%= f.collection_radio_buttons(:event_schedule , @event_schedule, :id, :id ) do |b| %>
+                    <%= f.collection_radio_buttons(:event_schedule , @event_schedule, :id, :id , { checked: @event_schedule.first.id } ) do |b| %>
                         <div class="company-event-quick">
                             <div class="company-event-quick-left">
                                 <%= b.radio_button %>
