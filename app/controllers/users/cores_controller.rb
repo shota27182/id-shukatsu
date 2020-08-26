@@ -18,11 +18,6 @@ class Users::CoresController < ApplicationController
       )
     @notification.save
     current_user.generate_invitation_token
-    @notification2 = current_user.notifications.build(
-      title: '友人・知人を紹介して報酬をGETしよう！',
-      content: '友達がフレンド登録のときにコードを入力すると、あなたと友達に必ず500円分のAMAZONギフト券をプレゼントしています。(詳細は<a href="/mypage/friend_referrals/new">こちら</a>)' 
-      )
-    @notification2.save
     redirect_to '/users/complete'
   rescue
     @user = User.find(current_user.id)
