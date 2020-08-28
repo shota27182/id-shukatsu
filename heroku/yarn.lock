@@ -247,10 +247,10 @@
     lodash "^4.17.11"
     shell-quote "^1.6.1"
 
-"@heroku-cli/plugin-container-registry-v5@^7.39.2":
-  version "7.39.2"
-  resolved "https://registry.yarnpkg.com/@heroku-cli/plugin-container-registry-v5/-/plugin-container-registry-v5-7.39.2.tgz#c72a319df3e0c54128bc3ec84b416b7af25dfaee"
-  integrity sha512-TDLvUhlkvIWyt3lDQUkJkfgL9XUWFAYmN4xvTWf3X/ZumYuJvWGsXrrVGinZeLtOGzpdMVHtHspPUEYotP4GbA==
+"@heroku-cli/plugin-container-registry-v5@^7.42.12":
+  version "7.42.12"
+  resolved "https://registry.yarnpkg.com/@heroku-cli/plugin-container-registry-v5/-/plugin-container-registry-v5-7.42.12.tgz#62d3fd0714cbe9377867adfb4c999b56ca61359e"
+  integrity sha512-+jDzbuHCbQJhgJsFwr4C5NvHkGsLmN3a7AJn5XrnqMqsOE6i3XfZrjoiQ5FZuZ0cGGx+h/50Q+vHxVBiaTgkRQ==
   dependencies:
     glob "^7.1.3"
     heroku-cli-util "^8.0.11"
@@ -280,10 +280,10 @@
     foreman "^3.0.1"
     tslib "^1"
 
-"@heroku-cli/plugin-oauth-v5@^7.39.3":
-  version "7.39.3"
-  resolved "https://registry.yarnpkg.com/@heroku-cli/plugin-oauth-v5/-/plugin-oauth-v5-7.39.3.tgz#b884fffaf4830164f644370ee62178203c4119fd"
-  integrity sha512-jjEvtrvpmnasVbjsiIsyRPgL3rzjh8Hu9pdvBYt9SMDvq9xLxz/I0yM94ekmOsDBpLwK2v5v9g5kSPq616Ln1Q==
+"@heroku-cli/plugin-oauth-v5@^7.42.12":
+  version "7.42.12"
+  resolved "https://registry.yarnpkg.com/@heroku-cli/plugin-oauth-v5/-/plugin-oauth-v5-7.42.12.tgz#04b2bbb161f47a06eafb2bdf8d48eace39c5a9e5"
+  integrity sha512-QrdG+H4ZDGHm45NTCojpKED8Cg79E8evda9RZKsw7ZRdj64qfeRTA9ct8QzphgPviQ1jyIJEXyu1njNSYOHd/w==
   dependencies:
     co "^4.6.0"
     date-fns "^1.29.0"
@@ -302,10 +302,10 @@
     lodash "^4.17.11"
     lodash.flatten "^4.4.0"
 
-"@heroku-cli/plugin-pg-v5@^7.42.2":
-  version "7.42.2"
-  resolved "https://registry.yarnpkg.com/@heroku-cli/plugin-pg-v5/-/plugin-pg-v5-7.42.2.tgz#753907218989b0baabd892f1bfbb046224d2ab86"
-  integrity sha512-it6NtffpC8Uz+rbS4l2RtUputVbvP7z94h+eCIJWO1flA42j6ScLi/E/hESEeA/og9kxdOLp+s1WLsJqAHJRXw==
+"@heroku-cli/plugin-pg-v5@^7.42.12":
+  version "7.42.12"
+  resolved "https://registry.yarnpkg.com/@heroku-cli/plugin-pg-v5/-/plugin-pg-v5-7.42.12.tgz#64a86776dc81d5d915ea5c4e98fbbb1f5bd8299d"
+  integrity sha512-0cJZbv813Wo2xQ1TMjmYyw9npBrD5MK4k3BeaWb4Zc0U0YTL/eq8aed/70FlvhHC1ySA4GtVzkLYdlVh+cvTrQ==
   dependencies:
     "@heroku-cli/plugin-addons" "^1.2.29"
     bytes "^3.1.0"
