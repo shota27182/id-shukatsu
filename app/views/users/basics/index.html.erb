@@ -40,21 +40,21 @@
           </div>
           <div class="form-detail">
               <p>住所１</p>
-              <%=f.text_field :address1, class:"form-field" %>
+              <%=f.text_field :address1, class:"form-field", :placeholder => "例  東京都渋谷区恵比寿" %>
               <% if @users_basics_form.errors.include?(:address1) %>
                 <p style="color: red;"><%= @users_basics_form.errors.full_messages_for(:address1).first %>
               <% end %>
           </div>
           <div class="form-detail">
               <p>住所２</p>
-              <%=f.text_field :address2, class:"form-field" %>
+              <%=f.text_field :address2, class:"form-field", :placeholder => "例  1-24-15" %>
               <% if @users_basics_form.errors.include?(:address2) %>
                 <p style="color: red;"><%= @users_basics_form.errors.full_messages_for(:address2).first %>
               <% end %>
           </div>
           <div class="form-detail">
               <p>建物名・部屋番号</p>
-              <%=f.text_field :building_name, class:"form-field" %>
+              <%=f.text_field :building_name, class:"form-field", :placeholder => "例  シエルブルー恵比寿EAST6階"  %>
               <% if @users_basics_form.errors.include?(:building_name) %>
                 <p style="color: red;"><%= @users_basics_form.errors.full_messages_for(:building_name).first %>
               <% end %>
@@ -71,7 +71,7 @@
         <div class="general-title">所属情報</div>
         　<div class="form-detail">
               <p>大学名</p>
-              <%=f.text_field :university, class:"form-field" %>
+              <%=f.text_field :university, class:"form-field",:placeholder=> "例  ○○大学" %>
               <% if @users_basics_form.errors.include?(:university) %>
                 <p style="color: red;"><%= @users_basics_form.errors.full_messages_for(:university).first %>
               <% end %>
@@ -108,15 +108,15 @@
           </div>
           <div class="form-detail profile-birthday">
               <p>ゼミ・研究室</p>
-              <%=f.text_field :seminar, class:"form-field" %>
+              <%=f.text_area :seminar, class:"form-field", style:"height:70px;",:placeholder=>"例  〇〇ゼミ、××研究室、△△サークル" %>
               <% if @users_basics_form.errors.include?(:seminar) %>
                 <p style="color: red;"><%= @users_basics_form.errors.full_messages_for(:seminar).first %>
               <% end %>
           </div>
         　<div class="form-detail profile-birthday">
               <p>出身高校</p>
-              <%=f.text_field :highschool, class:"form-field" %>
-              <% if @users_basics_form.errors.include?(:highschool) %>
+              <%=f.text_field :highschool, class:"form-field",:placeholder =>"例  ○○県立〇〇高等学校、〇〇学園高等学校"  %>
+              <% if @users_basics_form.errors.include?(:highschool)%>
                 <p style="color: red;"><%= @users_basics_form.errors.full_messages_for(:highschool).first %>
               <% end %>
           </div>

@@ -34,9 +34,7 @@ class UsersBasicsForm
     validates :grade_id, presence: true
     validates :address1, presence: true
     validates :address2, presence: true
-    validates :building_name, presence: true
     validates :tel, presence: true, format: { with: VALID_PHONE_REGEX }
-    validates :highschool, presence: true
     validates :highschool, presence: true
     validates :seminar, presence: true
     validates :university, presence: true
