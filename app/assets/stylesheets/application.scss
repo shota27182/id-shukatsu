@@ -2991,6 +2991,38 @@ footer{
     
 }
 
+@media (min-width: 675px) and (max-width: 992px) {
+   .company-search{
+       width:29%;
+       margin:16px 2%;
+   }
+   
+   .search-box{
+       width:30%;
+   }
+   
+   .company-contents{
+       width:68%;
+       margin-right:2%;
+   }
+}
+
+@media (max-width: 674px) {
+   .company-search{
+       width:40%;
+       margin:16px 2.5%;
+   }
+   
+   .search-box{
+       width:40%;
+   }
+   
+   .company-contents{
+       width:58%;
+       margin-right:2%;
+   }
+}
+
 @media screen and (min-width: 0px) and (max-device-width: 920px) {
     body{
         margin-right:0px;
