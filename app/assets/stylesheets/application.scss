@@ -2989,6 +2989,9 @@ footer{
         margin:9px 1.5%;
     }
     
+    .article-profile{
+        width:100%;
+    }
 }
 
 @media (min-width: 675px) and (max-width: 992px) {
@@ -3005,6 +3008,10 @@ footer{
        width:68%;
        margin-right:2%;
    }
+   
+   .article-profile{
+        width:100%;
+    }
 }
 
 @media (max-width: 674px) {
@@ -3021,6 +3028,10 @@ footer{
        width:58%;
        margin-right:2%;
    }
+   
+   .article-profile{
+        width:100%;
+    }
 }
 
 @media screen and (min-width: 0px) and (max-device-width: 920px) {
