@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
+  <title>ページが見つかりません</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   body {
@@ -51,17 +51,59 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+  
+  b{
+    font-weight:bold;
+  }
+  
+  .sans{
+    font-size:medium;
+  }
+  
+  table{
+    border-collapse:separate;
+    white-space:normal;
+    line-height:normal;
+    font-style:normal;
+  }
+  
+  .h1{
+    color:#62A2E3;
+  }
+  
+  a{
+    color:#62A2E3;
+  }
   </style>
 </head>
 
-<body>
+<body bgcolor="#FFFFFF">
   <!-- This file lives in public/404.html -->
+  <center>
+    <%=link_to image_tag("logo.svg"), root_path %>
+    <br>
+    <br>
+    <table border="0" align="center"cellpadding="4">
+      <tbody>
+        <tr>
+          <td valign="middle" class="sans">
+            <b class="h1">
+              何かお探しですか？
+            </b>
+            <br>
+            "入力したURLが当サイトのページと一致しません"
+            <br>
+            <br>
+            <b>
+              <%=link_to 'ID就活トップページ', root_path  %>
+            </b>
+          </td<>
+        </tr>
+      </tbody\>
+    </table>
+  </center>
   <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
+    
   </div>
 </body>
 </html>

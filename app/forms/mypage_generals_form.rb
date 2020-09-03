@@ -2,18 +2,16 @@ class MypageGeneralsForm
     include ActiveModel::Model
     include ActiveModel::Attributes
 
-    attribute :user_id, :integer
-    attribute :name, :string
-    attribute :kana, :string
-    attribute :address1, :string
-    attribute :address2, :string
-    attribute :building_name, :string
-    attribute :tel, :string
-    attribute :sex, :string
-    attribute :birthday, :date
-    attribute 'birthday(1i)' 
-    attribute 'birthday(2i)'
-    attribute 'birthday(3i)'
+    attribute :company_id, :integer
+    attribute :man, :integer
+    attribute :woman, :integer
+    attribute :humanity_man, :integer
+    attribute :humanity_woman, :integer
+    attribute :science_man, :integer
+    attribute :science_woman, :integer
+    attribute :work_duration, :integer
+    attribute :overtime, :integer
+    attribute :holiday_use, :integer
     
     validates :address1, presence: true
     validates :address2, presence: true

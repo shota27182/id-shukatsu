@@ -1,0 +1,46 @@
+<div class="partner-sign-up">
+    <div class="form-heading">会社情報</div>
+    <%= form_with model: @partner_user_general_form, method: :post, url: admin_page_company_edit_general_index_path, local: true do |f| %>
+      <div class="general-profile">
+        <div class="general-title">基本情報</div>
+          <div class="form-detail form-top">
+            <p>会社ロゴ:</p>
+            <%= f.file_field :icon %>
+          </div>
+          <div>
+            <p>会社イメージ画像：</p>
+            <%= f.file_field :img %>
+          </div>
+          <div class="form-detail form-top">
+              <p>名前</p>
+              <%=f.text_field :name, class: "form-field"  %>
+          </div>
+          <div class="form-detail">
+              <p>フリガナ</p>
+              <%=f.text_field :kana, class:"form-field" %>
+          </div>
+          <div class="form-detail">
+              <p>住所</p>
+              <%=f.text_field :address, class:"form-field" %>
+          </div>
+          <div class="form-detail">
+              <p>事業内容</p>
+              <%=f.text_field :category, class:"form-field" %>
+          </div>
+          <div class="form-detail">
+              <p>従業員数</p>
+              <%=f.number_field :people, class:"form-field" %>
+          </div>
+          <div class="form-detail">
+              <p>採用ページリンク</p>
+              <%=f.text_field :url, class:"form-field" %>
+          </div>
+          <div class="form-detail">
+              <p>紹介文</p>
+              <%=f.text_field :introduction, class:"form-field" %>
+          </div>
+      </div>
+      <%= f.submit "次のステップへ進む", class: "form-submit" %>
+    <% end %>
+</div>
+

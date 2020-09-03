@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :mypage do
-    get 'friend_referrals/new'
-  end
   get 'edit_mail/index'
   get 'admin_user/index'
   get 'articles/show'
@@ -117,6 +114,8 @@ Rails.application.routes.draw do
       collection { post :import }
       get 'edit_general', to: 'edit_general#index'
       resources :edit_general ,only: [:create]
+      get 'edit_basic', to: 'edit_basic#index'
+      resources :edit_basic ,only: [:create]
     end
     get 'articles', to: 'articles#index'
     resources :articles, only: [:new, :create, :edit, :update]
