@@ -383,6 +383,10 @@ header{
 }
 
 .announce-wrapper{
+    background-color:#FFFFFF;
+    padding-left:12px;
+    padding-top:12px;
+    padding-bottom:8px;
     width:32%;
     height:337px;
 }
@@ -2889,6 +2893,79 @@ footer{
 .back-to-present{
     padding-top:29px;
     margin-bottom:16px;
+}
+
+@media screen and (min-width:1239px) {
+    /*　画面サイズが1024pxからはここを読み込む　*/
+    .profile-wrapper{
+        width:23.5%;
+        order:1;
+    }
+    
+    .favorite-event-wrapper{
+        width:23.5%;
+        order:2;
+    }
+    
+    .announce-wrapper{
+        width:23.5%;
+        order:3;
+    }
+    
+    .original-event-wrapper{
+        width:23.5%;
+        order:4;
+        margin-top:0px;
+        margin-left:2%;
+    }
+    
+    .pr-movie-wrapper{
+        width:49%;
+        order:5;
+    }
+    
+    .release-planning{
+        width:23.5%;
+    }
+    
+    .it-telework-wrapper{
+        order:6;
+    }
+    
+    .many-holiday-wrapper{
+        order:7;
+        margin-right:0px;
+        
+    }
+    
+    .company-feature-wrapper{
+        order:8;
+    }
+    
+    .consulting-introduce{
+        width:23.5%;
+    }
+    
+    .young-growth-wrapper{
+        order:9;
+        margin-right:2%;
+    }
+    
+    .no-entrysheet-wrapper{
+        order:10;
+    }
+    
+    .stable-stay-wrapper{
+        order:11;
+    }
+    
+    .casual-cloth-wrapper{
+        order:12;
+    }
+    
+    .browsing-recomended{
+        order:13;
+    }
 }
 
 @media screen and (min-width: 0px) and (max-device-width: 920px) {
