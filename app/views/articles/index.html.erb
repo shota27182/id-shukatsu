@@ -178,7 +178,7 @@
                 <div class="companies-wrapper">
                     <p>新着コラム</p>
                     <div class="companies-search">
-                        <% Article.all.order(id: "DESC").limit(6).each do |i| %>
+                        <% Article.all.order(id: "DESC").limit(8).each do |i| %>
                         <div class="event-search">
                             <%= image_tag i.img.to_s %>
                             <p><a href="/articles/<%= i.id %>"></a><%= i.title %></p>
@@ -189,7 +189,7 @@
                 <div class="companies-wrapper">
                     <p>人気コラム</p>
                     <div class="companies-search">
-                        <% Article.all.order(day_pageview: :desc).limit(6).each do |i| %>
+                        <% Article.all.order(day_pageview: :desc).limit(8).each do |i| %>
                         <div class="event-search">
                             <%= image_tag i.img.to_s %>
                             <p><a href="/articles/<%= i.id %>"></a><%= i.title %></p>

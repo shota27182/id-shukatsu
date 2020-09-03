@@ -1814,7 +1814,10 @@ footer{
     display:flex;
     flex-wrap:wrap;
     justify-content:flex-start;
+    height:405px;
+    overflow:hidden;
 }
+
 
 .company-search{
     width:18%;
@@ -1836,7 +1839,7 @@ footer{
 
 .event-search img{
     width:100%;
-    height:157px;
+    height:130px;
 }
 
 .event-search:hover img{
@@ -1845,6 +1848,11 @@ footer{
 
 .event-search p{
     font-size:14px;
+    height:30px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    
 }
 
 .company-search img{
@@ -1861,6 +1869,10 @@ footer{
 .company-search p{
     font-size:12px;
     text-align:center;
+    height:30px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
 }
 
 .company-search a{
@@ -2966,6 +2978,17 @@ footer{
     .browsing-recomended{
         order:13;
     }
+    
+    .company-search{
+        width:16%;
+        margin:16px 2%;
+    }
+    
+    .event-search{
+        width:22%;
+        margin:9px 1.5%;
+    }
+    
 }
 
 @media screen and (min-width: 0px) and (max-device-width: 920px) {

@@ -337,7 +337,7 @@
                 <div class="companies-wrapper">
                     <p>多角的な事業展開をしている企業</p>
                     <div class="companies-search">
-                        <% Company.joins(:company_features).where(company_features: {id: [7]}).limit(8).each do |a| %>
+                        <% Company.joins(:company_features).where(company_features: {id: [7]}).limit(10).each do |a| %>
                         <div class="company-search">
                             <% if a.icon.present? %>
                                 <%= image_tag a.icon.to_s %>
@@ -352,7 +352,7 @@
                 <div class="companies-wrapper">
                     <p>年間休日が多い企業</p>
                     <div class="companies-search">
-                        <% Company.joins(:welfares).where(welfares: {id: [15]}).limit(8).each do |a| %>
+                        <% Company.joins(:welfares).where(welfares: {id: [15]}).limit(10).each do |a| %>
                         <div class="company-search">
                             <% if a.icon.present? %>
                                 <%= image_tag a.icon.to_s %>
@@ -367,7 +367,7 @@
                 <div class="companies-wrapper">
                     <p>安定経営の企業</p>
                     <div class="companies-search">
-                        <% Company.joins(:company_features).where(company_features: {id: [9]}).limit(6).each do |a| %>
+                        <% Company.joins(:company_features).where(company_features: {id: [9]}).limit(10).each do |a| %>
                         <div class="company-search">
                             <% if a.icon.present? %>
                                 <%= image_tag a.icon.to_s %>

@@ -100,7 +100,7 @@
                     <% end %>
                     <div class="companies-search">
                         <% if params[:industry] || params[:area] || params[:work_style] ||  params[:welfare] || params[:feature] || params[:point] %>
-                            <% @event.limit(6).each do |i| %>
+                            <% @event.limit(8).each do |i| %>
                                 <div class="event-search">
                                     <%=image_tag i.img.to_s %>
                                     <p><a href="/events/<%= i.id %>"></a><%= i.name %></p>
@@ -124,7 +124,7 @@
                     <% end %>
                     <div class="companies-search">
                         <% if params[:industry] || params[:area] || params[:work_style] ||  params[:welfare] || params[:feature] || params[:point] %>
-                            <% @company.limit(8).each do |a| %>
+                            <% @company.limit(10).each do |a| %>
                                 <div class="company-search">
                                     <%= image_tag a.icon.to_s %>
                                     <p><a href="/companies/<%= a.id %>"><%= a.name %></a></p>
