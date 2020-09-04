@@ -17,14 +17,13 @@ class ApplicationController < ActionController::Base
     def active_user
       if logged_in?
         store_location
-        redirect_to '/mypage'
+        redirect_back_or '/mypage'
       end
     end
 
     # ログイン済みユーザーかどうか確認
     def logged_in_user
       unless logged_in?
-        store_location
         flash[:danger] = "Please log in."
         redirect_to login_url
       end
@@ -32,7 +31,6 @@ class ApplicationController < ActionController::Base
     
     def basic_registered_user
       unless logged_in? && current_user.status == 'basic_registered' 
-        store_location
         flash[:danger] = "Please log in."
         redirect_to '/users/basics'
       end

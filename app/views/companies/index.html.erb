@@ -158,8 +158,15 @@
         </div>
         <div class="company-contents" id="companies-results">
             <% if params[:industry] || params[:name]%>
+                <div class="">
+                    <% if params[:page] %>
+                        検索結果 <%= @get_companies.count %>件中 <%= (params[:page].to_i*12-11).to_s %>-<%= (params[:page].to_i*12-12 + @show_companies.count).to_s %> %>
+                    <% else %>
+                        検索結果 <%= @get_companies.count %>件中 1-<%= @show_companies.count %>
+                    <% end %>
+                </div>
                 <div class="company-contents-wrapper">
-                    <% @get_companies.each do |get_company| %>
+                    <% @show_companies.each do |get_company| %>
                     <div class="company-box">
                         <div class="company-box-head-image">
                             <% if get_company.img.present? %>
@@ -210,7 +217,7 @@
                     </div>
                     <% end %>
                 </div>
-                <%= paginate(@get_companies) %>
+                <%= paginate(@show_companies) %>
             <% else %>
                 <% if logged_in? && current_user.status == 'core_registered' %>
                 <div class="recomended-search" id="recomended-first">
@@ -412,7 +419,7 @@
     var point_vals = $('input[name=company_point]:checked').map(function(){
         return  $(this).val();
     }).get();
-    window.location.href = '/companies?industry=' + industry_vals + '&area=' + area_vals + '&occupation=' + occupation_vals + '&work_style=' + work_style_vals + '&welfare=' + welfare_vals + '&feature=' + feature_vals + '&point=' + point_vals + '#companies-results';
+    window.location.href = '/companies?industry=' + industry_vals + '&area=' + area_vals + '&occupation=' + occupation_vals + '&work_style=' + work_style_vals + '&welfare=' + welfare_vals + '&feature=' + feature_vals + '&page=1' +'&point=' + point_vals + '#companies-results';
     
   });
   

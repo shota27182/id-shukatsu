@@ -1,5 +1,5 @@
 class EntryController < ApplicationController
-  before_action :logged_in_user
+  before_action :core_registered_user
   before_action :event_applied_user, only:[:new, :create]
   
   def new

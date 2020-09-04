@@ -49,10 +49,11 @@ class CompaniesController < ApplicationController
       end
       @PointsSearch = params[:point].split(",").map(&:to_i)
       if @PointsSearch.empty?
-        @get_companies = @get_companies.page(params[:page]).per(12)
+        @get_companies = @get_companies
       else
-        @get_companies = @get_companies.includes(:company_points).where(company_points: {id: params[:point].split(",").map(&:to_i)}).page(params[:page]).per(12) 
+        @get_companies = @get_companies.includes(:company_points).where(company_points: {id: params[:point].split(",").map(&:to_i)})
       end
+      @show_companies = @get_companies.page(params[:page]).per(12) 
     end
     
     if params[:name]

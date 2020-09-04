@@ -5,6 +5,6 @@
         <p>登録が完了しました！(なおプロフィール情報はマイページより変更が可能です。<br>早速ID就活で自由な就活を始めましょう！</p>
     </div>
     <div class="profile-tab">
-        <a href="/mypage" class="">ID就活で就活をスタートする</a>
+        <%= link_to 'ID就活で就活をスタートする', session[:forwarding_url] || '/mypage' %>
     </div>
 </div>
