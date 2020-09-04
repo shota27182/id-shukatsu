@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :admin_page do
+    get 'edit_unique/index'
+  end
   get 'edit_mail/index'
   get 'admin_user/index'
   get 'articles/show'
@@ -116,12 +119,10 @@ Rails.application.routes.draw do
       resources :edit_general ,only: [:create]
       get 'edit_basic', to: 'edit_basic#index'
       resources :edit_basic ,only: [:create]
+      get 'edit_unique', to: 'edit_unique#index'
+      resources :edit_unique ,only: [:create]
     end
-    get 'articles', to: 'articles#index'
-    resources :articles, only: [:new, :create, :edit, :update]
-    resources :article_images, only: [:create]
   end
-  
   namespace :infos do
     get 'privacy', to: 'privacy#index'
     get 'terms', to: 'terms#index'

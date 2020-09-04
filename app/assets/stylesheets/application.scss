@@ -2915,6 +2915,14 @@ footer{
     margin-bottom:16px;
 }
 
+.result-count{
+    margin-left:3%;
+}
+
+.result-count p{
+    color:#343434;
+}
+
 @media screen and (min-width:1200px) {
     /*　画面サイズが1024pxからはここを読み込む　*/
     .profile-wrapper{

@@ -158,11 +158,11 @@
         </div>
         <div class="company-contents" id="companies-results">
             <% if params[:industry] || params[:name]%>
-                <div class="">
+                <div class="result-count">
                     <% if params[:page] %>
-                        検索結果 <%= @get_companies.count %>件中 <%= (params[:page].to_i*12-11).to_s %>-<%= (params[:page].to_i*12-12 + @show_companies.count).to_s %> %>
+                        <p>検索結果 <%= @get_companies.count %>件中 <%= (params[:page].to_i*12-11).to_s %>-<%= (params[:page].to_i*12-12 + @show_companies.count).to_s %></p>
                     <% else %>
-                        検索結果 <%= @get_companies.count %>件中 1-<%= @show_companies.count %>
+                        <p>検索結果 <%= @get_companies.count %>件中 1-<%= @show_companies.count %></p>
                     <% end %>
                 </div>
                 <div class="company-contents-wrapper">
