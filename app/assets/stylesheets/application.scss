@@ -117,7 +117,7 @@ header{
 
 .header-message{
     float:left;
-    margin-left:205px;
+    margin-left:20%;
 }
 
 .header-message p{
@@ -265,6 +265,9 @@ header{
     font-size:14px;
     margin-left:4%;
     padding-top:12px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .my-top-link-middle{
@@ -325,7 +328,7 @@ header{
 
 .my-top-link img{
     width:100%;
-    height:80%;
+    height:70%;
 }
 
 .favorite-event-wrapper{
@@ -347,8 +350,9 @@ header{
 }
 
 .head p{
-    font-size:16px;
+    font-size:14px;
     margin-left:3.5%;
+    font-weight:bold;
 }
 
 .event-icon{
@@ -2911,21 +2915,24 @@ footer{
     margin-bottom:16px;
 }
 
-@media screen and (min-width:1239px) {
+@media screen and (min-width:1200px) {
     /*　画面サイズが1024pxからはここを読み込む　*/
     .profile-wrapper{
         width:23.5%;
         order:1;
+        height:300px;
     }
     
     .favorite-event-wrapper{
         width:23.5%;
         order:2;
+        height:300px;
     }
     
     .announce-wrapper{
         width:23.5%;
         order:3;
+        height:300px;
     }
     
     .original-event-wrapper{
@@ -2933,15 +2940,26 @@ footer{
         order:4;
         margin-top:0px;
         margin-left:2%;
+        height:300px;
     }
     
     .pr-movie-wrapper{
         width:49%;
         order:5;
+        height:300px;
+    }
+    
+    .movie-link img{
+        height:300px;
     }
     
     .release-planning{
         width:23.5%;
+        height:300px;
+    }
+    
+    .release-planning img{
+        margin-bottom:7px;
     }
     
     .it-telework-wrapper{
@@ -2960,6 +2978,16 @@ footer{
     
     .consulting-introduce{
         width:23.5%;
+        height:300px;
+    }
+    
+    .consulting-introduce img{
+        margin-bottom:7px;
+    }
+    
+    .head p{
+        font-size:14px;
+        font-weight:bold;
     }
     
     .young-growth-wrapper{
@@ -2996,6 +3024,10 @@ footer{
     .article-profile{
         width:100%;
     }
+    
+    .my-top-link p{
+        font-size:10px;
+    }
 }
 
 @media (min-width: 675px) and (max-width: 992px) {
@@ -3015,6 +3047,32 @@ footer{
    
    .article-profile{
         width:100%;
+    }
+    
+    .head p{
+        font-size:12px;
+    }
+    
+    .my-top-link img{
+        width:100%;
+        height:60%;
+    }
+    
+    .my-top-link p{
+        font-size:10px;
+    }
+}
+
+@media screen and (max-width: 750px){
+    .head p{
+        font-size:10px;
+    }
+    
+    .my-top-link p{
+        font-size:10px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 }
 
