@@ -4269,6 +4269,7 @@ footer{
     
     .company-head-title{
         float:left;
+        width:73%;
     }
     
     .company-head-title p{
@@ -4282,7 +4283,6 @@ footer{
     }
     
     .company-head-right{
-        float:right;
         display:inline-block;
         text-align:center;
         background-color:#62E3DE;
@@ -4293,6 +4293,13 @@ footer{
         margin-top:10px;
     }
     
+    .company-head-super-right{
+        width:100%;
+        margin-left:50%;
+        margin-top:0px;
+        margin-bottom:10px;
+    }
+    
     .company-head-right a{
         font-size:16px;
         color:white;
@@ -4300,6 +4307,8 @@ footer{
     }
     
     .company-head{
+        display:flex;
+        flex-wrap:wrap;
         width:100%;
     }
     

@@ -18,6 +18,6 @@ class AdminPage::EditBasicController < ApplicationController
   private
       
       def company_params
-        params.require(:company_general).permit(company_profiles_attributes:[:id, :title, :content, :_destroy],company_requirement_attributes:[:id,:occupation, :work, :qualification, :holiday, :welfare])
+        params.require(:company_general).permit(company_general_attributes:[:id, :man, :woman, :humanity_man, :humanity_woman, :science_man, :science_woman, :work_duration, :overtime, :holiday_use, :_destroy, company_detail_generals_attributes:[]],company_requirement_attributes:[:id,:occupation, :work, :qualification, :holiday, :welfare])
       end
 end
