@@ -2925,6 +2925,11 @@ footer{
 
 @media screen and (min-width:1200px) {
     /*　画面サイズが1024pxからはここを読み込む　*/
+    
+    .company-head-left{
+        width:9%;
+    }
+    
     .profile-wrapper{
         width:23.5%;
         order:1;
