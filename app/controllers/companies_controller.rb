@@ -69,6 +69,15 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find(params[:id]) 
+    if @company.company_general.present?
+      gon.all_date = [@company.company_general.woman, @company.company_general.man]
+      gon.humanity_date = [@company.company_general.humanity_woman, @company.company_general.science_woman]
+      gon.science_date = [@company.company_general.humanity_man, @company.company_general.science_man]
+    else
+      gon.all_date = [20,80]
+      gon.humanity_date = [40, 60]
+      gon.science_date = [50, 50]
+    end
     render :layout => 'application3'
   end
   

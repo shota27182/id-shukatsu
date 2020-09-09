@@ -43,7 +43,13 @@
 //= require plugins/video.min.js
 //= require summernote/summernote-bs4.min
 //= require summernote-image-attributes
+//= require Chart.bundle
+//= require chartkick
 //= require activestorage
+//= require Chart.min
+//= require chartjs-plugin-stacked100
+//= require Chart.roundedBarCharts
+//= require Chart.roundedBarCharts.min
 
 //= require turbolinks
 

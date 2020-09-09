@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_25_160919) do
+ActiveRecord::Schema.define(version: 2020_09_09_082100) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -64,6 +64,12 @@ ActiveRecord::Schema.define(version: 2020_08_25_160919) do
     t.text "content"
     t.string "created_by"
     t.integer "day_pageview", default: 0, null: false
+  end
+
+  create_table "average_salaries", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "basics", force: :cascade do |t|
@@ -385,6 +391,12 @@ ActiveRecord::Schema.define(version: 2020_08_25_160919) do
     t.index ["university_id"], name: "index_faculties_on_university_id"
   end
 
+  create_table "first_salaries", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "generals", force: :cascade do |t|
     t.string "name"
     t.string "kana"
@@ -512,11 +524,13 @@ ActiveRecord::Schema.define(version: 2020_08_25_160919) do
 
   create_table "salaries", force: :cascade do |t|
     t.integer "company_id"
-    t.integer "first_salary"
-    t.integer "average_salary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "first_salary_id"
+    t.integer "average_salary_id"
+    t.index ["average_salary_id"], name: "index_salaries_on_average_salary_id"
     t.index ["company_id"], name: "index_salaries_on_company_id"
+    t.index ["first_salary_id"], name: "index_salaries_on_first_salary_id"
   end
 
   create_table "tags", force: :cascade do |t|

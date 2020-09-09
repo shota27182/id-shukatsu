@@ -1483,6 +1483,74 @@ footer{
     margin:0px;
 }
 
+.graf{
+    display:flex;
+    flex-wrap:wrap;
+}
+
+.working-date-wrapper{
+    width:33%;
+    display:flex;
+}
+
+.working-icon{
+    width:45%;
+    text-align:center;
+}
+
+.working-text p{
+    padding-top:0px;
+    margin-bottom:0px;
+}
+
+.graf-left{
+    width:40%;
+    position: relative;
+}
+
+.graf-left p{
+   position: absolute;
+   top: 0;
+   left: 0;
+   margin: auto;
+   right: 0;
+   margin: auto;
+   text-align: center;
+   top: 50%;
+   -webkit-transform: translateY(-50%);
+   transform: translateY(-50%); 
+}
+
+.welfare-indivisual-wrapper{
+    width:100%;
+    display:flex;
+}
+
+.welfare-indivisual-icon{
+    width:10%;
+}
+
+.welfare-indivisual-main{
+    width:90%;
+}
+
+.welfare-indivisual-graf{
+    display:flex;
+    flex-wrap:wrap;
+}
+
+.welfare-indivisual-graf p{
+    margin:5px 2%;
+    color:#A7A7A7;
+    background-color:#EAEAEA;
+    width:29.3%;
+    text-align:center;
+    height:26.27px;
+    line-height:26.27px;
+    padding-top:0px;
+    flex-grow:2;
+}
+
 .content-companies-index{
     display:flex;
     justify-content:space-between;
@@ -2921,6 +2989,11 @@ footer{
 
 .result-count p{
     color:#343434;
+}
+
+.big-blue{
+    font-size:28px;
+    color:#3B6DA0;
 }
 
 @media screen and (min-width:1200px) {

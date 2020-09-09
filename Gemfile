@@ -44,6 +44,11 @@ gem 'whenever', require: false
 gem "wysiwyg-rails"
 gem 'carrierwave'
 gem 'mini_magick'
+gem "chartkick"
+gem 'chartable'
+gem 'chart-js-rails', '~> 0.1.4'
+gem 'bootsnap', '>= 1.4.2', require: false
+gem 'gon', '~> 6.2.0'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

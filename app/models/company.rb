@@ -33,8 +33,8 @@ class Company < ApplicationRecord
     has_one :salary, dependent: :destroy
     has_many :company_house_allowances, dependent: :destroy
     has_many :house_allowances, through: :company_house_allowances
-    has_many :company_healthes, dependent: :destroy
-    has_many :healthes, through: :company_healthes
+    has_many :company_healths, dependent: :destroy
+    has_many :healths, through: :company_healths
     has_many :company_nursings, dependent: :destroy
     has_many :nursings, through: :company_nursings
     has_many :company_holidays, dependent: :destroy

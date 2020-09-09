@@ -133,7 +133,276 @@
                 </div>
                 <% end %>
             </div>
-            <% end %>
+            <div class="company-introduction">
+                <div class="company-introduction-title">基本データ</div>
+                <% if @company.company_requirement.occupation.present? %>
+                    <div class="recruit-form">
+                        <div class="recruit-form-left">
+                            <p>新卒採用の<br>職種別男女比</p>
+                        </div>
+                        <div class="recruit-form-right graf">
+                            <div class="graf-left">
+                                <canvas id="myChart" style="position: relative; height:auto; width:100%"></canvas>
+                                <p>全体</p>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+                    <div class="recruit-form">
+                        <div class="recruit-form-left">
+                            <p>新卒採用の<br>文理別男女比</p>
+                        </div>
+                        <div class="recruit-form-right">
+                            <canvas id="humanityChart" style="position: relative; height:auto; width:100%"></canvas>
+                        </div>
+                    </div>
+                <% if @company.company_requirement.qualification.present? %>
+                    <div class="recruit-form">
+                        <div class="recruit-form-left">
+                            <p>働き方データ</p>
+                        </div>
+                        <div class="recruit-form-right graf">
+                            <% if @company.company_general.present?%>
+                                <div class="working-date-wrapper">
+                                    <div class="working-icon">
+                                        <img src="/assets/working_year.svg">
+                                    </div>
+                                    <div class="working-text">
+                                        <p>平均勤続年数</p>
+                                        <p><span class="big-blue"><%= @company.company_general.work_duration %></span>年</p>
+                                    </div>
+                                </div>
+                            <% end %>
+                            <% if @company.company_general.present?%>
+                                <div class="working-date-wrapper">
+                                    <div class="working-icon">
+                                        <img src="/assets/overtime.svg">
+                                    </div>
+                                    <div class="working-text">
+                                        <p>平均残業時間</p>
+                                        <p><span class="big-blue"><%= @company.company_general.overtime %></span>時間</p>
+                                    </div>
+                                </div>
+                            <% end %>
+                            <% if @company.company_general.present?%>
+                                <div class="working-date-wrapper">
+                                    <div class="working-icon">
+                                        <img src="/assets/rest.svg">
+                                    </div>
+                                    <div class="working-text">
+                                        <p>有給休暇取得率</p>
+                                        <p><span class="big-blue"><%= @company.company_general.holiday_use %></span>%</p>
+                                    </div>
+                                </div>
+                            <% end %>
+                        </div>
+                    </div>
+                <% end %>
+                <% end %>
+            </div>
+            <div class="company-introduction">
+                <div class="company-introduction-title">待遇(働き方・福利厚生等)データ</div>
+                <% if @company.company_requirement.occupation.present? %>
+                    <div class="recruit-form">
+                        <div class="recruit-form-left">
+                            <p>働き方</p>
+                        </div>
+                        <div class="recruit-form-right">
+                            <div class="welfare-indivisual-wrapper">
+                                <div class="welfare-indivisual-icon">
+                                    <img src="/assets/welfare_telework.svg">
+                                </div>
+                                <div class="welfare-indivisual-main">
+                                    <div class="welfare-indivisual-title">
+                                        <p>テレワーク(リモートワーク)</p>
+                                    </div>
+                                    <div class="welfare-indivisual-graf">
+                                        <% Telework.all.each do |i| %>
+                                            <% if @company.teleworks.include?(i) %>
+                                                <p><%=i.name %></p>
+                                            <% else %>
+                                                <p><%=i.name %></p>
+                                            <% end %>
+                                        <% end %>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="welfare-indivisual-wrapper">
+                                <div class="welfare-indivisual-icon">
+                                    <img src="/assets/welfare_worktime.svg">
+                                </div>
+                                <div class="welfare-indivisual-main">
+                                    <div class="welfare-indivisual-title">
+                                        <p>働く時間</p>
+                                    </div>
+                                    <div class="welfare-indivisual-graf">
+                                        <% WorkTime.all.each do |i| %>
+                                            <% if @company.work_times.include?(i) %>
+                                                <p><%= i.name %></p>
+                                            <% else %>
+                                                <p><%= i.name %></p>
+                                            <% end %>
+                                        <% end %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+                    <div class="recruit-form">
+                        <div class="recruit-form-left">
+                            <p>給与</p>
+                        </div>
+                        <div class="recruit-form-right">
+                            <div class="welfare-indivisual-wrapper">
+                                <div class="welfare-indivisual-icon">
+                                    <img src="/assets/welfare_salary.svg">
+                                </div>
+                                <div class="welfare-indivisual-main">
+                                    <div class="welfare-indivisual-title">
+                                        <p>モデル年収</p>
+                                    </div>
+                                    <% if @company.salary.present? %>
+                                        <div class="welfare-indivisual-graf">
+                                            <% FirstSalary.all.each do |i| %>
+                                                <% if i.id == @company.salary.first_salary_id %>
+                                                    <p><%= i.name %></p>
+                                                <% else %>
+                                                    <p><%= i.name %></p>
+                                                <% end %>
+                                            <% end %>
+                                        </div>
+                                    <% end %> 
+                                </div>
+                            </div>
+                            <div class="welfare-indivisual-wrapper">
+                                <div class="welfare-indivisual-icon">
+                                    <img src="/assets/welfare_average_salary.svg">
+                                </div>
+                                <div class="welfare-indivisual-main">
+                                    <div class="welfare-indivisual-title">
+                                        <p>平均給与(30歳)</p>
+                                    </div>
+                                    <% if @company.salary.present? %>
+                                        <div class="welfare-indivisual">
+                                            <% AverageSalary.all.each do |i| %>
+                                                <% if i.id == @company.salary.average_salary_id %>
+                                                    <p><%= i.name %></p>
+                                                <% else %>
+                                                    <p><%= i.name %></p>
+                                                <% end %>
+                                            <% end %>
+                                        </div>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% if @company.company_requirement.qualification.present? %>
+                    <div class="recruit-form">
+                        <div class="recruit-form-left">
+                            <p>福利厚生</p>
+                        </div>
+                        <div class="recruit-form-right">
+                            <div class="welfare-indivisual-wrapper">
+                                <div class="welfare-indivisual-icon">
+                                    <img src="/assets/welfare_house.svg">
+                                </div>
+                                <div class="welfare-indivisual-main">
+                                    <div class="welfare-indivisual-title">
+                                        <p>住宅手当</p>
+                                    </div>
+                                    <div class="welfare-indivisual-graf">
+                                        <% HouseAllowance.all.each do |i| %>
+                                            <% if @company.house_allowances.include?(i) %>
+                                                <p><%= i.name %></p>
+                                            <% else %>
+                                                <p><%= i.name %></p>
+                                            <% end %>
+                                        <% end %>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="welfare-indivisual-wrapper">
+                                <div class="welfare-indivisual-icon">
+                                    <img src="/assets/welfare_health.svg">
+                                </div>
+                                <div class="welfare-indivisual-main">
+                                    <div class="welfare-indivisual-title">
+                                        <p>健康関連</p>
+                                    </div>
+                                    <div class="welfare-indivisual-graf">
+                                        <% Health.all.each do |i| %>
+                                            <% if @company.healths.include?(i) %>
+                                                <p><%= i.name %></p>
+                                            <% else %>
+                                                <p><%= i.name %></p>
+                                            <% end %>
+                                        <% end %>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="welfare-indivisual-wrapper">
+                                <div class="welfare-indivisual-icon">
+                                    <img src="/assets/welfare_childcare.svg">
+                                </div>
+                                <div class="welfare-indivisual-main">
+                                    <div class="welfare-indivisual-title">
+                                        <p>育児・介護関連</p>
+                                    </div>
+                                    <div class="welfare-indivisual-graf">
+                                        <% Nursing.all.each do |i| %>
+                                            <% if @company.nursings.include?(i) %>
+                                                <p><%= i.name %></p>
+                                            <% else %>
+                                                <p><%= i.name %></p>
+                                            <% end %>
+                                        <% end %>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="welfare-indivisual-wrapper">
+                                <div class="welfare-indivisual-icon">
+                                    <img src="/assets/welfare_holiday.svg">
+                                </div>
+                                <div class="welfare-indivisual-main">
+                                    <div class="welfare-indivisual-title">
+                                        <p>休暇関連</p>
+                                    </div>
+                                    <div class="welfare-indivisual-graf">
+                                        <% Holiday.all.each do |i| %>
+                                            <% if @company.holidays.include?(i) %>
+                                                <p><%= i.name %></p>
+                                            <% else %>
+                                                <p><%= i.name %></p>
+                                            <% end %>
+                                        <% end %>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="welfare-indivisual-wrapper">
+                                <div class="welfare-indivisual-icon">
+                                    <img src="/assets/welfare_disaster.svg">
+                                </div>
+                                <div class="welfare-indivisual-main">
+                                    <div class="welfare-indivisual-title">
+                                        <p>慶弔・災害関連</p>
+                                    </div>
+                                    <div class="welfare-indivisual-graf">
+                                        <% Condolence.all.each do |i| %>
+                                            <% if @company.holidays.include?(i) %>
+                                                <p><%= i.name %></p>
+                                            <% else %>
+                                                <p><%= i.name %></p>
+                                            <% end %>
+                                        <% end %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
         </div>
         <div class="company-middle-right">
             <div class="company-information">
@@ -247,5 +516,95 @@
         location.href=$(this).find('a').attr('href');
     });
     
+    
+});
+
+ var dataLabelPlugin = {
+    afterDatasetsDraw: function (chart, easing) {
+    // To only draw at the end of animation, check for easing === 1
+    var ctx = chart.ctx;
+
+    chart.data.datasets.forEach(function (dataset, i) {
+        var dataSum = 0;
+        dataset.data.forEach(function (element){
+            dataSum += element;
+        });
+
+        var meta = chart.getDatasetMeta(i);
+        if (!meta.hidden) {
+            meta.data.forEach(function (element, index) {
+            // Draw the text in black, with the specified font
+
+            var fontSize = 8;
+            var fontStyle = 'normal';
+            var fontFamily = 'Helvetica Neue';
+                                        ctx.font = Chart.helpers.fontString(fontSize, fontStyle, fontFamily);
+
+            // Just naively convert to string for now
+            var dataString = (Math.round(dataset.data[index] / dataSum * 1000)/10).toString() + "%";
+
+            // Make sure alignment settings are correct
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+
+            var padding = 5;
+            var position = element.tooltipPosition();
+            ctx.fillText(dataString, position.x, position.y + (fontSize / 2) - padding);
+            });
+        }
+        });
+    }
+    };
+
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    datasets: [{
+      label: 'A_kun',
+      backgroundColor: [
+              "#FFDEEB",
+              "#DEEFFF"
+          ],
+      data: gon.all_date
+    }]
+  },
+  plugins: [dataLabelPlugin]
+});
+
+
+
+new Chart(document.getElementById("humanityChart"), {
+  type: "horizontalBar",
+  data: {
+    labels: ["■文系", "■理系"],
+    datasets: [
+      { label: "女性", data: gon.humanity_date, backgroundColor: "#FFDEEB" },
+      { label: "男性", data: gon.science_date, backgroundColor: "#DEEFFF" }
+    ]
+  },
+  options: {
+    legend: {
+            display: false
+    },
+    plugins: {
+      stacked100: { enable: true }
+    },
+    scales: {
+        xAxes: [{
+          display: false,
+          stacked: false,
+          gridLines: {
+            display: false
+          }
+        }],
+        yAxes: [{
+          gridLines: {
+            drawBorder: false,
+            display: false
+          }
+        }]
+    }
+  }
 });
 </script>

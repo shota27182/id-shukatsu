@@ -2,6 +2,7 @@
   "dependencies": {
     "@rails/webpacker": "5.1.1",
     "actiontext": "https://github.com/kobaltz/actiontext",
+    "chartjs-plugin-stacked100": "^0.7.1",
     "css-loader": "^3.6.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "jquery": "^3.5.1",
