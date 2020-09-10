@@ -77,6 +77,8 @@ class CompaniesController < ApplicationController
       gon.all_date = [20,80]
       gon.humanity_date = [40, 60]
       gon.science_date = [50, 50]
+      gon.occupation_man_date = [30,70,40]
+      gon.occupation_woman_date = [40,60,60]
     end
     render :layout => 'application3'
   end

@@ -144,6 +144,9 @@
                             <canvas id="myChart" style="position: relative; height:100%; width:100%;"></canvas>
                             <p>全体</p>
                         </div>
+                        <div class="graf-right">
+                            <canvas id="occupationChart" style="position: relative; height:auto; width:100%;,margin-top:20%;"></canvas>
+                        </div>
                         <div class="graf-no-datum occupation-rate">
                             <p>データがありません</p>
                         </div>
@@ -606,9 +609,6 @@ var myChart = new Chart(ctx, {
   plugins: [dataLabelPlugin]
 });
 
-
-
-
 new Chart(document.getElementById("humanityChart"), {
   type: "horizontalBar",
   data: {
@@ -642,4 +642,39 @@ new Chart(document.getElementById("humanityChart"), {
     }
   }
 });
+
+new Chart(document.getElementById("occupationChart"), {
+  type: "horizontalBar",
+  data: {
+    labels: ["■セールス職", "■エンジニア職", "■マーケティング職"],
+    datasets: [
+      { label: "女性", data: gon.occupation_woman_date, backgroundColor: "#FFDEEB" },
+      { label: "男性", data: gon.occupation_man_date, backgroundColor: "#DEEFFF" }
+    ]
+  },
+  options: {
+    legend: {
+            display: false
+    },
+    plugins: {
+      stacked100: { enable: true }
+    },
+    scales: {
+        xAxes: [{
+          display: false,
+          stacked: false,
+          gridLines: {
+            display: false
+          }
+        }],
+        yAxes: [{
+          gridLines: {
+            drawBorder: false,
+            display: false
+          }
+        }]
+    }
+  }
+});
+
 </script>
