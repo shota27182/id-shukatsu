@@ -286,7 +286,13 @@
                                                 <% end %>
                                             <% end %>
                                         </div>
-                                    <% end %> 
+                                    <% else %>
+                                        <div class="welfare-indivisual-graf">
+                                            <% FirstSalary.all.each do |i| %>
+                                                <p><%= i.name %></p>
+                                            <% end %>
+                                        </div>
+                                    <% end %>
                                 </div>
                             </div>
                             <div class="welfare-indivisual-wrapper">
@@ -298,13 +304,19 @@
                                         <p>平均給与(30歳)</p>
                                     </div>
                                     <% if @company.salary.present? %>
-                                        <div class="welfare-indivisual">
+                                        <div class="welfare-indivisual-graf">
                                             <% AverageSalary.all.each do |i| %>
                                                 <% if i.id == @company.salary.average_salary_id %>
                                                     <p><%= i.name %></p>
                                                 <% else %>
                                                     <p><%= i.name %></p>
                                                 <% end %>
+                                            <% end %>
+                                        </div>
+                                    <% else %>
+                                        <div class="welfare-indivisual-graf">
+                                            <% AverageSalary.all.each do |i| %>
+                                                <p><%= i.name %></p>
                                             <% end %>
                                         </div>
                                     <% end %>
