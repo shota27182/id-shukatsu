@@ -165,42 +165,50 @@
                         <p>働き方データ</p>
                     </div>
                     <div class="recruit-form-right graf basic-datum">
-                        <% if @company.company_general.present?%>
-                            <div class="working-date-wrapper">
-                                <div class="working-icon">
-                                    <img src="/assets/working_year.svg">
-                                </div>
-                                <div class="working-text">
-                                    <p>平均勤続年数</p>
+                        <div class="working-date-wrapper">
+                            <div class="working-icon">
+                                <img src="/assets/working_year.svg">
+                            </div>
+                            <div class="working-text">
+                                <p>平均勤続年数</p>
+                                <% if @company.company_general.blank? || (@company.company_general.present? && @company.company_general.work_duration.blank?) %>
+                                    <p><span class="big-blue">15</span>年</p>
+                                <% else %>
                                     <p><span class="big-blue"><%= @company.company_general.work_duration %></span>年</p>
-                                </div>
+                                <% end %>
                             </div>
-                        <% end %>
-                        <% if @company.company_general.present?%>
-                            <div class="working-date-wrapper">
-                                <div class="working-icon">
-                                    <img src="/assets/overtime.svg">
-                                </div>
-                                <div class="working-text">
-                                    <p>平均残業時間</p>
+                        </div>
+                        <div class="working-date-wrapper">
+                            <div class="working-icon">
+                                <img src="/assets/overtime.svg">
+                            </div>
+                            <div class="working-text">
+                                <p>平均残業時間</p>
+                                <% if @company.company_general.blank? || (@company.company_general.present? && @company.company_general.overtime.blank?) %>    
+                                    <p><span class="big-blue">30</span>時間</p>
+                                <% else %>
                                     <p><span class="big-blue"><%= @company.company_general.overtime %></span>時間</p>
-                                </div>
+                                <% end %>
                             </div>
-                        <% end %>
-                        <% if @company.company_general.present?%>
-                            <div class="working-date-wrapper">
+                        </div>
+                        <div class="working-date-wrapper">
                                <div class="working-icon">
                                     <img src="/assets/rest.svg">
                                 </div>
                                 <div class="working-text">
                                     <p>有給休暇取得率</p>
-                                    <p><span class="big-blue"><%= @company.company_general.holiday_use %></span>%</p>
+                                    <% if @company.company_general.blank? || (@company.company_general.present? && @company.company_general.holiday_use.blank?) %> 
+                                        <p><span class="big-blue">60</span>%</p>
+                                    <% else %>
+                                        <p><span class="big-blue"><%= @company.company_general.holiday_use %></span>%</p>
+                                    <% end %>
                                 </div>
+                        </div>
+                        <% if @company.company_general.blank? %>
+                            <div class="graf-no-datum">
+                                <p>データがありません</p>
                             </div>
                         <% end %>
-                        <div class="graf-no-datum">
-                            <p>データがありません</p>
-                        </div>
                     </div>
                 </div>
                 <% end %>
@@ -307,7 +315,6 @@
                             </div>
                         </div>
                     </div>
-                <% if @company.company_requirement.qualification.present? %>
                     <div class="recruit-form">
                         <div class="recruit-form-left">
                             <p>福利厚生</p>
@@ -413,7 +420,6 @@
                             </div>
                         </div>
                     </div>
-                <% end %>
             </div>
         </div>
         <div class="company-middle-right">
