@@ -234,7 +234,7 @@
                                     <div class="welfare-indivisual-graf">
                                         <% Telework.all.each do |i| %>
                                             <% if @company.teleworks.include?(i) %>
-                                                <p><%=i.name %></p>
+                                                <p style="background-color:#3B6DA0; color:white;"><%=i.name %></p>
                                             <% else %>
                                                 <p><%=i.name %></p>
                                             <% end %>
@@ -253,7 +253,7 @@
                                     <div class="welfare-indivisual-graf">
                                         <% WorkTime.all.each do |i| %>
                                             <% if @company.work_times.include?(i) %>
-                                                <p><%= i.name %></p>
+                                                <p style="background-color:#3B6DA0; color:white;"><%= i.name %></p>
                                             <% else %>
                                                 <p><%= i.name %></p>
                                             <% end %>
@@ -261,9 +261,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="graf-no-datum">
-                                <p>データがありません</p>
-                            </div>
+                            <% if (@company.teleworks.count == 0) && (@company.work_times.count == 0) %>
+                                <div class="graf-no-datum">
+                                    <p>データがありません</p>
+                                </div>
+                            <% end %>
                         </div>
                     </div>
                     <div class="recruit-form">
@@ -283,7 +285,7 @@
                                         <div class="welfare-indivisual-graf">
                                             <% FirstSalary.all.each do |i| %>
                                                 <% if i.id == @company.salary.first_salary_id %>
-                                                    <p><%= i.name %></p>
+                                                    <p style="background-color:#3B6DA0; color:white;"><%= i.name %></p>
                                                 <% else %>
                                                     <p><%= i.name %></p>
                                                 <% end %>
@@ -310,7 +312,7 @@
                                         <div class="welfare-indivisual-graf">
                                             <% AverageSalary.all.each do |i| %>
                                                 <% if i.id == @company.salary.average_salary_id %>
-                                                    <p><%= i.name %></p>
+                                                    <p style="background-color:#3B6DA0; color:white;"><%= i.name %></p>
                                                 <% else %>
                                                     <p><%= i.name %></p>
                                                 <% end %>
@@ -325,9 +327,11 @@
                                     <% end %>
                                 </div>
                             </div>
-                            <div class="graf-no-datum">
-                                <p>データがありません</p>
-                            </div>
+                            <% if @company.salary.blank? %>
+                                <div class="graf-no-datum">
+                                    <p>データがありません</p>
+                                </div>
+                            <% end %>
                         </div>
                     </div>
                     <div class="recruit-form">
@@ -346,7 +350,7 @@
                                     <div class="welfare-indivisual-graf">
                                         <% HouseAllowance.all.each do |i| %>
                                             <% if @company.house_allowances.include?(i) %>
-                                                <p><%= i.name %></p>
+                                                <p style="background-color:#3B6DA0; color:white;"><%= i.name %></p>
                                             <% else %>
                                                 <p><%= i.name %></p>
                                             <% end %>
@@ -365,7 +369,7 @@
                                     <div class="welfare-indivisual-graf">
                                         <% Health.all.each do |i| %>
                                             <% if @company.healths.include?(i) %>
-                                                <p><%= i.name %></p>
+                                                <p style="background-color:#3B6DA0; color:white;"><%= i.name %></p>
                                             <% else %>
                                                 <p><%= i.name %></p>
                                             <% end %>
@@ -384,7 +388,7 @@
                                     <div class="welfare-indivisual-graf">
                                         <% Nursing.all.each do |i| %>
                                             <% if @company.nursings.include?(i) %>
-                                                <p><%= i.name %></p>
+                                                <p style="background-color:#3B6DA0; color:white;"><%= i.name %></p>
                                             <% else %>
                                                 <p><%= i.name %></p>
                                             <% end %>
@@ -403,7 +407,7 @@
                                     <div class="welfare-indivisual-graf">
                                         <% Holiday.all.each do |i| %>
                                             <% if @company.holidays.include?(i) %>
-                                                <p><%= i.name %></p>
+                                                <p style="background-color:#3B6DA0; color:white;"><%= i.name %></p>
                                             <% else %>
                                                 <p><%= i.name %></p>
                                             <% end %>
@@ -422,7 +426,7 @@
                                     <div class="welfare-indivisual-graf">
                                         <% Condolence.all.each do |i| %>
                                             <% if @company.holidays.include?(i) %>
-                                                <p><%= i.name %></p>
+                                                <p style="background-color:#3B6DA0; color:white;"><%= i.name %></p>
                                             <% else %>
                                                 <p><%= i.name %></p>
                                             <% end %>
@@ -430,9 +434,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="graf-no-datum">
-                                <p>データがありません</p>
-                            </div>
+                            <% if (@company.house_allowances.count == 0) && (@company.healths.count == 0) && (@company.nursings.count == 0) && (@company.holidays.count == 0) && (@company.condolences.count == 0) %>
+                                <div class="graf-no-datum">
+                                    <p>データがありません</p>
+                                </div>
+                            <% end %>
                         </div>
                     </div>
             </div>
