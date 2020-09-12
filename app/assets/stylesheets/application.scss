@@ -2010,7 +2010,12 @@ footer{
 .entry-area{
     display:flex;
     justify-content:space-between;
-    border-bottom:dashed 1px #D6D6D6;
+    border-top:dashed 1px #D6D6D6;
+}
+
+.entry-area-first{
+    display:flex;
+    justify-content:space-between;
 }
 
 .event-title h2{
@@ -4984,12 +4989,6 @@ footer{
     
     .event-entry{
         width:28%;
-    }
-    
-    .entry-area{
-        display:flex;
-        justify-content:space-between;
-        border-bottom:dashed 1px #D6D6D6;
     }
     
     .event-title h2{

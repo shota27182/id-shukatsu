@@ -62,6 +62,7 @@ class EventsController < ApplicationController
   def show
     session[:token] = params[:token]
     @event = Event.find(params[:id])
+    @event_schedule_first = @event.event_schedules.first
     @event_schedule = @event.event_schedules.all
     @company =  Company.joins(:events).find_by(events:{id:@event.id})
     @recently_visit = cookies[:item_name].split(',') if cookies[:item_name]
