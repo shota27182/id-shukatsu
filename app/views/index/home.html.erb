@@ -203,22 +203,6 @@
             <img src="/assets/選考私服OK.jpg">
             <a href="/companies?industry=&area=&occupation=&work_style=&welfare=&feature=&point=3#companies-results">詳しくはこちら</a>
         </div>
-        <% if logged_in? && !EventHistory.where(user_id: current_user.id).nil? && Company.includes(:events).find_by(events:{id: EventHistory.find_by(user_id: current_user.id).event_id}).present? %>
-        <div class="browsing-recomended">
-            <p>あなたへのおすすめのイベント</p>
-            <div class="browsing-recomended-events">
-                <% EventHistory.where(user_id: current_user.id).order(id: "DESC").limit(1).each do |i| %>
-                <% Event.includes(:company => :industries).where(industries:{id: Company.includes(:events).find_by(events:{id: i.event_id}).industries.pluck(:id)}).limit(4).each do |a| %>
-                <div class="browsing-recomended-event">
-                    <%= image_tag a.img.to_s %>
-                    <p><%= a.name %></p><a href="/events/<%= a.id %>"></a>
-                </div>
-                <% end %>
-                <% end %>
-            </div>
-        </div>
-        <% else %>
-        <% end %>
     </div>
 </div>
 <script>
