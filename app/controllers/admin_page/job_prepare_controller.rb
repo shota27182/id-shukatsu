@@ -19,6 +19,7 @@ class AdminPage::JobPrepareController < ApplicationController
   end
   
   def edit
+    
   end
   
   def update

@@ -60,6 +60,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    session[:token] = params[:token]
     @event = Event.find(params[:id])
     @event_schedule = @event.event_schedules.all
     @company =  Company.joins(:events).find_by(events:{id:@event.id})

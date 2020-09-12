@@ -98,7 +98,7 @@
             <%= file_field_tag :file %>
             <%= submit_tag "インポート" %>
         <% end %>
-        <%= form_with model: @event, method: :put, url: admin_page_event_path, local: true do |f| %>
+        <%= form_with model: @event, method: :post, url: admin_page_job_prepare_index_path, local: true do |f| %>
           <div class="general-profile">
             <div class="general-title">基本情報</div>
               <div>
@@ -111,15 +111,15 @@
               </div>
               <div class="form-detail">
                   <p>概要</p>
-                  <%=f.text_field :introduction, class:"form-field" %>
+                  <%=f.text_area :introduction, class:"form-field" %>
               </div>
               <div class="form-detail">
                   <p>本ガイダンスのポイント</p>
-                  <%=f.text_field :point, class:"form-field" %>
+                  <%=f.text_area :point, class:"form-field" %>
               </div>
               <div class="form-detail">
                   <p>当日の流れ</p>
-                  <%=f.text_field :flow, class:"form-field" %>
+                  <%=f.text_area :flow, class:"form-field" %>
               </div>
               <div id="event-profiles-association-insertion-point" >
                  <%= f.fields_for :event_profiles do |builder| %>

@@ -90,9 +90,6 @@
                         <% end %>
                      <% end %>
                      </div>
-                     <div class="event-head-title">
-                         <p><%=Company.joins(:events).find_by(events:{id: i.event_id}).name %></p>
-                     </div>
                  </div>
                  <div class="your-watching-event">
                      <%= Event.find_by(id: i.event_id).name %>

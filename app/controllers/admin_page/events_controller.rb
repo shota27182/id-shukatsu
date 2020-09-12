@@ -19,7 +19,7 @@ class AdminPage::EventsController < ApplicationController
   def update
     @event = Event.find_by(id: params[:id])
     if @event.update(event_params)
-      redirect_to "/partner_page/event"
+      redirect_to "/admin_page/event"
     else
       render 'edit'
     end
