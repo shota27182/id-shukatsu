@@ -203,7 +203,7 @@
             <img src="/assets/選考私服OK.jpg">
             <a href="/companies?industry=&area=&occupation=&work_style=&welfare=&feature=&point=3#companies-results">詳しくはこちら</a>
         </div>
-        <% if logged_in? && !EventHistory.where(user_id: current_user.id).nil? %>
+        <% if logged_in? && !EventHistory.where(user_id: current_user.id).nil? && Company.includes(:events).where(events:{id: EventHistory.find_by(user_id: current_user.id).event_id}).present? %>
         <div class="browsing-recomended">
             <p>あなたへのおすすめのイベント</p>
             <div class="browsing-recomended-events">
