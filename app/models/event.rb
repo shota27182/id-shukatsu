@@ -2,7 +2,7 @@ class Event < ApplicationRecord
     has_many :event_schedules, dependent: :destroy
     has_many :user_events, dependent: :destroy
     has_many :users, through: :user_events
-    belongs_to :company
+    belongs_to :company, optional: true
     has_many :event_profiles, dependent: :destroy
     has_many :event_histories, dependent: :destroy
     mount_uploader :img, EventImageUploader

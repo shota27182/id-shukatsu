@@ -1,0 +1,2 @@
+module AdminPage::JobPrepareHelper
+end

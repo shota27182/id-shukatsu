@@ -111,6 +111,8 @@ Rails.application.routes.draw do
     resources :events do
       collection { post :import }
     end
+    get 'job_prepare', to: 'job_prepare#index'
+    resources :job_prepare, only: [:new, :create, :edit, :update]
     get 'companies', to: 'companies#index'
     resources :companies , only: [:new, :create, :edit, :update, :show]
     resources :companies do

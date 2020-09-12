@@ -177,7 +177,9 @@
                             <%=image_tag a.img.to_s %>
                         </div>
                         <div class="events-search-title">
-                            <%= image_tag Company.find_by(id: a.company_id).icon.to_s %>
+                            <% if a.company_id.present? %>
+                                <%= image_tag Company.find_by(id: a.company_id).icon.to_s %>
+                            <% end %>
                             <p><a href="/events/<%=a.id %>"></a><%= a.name %></p>
                         </div>
                         <div class="events-search-schedules">

@@ -123,7 +123,7 @@
                     </div>
                 </div>
             </div>
-            <% if @company.events.count >= 2 %>
+            <% if Company.joins(:events).where(events:{id:[@event.id]}).present? && @company.events.count >= 2 %>
             <div class="company-introduction">
                 <div class="company-introduction-title other-introduction"><%= @company.name %>の他の募集情報</div>
                 <% if (@company.events.where(category: 1).count >= 2 && @event.category == 1) || (@company.events.where(category: 1).count >= 1 && @event.category != 1) %>

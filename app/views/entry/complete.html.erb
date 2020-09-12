@@ -4,20 +4,22 @@
         <h1>エントリーが完了しました！</h1>
         <p>確認メールをお送りしました。<br>日付の変更やキャンセルは<a href="/mypage">マイページ</a>をより行ってください。</p>
     </div>
-    <div class="entry-complete-bottom">
-        <p>エントリーした会社をお気に入り登録しよう</p>
-        <div class="entry-complete-company">
-            <div class="entry-complete-company-left">
-                <%= image_tag @company.icon.to_s %>
-            </div>
-            <div class="entry-complete-company-middle">
-                <p><%= @company.name %></p>
-            </div>
-            <div class="entry-complete-company-right">
-                <a>お気に入り登録</a>
+    <% if @company.present? %>
+        <div class="entry-complete-bottom">
+            <p>エントリーした会社をお気に入り登録しよう</p>
+            <div class="entry-complete-company">
+                <div class="entry-complete-company-left">
+                    <%= image_tag @company.icon.to_s %>
+                </div>
+                <div class="entry-complete-company-middle">
+                    <p><%= @company.name %></p>
+                </div>
+                <div class="entry-complete-company-right">
+                    <a>お気に入り登録</a>
+                </div>
             </div>
         </div>
-    </div>
+    <% end %>
 </div>
 <div class="entry-complete-rollback">
     <%=link_to "イベント一覧ページに戻る",events_path%>

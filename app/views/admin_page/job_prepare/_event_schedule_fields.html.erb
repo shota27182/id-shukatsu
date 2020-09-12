@@ -1,0 +1,35 @@
+<div class="nested-fields">
+    <div class="form-detail">
+        <p>本選考スケジュールタイトル：</p>
+        <%=f.text_field :title, class:"form-field" %>
+    </div>
+    <div class="form-detail">
+        <p>住所1：</p>
+        <%=f.text_field :address, class:"form-field" %>
+    </div>
+    <div class="form-detail">
+        <p>住所2：</p>
+        <%=f.text_field :place, class:"form-field" %>
+    </div>
+    <div class="form-detail profile-birthday">
+        <p>開催日時</p>
+        <%= f.date_select :holding_day, start_year: 2020, end_year: 2021, use_month_numbers: true %>
+    </div>
+    <div class="form-detail">
+        <p>開始時間</p>
+        <%= f.time_select :start_time, prompt:true, ignore_data:true %>
+    </div>
+    <div class="form-detail">
+        <p>終了時間</p>
+        <%= f.time_select :end_time, prompt:true, ignore_data:true %>
+    </div>
+    <div class="form-detail profile-birthday">
+        <p>締切日</p>
+        <%= f.date_select :deadline, start_year: 2020, end_year: 2021, use_month_numbers: true %>
+    </div>
+    <div class="form-detail">
+        <p>定員：</p>
+        <%=f.number_field :max_people, class:"form-field" %>
+    </div>
+    <%= link_to_remove_association '削除', f, class: 'bg-orange btn-type-s' %>
+</div>
