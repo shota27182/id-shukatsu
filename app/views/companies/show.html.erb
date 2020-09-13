@@ -425,7 +425,7 @@
                                     </div>
                                     <div class="welfare-indivisual-graf">
                                         <% Condolence.all.each do |i| %>
-                                            <% if @company.holidays.include?(i) %>
+                                            <% if @company.condolences.include?(i) %>
                                                 <p style="background-color:#3B6DA0; color:white;"><%= i.name %></p>
                                             <% else %>
                                                 <p><%= i.name %></p>
