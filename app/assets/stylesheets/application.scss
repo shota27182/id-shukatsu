@@ -1963,7 +1963,6 @@ footer{
     height:130px;
     border-radius:50%;
     border:solid 1px  #D6D6D6;
-    object-fit:contain;
 }
 
 .company-search:hover img{
@@ -3417,7 +3416,8 @@ footer{
     .header-right{
         width:25%;
         margin-top:16px;
-        margin-left:0px;
+        display:flex;
+        justify-content:flex-end;
     }
     
     .btn{
@@ -3432,8 +3432,6 @@ footer{
     }
     
     .login{
-        margin-left:-70px;
-        margin-right:-70px;
         margin-top:0px;
     }
     
@@ -3445,8 +3443,13 @@ footer{
     
     .header-image-right{
         padding-right:10px;
+        margin-top:-15px;
     }
     
+    .header-image-right-second{
+        margin-top:-15px;
+        margin-right:10px;
+    }
     
     .signup{
         color:white;
