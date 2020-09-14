@@ -137,6 +137,7 @@ header{
    width:10%;
    line-height:63px;
    display:flex;
+   margin-left:-20%;
 }
 
 .btn{
@@ -146,7 +147,7 @@ header{
 
 .login{
     color:black;
-    margin-right:20px;
+    margin:15px;
     border:solid 1px #707070;
 }
 
@@ -156,6 +157,7 @@ header{
 
 
 .signup{
+    margin:15px;
     color:white;
     background-color:#62A2E3;
 }
