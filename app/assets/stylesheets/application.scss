@@ -241,6 +241,7 @@ header{
 .companies a img{
     height:69px;
     width:100%;
+    object-fit:contain;
 }
 
 .companies a:hover{
