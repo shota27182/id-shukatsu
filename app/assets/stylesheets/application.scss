@@ -3196,6 +3196,7 @@ footer{
         margin-left:0px;
         width:100%;
         overflow-x:hidden;
+        min-width:0px;
     }
     
     .container{
@@ -3395,6 +3396,7 @@ footer{
     
     .header-left{
         width:65%;
+        text-align:left;
     }
     
     
@@ -3406,6 +3408,7 @@ footer{
     .header-right{
         width:25%;
         margin-top:16px;
+        margin-left:0px;
     }
     
     .btn{
@@ -3414,7 +3417,7 @@ footer{
     }
     
     .menu-btn{
-        padding:6px 40px;
+        padding:6px 30px;
         display:inline-block;
         border-radius:4px;
     }
@@ -3422,6 +3425,7 @@ footer{
     .login{
         margin-left:-70px;
         margin-right:-70px;
+        margin-top:0px;
     }
     
     .sm-login{
