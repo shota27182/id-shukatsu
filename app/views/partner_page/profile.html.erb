@@ -42,18 +42,18 @@
         </div>
         <div class="partner-menu">
             <div class="partner-menu-item secList partner-change" id="nuu">
-                <p>募集要項</p>
+                <p>会社情報</p>
                 <img src="/assets/partner_bar.svg">
             </div>
             <ul class="partner-menu-lists nuu">
                 <li class="partner-menu-list">
-                    <a href="/partner_page/profile">> 本選考</a>
+                    <a href="/partner_page/profile" id="basic-info">> 基本情報</a>
                 </li>
                 <li class="partner-menu-list">
-                    <a href="#original-infomation">> <span>ジョブ・インターン</span></a>
+                    <a href="#original-infomation" id="original-info">> <span>オリジナル情報</span></a>
                 </li>
                 <li class="partner-menu-list">
-                    <a href="#request-infomation">> <span>説明会・企業セミナー</span></a>
+                    <a href="#request-infomation" id="request-info">> <span>募集要項</span></a>
                 </li>
             </ul>
         </div>
@@ -333,5 +333,13 @@
       $('body,html').animate({scrollTop:position}, speed, 'swing');
       return false;
    });
+   
+   if ($("basic-info").is(":hidden")) {
+        //非表示のときの処理をする
+    } else {
+        //表示しているときの処理をする
+    }
 });
+
+
 </script>

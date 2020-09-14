@@ -53,6 +53,11 @@ body {
   margin-left: auto;
   font-family: "Hiragino Kaku Gothic ProN";
   background-color:#F2F2F2;
+  min-width:920px;
+}
+
+.head-id{
+    display:flex;
 }
 
 .note-editable h2{
@@ -92,6 +97,7 @@ body {
 .top-wrapper img{
     width:100%;
     height:297px;
+    object-fit:contain;
 }
 
 
@@ -108,7 +114,8 @@ header{
 }
 
 .header-left{
-    float:left;
+    width:13%;
+    text-align:center;
 }
 
 .logo{
@@ -116,8 +123,8 @@ header{
 }
 
 .header-message{
-    float:left;
-    margin-left:20%;
+    text-align:center;
+    width:77%;
 }
 
 .header-message p{
@@ -127,8 +134,9 @@ header{
 }
 
 .header-right{
-    float:right;
-    margin-top:16px;
+   width:10%;
+   line-height:63px;
+   display:flex;
 }
 
 .btn{
@@ -362,7 +370,8 @@ header{
 
 .event-icon img{
     width:100%;
-    height:126px;
+    height:200px;
+    object-fit:contain;
 }
 
 .top-page-event{
@@ -388,6 +397,11 @@ header{
     margin-right:4%;
     font-size:14px;
     margin-top:8px;
+    width:92%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
 }
 
 .announce-wrapper{
@@ -2339,6 +2353,10 @@ footer{
 .partner-menus{
     width:30%;
     background-color:#022E5C;
+    position:-webkit-sticky;
+    position:sticky;
+    top:10px;
+    height:800px;
 }
 
 .partner-menu{
@@ -3165,73 +3183,6 @@ footer{
     .company-general-circle{
         width:100%;
         height:300px;
-    }
-}
-
-@media (min-width: 675px) and (max-width: 992px) {
-   .company-search{
-       width:29%;
-       margin:16px 2%;
-   }
-   
-   .search-box{
-       width:30%;
-   }
-   
-   .company-contents{
-       width:68%;
-       margin-right:2%;
-   }
-   
-   .article-profile{
-        width:100%;
-    }
-    
-    .head p{
-        font-size:12px;
-    }
-    
-    .my-top-link img{
-        width:100%;
-        height:60%;
-    }
-    
-    .my-top-link p{
-        font-size:10px;
-    }
-    
-}
-
-@media screen and (max-width: 750px){
-    .head p{
-        font-size:10px;
-    }
-    
-    .my-top-link p{
-        font-size:10px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
-}
-
-@media (max-width: 674px) {
-   .company-search{
-       width:40%;
-       margin:16px 2.5%;
-   }
-   
-   .search-box{
-       width:40%;
-   }
-   
-   .company-contents{
-       width:58%;
-       margin-right:2%;
-   }
-   
-   .article-profile{
-        width:100%;
     }
 }
 

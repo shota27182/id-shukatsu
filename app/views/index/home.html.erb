@@ -80,17 +80,6 @@
                 <div class="event-icon">
                     <%=image_tag Event.find_by(id: i.event_id).img.to_s %><a href="/events/<%=i.event_id%>"></a>
                 </div>
-                <div class="top-page-event">
-                      <div class="top-page-event-right">
-                     <% Company.joins(:events).where(events:{id:[i.event_id]}).each do |i| %>
-                         <% if i.icon.present? %>
-                             <%=image_tag i.icon.to_s %>
-                        <% else %>
-                            <img src="/assets/no_image.png">
-                        <% end %>
-                     <% end %>
-                     </div>
-                 </div>
                  <div class="your-watching-event">
                      <%= Event.find_by(id: i.event_id).name %>
                  </div>
