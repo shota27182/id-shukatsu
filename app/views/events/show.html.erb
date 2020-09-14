@@ -50,7 +50,7 @@
                         <p>概要</p>
                     </div>
                     <div class="recruit-form-right">
-                        <%= simple_format(@event.introduction) %>
+                        <%= simple_format(@event.introduction).html_safe  %>
                     </div>
                 </div>
                 <% if @event.point.present? %>

@@ -1,5 +1,5 @@
 <div class="nested-fields">    
     <%=f.text_field :title, class:"form-field" %>
-    <%=f.text_field :content, class:"form-field" %>
+    <%=f.text_area :content, class:"form-field", style: 'height:200px;' %>
     <%= link_to_remove_association '削除', f, class: 'bg-orange btn-type-s' %>
 </div>
