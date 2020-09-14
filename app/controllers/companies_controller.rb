@@ -63,7 +63,7 @@ class CompaniesController < ApplicationController
         next if keyword == "" 
         @get_companies = @get_companies.where('name LIKE(?)', "%#{keyword}%")
       end 
-      @get_companies = @get_companies.page(params[:page]).per(12)
+      @show_companies = @get_companies.page(params[:page]).per(12) 
     end
   end
 
