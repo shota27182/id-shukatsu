@@ -7,7 +7,7 @@ class AdminPage::EditUniqueController < ApplicationController
       company_feature_ids = []
     end
     if @company.company_points.present?
-       company_point_ids= @sompany.company_points.pluck(:id) 
+       company_point_ids= @company.company_points.pluck(:id) 
     else
       company_point_ids = []
     end
