@@ -69,7 +69,7 @@
                             <p>当日のプログラム</p>
                         </div>
                         <div class="recruit-form-right">
-                            <%= simple_format(@event.flow) %>
+                            <%= @event.flow.html_safe %>
                         </div>
                     </div>
                 <% end %>

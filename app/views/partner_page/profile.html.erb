@@ -30,13 +30,13 @@
             </div>
             <ul class="partner-menu-lists section guu">
                 <li class="partner-menu-list">
-                    <a href="/partner_page/event">> <span>本選考</span></a>
+                    <a href="/partner_page/event"><span>> </span>本選考</a>
                 </li>
                 <li class="partner-menu-list">
-                    <a>> <span>ジョブ・インターン</span></a>
+                    <a><span>> </span>ジョブ・インターン</a>
                 </li>
                 <li class="partner-menu-list">
-                    <a>> <span>説明会・企業セミナー</span></a>
+                    <a><span>> </span>説明会・企業セミナー</a>
                 </li>
             </ul>
         </div>
@@ -45,15 +45,15 @@
                 <p>会社情報</p>
                 <img src="/assets/partner_bar.svg">
             </div>
-            <ul class="partner-menu-lists nuu">
+            <ul class="partner-menu-lists nuu" id="indexList">
                 <li class="partner-menu-list">
-                    <a href="/partner_page/profile" id="basic-info">> 基本情報</a>
+                    <a href="#index1" class><span>></span> 基本情報</a>
                 </li>
                 <li class="partner-menu-list">
-                    <a href="#original-infomation" id="original-info">> <span>オリジナル情報</span></a>
+                    <a href="#index2" class><span>></span> オリジナル情報</a>
                 </li>
                 <li class="partner-menu-list">
-                    <a href="#request-infomation" id="request-info">> <span>募集要項</span></a>
+                    <a href="#index3" class><span>></span> 募集要項</a>
                 </li>
             </ul>
         </div>
@@ -94,7 +94,7 @@
     </div>
     <div class="partner-dashboard">
         <h2>会社情報</h2>
-        <div class="dashboard-situation">
+        <div class="dashboard-situation" id="index1">
             <div class="company-introduction">
                 <div class="partner-profile-title">
                     <p>基本情報</p>
@@ -178,7 +178,7 @@
             </div>
             
         </div>
-        <div class="dashboard-situation" id="original-infomation">
+        <div class="dashboard-situation" id="index2">
             <div class="company-introduction">
                 <div class="partner-profile-title">
                     <p>オリジナル情報</p>
@@ -267,7 +267,7 @@
             </div>
             
         </div>
-        <div class="dashboard-situation" id="request-infomation">
+        <div class="dashboard-situation" id="index3">
             <div class="company-introduction">
                 <div class="partner-profile-title">
                     <p>募集要項</p>
@@ -312,7 +312,7 @@
     </div>
 </div>
 
-<script>
+<script async>
   $(function(){
   $('.section').hide();
   
@@ -334,12 +334,50 @@
       return false;
    });
    
-   if ($("basic-info").is(":hidden")) {
-        //非表示のときの処理をする
-    } else {
-        //表示しているときの処理をする
-    }
 });
+</script>
+<script defer>
+const boxes = document.querySelectorAll(".dashboard-situation");
+
+const options = {
+  root: null, // 今回はビューポートをルート要素とする
+  rootMargin: "-50% 0px", // ビューポートの中心を判定基準にする
+  threshold: 0 // 閾値は0
+};
+const observer = new IntersectionObserver(doWhenIntersect, options);
+// それぞれのboxを監視する
+boxes.forEach(box => {
+  observer.observe(box);
+});
+
+/**
+ * 交差したときに呼び出す関数
+ * @param entries
+ */
+function doWhenIntersect(entries) {
+  // 交差検知をしたもののなかで、isIntersectingがtrueのDOMを色を変える関数に渡す
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      activateIndex(entry.target);
+    }
+  });
+}
+
+/**
+ * 目次の色を変える関数
+ * @param element
+ */
+function activateIndex(element) {
+  // すでにアクティブになっている目次を選択
+  const currentActiveIndex = document.querySelector("#indexList .active");
+  // すでにアクティブになっているものが0個の時（=null）以外は、activeクラスを除去
+  if (currentActiveIndex !== null) {
+    currentActiveIndex.classList.remove("active");
+  }
+  // 引数で渡されたDOMが飛び先のaタグを選択し、activeクラスを付与
+  const newActiveIndex = document.querySelector(`a[href='#${element.id}']`);
+  newActiveIndex.classList.add("active");
+}
 
 
 </script>
