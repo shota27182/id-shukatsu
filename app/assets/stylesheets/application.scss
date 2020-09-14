@@ -53,7 +53,7 @@ body {
   margin-left: auto;
   font-family: "Hiragino Kaku Gothic ProN";
   background-color:#F2F2F2;
-  min-width:920px;
+  min-width:1000px;
 }
 
 .head-id{
@@ -107,6 +107,7 @@ header{
     width:100%;
     background-color:#FFFFFF;
     display:flex;
+    min-width:920px;
 }
 
 .l-drawer{
@@ -123,8 +124,9 @@ header{
 }
 
 .header-message{
-    text-align:center;
+    padding-left:10%;
     width:77%;
+    min-width:400px;
 }
 
 .header-message p{
@@ -137,7 +139,7 @@ header{
    width:10%;
    line-height:63px;
    display:flex;
-   margin-left:-20%;
+   justify-content:flex-end;
 }
 
 .btn{
@@ -1801,6 +1803,7 @@ footer{
 
 .events-search-title img{
     width:7%;
+    object-fit:contain;
 }
 
 .events-search-title p{
