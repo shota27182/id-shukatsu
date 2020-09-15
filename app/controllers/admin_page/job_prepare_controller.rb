@@ -6,6 +6,7 @@ class AdminPage::JobPrepareController < ApplicationController
   
   def new
     @event = Event.new
+    @event.build_event_image
     @event.event_schedules.build
     @event.event_profiles.build
   end
@@ -29,7 +30,8 @@ class AdminPage::JobPrepareController < ApplicationController
   
   private
       def event_params
-        params.require(:event).permit(:name, :img, :introduction, :point, :flow, event_profiles_attributes:[:id,:title, :content,:_destroy], 
+        params.require(:event).permit(:name, :img, :introduction, :point, :flow, event_image_attributes:[:id, :image],
+                                      event_profiles_attributes:[:id,:title, :content,:_destroy], 
                                       event_schedules_attributes:[:id,:title, :start_time, :end_time, :place, :address, :deadline, :max_people, :holding_day,:_destroy])
       end
 end

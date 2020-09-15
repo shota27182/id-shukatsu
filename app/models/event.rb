@@ -5,6 +5,7 @@ class Event < ApplicationRecord
     belongs_to :company, optional: true
     has_many :event_profiles, dependent: :destroy
     has_many :event_histories, dependent: :destroy
+    has_one :event_image, dependent: :destroy
     mount_uploader :img, EventImageUploader
     
     accepts_nested_attributes_for :event_schedules

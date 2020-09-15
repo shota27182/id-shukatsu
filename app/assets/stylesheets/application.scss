@@ -99,7 +99,7 @@ body {
 .top-wrapper img{
     width:100%;
     height:297px;
-    object-fit:contain;
+    object-fit:cover;
 }
 
 
@@ -1944,7 +1944,7 @@ footer{
 .event-search img{
     width:100%;
     height:130px;
-    object-fit:contain;
+    object-fit:cover;
 }
 
 .event-search:hover img{
@@ -1992,7 +1992,7 @@ footer{
 .event-top-img{
     width:100%;
     height:300px;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .event-img{
@@ -2048,7 +2048,7 @@ footer{
 }
 
 .event-title p{
-    font-size:10px;
+    font-size:12px;
     display:inline-block;
 }
 
@@ -2066,7 +2066,7 @@ footer{
 }
 
 .event-entry p{
-    font-size:10px;
+    font-size:12px;
     text-align:center;
     color:#FF0000;
 }
@@ -2077,7 +2077,7 @@ footer{
     background-color:#62A2E3;
     text-align:center;
     line-height:20px;
-    font-size:10px;
+    font-size:12px;
     border-radius:4px;
     border:solid 1px #3B6DA0;
 }
