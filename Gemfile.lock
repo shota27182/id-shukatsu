@@ -85,6 +85,8 @@ GEM
     crass (1.0.6)
     declarative (0.0.20)
     declarative-option (0.1.0)
+    dropzonejs-rails (0.7.4)
+      rails (> 3.1)
     erubi (1.9.0)
     excon (0.75.0)
     execjs (2.7.0)
@@ -361,6 +363,7 @@ DEPENDENCIES
   chartkick
   cocoon
   coffee-rails (~> 4.2.2)
+  dropzonejs-rails (~> 0.7.3)
   fog-aws
   font-awesome-rails
   froala-editor-sdk

@@ -103,7 +103,7 @@
             <div class="general-title">基本情報</div>
               <div>
                 <p>本選考イメージ画像：</p>
-                <%= f.file_field :img %>
+                <%= f.file_field :img, class:"dropzone" %>
               </div>
               <div class="form-detail form-top">
                   <p>本選考タイトル</p>
@@ -141,6 +141,7 @@
 
 <script>
   $(function(){
+       
   $('.section').hide();
   
   $('.secList').on('click',function(){

@@ -93,17 +93,23 @@
     </div>    
     <div class="partner-sign-up">
         <h2>イベント管理</h2>
-        <%= form_tag import_admin_page_events_path, multipart: true do %>
-            <p>CSVインポートする</p>
-            <%= file_field_tag :file %>
-            <%= submit_tag "インポート" %>
-        <% end %>
         <%= form_with model: @event, method: :post, url: admin_page_job_prepare_index_path, local: true do |f| %>
           <div class="general-profile">
             <div class="general-title">基本情報</div>
               <div>
                 <p>本選考イメージ画像：</p>
-                <%= f.file_field :img %>
+                <div id="files-field"
+                     class="dropzone"
+                     style="border: 2px dashed rgba(0, 0, 0, 0.3);
+                            min-height: 100px !important;">
+                  <div class="dz-message"
+                       style="margin: 20px">
+                    Drag your cats' pics here! Or
+                    <button>
+                      select files
+                    </button>
+                  </div>
+                </div>
               </div>
               <div class="form-detail form-top">
                   <p>本選考タイトル</p>
@@ -141,6 +147,7 @@
 
 <script>
   $(function(){
+       
   $('.section').hide();
   
   $('.secList').on('click',function(){

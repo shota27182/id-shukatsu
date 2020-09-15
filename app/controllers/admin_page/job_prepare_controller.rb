@@ -1,4 +1,6 @@
 class AdminPage::JobPrepareController < ApplicationController
+  layout 'application4.html.erb'
+  
   def index
   end
   

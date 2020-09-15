@@ -50,6 +50,8 @@
 //= require chartjs-plugin-stacked100
 //= require Chart.roundedBarCharts
 //= require Chart.roundedBarCharts.min
+//= require dropify
+//= require dropify.min
 
 //= require turbolinks
 
