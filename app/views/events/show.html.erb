@@ -10,9 +10,13 @@
               </div>
               <div class="event-head">
                   <div class="event-head-right">
-                 <% Company.joins(:events).where(events:{id:[@event.id]}).each do |i| %>
-                 <%=image_tag i.icon.to_s %>
-                 <% end %>
+                    <% if Company.joins(:events).where(events:{id:[@event.id]}).count == 1 %>
+                         <% Company.joins(:events).where(events:{id:[@event.id]}).each do |i| %>
+                             <%=image_tag i.icon.to_s %>
+                         <% end %>
+                    <% else %>
+                        <%= image_tag "ID就活_アイコン.png" %>
+                    <% end %>
                  </div>
                  <div class="event-head-title">
                      <p><%=@event.name%></p>
