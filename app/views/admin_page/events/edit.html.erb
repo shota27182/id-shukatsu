@@ -107,19 +107,19 @@
               </div>
               <div class="form-detail form-top">
                   <p>本選考タイトル</p>
-                  <%=f.text_field :name, class: "form-field"  %>
+                  <%=f.text_field :name, class: "form-field", 'data-provider': :summernote  %>
               </div>
               <div class="form-detail">
                   <p>概要</p>
-                  <%=f.text_area :introduction, class:"form-field", style: 'height:200px;' %>
+                  <%=f.text_area :introduction, class:"form-field", 'data-provider': :summernote %>
               </div>
               <div class="form-detail">
                   <p>本ガイダンスのポイント</p>
-                  <%=f.text_area :point, class:"form-field", style: 'height:200px;' %>
+                  <%=f.text_area :point, class:"form-field", 'data-provider': :summernote %>
               </div>
               <div class="form-detail">
                   <p>当日の流れ</p>
-                  <%=f.text_area :flow, class: "form-field", style: 'height:200px;' %>
+                  <%=f.text_area :flow, class: "form-field", 'data-provider': :summernote %>
               </div>
               <div id="event-profiles-association-insertion-point" >
                  <%= f.fields_for :event_profiles do |builder| %>
@@ -149,5 +149,27 @@
     // クリックした要素の ID と同じクラスのセクションを表示
     $('.'+$(this).attr('id')).toggle();
   });
+  
+  $('[data-provider="summernote"]').each(function(){
+      $(this).summernote({
+        lang: 'ja-JP',
+        height: 250,
+        fontNames: ['Helvetica', 'sans-serif', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
+        fontNamesIgnoreCheck: ['Helvetica', 'sans-serif', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
+        toolbar: [
+                          ['style', ['style']],
+                          ['font', ['bold', 'underline', 'clear', 'fontsizeunit']],
+                          ['fontname', ['fontname']],
+                          ['fontsize', ['fontsize']],
+                          ['color', ['color']],
+                          ['strikethrough',['strikethrough']],
+                          ['fontsizeunit',['fontsizeunit']],
+                          ['para', ['ul', 'ol', 'paragraph']],
+                          ['table', ['table']],
+                          ['insert', ['link', 'picture', 'video', 'hr']],
+                          ['view', ['fullscreen', 'codeview', 'help']],
+                        ],
+      });
+    })
 });
 </script>
