@@ -1,5 +1,21 @@
 <div class="nested-fields">    
-    <%=f.text_field :title, class:"form-field" %>
-    <%=f.text_area :content, class:"form-field", style: 'height:200px;' %>
+    <%=f.text_field :title, class:"form-field",:placeholder=> "選考フロー" %>
+    <%=f.text_area :content, class:"form-field", style: "height:200px;",:placeholder=> "1)エントリー
+　ONE CAREERにてプレエントリーいただいた方には、別途、専用のマイページをご案内いたします。
+2)会社説明会
+　会社説明会への参加が、以降の選考にお進みいただくための条件となります。（会社説明会にご参加いただかなければ、以降の選考にお進みいただくことはできませんので、ご注意ください）
+3)エントリーシート
+　会社説明会にご参加いただいた方々に、エントリーシートのご記入のご案内をいたします。
+4)SPIのご受験（WEBテスト）
+　エントリーシートを通過された方に、SPI（WEBテスト）のご案内をいたします。
+5)1次選考（グループディスカッション）
+　SPIに合格された方に1次選考となるグループディスカッションのご案内をいたします。
+6)2次選考（個人面接）
+　1次選考に合格された方に2次選考となる個人面接のご案内をいたします。
+7)最終選考（個人面接）
+　2次選考に合格された方に最終選考となる個人面接のご案内をいたします。
+
+◆まずはプレエントリーをお願いします。
+　選考に関するご案内は、マイページを通じてお送りいたします。"  %>
     <%= link_to_remove_association '削除', f, class: 'bg-orange btn-type-s' %>
 </div>

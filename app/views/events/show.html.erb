@@ -50,7 +50,7 @@
                         <p>概要</p>
                     </div>
                     <div class="recruit-form-right">
-                        <%= simple_format(@event.introduction).html_safe  %>
+                        <%= @event.introduction.html_safe  %>
                     </div>
                 </div>
                 <% if @event.point.present? %>
@@ -59,7 +59,7 @@
                             <p>本ガイダンスのポイント</p>
                         </div>
                         <div class="recruit-form-right">
-                            <%= simple_format(@event.point) %>
+                            <%= @event.point.html_safe %>
                         </div>
                     </div>
                 <% end %>
