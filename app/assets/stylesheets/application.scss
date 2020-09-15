@@ -1953,10 +1953,14 @@ footer{
 
 .event-search p{
     font-size:14px;
-    height:30px;
-    overflow:hidden;
-    white-space:nowrap;
-    text-overflow:ellipsis;
+    padding-top:5px;
+    margin-bottom:10px;
+    height:40px;
+    word-break: break-all;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+    overflow: hidden;
     
 }
 
@@ -4921,6 +4925,7 @@ footer{
         height:58px;
         overflow: hidden;
         padding-top:6px;
+        -webkit-line-clamp:3;
     }
     
     .company-search img{
