@@ -158,7 +158,7 @@ class Company < ApplicationRecord
         reset_sent_at < 2.hours.ago
     end
     
-        scope :search, -> (search_params) do
+        scope :company_search, -> (search_params) do
         return if search_params.blank?
     
         name_like(search_params[:name])

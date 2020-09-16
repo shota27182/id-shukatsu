@@ -93,27 +93,9 @@
     </div>    
     <div class="partner-sign-up">
         <h2>イベント管理</h2>
-        <%= form_tag import_admin_page_events_path, multipart: true do %>
-            <p>CSVインポートする</p>
-            <%= file_field_tag :file %>
-            <%= submit_tag "インポート" %>
-        <% end %>
         <%= form_with model: @event, method: :put, url: admin_page_event_path, local: true do |f| %>
           <div class="general-profile">
             <div class="general-title">基本情報</div>
-              <div>
-                <p>本選考イメージ画像：</p>
-                <div id="dragDropArea">
-                    <div class="drag-drop-inside">
-                        <p class="drag-drop-info">ここにファイルをドロップ</p>
-                        <p>または</p>
-                        <p class="drag-drop-buttons">
-                            <%= f.file_field :img, value: @event.img, onchange: "photoPreview(event)" %>
-                        </p>
-                        <div id="previewArea"></div>
-                    </div>
-                </div>
-              </div>
               <div class="form-detail form-top">
                   <p>本選考タイトル</p>
                   <%=f.text_field :name, class: "form-field" %>

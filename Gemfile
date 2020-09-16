@@ -50,6 +50,11 @@ gem 'chart-js-rails', '~> 0.1.4'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'gon', '~> 6.2.0'
 gem 'dropzonejs-rails', '~> 0.7.3'
+gem 'activeadmin'
+gem 'devise'
+gem 'cancancan'
+gem 'draper'
+gem 'pundit'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

@@ -98,18 +98,19 @@
             <div class="general-title">基本情報</div>
               <div>
                 <p>本選考イメージ画像：</p>
-                <div id="files-field"
-                     class="dropzone"
-                     style="border: 2px dashed rgba(0, 0, 0, 0.3);
-                            min-height: 100px !important;">
-                  <div class="dz-message"
-                       style="margin: 20px">
-                    Drag your cats' pics here! Or
-                    <button>
-                      select files
-                    </button>
-                  </div>
-                </div>
+                    <%= fields_for :event_image  do |image| %>
+                        <li class="image-preview">
+                            <label class="upload-label" style="display:none;">
+                                <div class="upload-label__text">
+                                    ドラッグ&ドロップ<br>またはクリックしてファイルをアップロード
+                                    <div class="input-area">
+                                        <%= image.file_field :name, value: ..name ,class: "hidden image_upload" %>
+                                        <%= image.hidden_field :id, value: img.id, name:"product[image][#{i}]" %>
+                                    </div>
+                                </div>
+                            </label>
+                        </li>
+                    <% end %>
               </div>
               <div class="form-detail form-top">
                   <p>本選考タイトル</p>

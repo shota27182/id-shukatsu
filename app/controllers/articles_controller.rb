@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_action :set_search
+  
   def index
     @industries = Industry.all
     @WorkAreas = WorkArea.all

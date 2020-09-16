@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   private
   
     def active_user
-      if logged_in?
+      if logged_in? && current_user.status == 'core_registered'
         store_location
         redirect_back_or '/mypage'
       end
