@@ -7,9 +7,15 @@ ActiveAdmin.register Event do
   filter :event_schedules_holding_day, as: :string, label:"開催日"
   
   index do
-    column :id
-    column :name
-    column :category
+    column :id do |event|
+      link_to event.id, admin_event_path(event)
+    end
+    column :タイトル do |event|
+      link_to event.name, admin_event_path(event)
+    end
+    column :カテゴリー do |event|
+      link_to event.category, admin_event_path(event)
+    end
   end
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
