@@ -15,8 +15,10 @@ ActiveAdmin.register Company do
     column :id do |company|
       link_to company.id, admin_company_path(company)
     end
-    column :名前 do |user|
-      link_to company.name, admin_company_path(company)
+    column :名前 do |company|
+      if company.name.present?
+        link_to company.name, admin_company_path(company)
+      end
     end
   end
   # See permitted parameters documentation:
