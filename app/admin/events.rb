@@ -4,7 +4,7 @@ ActiveAdmin.register Event do
   filter :category,as: :select, label:"カテゴリー"
   filter :event_schedules_deadline,as: :date_range, label:"申込期日"
   filter :event_schedules_place, as: :string, label:"開催場所"
-  filter :event_schedules_holding_day, as: :string, label:"住所"
+  filter :event_schedules_holding_day, as: :string, label:"開催日"
   
   index do
     column :id
