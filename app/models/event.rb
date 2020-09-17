@@ -8,6 +8,8 @@ class Event < ApplicationRecord
     has_one :event_image, dependent: :destroy
     mount_uploader :img, EventImageUploader
     
+    enum category: {本選考:1, インターン・ジョブ:2, 説明会・企業セミナー:3, 合同説明会・交流会:4, 就活対策:5}
+    
     accepts_nested_attributes_for :event_schedules
     accepts_nested_attributes_for :event_profiles
     
