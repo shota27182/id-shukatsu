@@ -48,6 +48,10 @@
 @import  "plugins/table.min";
 @import "bootstrap";
 @import "summernote-bs4";
+@import 'quill.bubble';
+@import 'activeadmin/quill_editor/quill.snow';
+@import 'quill.snow';
+@import 'activeadmin/quill_editor_input';
 
  
 body {

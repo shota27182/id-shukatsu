@@ -52,6 +52,9 @@
 //= require Chart.roundedBarCharts.min
 //= require dropify
 //= require dropify.min
+//= require quill.min
+//= require activeadmin/quill_editor/quill
+//= require activeadmin/quill_editor_input
 
 //= require turbolinks
 
