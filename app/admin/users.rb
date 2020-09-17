@@ -28,10 +28,14 @@ ActiveAdmin.register User do
       link_to user.kana, admin_user_path(user)
     end
     column :性別 do |user|
-      link_to user.general.sex, admin_user_path(user)
+      if user.general.present?
+        link_to user.general.sex, admin_user_path(user)
+      end
     end
     column :大学名 do |user|
-      link_to user.education.university, admin_user_path(user)
+      if user.education.present?
+        link_to user.education.university, admin_user_path(user)
+      end
     end
   end
 
