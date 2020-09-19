@@ -5,3 +5,4 @@
 //= quill.imageUploader.min
 //= quill-better-table
 //= quill-better-table.min
+//= require activeadmin-dropzone

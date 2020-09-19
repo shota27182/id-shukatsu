@@ -57,6 +57,7 @@ gem 'draper'
 gem 'pundit'
 gem 'quill-editor-rails'
 gem 'activeadmin_quill_editor'
+gem 'activeadmin-dropzone', '~> 0.2.1'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

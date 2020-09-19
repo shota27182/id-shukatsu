@@ -273,7 +273,7 @@
                             </div>
                             <div class="company-event-quick-right">
                                 <% if EventSchedule.find(b.text).start_time.present? && EventSchedule.find(b.text).end_time.present? %>
-                                    <p><%= EventSchedule.find(b.text).start_time.strftime('%H:%M') %>~<%= EventSchedule.find(b.text).start_time.strftime('%H:%M') %></p>
+                                    <p><%= EventSchedule.find(b.text).start_time.strftime('%H:%M') %>~<%= EventSchedule.find(b.text).end_time.strftime('%H:%M') %></p>
                                 <% end %>
                                 <% if EventSchedule.find(b.text).address.present? %>
                                     <p><%= EventSchedule.find(b.text).address %></p>

@@ -35,6 +35,7 @@ GEM
       ransack (~> 2.1, >= 2.1.1)
       sassc-rails (~> 2.1)
       sprockets (>= 3.0, < 4.1)
+    activeadmin-dropzone (0.2.6)
     activeadmin_quill_editor (0.2.14)
       activeadmin (~> 2.0)
     activejob (5.2.4.3)
@@ -423,6 +424,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
+  activeadmin-dropzone (~> 0.2.1)
   activeadmin_quill_editor
   bcrypt (= 3.1.12)
   bootsnap (>= 1.4.2)
