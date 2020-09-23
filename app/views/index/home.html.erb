@@ -72,10 +72,10 @@
         </div>
         <% end %>
         <div class="favorite-event-wrapper">
-            <div class="head">
-                <p>最近チェックしたイベント</p>
-            </div>
-            <% if logged_in? %>
+            <% if logged_in? && EventHistory.where(user_id: current_user.id).count > 0 %>
+                <div class="head">
+                    <p>最近チェックしたイベント</p>
+                </div>
                 <% EventHistory.where(user_id: current_user.id).order(id: "DESC").limit(1).each do |i| %>
                 <div class="event-icon">
                     <%=image_tag Event.find_by(id: i.event_id).img.to_s %><a href="/events/<%=i.event_id%>"></a>
@@ -84,9 +84,30 @@
                      <%= Event.find_by(id: i.event_id).name %>
                  </div>
                 <% end %>
+            <% else %>
+                <div class="head">
+                    <p>面接対策イベント</p>
+                </div>
+                <div class="event-icon">
+                    <img src="/assets/藤田さんイベント_サムネ.png">
+                </div>
+                <div class="top-event-title">
+                    <p>45万冊の大ベストセラー「1分で話せ」を活用した面接対策イベント</p>
+                </div>
+                <a href="/events/54">詳しくはこちら</a>
             <% end %>
         </div>
         <div class="announce-wrapper">
+            <div class="head">
+                <p>就活初心者向けイベント</p>
+            </div>
+            <div class="event-icon">
+                <img src="/assets/西井さんイベント_ヘッダ画像_修正版.jpg">
+            </div>
+            <div class="top-event-title">
+                <p>さあ、短時間で就活の一歩を踏み出そう 〜完全初心者向け、就活ロードマップ〜</p>
+            </div>
+            <a href="/events/53">詳しくはこちら</a>
         </div>
         <div class="pr-movie-wrapper">
             <div class="movie-link">
@@ -106,11 +127,15 @@
         </div>
         <div class="original-event-wrapper">
             <div class="head">
-                <p>オリジナルイベント</p>
+                <p>女子限定イベント</p>
             </div>
             <div class="event-icon">
-                <img src="/assets/kikikanri.svg">
+                <img src="/assets/戸田さんイベント_リサイズ.png">
             </div>
+            <div class="top-event-title">
+                <p>就活仲間がほしい！そんな女子のための女子大生による女子限定　 自己PR壁打ちイベント</p>
+            </div>
+            <a href="/events/52">詳しくはこちら</a>
         </div>
         <div class="company-feature-wrapper">
             <div class="head">
@@ -199,6 +224,11 @@ $(function(){
     $('.my-top-link').click(function(){
         location.href=$(this).find('a').attr('href');
     });
+    
+    $('.announce-wrapper').click(function(){
+        location.href=$(this).find('a').attr('href');
+    });
+    
     $('.favorite-event-wrapper').click(function(){
         location.href=$(this).find('a').attr('href');
     });

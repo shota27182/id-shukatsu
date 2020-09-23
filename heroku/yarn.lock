@@ -108,10 +108,10 @@
     term-img "^4.1.0"
     urijs "1.19.2"
 
-"@heroku-cli/plugin-apps@^7.43.0":
-  version "7.43.0"
-  resolved "https://registry.yarnpkg.com/@heroku-cli/plugin-apps/-/plugin-apps-7.43.0.tgz#c1205258022bf7f971c2b97cb99995d1886fcbd1"
-  integrity sha512-x3rxroxbaUQnkmLl1GWAwBPd0EkbZHa94IkcPTZ+nniXxekj7PsJC5b6sbclRgwz4Qw10eNm+3Av4t0NitOglg==
+"@heroku-cli/plugin-apps@^7.43.2":
+  version "7.43.2"
+  resolved "https://registry.yarnpkg.com/@heroku-cli/plugin-apps/-/plugin-apps-7.43.2.tgz#de07c4d52533e3c83b72603dac8a2bc803e2fb33"
+  integrity sha512-yILeN/iu2i1K22N5Z+6FiMy6WKRjL9Fa9F0MXwqsYM/3nsDuaMXj0L66tfruLgnE2zakFfQLK1klrxSQW1xK6Q==
   dependencies:
     "@heroku-cli/color" "^1.1.14"
     "@heroku-cli/command" "^8.4.0"
@@ -168,10 +168,10 @@
     "true-myth" "2.2.3"
     valid-url "^1.0.9"
 
-"@heroku-cli/plugin-certs-v5@^7.42.4":
-  version "7.42.4"
-  resolved "https://registry.yarnpkg.com/@heroku-cli/plugin-certs-v5/-/plugin-certs-v5-7.42.4.tgz#23675a0a0b567c87fdae0c44272b756de961a3a6"
-  integrity sha512-l+nojipMT/k+XxJ62z6phfQRqQcQvK6ZU+ou6PGNNQfmfoS/KS8doaQ99NhUWmkx6sPfcTgXwcgTnnQTI0v3NA==
+"@heroku-cli/plugin-certs-v5@^7.43.1":
+  version "7.43.1"
+  resolved "https://registry.yarnpkg.com/@heroku-cli/plugin-certs-v5/-/plugin-certs-v5-7.43.1.tgz#4be2ee98cde3dd4eb90b09b869373202010842a7"
+  integrity sha512-8GSaUSXyquZu6hH+ui0jsXxolTj+cHCIGGVGB2lGQ7t2bgv2VrvPw2ox61IRUxPwILjx27LzNYB9Qqs4AS7pbw==
   dependencies:
     co "4.6.0"
     co-wait "0.0.0"

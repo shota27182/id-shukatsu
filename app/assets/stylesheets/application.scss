@@ -106,7 +106,10 @@ body {
     object-fit:cover;
 }
 
-
+.top-event-title{
+    margin-top:30px;
+    height:90px;
+}
 
 header{
     height:63px;
@@ -380,8 +383,8 @@ header{
 
 .event-icon img{
     width:100%;
-    height:200px;
-    object-fit:contain;
+    height:150px;
+    object-fit:cover;
 }
 
 .top-page-event{
@@ -3228,6 +3231,10 @@ footer{
     .company-general-circle{
         width:100%;
         height:300px;
+    }
+    
+    .top-event-title{
+        height:60px;
     }
 }
 
