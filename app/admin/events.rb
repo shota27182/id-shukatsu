@@ -18,6 +18,11 @@ ActiveAdmin.register Event do
       link_to event.category, admin_event_path(event)
     end
   end
+  
+  show do
+    
+  end
+  
   form do |f|
     f.inputs 'Event' do
       f.input :name, label:"イベント名"
