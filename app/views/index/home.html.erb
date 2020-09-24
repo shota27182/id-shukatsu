@@ -196,49 +196,6 @@
                 <% end %>
             </div>
         </div>
-        <div class="browsing-recomended">
-            <p>あなたにおすすめなイベント</p>
-            <div class="browsing-recomended-events">
-                <% if logged_in? && current_user.event_histories.count == 1 %>
-                    <% current_user.event_histories.each do |i| %>
-                        <%= image_tag Event.find_by(id: event_id).to_s %>
-                        <p><%= i.name %></p><a href="/events/<%= i.id %>"></a>
-                    <% end %>
-                <% end %>
-                <% if logged_in? && current_user.event_histories.count == 2 %>
-                    <% current_user.event_histories.each do |i| %>
-                        <%= image_tag i.img.to_s %>
-                        <p><%= i.name %></p><a href="/events/<%= i.id %>"></a>
-                    <% end %>
-                <% end %>
-                <% if logged_in? && current_user.event_histories.count == 3 %>
-                    <% current_user.event_histories.each do |i| %>
-                        <%= image_tag i.img.to_s %>
-                        <p><%= i.name %></p><a href="/events/<%= i.id %>"></a>
-                    <% end %>
-                <% end %>
-                <% if logged_in? && current_user.event_histories.count == 4 %>
-                <% end %>
-                <% if !logged_in? || (logged_in? && current_user.event_histories.count == 0 ) %>
-                <% end %>
-                <div class="browsing-recomended-event">
-                    <%= image_tag a.img.to_s %>
-                    <p><%= a.name %></p><a href="/events/<%= a.id %>"></a>
-                </div>
-                <% else %>
-                <% if Event.includes(:company => :industries).where(:user_events).limit(4).each do |a| %>
-                <div class="browsing-recomended-event">
-                    <%= image_tag a.img.to_s %>
-                    <p><%= a.name %></p><a href="/events/<%= a.id %>"></a>
-                </div>
-                <% else %>
-                <div class="browsing-recomended-event">
-                    <%= image_tag a.img.to_s %>
-                    <p><%= a.name %></p><a href="/events/<%= a.id %>"></a>
-                </div>
-                <% end %>
-            </div>
-        </div>
         <div class="release-planning no-entrysheet-wrapper">
             <div class="head">
                 <p>エントリーシート不要の企業特集</p>
