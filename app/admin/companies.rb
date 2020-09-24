@@ -32,8 +32,26 @@ ActiveAdmin.register Company do
       f.input :establishment, label:"設立年月日"
       f.input :url, label:"採用ページリンク"
       f.input :introduction, label:"会社紹介"
+      f.inputs "募集職種", for: [:company_requirement, f.object.company_requirement || CompanyRequirement.new({company_id: f.object.id})] do | i |
+        i.input :occupation, label:"募集職種"
+        i.input :work, label:"業務内容"
+        i.input :qualification, label:"応募資格"
+        i.input :holiday, label:"休日・休暇"
+        i.input :welfare, label:"待遇・福利厚生"
+      end
+      f.inputs do
+        f.has_many :company_profiles, allow_destroy: true do |t|
+          t.input :title, label:"タイトル"
+          t.input :content, label:"内容"
+        end
+      end
       f.inputs '企業規模' do
-        f.has_many :company_company_scales, heading: false,new_record: true, allow_destroy: true do |t|
+        f.has_many :company_profiles, heading: '企業規模',new_record: true, allow_destroy: true do |t|
+          t.input :company_profile_id,label: '企業規模',as: :select,collection: CompanyScale.all.map { |a| [a.name, a.id] }
+        end
+      end
+      f.inputs '企業規模' do
+        f.has_many :company_company_scales, heading: '企業規模',new_record: true, allow_destroy: true do |t|
           t.input :company_scale_id,label: '企業規模',as: :select,collection: CompanyScale.all.map { |a| [a.name, a.id] }
         end
       end
@@ -57,11 +75,12 @@ ActiveAdmin.register Company do
           t.input :work_style_id,label: '働き方',as: :select,collection: Occupation.all.map { |a| [a.name, a.id] }
         end
       end
-      f.inputs '働き方' do
+      f.inputs '福利厚生' do
         f.has_many :company_welfares, heading: false,new_record: true, allow_destroy: true do |t|
           t.input :welfare_id,label: '福利厚生',as: :select,collection: Welfare.all.map { |a| [a.name, a.id] }
         end
       end
+      
     end
     f.actions
   end
