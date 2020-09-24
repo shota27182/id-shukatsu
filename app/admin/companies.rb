@@ -1,5 +1,7 @@
 ActiveAdmin.register Company do
   menu label: "企業一覧"
+  permit_params :name, :kana,:address ,:category,:people,:establishment,:url ,:introduction, company_requirement_attributes: [:occupation, :work, :qualification, :holiday , :welfare] ,company_profiles_attributes: [:id, :title,:content, :_destroy] ,company_company_scales_attributes: [:id, :company_scale_id, :_destroy], company_industries_attributes: [:id, :industry_id, :_destroy], company_occupations_attributes: [:id, :occupation_id, :_destroy], company_work_areas_attributes: [:id, :work_area_id, :_destroy],  company_work_styles_attributes: [:id, :work_style_id, :_destroy], company_welfares_attributes: [:id, :welfare_id, :_destroy]
+  
   filter :name, label:"会社名"
   filter :kana, label:"フリガナ"
   filter :address, label:"住所"
@@ -43,11 +45,6 @@ ActiveAdmin.register Company do
         f.has_many :company_profiles, allow_destroy: true do |t|
           t.input :title, label:"タイトル"
           t.input :content, label:"内容"
-        end
-      end
-      f.inputs '企業規模' do
-        f.has_many :company_profiles, heading: '企業規模',new_record: true, allow_destroy: true do |t|
-          t.input :company_profile_id,label: '企業規模',as: :select,collection: CompanyScale.all.map { |a| [a.name, a.id] }
         end
       end
       f.inputs '企業規模' do
