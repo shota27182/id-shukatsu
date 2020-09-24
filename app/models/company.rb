@@ -46,6 +46,15 @@ class Company < ApplicationRecord
     accepts_nested_attributes_for :company_requirement
     accepts_nested_attributes_for :company_profiles
     accepts_nested_attributes_for :events
+    accepts_nested_attributes_for :company_company_scales, allow_destroy: true
+    accepts_nested_attributes_for :company_industries, allow_destroy: true
+    accepts_nested_attributes_for :company_occupations, allow_destroy: true
+    accepts_nested_attributes_for :company_work_areas, allow_destroy: true
+    accepts_nested_attributes_for :company_work_styles, allow_destroy: true
+    accepts_nested_attributes_for :company_welfares, allow_destroy: true
+    accepts_nested_attributes_for :company_company_features, allow_destroy: true
+    accepts_nested_attributes_for :company_company_points, allow_destroy: true
+    
     
     def Company.digest(string)
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

@@ -22,6 +22,50 @@ ActiveAdmin.register Company do
     end
   end
   
+  form do |f|
+    f.inputs 'Company' do
+      f.input :name, label:"会社名"
+      f.input :kana, label:"フリガナ"
+      f.input :address, label:"住所"
+      f.input :category, label:"事業内容"
+      f.input :people, label:"従業員数"
+      f.input :establishment, label:"設立年月日"
+      f.input :url, label:"採用ページリンク"
+      f.input :introduction, label:"会社紹介"
+      f.inputs '企業規模' do
+        f.has_many :company_company_scales, heading: false,new_record: true, allow_destroy: true do |t|
+          t.input :company_scale_id,label: '企業規模',as: :select,collection: CompanyScale.all.map { |a| [a.name, a.id] }
+        end
+      end
+      f.inputs '業界' do
+        f.has_many :company_industries, heading: false,new_record: true, allow_destroy: true do |t|
+          t.input :industry_id,label: '業界',as: :select,collection: Industry.all.map { |a| [a.name, a.id] }
+        end
+      end
+      f.inputs '職種' do
+        f.has_many :company_occupations, heading: false,new_record: true, allow_destroy: true do |t|
+          t.input :occupation_id,label: '職種',as: :select,collection: Occupation.all.map { |a| [a.name, a.id] }
+        end
+      end
+      f.inputs '勤務エリア' do
+        f.has_many :company_work_areas, heading: false,new_record: true, allow_destroy: true do |t|
+          t.input :work_area_id,label: '勤務エリア',as: :select,collection: Occupation.all.map { |a| [a.name, a.id] }
+        end
+      end
+      f.inputs '働き方' do
+        f.has_many :company_work_styles, heading: false,new_record: true, allow_destroy: true do |t|
+          t.input :work_style_id,label: '働き方',as: :select,collection: Occupation.all.map { |a| [a.name, a.id] }
+        end
+      end
+      f.inputs '働き方' do
+        f.has_many :company_welfares, heading: false,new_record: true, allow_destroy: true do |t|
+          t.input :welfare_id,label: '福利厚生',as: :select,collection: Welfare.all.map { |a| [a.name, a.id] }
+        end
+      end
+    end
+    f.actions
+  end
+  
   show do
     row :名前 do |company|
       company.name
@@ -71,6 +115,7 @@ ActiveAdmin.register Company do
     row :採用の特徴 do |company|
       company.company_points
     end
+    
   end
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
