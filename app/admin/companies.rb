@@ -21,6 +21,57 @@ ActiveAdmin.register Company do
       end
     end
   end
+  
+  show do
+    row :名前 do |company|
+      company.name
+    end
+    row :フリガナ do |company|
+      company.kana
+    end
+    row :住所 do |company|
+      company.address
+    end
+    row :事業内容 do |company|
+      company.category
+    end
+    row :従業員数 do |company|
+      company.people
+    end
+    row :設立年月日 do |company|
+      company.establishment
+    end
+    row :採用ページリンク do |company|
+      company.url
+    end
+    row :会社紹介 do |company|
+      company.introduction
+    end
+    row :企業規模 do |company|
+      company.company_scales
+    end
+    row :業界 do |company|
+      company.industries
+    end
+    row :募集職種 do |company|
+      company.occupations
+    end
+    row :勤務エリア do |company|
+      company.work_areas
+    end
+    row :働き方 do |company|
+      company.work_styles
+    end
+    row :福利厚生 do |company|
+      company.welfares
+    end
+    row :企業の特徴 do |company|
+      company.company_features
+    end
+    row :採用の特徴 do |company|
+      company.company_points
+    end
+  end
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
