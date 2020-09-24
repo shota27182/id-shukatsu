@@ -48,6 +48,7 @@ ActiveAdmin.register Event do
           t.input :holding_day, label:"開催日"
         end
       end
+      
     end
     f.actions
   end

@@ -15,6 +15,15 @@ class UserMailer < ApplicationMailer
           subject: '[ID就活]新規登録確認メール',
           reply_to: 'info@id-shukatsu.com' )
   end
+  
+  def event_confirmation(user)
+    @user = user
+
+    mail( from: 'info@id-shukatsu.com',
+          to: user.email,
+          subject: '[ID就活]自己PR壁打ちイベント　リマインドメール',
+          reply_to: 'info@id-shukatsu.com' )
+  end
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
