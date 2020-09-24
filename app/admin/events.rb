@@ -1,5 +1,5 @@
 ActiveAdmin.register Event do
-  permit_params :name, :img,:introduction,:flow,:point,:category, event_profiles_attributes: [:title, :content] , event_schedules_attributes: [:title,:start_time,:end_time,:place,:address,:deadline,:holding_day]
+  permit_params :name, :img,:introduction,:flow,:point,:category, event_profiles_attributes: [:id, :title, :content, :_destroy] , event_schedules_attributes: [:id, :title,:start_time,:end_time,:place,:address,:deadline,:holding_day, :_destroy]
   menu label: "イベント一覧"
   filter :name, label:"タイトル"
   filter :category,as: :select, label:"カテゴリー"
@@ -27,13 +27,13 @@ ActiveAdmin.register Event do
       f.input :flow, as: :quill_editor, input_html: { data: { options: { modules: { toolbar: [['bold', 'italic', 'underline', 'strike'],  ['blockquote', 'code-block'],[{ 'header': 1 }, { 'header': 2 }],  [{ 'list': 'ordered'}, { 'list': 'bullet' }], [{ 'script': 'sub'}, { 'script': 'super' }], [{ 'indent': '-1'}, { 'indent': '+1' }], [{ 'direction': 'rtl' }],   [{ 'size': ['small', false, 'large', 'huge'] }],[{ 'header': [1, 2, 3, 4, 5, 6, false] }],[{ 'color': [] }, { 'background': [] }],  [{ 'font': [] }],[{ 'align': [] }],['clean']  ,["link"]      ] }, placeholder: 'Type something...', theme: 'snow' } } }, label:"当日の流れ"
       f.input :point, as: :quill_editor, input_html: { data: { options: { modules: { toolbar: [['bold', 'italic', 'underline', 'strike'],  ['blockquote', 'code-block'],[{ 'header': 1 }, { 'header': 2 }],  [{ 'list': 'ordered'}, { 'list': 'bullet' }], [{ 'script': 'sub'}, { 'script': 'super' }], [{ 'indent': '-1'}, { 'indent': '+1' }], [{ 'direction': 'rtl' }],   [{ 'size': ['small', false, 'large', 'huge'] }],[{ 'header': [1, 2, 3, 4, 5, 6, false] }],[{ 'color': [] }, { 'background': [] }],  [{ 'font': [] }],[{ 'align': [] }],['clean']  ,["link"]      ] }, placeholder: 'Type something...', theme: 'snow' } } }, label:"ポイント"
       f.inputs do
-        f.has_many :event_profiles do |t|
+        f.has_many :event_profiles, allow_destroy: true do |t|
           t.input :title, label:"タイトル"
           t.input :content, as: :quill_editor, input_html: { data: { options: { modules: {toolbar: [['bold', 'italic', 'underline', 'strike'],  ['blockquote', 'code-block'],[{ 'header': 1 }, { 'header': 2 }],  [{ 'list': 'ordered'}, { 'list': 'bullet' }], [{ 'script': 'sub'}, { 'script': 'super' }], [{ 'indent': '-1'}, { 'indent': '+1' }], [{ 'direction': 'rtl' }],   [{ 'size': ['small', false, 'large', 'huge'] }],[{ 'header': [1, 2, 3, 4, 5, 6, false] }],[{ 'color': [] }, { 'background': [] }],  [{ 'font': [] }],[{ 'align': [] }],['clean']  ,["link"]      ] }, placeholder: 'Type something...', theme: 'snow' } } }, label:"内容"
         end
       end
       f.inputs do
-        f.has_many :event_schedules do |t|
+        f.has_many :event_schedules, allow_destroy: true do |t|
           t.input :title, label:"イベントスケジュール名"
           t.input :start_time, label:"開始時間"
           t.input :end_time, label:"終了時間"

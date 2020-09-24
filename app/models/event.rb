@@ -10,8 +10,8 @@ class Event < ApplicationRecord
     
     enum category: {本選考:1, インターン・ジョブ:2, 説明会・企業セミナー:3, 合同説明会・交流会:4, 就活対策:5}
     
-    accepts_nested_attributes_for :event_schedules
-    accepts_nested_attributes_for :event_profiles
+    accepts_nested_attributes_for :event_schedules, allow_destroy: true
+    accepts_nested_attributes_for :event_profiles, allow_destroy: true
     
      def self.import(file)
         CSV.foreach(file.path, headers: true) do |row|
