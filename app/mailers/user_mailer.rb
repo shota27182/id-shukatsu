@@ -21,7 +21,7 @@ class UserMailer < ApplicationMailer
 
     mail( from: 'info@id-shukatsu.com',
           to: user.email,
-          subject: '[ID就活]さあ、短時間で就活の一歩を踏み出そう 〜完全初心者向け、就活ロードマップ〜',
+          subject: '[ID就活]45万冊の大ベストセラー「1分で話せ」を活用した面接対策イベント',
           reply_to: 'info@id-shukatsu.com' )
   end
 
