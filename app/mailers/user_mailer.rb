@@ -21,7 +21,7 @@ class UserMailer < ApplicationMailer
 
     mail( from: 'info@id-shukatsu.com',
           to: user.email,
-          subject: '[ID就活]自己PR壁打ちイベント　リマインドメール',
+          subject: '[ID就活]さあ、短時間で就活の一歩を踏み出そう 〜完全初心者向け、就活ロードマップ〜',
           reply_to: 'info@id-shukatsu.com' )
   end
 
