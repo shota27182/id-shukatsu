@@ -18,11 +18,8 @@ class UserMailer < ApplicationMailer
   
   def event_confirmation(user)
     @user = user
-    @avatar_file = avatar_file_name(user)
 
     # set attachment file
-    attachments[@avatar_file] =
-      File.read(Rails.root.join("public#{avatar_url(@user)}"))
     mail( from: 'info@id-shukatsu.com',
           to: user.email,
           subject: '[ID就活]オフラインGD練習会中止のお知らせ',
